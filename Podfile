@@ -4,7 +4,8 @@
 target 'CoffeeMap' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'Firebase/Auth'
   # Pods for CoffeeMap
+  pod 'SwiftLint'
+  pod 'Firebase/Auth'
 
 end

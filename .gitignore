@@ -92,3 +92,9 @@ iOSInjectionProject/
 # MacOS file system
 .DS_Store
 CoffeeMap/Common/GoogleService-Info.plist
+
+*.swp
+*.swo
+*.lock
+profile
+
