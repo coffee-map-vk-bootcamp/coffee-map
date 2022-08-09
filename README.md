@@ -30,9 +30,6 @@ Group project for VK mobile dev bootcamp 2022 about building coffee map app.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!-- LICENSE -->
 ## License
 
