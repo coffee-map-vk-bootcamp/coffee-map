@@ -24,9 +24,9 @@ Group project in VK mobile dev bootcamp 2022 about building coffee map app.
 ## Roadmap
 
 - [x] Create README
-- [] Build app 
-- [] Make tests 
-- [] Get rich 
+- [ ] Build app 
+- [ ] Make tests 
+- [ ] Get rich 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
