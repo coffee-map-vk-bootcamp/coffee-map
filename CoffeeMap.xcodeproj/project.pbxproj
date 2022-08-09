@@ -12,6 +12,10 @@
 		0A8F952328A24F8200ED90F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F952228A24F8200ED90F9 /* ViewController.swift */; };
 		0A8F952828A24F8300ED90F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A8F952728A24F8300ED90F9 /* Assets.xcassets */; };
 		0A8F952B28A24F8300ED90F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A8F952928A24F8300ED90F9 /* LaunchScreen.storyboard */; };
+		A7024FAF28A29DBD006103CD /* CoffeeShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7024FAE28A29DBD006103CD /* CoffeeShop.swift */; };
+		A7024FB228A2A2E4006103CD /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7024FB128A2A2E4006103CD /* Dish.swift */; };
+		A7024FB428A2A328006103CD /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7024FB328A2A328006103CD /* Order.swift */; };
+		A7024FB628A2A341006103CD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7024FB528A2A341006103CD /* User.swift */; };
 		A7EF10B828A25DA600F8F5AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7EF10B728A25DA600F8F5AE /* GoogleService-Info.plist */; };
 		FE5B25AF5DC6FE3F619F6904 /* Pods_CoffeeMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76641DBD4BD2B106D35DF551 /* Pods_CoffeeMap.framework */; };
 /* End PBXBuildFile section */
@@ -25,6 +29,10 @@
 		0A8F952A28A24F8300ED90F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A8F952C28A24F8300ED90F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76641DBD4BD2B106D35DF551 /* Pods_CoffeeMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoffeeMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7024FAE28A29DBD006103CD /* CoffeeShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShop.swift; sourceTree = "<group>"; };
+		A7024FB128A2A2E4006103CD /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		A7024FB328A2A328006103CD /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		A7024FB528A2A341006103CD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A7EF10B728A25DA600F8F5AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D680CFDA888A6B1D67699706 /* Pods-CoffeeMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeMap.debug.xcconfig"; path = "Target Support Files/Pods-CoffeeMap/Pods-CoffeeMap.debug.xcconfig"; sourceTree = "<group>"; };
 		DA79C2A9BCC059D14AADC651 /* Pods-CoffeeMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeMap.release.xcconfig"; path = "Target Support Files/Pods-CoffeeMap/Pods-CoffeeMap.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +81,7 @@
 		0A8F953428A2525200ED90F9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A7024FB028A2A2D2006103CD /* Model */,
 				0A8F951E28A24F8200ED90F9 /* AppDelegate.swift */,
 				0A8F952028A24F8200ED90F9 /* SceneDelegate.swift */,
 				0A8F952728A24F8300ED90F9 /* Assets.xcassets */,
@@ -97,6 +106,17 @@
 				76641DBD4BD2B106D35DF551 /* Pods_CoffeeMap.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7024FB028A2A2D2006103CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A7024FAE28A29DBD006103CD /* CoffeeShop.swift */,
+				A7024FB528A2A341006103CD /* User.swift */,
+				A7024FB128A2A2E4006103CD /* Dish.swift */,
+				A7024FB328A2A328006103CD /* Order.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,9 +253,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7024FB428A2A328006103CD /* Order.swift in Sources */,
 				0A8F952328A24F8200ED90F9 /* ViewController.swift in Sources */,
+				A7024FB228A2A2E4006103CD /* Dish.swift in Sources */,
+				A7024FAF28A29DBD006103CD /* CoffeeShop.swift in Sources */,
 				0A8F951F28A24F8200ED90F9 /* AppDelegate.swift in Sources */,
 				0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */,
+				A7024FB628A2A341006103CD /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
