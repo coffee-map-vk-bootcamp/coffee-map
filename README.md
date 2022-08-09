@@ -18,7 +18,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Group project in VK mobile dev bootcamp 2022 about building coffee map app.
+Group project for VK mobile dev bootcamp 2022 about building coffee map app.
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -27,9 +27,6 @@ Group project in VK mobile dev bootcamp 2022 about building coffee map app.
 - [ ] Build app 
 - [ ] Make tests 
 - [ ] Get rich 
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -44,9 +41,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 ## Contact
-Gusev Vladimir - [@vladimirlouis](https://t.me/vladimirlouis) - vladimirlouis@gmail.com
+Gusev Vladimir - [@vladimirlouis](https://t.me/vladimirlouis) - antigluten@icloud.com
 
-Golubev Dmitri - [@drak_16](https://t.me/drak_16) - drak_16h@gmail.com
+Golubev Dmitri - [@drak_16](https://t.me/drak_16) - golubev.da16@gmail.com
 
 Ivan Surganov - [@isurganov](https://www.linkedin.com/in/ivansurganov/) - devsurganov@gmail.com
 
