@@ -8,6 +8,6 @@
 struct AppImageNames {
     static let home = "home"
     static let shoppingCart = "shopping_cart"
-    static let favourites = "favourites"
+    static let favorite = "favorite"
     static let persone = "persone"
 }
