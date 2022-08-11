@@ -10,7 +10,6 @@ import UIKit
 class CoffeeShopDetailHeaderView: UICollectionReusableView {
     lazy var headerImageView: UIImageView = {
         let headerView = UIImageView()
-        headerView.translatesAutoresizingMaskIntoConstraints = false
         headerView.contentMode = .scaleAspectFill
         return headerView
     }()
@@ -18,7 +17,7 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(headerImageView)
+        setupHeader()
         clipsToBounds = true
     }
     
@@ -26,8 +25,9 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    private func setupHeader() {
+        addSubview(headerImageView)
+        headerImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             headerImageView.topAnchor.constraint(equalTo: topAnchor),
