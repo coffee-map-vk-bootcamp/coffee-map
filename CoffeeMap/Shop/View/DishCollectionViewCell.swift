@@ -26,14 +26,19 @@ final class DishCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var blurView = UIVisualEffectView()
+    lazy var blurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.layer.cornerRadius = 4
+        blurView.layer.masksToBounds = true
+        return blurView
+    }()
     
     lazy var dishImageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        setupBlurView()
         setupDishImageView()
     }
     
@@ -61,13 +66,6 @@ final class DishCollectionViewCell: UICollectionViewCell {
         
         dishImageView.image = image
         dishImageView.contentMode = .scaleAspectFit
-    }
-    
-    func setupBlurView() {
-        let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
-        blurView.effect = blurEffect
-        blurView.layer.cornerRadius = 4
-        blurView.layer.masksToBounds = true
     }
     
     func layoutBlurView() {
