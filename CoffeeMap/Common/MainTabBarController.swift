@@ -31,8 +31,7 @@ final class MainTabBarController: UITabBarController {
         let profileScreen = UINavigationController(rootViewController: UIViewController())
         profileScreen.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: AppImageNames.persone), tag: 0)
 
-//        viewControllers = [homeScreen, cartScreen, favouriteScreen, profileScreen]
-        viewControllers = [CoffeeShopViewController()]
+        viewControllers = [homeScreen, cartScreen, favouriteScreen, profileScreen]
         view.backgroundColor = .white
     }
 }
