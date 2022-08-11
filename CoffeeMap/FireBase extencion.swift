@@ -23,7 +23,7 @@ extension Auth {
 final class fbService{
     static let db = Firestore.firestore()
     static func fetchCoffeeShops(){
-        db.collection("coffeeShops").getDocuments() { (querySnapshot, err) in
+        db.collection("coffeeShop").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {

@@ -176,11 +176,8 @@ class LoginView: UIView {
         
         stackView.addArrangedSubview(passwordTextField)
     }
-    func tappedButton(sender: UIButton) {
-        
-    }
     
-    private func tappedBruteForce() {
+    func tappedButton(sender: UIButton) {
         
     }
 }

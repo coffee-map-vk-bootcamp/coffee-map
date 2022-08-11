@@ -31,6 +31,4 @@ final class LoginViewController: UIViewController{
             loginView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
-    
-    
 }
