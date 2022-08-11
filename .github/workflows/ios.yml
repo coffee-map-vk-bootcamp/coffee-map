@@ -1,0 +1,25 @@
+name: iOS starter workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build and Test default scheme using any available iPhone simulator
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Install pods
+        run: pod install --repo-update
+      
+      - name: Build
+        run: xcodebuild clean build -workspace CoffeeMap.xcworkspace -scheme "CoffeeMap" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 13" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO 
+        
+      - name: SwiftLint
+        run: swiftlint lint --reporter github-actions-logging
