@@ -28,10 +28,13 @@ final class DishCollectionViewCell: UICollectionViewCell {
     
     lazy var blurView = UIVisualEffectView()
     
+    lazy var dishImageView = UIImageView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupContainer()
         setupViews()
+        setupBlurView()
+        setupDishImageView()
     }
     
     required init?(coder: NSCoder) {
@@ -39,50 +42,56 @@ final class DishCollectionViewCell: UICollectionViewCell {
     }
     
     override func layoutSubviews() {
+        layoutBlurView()
         layoutNameLabel()
         layoutPriceLabel()
+        layoutDishImageView()
     }
     
-    func setupContainer() {
+    func setupViews() {
+        contentView.addSubview(blurView)
+        contentView.addSubview(dishNameLabel)
+        contentView.addSubview(priceLabel)
         
-        let image = UIImage(named: "coffee-test-1")
-        let imageView = UIImageView()
+        contentView.addSubview(dishImageView)
+    }
+    
+    func setupDishImageView() {
+        let image = UIImage(named: AppImageNames.mockDishImage1)
         
-        imageView.image = image
-        imageView.contentMode = .scaleAspectFit
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
+        dishImageView.image = image
+        dishImageView.contentMode = .scaleAspectFit
+    }
+    
+    func setupBlurView() {
         let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
         blurView.effect = blurEffect
-        
-        blurView.translatesAutoresizingMaskIntoConstraints = false
         blurView.layer.cornerRadius = 4
         blurView.layer.masksToBounds = true
-
-        contentView.addSubview(blurView)
-        contentView.addSubview(imageView)
-
-        imageView.sizeToFit()
-
+    }
+    
+    func layoutBlurView() {
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             blurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             blurView.topAnchor.constraint(equalTo: contentView.topAnchor),
             blurView.heightAnchor.constraint(equalToConstant: 95)
         ])
-
-        NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: blurView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: blurView.trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: blurView.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: blurView.bottomAnchor)
-        ])
     }
     
-    func setupViews() {
-        contentView.addSubview(dishNameLabel)
-        contentView.addSubview(priceLabel)
+    func layoutDishImageView() {
+        dishImageView.translatesAutoresizingMaskIntoConstraints = false
+
+        dishImageView.sizeToFit()
+
+        NSLayoutConstraint.activate([
+            dishImageView.leadingAnchor.constraint(equalTo: blurView.leadingAnchor),
+            dishImageView.trailingAnchor.constraint(equalTo: blurView.trailingAnchor),
+            dishImageView.topAnchor.constraint(equalTo: blurView.topAnchor),
+            dishImageView.bottomAnchor.constraint(equalTo: blurView.bottomAnchor)
+        ])
     }
     
     func layoutNameLabel() {
@@ -108,6 +117,7 @@ final class DishCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        dishImageView.image = nil
         dishNameLabel.text = nil
         priceLabel.text = nil
     }

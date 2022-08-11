@@ -108,8 +108,14 @@ extension CoffeeShopDetailCollectionViewCell: UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        .init(width: (frame.size.width - 32 - 16 * 3) / 4, height: 164)
-        .init(width: 95, height: 170)
+        let padding: CGFloat = 16
+        let spacing: CGFloat = 16
+        let numberOfRows: CGFloat = 3
+        
+        let offset = padding * 2 + spacing * numberOfRows
+        let width = (frame.size.width - offset) / numberOfRows
+        
+        return .init(width: width, height: 170)
     }
     
 }
