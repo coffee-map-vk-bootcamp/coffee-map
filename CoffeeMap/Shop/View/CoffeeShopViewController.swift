@@ -11,11 +11,7 @@ final class CoffeeShopViewController: UIViewController {
     
     var presenter: DetailPresenterDescription?
     
-    lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
-    }()
+    lazy var collectionView: UICollectionView =  UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -32,6 +28,14 @@ final class CoffeeShopViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        layoutCollectionView()
+    }
+}
+
+private extension CoffeeShopViewController {
+    func layoutCollectionView() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -40,7 +44,10 @@ final class CoffeeShopViewController: UIViewController {
         ])
     }
     
-    private func setupCollectionView() {
+    func setupCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        collectionView.collectionViewLayout = layout
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -74,7 +81,7 @@ extension CoffeeShopViewController: UICollectionViewDataSource {
         let view = collectionView.dequeueReusableSupplementaryView(CoffeeShopDetailHeaderView.self,
                                                                    ofKind: UICollectionView.elementKindSectionHeader,
                                                                    for: indexPath)
-        
+
         view.headerImageView.image = UIImage(named: "cafe-test")
         
         return view

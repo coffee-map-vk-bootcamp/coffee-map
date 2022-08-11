@@ -9,18 +9,9 @@ import UIKit
 
 final class CoffeeShopDetailCollectionViewCell: UICollectionViewCell {
     
-    private lazy var sectionTitle: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var sectionTitle = UILabel()
     
-    private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
-    }()
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,17 +31,21 @@ final class CoffeeShopDetailCollectionViewCell: UICollectionViewCell {
         layoutCollectionView()
     }
     
-    func setupSectionTitle() {
-        contentView.addSubview(sectionTitle)
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        sectionTitle.text = nil
     }
     
-    func layoutSectionTitle() {
-        NSLayoutConstraint.activate([
-            sectionTitle.topAnchor.constraint(equalTo: topAnchor, constant: 24),
-            sectionTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            sectionTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            sectionTitle.heightAnchor.constraint(equalToConstant: 25)
-        ])
+    func configure(title: String) {
+        sectionTitle.text = title
+    }
+}
+
+private extension CoffeeShopDetailCollectionViewCell {
+    func setupSectionTitle() {
+        sectionTitle.font = .systemFont(ofSize: 20, weight: .semibold)
+        contentView.addSubview(sectionTitle)
     }
     
     func setupCollectionView() {
@@ -71,24 +66,26 @@ final class CoffeeShopDetailCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(collectionView)
     }
     
+    func layoutSectionTitle() {
+        sectionTitle.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            sectionTitle.topAnchor.constraint(equalTo: topAnchor, constant: 24),
+            sectionTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            sectionTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            sectionTitle.heightAnchor.constraint(equalToConstant: 25)
+        ])
+    }
+    
     func layoutCollectionView() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: sectionTitle.bottomAnchor, constant: 12),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-    }
-    
-    func configure(title: String) {
-        sectionTitle.text = title
-        
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        sectionTitle.text = nil
     }
 }
 
