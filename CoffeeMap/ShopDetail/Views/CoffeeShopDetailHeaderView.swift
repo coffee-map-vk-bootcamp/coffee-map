@@ -17,16 +17,23 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupHeader()
-        clipsToBounds = true
+        setup()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupHeader() {
+    override func layoutSubviews() {
+        layoutHeader()
+    }
+    
+    private func setup() {
         addSubview(headerImageView)
+        clipsToBounds = true
+    }
+    
+    private func layoutHeader() {
         headerImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([

@@ -58,13 +58,30 @@ final class DishCollectionViewCell: UICollectionViewCell {
         layoutPriceLabel()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        dishImageView.image = nil
+        dishNameLabel.text = nil
+        priceLabel.text = nil
+    }
     
-    func layoutDishImageView() {
+}
+
+private extension DishCollectionViewCell {
+    func setupViews() {
+        [priceLabel, dishImageView, blurView, dishNameLabel].forEach {
+            contentView.addSubview($0)
+        }
+    }
+    
+    func setupDishImageView() {
         let image = UIImage(named: AppImageNames.mockDishImage1)
         
         dishImageView.image = image
         dishImageView.contentMode = .scaleAspectFit
-        
+    }
+    
+    func layoutDishImageView() {
         dishImageView.translatesAutoresizingMaskIntoConstraints = false
 
         dishImageView.sizeToFit()
@@ -109,23 +126,6 @@ final class DishCollectionViewCell: UICollectionViewCell {
             priceLabel.leadingAnchor.constraint(equalTo: dishNameLabel.leadingAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: dishNameLabel.trailingAnchor),
             priceLabel.topAnchor.constraint(equalTo: dishNameLabel.bottomAnchor, constant: 6)
-        ])
-        
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        dishImageView.image = nil
-        dishNameLabel.text = nil
-        priceLabel.text = nil
-    }
-    
-}
-
-private extension DishCollectionViewCell {
-    func setupViews() {
-        [priceLabel, dishImageView, blurView, dishNameLabel].forEach {
-            contentView.addSubview($0)
-        }
+        ])   
     }
 }
