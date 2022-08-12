@@ -9,7 +9,7 @@ import UIKit
 
 final class DishCollectionViewCell: UICollectionViewCell {
     
-    lazy var dishNameLabel: UILabel = {
+    private lazy var dishNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.numberOfLines = 2
@@ -17,14 +17,14 @@ final class DishCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var priceLabel: UILabel = {
+    private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = .dishItemName
         return label
     }()
     
-    lazy var blurView: UIVisualEffectView = {
+    private lazy var blurView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.layer.cornerRadius = 4
@@ -32,7 +32,7 @@ final class DishCollectionViewCell: UICollectionViewCell {
         return blurView
     }()
     
-    lazy var dishImageView = UIImageView()
+    private lazy var dishImageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,6 +44,14 @@ final class DishCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with dish: Dish) {
+        if let imageData = dish.image {
+            dishImageView.image = UIImage(data: imageData)
+        }
+        dishNameLabel.text = dish.name
+        priceLabel.text = "\(dish.price) ₽"
     }
     
     func setupDishImageView() {
@@ -72,10 +80,10 @@ final class DishCollectionViewCell: UICollectionViewCell {
         blurView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            blurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            blurView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            blurView.heightAnchor.constraint(equalToConstant: 95)
+            blurView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            blurView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            blurView.heightAnchor.constraint(equalToConstant: 95),
+            blurView.widthAnchor.constraint(equalToConstant: 95)
         ])
     }
     

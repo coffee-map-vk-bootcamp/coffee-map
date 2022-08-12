@@ -8,7 +8,7 @@
 import UIKit
 
 class CoffeeShopDetailHeaderView: UICollectionReusableView {
-    lazy var headerImageView: UIImageView = {
+    private lazy var headerImageView: UIImageView = {
         let headerView = UIImageView()
         headerView.contentMode = .scaleAspectFill
         return headerView
@@ -35,5 +35,9 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
             headerImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+    
+    func configure(with image: UIImage?) {
+        headerImageView.image = image
     }
 }
