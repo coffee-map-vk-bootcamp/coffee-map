@@ -36,10 +36,7 @@ final class DishCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupBlurView()
-        setupDishImageView()
-        setupNameLabel()
-        setupPriceLabel()
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
@@ -54,9 +51,15 @@ final class DishCollectionViewCell: UICollectionViewCell {
         priceLabel.text = "\(dish.price) ₽"
     }
     
-    func setupDishImageView() {
-        contentView.addSubview(dishImageView)
-        
+    override func layoutSubviews() {
+        layoutBlurView()
+        layoutDishImageView()
+        layoutNameLabel()
+        layoutPriceLabel()
+    }
+    
+    
+    func layoutDishImageView() {
         let image = UIImage(named: AppImageNames.mockDishImage1)
         
         dishImageView.image = image
@@ -74,9 +77,7 @@ final class DishCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func setupBlurView() {
-        contentView.addSubview(blurView)
-        
+    func layoutBlurView() {
         blurView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -87,9 +88,7 @@ final class DishCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func setupNameLabel() {
-        contentView.addSubview(dishNameLabel)
-        
+    func layoutNameLabel() {
         dishNameLabel.sizeToFit()
         
         dishNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -101,9 +100,7 @@ final class DishCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func setupPriceLabel() {
-        contentView.addSubview(priceLabel)
-        
+    func layoutPriceLabel() {
         priceLabel.sizeToFit()
         
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -123,4 +120,12 @@ final class DishCollectionViewCell: UICollectionViewCell {
         priceLabel.text = nil
     }
     
+}
+
+private extension DishCollectionViewCell {
+    func setupViews() {
+        [priceLabel, dishImageView, blurView, dishNameLabel].forEach {
+            contentView.addSubview($0)
+        }
+    }
 }

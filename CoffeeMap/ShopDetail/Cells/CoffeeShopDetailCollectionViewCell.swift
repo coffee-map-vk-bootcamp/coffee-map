@@ -25,9 +25,6 @@ final class CoffeeShopDetailCollectionViewCell: UICollectionViewCell {
         
         setupSectionTitle()
         setupCollectionView()
-        
-        layoutSectionTitle()
-        layoutCollectionView()
     }
     
     required init?(coder: NSCoder) {
@@ -38,6 +35,11 @@ final class CoffeeShopDetailCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         
         sectionTitle.text = nil
+    }
+    
+    override func layoutSubviews() {
+        layoutSectionTitle()
+        layoutCollectionView()
     }
     
     func configure(with section: DishSection, delegate: CoffeeShopDetailCollectionDelegate) {
