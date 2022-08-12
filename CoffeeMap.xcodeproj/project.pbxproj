@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2DFCAD28A6616E00C7F5BB /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCA728A6616E00C7F5BB /* LoginPresenter.swift */; };
+		0A2DFCAE28A6616E00C7F5BB /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCA828A6616E00C7F5BB /* LoginRouter.swift */; };
+		0A2DFCAF28A6616E00C7F5BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCA928A6616E00C7F5BB /* LoginViewController.swift */; };
+		0A2DFCB028A6616E00C7F5BB /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCAA28A6616E00C7F5BB /* LoginProtocols.swift */; };
+		0A2DFCB128A6616E00C7F5BB /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCAB28A6616E00C7F5BB /* LoginInteractor.swift */; };
+		0A2DFCB228A6616E00C7F5BB /* LoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCAC28A6616E00C7F5BB /* LoginContainer.swift */; };
 		0A8F951F28A24F8200ED90F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F951E28A24F8200ED90F9 /* AppDelegate.swift */; };
 		0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F952028A24F8200ED90F9 /* SceneDelegate.swift */; };
 		0A8F952328A24F8200ED90F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F952228A24F8200ED90F9 /* ViewController.swift */; };
 		0A8F952828A24F8300ED90F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A8F952728A24F8300ED90F9 /* Assets.xcassets */; };
 		0A8F952B28A24F8300ED90F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A8F952928A24F8300ED90F9 /* LaunchScreen.storyboard */; };
-		0A8F953A28A3AD5600ED90F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F953928A3AD5600ED90F9 /* LoginViewController.swift */; };
-		0A8F953C28A4D29700ED90F9 /* FireBase extencion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F953B28A4D29700ED90F9 /* FireBase extencion.swift */; };
+		0A8F953C28A4D29700ED90F9 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */; };
 		0A8F953E28A4D32A00ED90F9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F953D28A4D32A00ED90F9 /* LoginView.swift */; };
 		0A8F954028A4D37300ED90F9 /* UIView+extencion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F953F28A4D37300ED90F9 /* UIView+extencion.swift */; };
 		0A8F954228A4D47A00ED90F9 /* UITextField+extencion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F954128A4D47A00ED90F9 /* UITextField+extencion.swift */; };
@@ -25,6 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A2DFCA728A6616E00C7F5BB /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		0A2DFCA828A6616E00C7F5BB /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		0A2DFCA928A6616E00C7F5BB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0A2DFCAA28A6616E00C7F5BB /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
+		0A2DFCAB28A6616E00C7F5BB /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		0A2DFCAC28A6616E00C7F5BB /* LoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainer.swift; sourceTree = "<group>"; };
 		0A8F951B28A24F8200ED90F9 /* CoffeeMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8F951E28A24F8200ED90F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A8F952028A24F8200ED90F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,8 +43,7 @@
 		0A8F952728A24F8300ED90F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A8F952A28A24F8300ED90F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A8F952C28A24F8300ED90F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A8F953928A3AD5600ED90F9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		0A8F953B28A4D29700ED90F9 /* FireBase extencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FireBase extencion.swift"; sourceTree = "<group>"; };
+		0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
 		0A8F953D28A4D32A00ED90F9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0A8F953F28A4D37300ED90F9 /* UIView+extencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extencion.swift"; sourceTree = "<group>"; };
 		0A8F954128A4D47A00ED90F9 /* UITextField+extencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+extencion.swift"; sourceTree = "<group>"; };
@@ -58,6 +68,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A2DFCA628A6601500C7F5BB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0A8F953D28A4D32A00ED90F9 /* LoginView.swift */,
+				0A2DFCA728A6616E00C7F5BB /* LoginPresenter.swift */,
+				0A2DFCA828A6616E00C7F5BB /* LoginRouter.swift */,
+				0A2DFCA928A6616E00C7F5BB /* LoginViewController.swift */,
+				0A2DFCAA28A6616E00C7F5BB /* LoginProtocols.swift */,
+				0A2DFCAB28A6616E00C7F5BB /* LoginInteractor.swift */,
+				0A2DFCAC28A6616E00C7F5BB /* LoginContainer.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		0A2DFCB328A67A9900C7F5BB /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		0A8F951228A24F8200ED90F9 = {
 			isa = PBXGroup;
 			children = (
@@ -79,14 +110,15 @@
 		0A8F951D28A24F8200ED90F9 /* CoffeeMap */ = {
 			isa = PBXGroup;
 			children = (
-				0A8F953B28A4D29700ED90F9 /* FireBase extencion.swift */,
+				0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */,
+				0A2DFCB328A67A9900C7F5BB /* SignUp */,
 				0A8F953428A2525200ED90F9 /* Common */,
 				0A8F952928A24F8300ED90F9 /* LaunchScreen.storyboard */,
 				0A8F952228A24F8200ED90F9 /* ViewController.swift */,
-				0A8F954728A52F3800ED90F9 /* Login */,
 				0A8F953F28A4D37300ED90F9 /* UIView+extencion.swift */,
 				0A8F954128A4D47A00ED90F9 /* UITextField+extencion.swift */,
 				0A8F954528A4D61400ED90F9 /* UIImage+extencion.swift */,
+				0A2DFCA628A6601500C7F5BB /* Login */,
 			);
 			path = CoffeeMap;
 			sourceTree = "<group>";
@@ -103,15 +135,6 @@
 				A7EF10B728A25DA600F8F5AE /* GoogleService-Info.plist */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		0A8F954728A52F3800ED90F9 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				0A8F953928A3AD5600ED90F9 /* LoginViewController.swift */,
-				0A8F953D28A4D32A00ED90F9 /* LoginView.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		1FCE1DA24902469DEABD13B3 /* Pods */ = {
@@ -265,16 +288,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A8F953A28A3AD5600ED90F9 /* LoginViewController.swift in Sources */,
-				0A8F953C28A4D29700ED90F9 /* FireBase extencion.swift in Sources */,
+				0A2DFCAF28A6616E00C7F5BB /* LoginViewController.swift in Sources */,
+				0A2DFCAD28A6616E00C7F5BB /* LoginPresenter.swift in Sources */,
+				0A8F953C28A4D29700ED90F9 /* FireBaseManager.swift in Sources */,
+				0A2DFCB128A6616E00C7F5BB /* LoginInteractor.swift in Sources */,
 				0A8F954028A4D37300ED90F9 /* UIView+extencion.swift in Sources */,
 				0A8F954228A4D47A00ED90F9 /* UITextField+extencion.swift in Sources */,
+				0A2DFCB028A6616E00C7F5BB /* LoginProtocols.swift in Sources */,
 				A648A3E328A2A5ED00413915 /* MainTabBarController.swift in Sources */,
 				0A8F952328A24F8200ED90F9 /* ViewController.swift in Sources */,
 				0A8F951F28A24F8200ED90F9 /* AppDelegate.swift in Sources */,
 				0A8F954628A4D61400ED90F9 /* UIImage+extencion.swift in Sources */,
+				0A2DFCB228A6616E00C7F5BB /* LoginContainer.swift in Sources */,
 				A648A3E528A2A6EB00413915 /* AppImageNames.swift in Sources */,
 				0A8F953E28A4D32A00ED90F9 /* LoginView.swift in Sources */,
+				0A2DFCAE28A6616E00C7F5BB /* LoginRouter.swift in Sources */,
 				0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

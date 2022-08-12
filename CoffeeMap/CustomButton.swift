@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class CustomButton: UIButton{
+final class CustomButton: UIButton {
     private let title: String
     private let titleColor: UIColor
     private let isTapped: (() -> Void)?
@@ -29,8 +29,7 @@ final class CustomButton: UIButton{
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc private func buttonTapped(){
+    @objc private func buttonTapped() {
         isTapped?()
     }
 }
-

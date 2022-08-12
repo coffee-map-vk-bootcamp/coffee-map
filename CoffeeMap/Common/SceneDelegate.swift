@@ -15,11 +15,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        fbService.fetchCoffeeShops()
+        let context = LoginContext()
+        // MARK: - TEST AUTH
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error)
+        }
+        
         if Auth.auth().currentUser != nil {
             window?.rootViewController = MainTabBarController()
         } else {
-            window?.rootViewController = LoginViewController()
+            window?.rootViewController = LoginContainer.assemble(with: context).viewController
         }
         
         window?.makeKeyAndVisible()
