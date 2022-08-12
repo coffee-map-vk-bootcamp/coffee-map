@@ -15,7 +15,6 @@ final class LoginViewController: UIViewController {
         loginView = LoginView()
         loginView.delegate = self
         loginView.toAutoLayout()
-        view.addSubview(loginView)
         
         return loginView
     }()
@@ -32,6 +31,7 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(loginView)
         view.backgroundColor = .systemBackground
     }
     
@@ -47,6 +47,7 @@ final class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginViewInput {
+    
 }
 
 extension LoginViewController: LoginViewOutputToVC {
