@@ -14,7 +14,6 @@
 		0A2DFCB128A6616E00C7F5BB /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCAB28A6616E00C7F5BB /* LoginInteractor.swift */; };
 		0A2DFCB228A6616E00C7F5BB /* LoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCAC28A6616E00C7F5BB /* LoginContainer.swift */; };
 		0A2DFCBB28A6825100C7F5BB /* ModelsFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCBA28A6825100C7F5BB /* ModelsFB.swift */; };
-		0A2DFCBD28A92E4000C7F5BB /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCBC28A92E4000C7F5BB /* Models.swift */; };
 		0A2DFCBF28A934D200C7F5BB /* ModelConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCBE28A934D200C7F5BB /* ModelConverter.swift */; };
 		0A8F951F28A24F8200ED90F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F951E28A24F8200ED90F9 /* AppDelegate.swift */; };
 		0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F952028A24F8200ED90F9 /* SceneDelegate.swift */; };
@@ -40,7 +39,6 @@
 		0A2DFCAB28A6616E00C7F5BB /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		0A2DFCAC28A6616E00C7F5BB /* LoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainer.swift; sourceTree = "<group>"; };
 		0A2DFCBA28A6825100C7F5BB /* ModelsFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsFB.swift; sourceTree = "<group>"; };
-		0A2DFCBC28A92E4000C7F5BB /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		0A2DFCBE28A934D200C7F5BB /* ModelConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConverter.swift; sourceTree = "<group>"; };
 		0A8F951B28A24F8200ED90F9 /* CoffeeMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8F951E28A24F8200ED90F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 			children = (
 				0A2DFCBA28A6825100C7F5BB /* ModelsFB.swift */,
 				0A2DFCBE28A934D200C7F5BB /* ModelConverter.swift */,
-				0A2DFCBC28A92E4000C7F5BB /* Models.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,7 +257,7 @@
 		};
 		A734E4DD28A25F5400F8E4EC /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -272,7 +269,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
@@ -321,7 +318,6 @@
 				0A8F953E28A4D32A00ED90F9 /* LoginView.swift in Sources */,
 				0A2DFCBF28A934D200C7F5BB /* ModelConverter.swift in Sources */,
 				0A2DFCBB28A6825100C7F5BB /* ModelsFB.swift in Sources */,
-				0A2DFCBD28A92E4000C7F5BB /* Models.swift in Sources */,
 				0A2DFCAE28A6616E00C7F5BB /* LoginRouter.swift in Sources */,
 				0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */,
 			);

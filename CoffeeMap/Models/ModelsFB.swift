@@ -7,29 +7,29 @@
 
 import Foundation
 
-struct DishNW: Decodable {
+struct Dish: Decodable {
     let name: String
     let price: Int
     let image: String
     let count: Int
 }
 
-struct CoffeeShopNW: Decodable {
+struct CoffeeShop: Decodable {
     let name: String
     let address: String
-    let dishes: [String]
+    let dishes: [Dish]
     let image: String
     let latitude: Double
     let longitude: Double
 }
 
-struct OrderNW: Decodable {
+struct Order: Decodable {
     let totalPrice: Int
-    let dishes: [String]
+    let dishes: [String: [Dish]]
 }
 
-struct UserNW: Decodable {
+struct User: Decodable {
     let name: String
-    let favoriteCoffeeShops: [String]
+    let favoriteCoffeeShops: [CoffeeShop]
     let orders: [String]
 }

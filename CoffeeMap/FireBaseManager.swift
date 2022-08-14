@@ -15,14 +15,12 @@ struct MockError: Error {
 final class FBService {
     static let dataBase = Firestore.firestore()
     
-    static func fetchCoffeeShops(completion: @escaping (Result<[CoffeeShopNW]?, Error>) -> Void) {
-        dataBase.collection("coffeeShops").addSnapshotListener { (querySnapshot, err) in
+    static func fetchCoffeeShops(completion: @escaping (Result<[CoffeeShop], Error>) -> Void) {
+        dataBase.collection("coffeeShops1").addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                let result = querySnapshot?.documents.compactMap {
-                    try? ModelConverter.convert(from: $0) as CoffeeShopNW
-                }
+                guard let result = coffeeShops(from: querySnapshot) else { return }
                 completion(.success(result))
             }
         }
@@ -31,10 +29,19 @@ final class FBService {
 
 private extension FBService {
     
-    static func coffeeShopsNW(from snapshot: QuerySnapshot?) -> [CoffeeShopNW]? {
+    static func coffeeShops(from snapshot: QuerySnapshot?) -> [CoffeeShop]? {
         return snapshot?.documents.compactMap {
             try? ModelConverter.convert(from: $0)
         }
+    }
+            
+    enum CoordinatesKeysNW: String {
+        case address
+        case latitude
+        case longitude
+        case dishes
+        case image
+        case name
     }
 }
 
