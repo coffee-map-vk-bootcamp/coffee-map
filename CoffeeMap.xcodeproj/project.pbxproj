@@ -13,6 +13,9 @@
 		0A2DFCB028A6616E00C7F5BB /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCAA28A6616E00C7F5BB /* LoginProtocols.swift */; };
 		0A2DFCB128A6616E00C7F5BB /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCAB28A6616E00C7F5BB /* LoginInteractor.swift */; };
 		0A2DFCB228A6616E00C7F5BB /* LoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCAC28A6616E00C7F5BB /* LoginContainer.swift */; };
+		0A2DFCBB28A6825100C7F5BB /* ModelsFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCBA28A6825100C7F5BB /* ModelsFB.swift */; };
+		0A2DFCBD28A92E4000C7F5BB /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCBC28A92E4000C7F5BB /* Models.swift */; };
+		0A2DFCBF28A934D200C7F5BB /* ModelConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCBE28A934D200C7F5BB /* ModelConverter.swift */; };
 		0A8F951F28A24F8200ED90F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F951E28A24F8200ED90F9 /* AppDelegate.swift */; };
 		0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F952028A24F8200ED90F9 /* SceneDelegate.swift */; };
 		0A8F952328A24F8200ED90F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F952228A24F8200ED90F9 /* ViewController.swift */; };
@@ -36,6 +39,9 @@
 		0A2DFCAA28A6616E00C7F5BB /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
 		0A2DFCAB28A6616E00C7F5BB /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		0A2DFCAC28A6616E00C7F5BB /* LoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainer.swift; sourceTree = "<group>"; };
+		0A2DFCBA28A6825100C7F5BB /* ModelsFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsFB.swift; sourceTree = "<group>"; };
+		0A2DFCBC28A92E4000C7F5BB /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		0A2DFCBE28A934D200C7F5BB /* ModelConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConverter.swift; sourceTree = "<group>"; };
 		0A8F951B28A24F8200ED90F9 /* CoffeeMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8F951E28A24F8200ED90F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A8F952028A24F8200ED90F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +95,16 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		0A2DFCB928A6823600C7F5BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A2DFCBA28A6825100C7F5BB /* ModelsFB.swift */,
+				0A2DFCBE28A934D200C7F5BB /* ModelConverter.swift */,
+				0A2DFCBC28A92E4000C7F5BB /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0A8F951228A24F8200ED90F9 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */,
+				0A2DFCB928A6823600C7F5BB /* Models */,
 				0A2DFCB328A67A9900C7F5BB /* SignUp */,
 				0A8F953428A2525200ED90F9 /* Common */,
 				0A8F952928A24F8300ED90F9 /* LaunchScreen.storyboard */,
@@ -302,6 +319,9 @@
 				0A2DFCB228A6616E00C7F5BB /* LoginContainer.swift in Sources */,
 				A648A3E528A2A6EB00413915 /* AppImageNames.swift in Sources */,
 				0A8F953E28A4D32A00ED90F9 /* LoginView.swift in Sources */,
+				0A2DFCBF28A934D200C7F5BB /* ModelConverter.swift in Sources */,
+				0A2DFCBB28A6825100C7F5BB /* ModelsFB.swift in Sources */,
+				0A2DFCBD28A92E4000C7F5BB /* Models.swift in Sources */,
 				0A2DFCAE28A6616E00C7F5BB /* LoginRouter.swift in Sources */,
 				0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */,
 			);
