@@ -23,9 +23,11 @@ protocol LoginViewOutput: AnyObject {
 }
 
 protocol LoginInteractorInput: AnyObject {
+    func login(email: String, pas: String)
 }
 
 protocol LoginInteractorOutput: AnyObject {
+    func goToMainScreen()
 }
 
 protocol LoginRouterInput: AnyObject {

@@ -16,12 +16,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         let context = LoginContext()
-        // MARK: - TEST AUTH
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print(error)
-        }
         
         if Auth.auth().currentUser != nil {
             window?.rootViewController = MainTabBarController()

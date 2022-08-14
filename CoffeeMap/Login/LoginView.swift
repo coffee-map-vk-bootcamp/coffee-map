@@ -10,8 +10,20 @@ class LoginView: UIView {
     weak var delegate: LoginViewOutputToVC?
     
     private let stackView = UIStackView()
-    let emailTextField = UITextField()
-    let passwordTextField = UITextField()
+    private let emailTextField = UITextField()
+    private let passwordTextField = UITextField()
+    
+    var email: String? {
+        get {
+            return emailTextField.text
+        }
+    }
+    
+    var password: String? {
+        get {
+            return passwordTextField.text
+        }
+    }
     
     private lazy var scrollView: UIScrollView = {
         scrollView = UIScrollView()
@@ -175,7 +187,7 @@ class LoginView: UIView {
         
         stackView.addArrangedSubview(passwordTextField)
     }
-    
+        
     @objc
     func loginTapped() {
         delegate?.tryLogin()

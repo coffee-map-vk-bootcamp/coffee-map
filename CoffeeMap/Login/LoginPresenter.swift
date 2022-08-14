@@ -26,16 +26,12 @@ extension LoginPresenter: LoginModuleInput {
 
 extension LoginPresenter: LoginViewOutput {
     func login(email: String, pas: String) {
-        FBAuthService.login(email: email, password: pas) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success:
-                self?.router.successLogin()
-            }
-        }
+        interactor.login(email: email, pas: pas)
     }
 }
 
 extension LoginPresenter: LoginInteractorOutput {
+    func goToMainScreen(){
+        router.successLogin()
+    }
 }

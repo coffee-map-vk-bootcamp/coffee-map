@@ -52,7 +52,7 @@ extension LoginViewController: LoginViewInput {
 
 extension LoginViewController: LoginViewOutputToVC {
     func tryLogin() {
-        guard let email = loginView.emailTextField.text, let pas = loginView.passwordTextField.text else { return }
+        guard let email = loginView.email, let pas = loginView.password else { return }
         output.login(email: email, pas: pas)
     }
     
