@@ -44,9 +44,7 @@ final class DishCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with dish: Dish) {
-        if let imageData = dish.image {
-            dishImageView.image = UIImage(data: imageData)
-        }
+        dishImageView.image = UIImage(named: AppImageNames.mockDishImage)
         dishNameLabel.text = dish.name
         priceLabel.text = "\(dish.price) ₽"
     }
