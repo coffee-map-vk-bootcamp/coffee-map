@@ -13,12 +13,15 @@ protocol DishConfiguratorModuleInput {
 }
 
 protocol DishConfiguratorModuleOutput: AnyObject {
+    func didFinishConfiguration()
 }
 
 protocol DishConfiguratorViewInput: AnyObject {
 }
 
 protocol DishConfiguratorViewOutput: AnyObject {
+    func didLoadView()
+    func didCloseView()
 }
 
 protocol DishConfiguratorInteractorInput: AnyObject {

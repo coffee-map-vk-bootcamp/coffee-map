@@ -31,7 +31,7 @@ extension LoginPresenter: LoginViewOutput {
 }
 
 extension LoginPresenter: LoginInteractorOutput {
-    func goToMainScreen(){
+    func goToMainScreen() {
         router.successLogin()
     }
 }

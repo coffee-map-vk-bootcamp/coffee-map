@@ -17,13 +17,15 @@ protocol CoffeeShopDetailScreenModuleOutput: AnyObject {
 }
 
 protocol CoffeeShopDetailScreenViewInput: AnyObject {
-    
+
 }
 
 protocol CoffeeShopDetailScreenViewOutput: AnyObject {
     var count: Int { get }
     
     func item(at index: Int) -> DishSection
+    func item(at section: Int, with index: Int) -> Dish
+    func number(of section: Int) -> Int
     func image(at url: String) -> Data?
     
     func didLoadView()
@@ -31,7 +33,7 @@ protocol CoffeeShopDetailScreenViewOutput: AnyObject {
 }
 
 protocol CoffeeShopDetailScreenInteractorInput: AnyObject {
-    func loadItems()
+    func loadItems() -> [DishSection]
 }
 
 protocol CoffeeShopDetailScreenInteractorOutput: AnyObject {
@@ -40,4 +42,5 @@ protocol CoffeeShopDetailScreenInteractorOutput: AnyObject {
 
 protocol CoffeeShopDetailScreenRouterInput: AnyObject {
     func showDetailDish(output: DishConfiguratorModuleOutput, with item: Dish)
+    func showAlert()
 }
