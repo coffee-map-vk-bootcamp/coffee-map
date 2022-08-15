@@ -73,8 +73,8 @@ private extension CoffeeShopDetailScreenViewController {
     }
     
     func createLayout(contentSize: CGSize,
-                             output: CoffeeShopDetailScreenViewOutput,
-                             interItemSpacing: CGFloat = 16) -> UICollectionViewCompositionalLayout {
+                      output: CoffeeShopDetailScreenViewOutput,
+                      interItemSpacing: CGFloat = 16) -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
             guard let self = self else { return nil}
             let numberOfItems = output.number(of: sectionNumber)
@@ -180,11 +180,5 @@ extension CoffeeShopDetailScreenViewController: UICollectionViewDelegate {
         let tempVC = UIViewController()
         tempVC.view.backgroundColor = .lightGray
         present(tempVC, animated: true)
-    }
-}
-
-extension CoffeeShopDetailScreenViewController: CoffeeShopDetailCollectionDelegate {
-    func didSelect(with item: Dish) {
-        output.didSelectDish(with: item)
     }
 }
