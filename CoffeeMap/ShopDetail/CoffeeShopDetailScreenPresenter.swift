@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class CoffeeShopDetailScreenPresenter {
     weak var view: CoffeeShopDetailScreenViewInput?
@@ -20,31 +21,6 @@ final class CoffeeShopDetailScreenPresenter {
     init(router: CoffeeShopDetailScreenRouterInput, interactor: CoffeeShopDetailScreenInteractorInput) {
         self.router = router
         self.interactor = interactor
-        
-        sections = [
-            .init(sectionTitle: "Drinks You Might Like", headerImageURL: "", dishes: [
-                .init(id: 0, name: "Coffee", price: 1235, size: .medium, image: nil),
-                .init(id: 0, name: "Baton", price: 1235, size: .medium, image: nil),
-                .init(id: 0, name: "Tea", price: 1235, size: .medium, image: nil),
-                .init(id: 0, name: "Pepsi", price: 1235, size: .medium, image: nil),
-                .init(id: 0, name: "Water", price: 1235, size: .medium, image: nil)
-            ]),
-            .init(sectionTitle: "Drinks", headerImageURL: "", dishes: [
-                .init(id: 0, name: "Coffee", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Baton", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Tea", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Pepsi", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Water", price: 222, size: .medium, image: nil)
-            ]),
-            .init(sectionTitle: "Water Food", headerImageURL: "", dishes: [
-                .init(id: 0, name: "Coffee", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Baton", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Tea", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Pepsi", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Water", price: 222, size: .medium, image: nil)
-            ])
-        ]
-        
     }
 }
 
@@ -52,8 +28,16 @@ extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenModuleInput {
 }
 
 extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenViewOutput {
+    func item(at index: Int) -> DishSection {
+        return sections[index]
+    }
+    
+    func number(of section: Int) -> Int {
+        return sections[section].dishes.count
+    }
+    
     func didLoadView() {
-        interactor.loadItems()
+        sections = interactor.loadItems()
     }
     
     func image(at url: String) -> Data? {
@@ -64,8 +48,8 @@ extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenViewOutput {
         return sections.count
     }
     
-    func item(at index: Int) -> DishSection {
-        return sections[index]
+    func item(at section: Int, with index: Int) -> Dish {
+        return sections[section].dishes[index]
     }
     
     func didSelectDish(with item: Dish) {
@@ -78,5 +62,11 @@ extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenInteractorOutpu
 }
 
 extension CoffeeShopDetailScreenPresenter: DishConfiguratorModuleOutput {
+    func didFinishConfiguration() {
+        router.showAlert()
+    }
     
+    func finishConfigure() {
+        
+    }
 }

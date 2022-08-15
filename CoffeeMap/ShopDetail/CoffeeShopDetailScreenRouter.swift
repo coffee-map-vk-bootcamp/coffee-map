@@ -20,4 +20,13 @@ extension CoffeeShopDetailScreenRouter: CoffeeShopDetailScreenRouterInput {
         let dishConfiguratorViewController = DishConfiguratorContainer.assemble(with: context).viewController
         viewController?.present(dishConfiguratorViewController, animated: true)
     }
+    
+    func showAlert() {
+        let alertController = UIAlertController(title: nil, message: "You can change the thing", preferredStyle: .alert)
+        
+        let alertAction = UIAlertAction(title: "Ok", style: .default)
+        alertController.addAction(alertAction)
+        
+        viewController?.present(alertController, animated: true)
+    }
 }

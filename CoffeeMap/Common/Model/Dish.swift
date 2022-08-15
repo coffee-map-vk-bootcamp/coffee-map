@@ -14,6 +14,8 @@ struct Dish: Codable {
     let size: DishSize
     
     let image: Data?
+    
+    var isSelected: Bool
 }
 
 enum DishSize: Codable {
