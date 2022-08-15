@@ -10,4 +10,5 @@ struct AppImageNames {
     static let shoppingCart = "shopping_cart"
     static let favorite = "favorite"
     static let persone = "persone"
+    static let exit = "exit"
 }

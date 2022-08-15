@@ -28,7 +28,9 @@ final class MainTabBarController: UITabBarController {
         let favouriteScreen = UINavigationController(rootViewController: UIViewController())
         favouriteScreen.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: AppImageNames.favorite), tag: 0)
 
-        let profileScreen = UINavigationController(rootViewController: UIViewController())
+        let profileContext = ProfileContext(moduleOutput: nil)
+        let profileContainer = ProfileContainer.assemble(with: profileContext)
+        let profileScreen = UINavigationController(rootViewController: profileContainer.viewController)
         profileScreen.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: AppImageNames.persone), tag: 0)
 
         viewControllers = [homeScreen, cartScreen, favouriteScreen, profileScreen]
