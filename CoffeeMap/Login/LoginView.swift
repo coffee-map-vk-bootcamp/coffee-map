@@ -99,7 +99,6 @@ class LoginView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        passwordTextField.addSubview(activity)
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
@@ -184,6 +183,7 @@ class LoginView: UIView {
         passwordTextField.layer.cornerRadius = 10
         passwordTextField.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         passwordTextField.setLeftPaddingPoints(16)
+        passwordTextField.addSubview(activity)
         
         stackView.addArrangedSubview(passwordTextField)
     }
