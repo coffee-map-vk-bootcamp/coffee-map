@@ -23,25 +23,25 @@ final class CoffeeShopDetailScreenPresenter {
         
         sections = [
             .init(sectionTitle: "Drinks You Might Like", headerImageURL: "", dishes: [
-                .init(id: 0, name: "Coffee", price: 1235, size: .medium, image: nil),
-                .init(id: 0, name: "Baton", price: 1235, size: .medium, image: nil),
-                .init(id: 0, name: "Tea", price: 1235, size: .medium, image: nil),
-                .init(id: 0, name: "Pepsi", price: 1235, size: .medium, image: nil),
-                .init(id: 0, name: "Water", price: 1235, size: .medium, image: nil)
+                .init(name: "Coffee", price: 1235, image: "", count: 1),
+                .init(name: "Baton", price: 1235, image: "", count: 1),
+                .init(name: "Tea", price: 1235, image: "", count: 1),
+                .init(name: "Pepsi", price: 1235, image: "", count: 1),
+                .init(name: "Water", price: 1235, image: "", count: 1)
             ]),
             .init(sectionTitle: "Drinks", headerImageURL: "", dishes: [
-                .init(id: 0, name: "Coffee", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Baton", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Tea", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Pepsi", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Water", price: 222, size: .medium, image: nil)
+                .init(name: "Coffee", price: 222, image: "", count: 1),
+                .init(name: "Baton", price: 222, image: "", count: 1),
+                .init(name: "Tea", price: 222, image: "", count: 1),
+                .init(name: "Pepsi", price: 222, image: "", count: 1),
+                .init(name: "Water", price: 222, image: "", count: 1)
             ]),
             .init(sectionTitle: "Water Food", headerImageURL: "", dishes: [
-                .init(id: 0, name: "Coffee", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Baton", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Tea", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Pepsi", price: 222, size: .medium, image: nil),
-                .init(id: 0, name: "Water", price: 222, size: .medium, image: nil)
+                .init(name: "Coffee", price: 222, image: "", count: 1),
+                .init(name: "Baton", price: 222, image: "", count: 1),
+                .init(name: "Tea", price: 222, image: "", count: 1),
+                .init(name: "Pepsi", price: 222, image: "", count: 1),
+                .init(name: "Water", price: 222, image: "", count: 1)
             ])
         ]
         
