@@ -47,12 +47,12 @@ private extension FBService {
 
 final class FBAuthService {
     
-    static func login(email: String, password: String, complition: @escaping (Result<String, Error>) -> Void) {
+    static func login(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
             if let error = error {
-                complition(.failure(error))
+                completion(.failure(error))
             } else {
-                complition(.success("Success"))
+                completion(.success("Success"))
             }
         }
 

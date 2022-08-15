@@ -14,7 +14,6 @@ final class LoginViewController: UIViewController {
     private lazy var loginView: LoginView = {
         loginView = LoginView()
         loginView.delegate = self
-        loginView.toAutoLayout()
         
         return loginView
     }()
@@ -37,6 +36,7 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        loginView.toAutoLayout()
         NSLayoutConstraint.activate([
             loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             loginView.topAnchor.constraint(equalTo: view.topAnchor),
