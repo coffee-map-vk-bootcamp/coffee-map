@@ -25,7 +25,8 @@ final class ProfileCollectionViewHeader: UICollectionReusableView {
 
     private let closeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: AppImageNames.exit), for: .normal)
+        button.setImage(UIImage(named: AppImageNames.exit)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .black
         return button
     }()
 

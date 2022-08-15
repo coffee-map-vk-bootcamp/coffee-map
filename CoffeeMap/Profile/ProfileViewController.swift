@@ -66,7 +66,8 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: UICollectionViewCell.self), for: indexPath)
+        return collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ReceiptCollectionViewCell.self),
+                                                  for: indexPath)
     }
 
     func collectionView(_ collectionView: UICollectionView,

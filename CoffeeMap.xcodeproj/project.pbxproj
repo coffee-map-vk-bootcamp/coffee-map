@@ -13,6 +13,7 @@
 		0A8F952B28A24F8300ED90F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A8F952928A24F8300ED90F9 /* LaunchScreen.storyboard */; };
 		A63AC17228AA3090005E7907 /* ProfileHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AC17128AA3090005E7907 /* ProfileHeaderModel.swift */; };
 		A63AC17428AA309E005E7907 /* ReceiptCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AC17328AA309E005E7907 /* ReceiptCellModel.swift */; };
+		A63AC17628AA326C005E7907 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AC17528AA326C005E7907 /* AppColors.swift */; };
 		A648A3E328A2A5ED00413915 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648A3E228A2A5ED00413915 /* MainTabBarController.swift */; };
 		A648A3E528A2A6EB00413915 /* AppImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648A3E428A2A6EB00413915 /* AppImageNames.swift */; };
 		A6CFA98C28A6700B00B538DE /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CFA98628A6700B00B538DE /* ProfilePresenter.swift */; };
@@ -61,6 +62,7 @@
 		76641DBD4BD2B106D35DF551 /* Pods_CoffeeMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoffeeMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A63AC17128AA3090005E7907 /* ProfileHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderModel.swift; sourceTree = "<group>"; };
 		A63AC17328AA309E005E7907 /* ReceiptCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCellModel.swift; sourceTree = "<group>"; };
+		A63AC17528AA326C005E7907 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		A648A3E228A2A5ED00413915 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A648A3E428A2A6EB00413915 /* AppImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImageNames.swift; sourceTree = "<group>"; };
 		A6CFA98628A6700B00B538DE /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				0A8F952028A24F8200ED90F9 /* SceneDelegate.swift */,
 				A648A3E228A2A5ED00413915 /* MainTabBarController.swift */,
 				A648A3E428A2A6EB00413915 /* AppImageNames.swift */,
+				A63AC17528AA326C005E7907 /* AppColors.swift */,
 				0A8F952728A24F8300ED90F9 /* Assets.xcassets */,
 				0A8F952C28A24F8300ED90F9 /* Info.plist */,
 				A7EF10B728A25DA600F8F5AE /* GoogleService-Info.plist */,
@@ -413,7 +416,7 @@
 				A648A3E328A2A5ED00413915 /* MainTabBarController.swift in Sources */,
 				A6CFA99628A680B100B538DE /* ReceiptCollectionViewCell.swift in Sources */,
 				A6CFA99128A6700B00B538DE /* ProfileContainer.swift in Sources */,
-				0A8F952328A24F8200ED90F9 /* ViewController.swift in Sources */,
+				A63AC17628AA326C005E7907 /* AppColors.swift in Sources */,
 				A6CFA99028A6700B00B538DE /* ProfileInteractor.swift in Sources */,
 				A6CFA98C28A6700B00B538DE /* ProfilePresenter.swift in Sources */,
 				A7024FB428A2A328006103CD /* Order.swift in Sources */,
