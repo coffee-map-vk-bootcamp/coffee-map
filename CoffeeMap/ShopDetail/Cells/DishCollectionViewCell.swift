@@ -57,15 +57,14 @@ final class DishCollectionViewCell: UICollectionViewCell {
         dishImageView.image = UIImage(named: AppImageNames.mockDishImage1)?.kf.blurred(withRadius: 30)
         dishNameLabel.text = dish.name
         priceLabel.text = "\(dish.price) ₽"
-//        isDishSelected = dish.isSelected
     }
     
     override func layoutSubviews() {
-//        layoutBlurView()
+        layoutBlurView()
         layoutDishImageView()
         layoutNameLabel()
         layoutPriceLabel()
-//        layoutSelectedBlurView()
+        layoutSelectedBlurView()
     }
     
     override func prepareForReuse() {
