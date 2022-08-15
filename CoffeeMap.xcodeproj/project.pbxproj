@@ -7,16 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2DFCAD28A6616E00C7F5BB /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCA728A6616E00C7F5BB /* LoginPresenter.swift */; };
+		0A2DFCAE28A6616E00C7F5BB /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCA828A6616E00C7F5BB /* LoginRouter.swift */; };
+		0A2DFCAF28A6616E00C7F5BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCA928A6616E00C7F5BB /* LoginViewController.swift */; };
+		0A2DFCB028A6616E00C7F5BB /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCAA28A6616E00C7F5BB /* LoginProtocols.swift */; };
+		0A2DFCB128A6616E00C7F5BB /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCAB28A6616E00C7F5BB /* LoginInteractor.swift */; };
+		0A2DFCB228A6616E00C7F5BB /* LoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCAC28A6616E00C7F5BB /* LoginContainer.swift */; };
+		0A2DFCBB28A6825100C7F5BB /* ModelsFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCBA28A6825100C7F5BB /* ModelsFB.swift */; };
+		0A2DFCBF28A934D200C7F5BB /* ModelConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCBE28A934D200C7F5BB /* ModelConverter.swift */; };
 		0A8F951F28A24F8200ED90F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F951E28A24F8200ED90F9 /* AppDelegate.swift */; };
 		0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F952028A24F8200ED90F9 /* SceneDelegate.swift */; };
 		0A8F952828A24F8300ED90F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A8F952728A24F8300ED90F9 /* Assets.xcassets */; };
 		0A8F952B28A24F8300ED90F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A8F952928A24F8300ED90F9 /* LaunchScreen.storyboard */; };
+		0A8F953C28A4D29700ED90F9 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */; };
+		0A8F953E28A4D32A00ED90F9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F953D28A4D32A00ED90F9 /* LoginView.swift */; };
+		0A8F954028A4D37300ED90F9 /* UIView+extencion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F953F28A4D37300ED90F9 /* UIView+extencion.swift */; };
+		0A8F954228A4D47A00ED90F9 /* UITextField+extencion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F954128A4D47A00ED90F9 /* UITextField+extencion.swift */; };
+		0A8F954628A4D61400ED90F9 /* UIImage+extencion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F954528A4D61400ED90F9 /* UIImage+extencion.swift */; };
 		A648A3E328A2A5ED00413915 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648A3E228A2A5ED00413915 /* MainTabBarController.swift */; };
 		A648A3E528A2A6EB00413915 /* AppImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648A3E428A2A6EB00413915 /* AppImageNames.swift */; };
-		A7024FAF28A29DBD006103CD /* CoffeeShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7024FAE28A29DBD006103CD /* CoffeeShop.swift */; };
-		A7024FB228A2A2E4006103CD /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7024FB128A2A2E4006103CD /* Dish.swift */; };
-		A7024FB428A2A328006103CD /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7024FB328A2A328006103CD /* Order.swift */; };
-		A7024FB628A2A341006103CD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7024FB528A2A341006103CD /* User.swift */; };
 		A7024FBE28A2BC21006103CD /* CoffeeShopDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7024FBD28A2BC20006103CD /* CoffeeShopDetailCollectionViewCell.swift */; };
 		A7024FC028A2BF82006103CD /* CoffeeShopDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7024FBF28A2BF82006103CD /* CoffeeShopDetailHeaderView.swift */; };
 		A7054BCD28AA6BAD0082E9E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7054BCC28AA6BAD0082E9E5 /* Constants.swift */; };
@@ -44,19 +53,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A2DFCA728A6616E00C7F5BB /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		0A2DFCA828A6616E00C7F5BB /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		0A2DFCA928A6616E00C7F5BB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0A2DFCAA28A6616E00C7F5BB /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
+		0A2DFCAB28A6616E00C7F5BB /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		0A2DFCAC28A6616E00C7F5BB /* LoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainer.swift; sourceTree = "<group>"; };
+		0A2DFCBA28A6825100C7F5BB /* ModelsFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsFB.swift; sourceTree = "<group>"; };
+		0A2DFCBE28A934D200C7F5BB /* ModelConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConverter.swift; sourceTree = "<group>"; };
 		0A8F951B28A24F8200ED90F9 /* CoffeeMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8F951E28A24F8200ED90F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A8F952028A24F8200ED90F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0A8F952728A24F8300ED90F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A8F952A28A24F8300ED90F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A8F952C28A24F8300ED90F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
+		0A8F953D28A4D32A00ED90F9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0A8F953F28A4D37300ED90F9 /* UIView+extencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extencion.swift"; sourceTree = "<group>"; };
+		0A8F954128A4D47A00ED90F9 /* UITextField+extencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+extencion.swift"; sourceTree = "<group>"; };
+		0A8F954528A4D61400ED90F9 /* UIImage+extencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extencion.swift"; sourceTree = "<group>"; };
 		76641DBD4BD2B106D35DF551 /* Pods_CoffeeMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoffeeMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A648A3E228A2A5ED00413915 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A648A3E428A2A6EB00413915 /* AppImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImageNames.swift; sourceTree = "<group>"; };
-		A7024FAE28A29DBD006103CD /* CoffeeShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShop.swift; sourceTree = "<group>"; };
-		A7024FB128A2A2E4006103CD /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
-		A7024FB328A2A328006103CD /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		A7024FB528A2A341006103CD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A7024FBD28A2BC20006103CD /* CoffeeShopDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7024FBF28A2BF82006103CD /* CoffeeShopDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopDetailHeaderView.swift; sourceTree = "<group>"; };
 		A7054BCC28AA6BAD0082E9E5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -96,6 +114,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A2DFCA628A6601500C7F5BB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0A8F953D28A4D32A00ED90F9 /* LoginView.swift */,
+				0A2DFCA728A6616E00C7F5BB /* LoginPresenter.swift */,
+				0A2DFCA828A6616E00C7F5BB /* LoginRouter.swift */,
+				0A2DFCA928A6616E00C7F5BB /* LoginViewController.swift */,
+				0A2DFCAA28A6616E00C7F5BB /* LoginProtocols.swift */,
+				0A2DFCAB28A6616E00C7F5BB /* LoginInteractor.swift */,
+				0A2DFCAC28A6616E00C7F5BB /* LoginContainer.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		0A2DFCB328A67A9900C7F5BB /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		0A2DFCB928A6823600C7F5BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A2DFCBA28A6825100C7F5BB /* ModelsFB.swift */,
+				0A2DFCBE28A934D200C7F5BB /* ModelConverter.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0A8F951228A24F8200ED90F9 = {
 			isa = PBXGroup;
 			children = (
@@ -117,9 +165,16 @@
 		0A8F951D28A24F8200ED90F9 /* CoffeeMap */ = {
 			isa = PBXGroup;
 			children = (
+				0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */,
+				0A2DFCB928A6823600C7F5BB /* Models */,
+				0A2DFCB328A67A9900C7F5BB /* SignUp */,
 				A72AFD0228A663C90048634C /* DishConfigurator */,
 				A713A91828A50FF200769321 /* ShopDetail */,
 				0A8F953428A2525200ED90F9 /* Common */,
+				0A8F953F28A4D37300ED90F9 /* UIView+extencion.swift */,
+				0A8F954128A4D47A00ED90F9 /* UITextField+extencion.swift */,
+				0A8F954528A4D61400ED90F9 /* UIImage+extencion.swift */,
+				0A2DFCA628A6601500C7F5BB /* Login */,
 				0A8F952928A24F8300ED90F9 /* LaunchScreen.storyboard */,
 			);
 			path = CoffeeMap;
@@ -162,10 +217,6 @@
 		A7024FB028A2A2D2006103CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A7024FAE28A29DBD006103CD /* CoffeeShop.swift */,
-				A7024FB528A2A341006103CD /* User.swift */,
-				A7024FB128A2A2E4006103CD /* Dish.swift */,
-				A7024FB328A2A328006103CD /* Order.swift */,
 				A713A95228A55CD900769321 /* DishSection.swift */,
 			);
 			path = Model;
@@ -317,7 +368,7 @@
 		};
 		A734E4DD28A25F5400F8E4EC /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -362,8 +413,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A2DFCAF28A6616E00C7F5BB /* LoginViewController.swift in Sources */,
+				0A2DFCAD28A6616E00C7F5BB /* LoginPresenter.swift in Sources */,
+				0A8F953C28A4D29700ED90F9 /* FireBaseManager.swift in Sources */,
+				0A2DFCB128A6616E00C7F5BB /* LoginInteractor.swift in Sources */,
+				0A8F954028A4D37300ED90F9 /* UIView+extencion.swift in Sources */,
+				0A8F954228A4D47A00ED90F9 /* UITextField+extencion.swift in Sources */,
+				0A2DFCB028A6616E00C7F5BB /* LoginProtocols.swift in Sources */,
 				A648A3E328A2A5ED00413915 /* MainTabBarController.swift in Sources */,
-				A7024FB428A2A328006103CD /* Order.swift in Sources */,
 				A730E90928A3C3E900A3B4C4 /* UITableViewCell+Ext.swift in Sources */,
 				A72AFD0A28A663F20048634C /* DishConfiguratorRouter.swift in Sources */,
 				A713A92328A5102B00769321 /* CoffeeShopDetailScreenInteractor.swift in Sources */,
@@ -373,20 +430,23 @@
 				A72AFD0928A663F20048634C /* DishConfiguratorPresenter.swift in Sources */,
 				A730E90B28A3C42C00A3B4C4 /* UICollectionView+Ext.swift in Sources */,
 				A71C551A28A3824300142138 /* DishCollectionViewCell.swift in Sources */,
-				A7024FB228A2A2E4006103CD /* Dish.swift in Sources */,
 				A713A95328A55CD900769321 /* DishSection.swift in Sources */,
 				A7024FC028A2BF82006103CD /* CoffeeShopDetailHeaderView.swift in Sources */,
 				A713A92228A5102B00769321 /* CoffeeShopDetailScreenProtocols.swift in Sources */,
-				A7024FAF28A29DBD006103CD /* CoffeeShop.swift in Sources */,
 				A72AFD0E28A663F20048634C /* DishConfiguratorContainer.swift in Sources */,
 				A713A91F28A5102B00769321 /* CoffeeShopDetailScreenPresenter.swift in Sources */,
 				0A8F951F28A24F8200ED90F9 /* AppDelegate.swift in Sources */,
+				0A8F954628A4D61400ED90F9 /* UIImage+extencion.swift in Sources */,
+				0A2DFCB228A6616E00C7F5BB /* LoginContainer.swift in Sources */,
 				A648A3E528A2A6EB00413915 /* AppImageNames.swift in Sources */,
+				0A8F953E28A4D32A00ED90F9 /* LoginView.swift in Sources */,
+				0A2DFCBF28A934D200C7F5BB /* ModelConverter.swift in Sources */,
+				0A2DFCBB28A6825100C7F5BB /* ModelsFB.swift in Sources */,
+				0A2DFCAE28A6616E00C7F5BB /* LoginRouter.swift in Sources */,
 				A72AFD0C28A663F20048634C /* DishConfiguratorProtocols.swift in Sources */,
 				A713A92428A5102B00769321 /* CoffeeShopDetailScreenContainer.swift in Sources */,
 				A713A92128A5102B00769321 /* CoffeeShopDetailScreenViewController.swift in Sources */,
 				0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */,
-				A7024FB628A2A341006103CD /* User.swift in Sources */,
 				A71C552C28A3BFC100142138 /* UITableView+Ext.swift in Sources */,
 				A730E90D28A424F700A3B4C4 /* UIColor+Ext.swift in Sources */,
 				A7024FBE28A2BC21006103CD /* CoffeeShopDetailCollectionViewCell.swift in Sources */,
