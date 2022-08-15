@@ -9,6 +9,5 @@ import Foundation
 
 struct DishSection {
     let sectionTitle: String
-    let headerImageURL: String
     let dishes: [Dish]
 }

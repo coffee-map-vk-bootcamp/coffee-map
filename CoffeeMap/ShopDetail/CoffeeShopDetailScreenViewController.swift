@@ -12,6 +12,10 @@ final class CoffeeShopDetailScreenViewController: UIViewController {
     private let output: CoffeeShopDetailScreenViewOutput
     
     private lazy var collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     init(output: CoffeeShopDetailScreenViewOutput) {
         self.output = output
@@ -51,18 +55,76 @@ private extension CoffeeShopDetailScreenViewController {
     }
     
     func setupCollectionView() {
-        collectionView.collectionViewLayout = CompositionalLayout.createLayout(
+        collectionView.collectionViewLayout = createLayout(
             contentSize: .init(width: view.frame.size.width, height: view.frame.size.height),
             output: output)
         
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(DishCollectionViewCell.self)
+        collectionView.register(SectionTitleHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
         collectionView.register(CoffeeShopDetailHeaderView.self, forSupplementaryViewOfKind: Constants.HeaderKind.globalHeader)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         
+        collectionView.contentInsetAdjustmentBehavior = .never
+        
         view.addSubview(collectionView)
+    }
+    
+    func createLayout(contentSize: CGSize,
+                             output: CoffeeShopDetailScreenViewOutput,
+                             interItemSpacing: CGFloat = 16) -> UICollectionViewCompositionalLayout {
+        let layout = UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
+            guard let self = self else { return nil}
+            let numberOfItems = output.number(of: sectionNumber)
+            
+            let item = NSCollectionLayoutItem(
+                layoutSize: .init(widthDimension: .absolute(contentSize.width / 4), heightDimension: .absolute(165)))
+            
+            let cellWidth = CGFloat(numberOfItems * 100 + (numberOfItems - 1)) * interItemSpacing
+            let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(cellWidth), heightDimension: .estimated(165))
+            
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            group.interItemSpacing = .some(.fixed(8))
+            
+            let section = NSCollectionLayoutSection(group: group)
+            
+            let headerElement = self.supplementary()
+            
+            section.boundarySupplementaryItems = [headerElement]
+            section.supplementariesFollowContentInsets = false
+            
+            section.orthogonalScrollingBehavior = .continuous
+            section.interGroupSpacing = interItemSpacing
+            section.contentInsets = .init(top: 0, leading: 24, bottom: 0, trailing: 24)
+            
+            return section
+        }
+
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                            heightDimension: .absolute(150))
+        
+        let globalHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: Constants.HeaderKind.globalHeader, alignment: .top)
+        globalHeader.contentInsets = .init(top: 0, leading: 0, bottom: 24, trailing: 0)
+        
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 16
+        config.boundarySupplementaryItems = [globalHeader]
+        
+        layout.configuration = config
+        
+        return layout
+    }
+    
+    func supplementary() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+        let headerElement = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        return headerElement
     }
     
     func layoutCollectionView() {    
@@ -96,11 +158,20 @@ extension CoffeeShopDetailScreenViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(CoffeeShopDetailHeaderView.self,
-                                                                     ofKind: Constants.HeaderKind.globalHeader, for: indexPath)
+        if kind == UICollectionView.elementKindSectionHeader {
+            let header = collectionView.dequeueReusableSupplementaryView(
+                SectionTitleHeaderReusableView.self, ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
+            header.configure(with: "Section")
+            return header
+        } else if kind == Constants.HeaderKind.globalHeader {
+            let header = collectionView.dequeueReusableSupplementaryView(
+                CoffeeShopDetailHeaderView.self, ofKind: Constants.HeaderKind.globalHeader, for: indexPath)
+            header.configure(with: .init(named: AppImageNames.mockHeader))
+            return header
+        } else {
+            fatalError()
+        }
         
-        header.configure(with: .init(named: AppImageNames.mockHeader))
-        return header
     }
 }
 
