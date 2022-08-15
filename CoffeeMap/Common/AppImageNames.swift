@@ -11,4 +11,8 @@ struct AppImageNames {
     static let favorite = "favorite"
     static let persone = "persone"
     static let exit = "exit"
+    
+    static let mockHeader = "cafe-test"
+    static let mockDishImage = "coffee-test"
+    static let mockDishImage1 = "coffee-test-1"
 }
