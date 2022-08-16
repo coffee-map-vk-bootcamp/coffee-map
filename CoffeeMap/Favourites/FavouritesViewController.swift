@@ -109,8 +109,8 @@ extension FavouritesViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavouritesCell.reuseIdentifire, for: indexPath) as? FavouritesCell
         else { return UICollectionViewCell() }
         let shop = favouriteCoffeeShops[indexPath.row]
-        cell.placeLabel.text = shop.name
-        cell.addressLabel.text = shop.address
+        cell.configure(with: shop)
+        
         return cell
     }
 }

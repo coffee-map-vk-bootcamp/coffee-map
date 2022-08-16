@@ -8,6 +8,7 @@
 import Foundation
 
 final class FavouritesPresenter {
+    
     weak var view: FavouritesViewInput?
     weak var moduleOutput: FavouritesModuleOutput?
     

@@ -9,7 +9,7 @@ import UIKit
 
 final class FavouritesCell: UICollectionViewCell {
     
-    lazy var placeLabel: UILabel = {
+    private lazy var placeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .boldSystemFont(ofSize: 18)
@@ -18,7 +18,7 @@ final class FavouritesCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var addressLabel: UILabel = {
+    private lazy var addressLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12)
@@ -42,10 +42,6 @@ final class FavouritesCell: UICollectionViewCell {
         return btn
     }()
     
-    @objc func deleteFavourite() {
-        print("delete")
-    }
-    
     private lazy var markImage: UIImageView = {
         let image = UIImageView(image: UIImage(named: AppImageNames.mark)?.withRenderingMode(.alwaysTemplate))
         image.tintColor = .white
@@ -53,7 +49,7 @@ final class FavouritesCell: UICollectionViewCell {
         return image
     }()
     
-    lazy var distanceLabel: UILabel = {
+    private lazy var distanceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 10)
@@ -72,13 +68,31 @@ final class FavouritesCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layout()
-        layoutDistanceView()
+        setupViews()
         setupCell()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        layout()
+        layoutDistanceView()
+    }
+    
+    func configure(with shop: FavouritesPresenter.FavouriteCoffeeShop) {
+        placeLabel.text = shop.name
+        addressLabel.text = shop.address
+    }
+    
+    private func setupViews() {
+        let views = [distanceView, flagButton, addressLabel, placeLabel]
+        contentView.addSubviews(views)
+    }
+    
+    @objc private func deleteFavourite() {
+        print("delete")
     }
     
     private func setupCell() {
@@ -106,11 +120,6 @@ final class FavouritesCell: UICollectionViewCell {
     }
     
     private func layout() {
-        contentView.addSubview(distanceView)
-        contentView.addSubview(flagButton)
-        contentView.addSubview(addressLabel)
-        contentView.addSubview(placeLabel)
-        
         NSLayoutConstraint.activate([
             distanceView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             distanceView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 8),
