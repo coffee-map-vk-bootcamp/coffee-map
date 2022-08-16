@@ -82,7 +82,7 @@ final class FavouritesCell: UICollectionViewCell {
     }
     
     private func setupCell() {
-        let background = UIImageView(image: UIImage(named: "background"))
+        let background = UIImageView(image: UIImage(named: AppImageNames.mockHeader))
         background.frame = contentView.bounds
         background.contentMode =  UIView.ContentMode.scaleAspectFill
         background.clipsToBounds = true
