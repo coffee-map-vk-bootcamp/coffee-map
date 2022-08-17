@@ -19,11 +19,6 @@ final class FavouritesPresenter {
         self.router = router
         self.interactor = interactor
     }
-    
-    struct FavouriteCoffeeShop: Decodable {
-        let name: String
-        let address: String
-    }
 }
 
 extension FavouritesPresenter: FavouritesModuleInput {

@@ -11,22 +11,36 @@ final class FavouritesViewController: UIViewController {
     private let output: FavouritesViewOutput
     private let refreshControl = UIRefreshControl()
     
-    var favouriteCoffeeShops: [FavouritesPresenter.FavouriteCoffeeShop] = [FavouritesPresenter.FavouriteCoffeeShop(name: "БебраКофе",
-                                                address: "Москва, Тверская 224"),
-        FavouritesPresenter.FavouriteCoffeeShop(name: "ОлегКофе",
-                                                address: "Москва, Тверская 4"),
-        FavouritesPresenter.FavouriteCoffeeShop(name: "БобКофе",
-                                                address: "Москва, Тверская 24"),
-        FavouritesPresenter.FavouriteCoffeeShop(name: "ТиматиКофе",
-                                                address: "Москва, Тверская 2"),
-        FavouritesPresenter.FavouriteCoffeeShop(name: "ЛолКофе",
-                                                address: "Москва, Тверская 11")]
+    var favouriteCoffeeShops: [CoffeeShop] = [CoffeeShop(name: "БебраКофе",
+                                                         address: "Москва, Тверская 14",
+                                                         dishes: [], image: "lol.com",
+                                                         latitude: 0.0,
+                                                         longitude: 0.0),
+                                                CoffeeShop(name: "ДоброКофе",
+                                                           address: "Москва, Тверская 2",
+                                                           dishes: [], image: "lol.com",
+                                                           latitude: 0.0,
+                                                           longitude: 0.0),
+                                              CoffeeShop(name: "КекКофе",
+                                                         address: "Москва, Тверская 24",
+                                                         dishes: [], image: "lol.com",
+                                                         latitude: 0.0,
+                                                         longitude: 0.0),
+                                              CoffeeShop(name: "ЛолКофе",
+                                                         address: "Москва, Думская 4",
+                                                         dishes: [], image: "lol.com",
+                                                         latitude: 0.0,
+                                                         longitude: 0.0),
+                                              CoffeeShop(name: "ТиматиКофе",
+                                                         address: "Москва, Тверская 4",
+                                                         dishes: [], image: "lol.com",
+                                                         latitude: 0.0,
+                                                         longitude: 0.0)]
     
     private lazy var favouritesCollectionView: UICollectionView = {
         let layout = UICollectionViewLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.alwaysBounceVertical = true
-        collection.bounces = true
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(FavouritesCell.self, forCellWithReuseIdentifier: FavouritesCell.reuseIdentifire)
         return collection
@@ -34,7 +48,6 @@ final class FavouritesViewController: UIViewController {
     
     init(output: FavouritesViewOutput) {
         self.output = output
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -46,6 +59,7 @@ final class FavouritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupViews()
         layout()
         setupCollectionView()
         setupRefresher()
@@ -89,8 +103,11 @@ private extension FavouritesViewController {
         refreshControl.endRefreshing()
     }
     
-    func layout() {
+    func setupViews() {
         view.addSubview(favouritesCollectionView)
+    }
+    
+    func layout() {
         NSLayoutConstraint.activate([
             favouritesCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             favouritesCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 final class FavouritesCell: UICollectionViewCell {
     
@@ -28,16 +29,10 @@ final class FavouritesCell: UICollectionViewCell {
     }()
     
     private lazy var flagButton: UIButton = {
-        let btn = UIButton()
-        let imageView = UIImageView()
-        if let myImage = UIImage(named: AppImageNames.favorite) {
-            let tintableImage = myImage.withRenderingMode(.alwaysTemplate)
-            imageView.image = tintableImage
-        }
-        btn.setImage(imageView.image, for: .normal)
-        btn.tintColor = .white
+        let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitleColor(.white, for: .normal)
+        btn.setImage(UIImage(named: AppImageNames.favorite)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        btn.tintColor = .white
         btn.addTarget(self, action: #selector(deleteFavourite), for: .touchUpInside)
         return btn
     }()
@@ -58,7 +53,7 @@ final class FavouritesCell: UICollectionViewCell {
         return label
     }()
     
-    private var distanceView: UIView = {
+    private lazy var distanceView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -66,10 +61,32 @@ final class FavouritesCell: UICollectionViewCell {
         return view
     }()
     
+    private lazy var backgroundImageView: UIImageView = {
+        let background = UIImageView(image: UIImage(named: AppImageNames.mockHeader))
+        background.layer.addSublayer(gradientLayer)
+        background.frame = contentView.bounds
+        background.contentMode =  UIView.ContentMode.scaleAspectFill
+        background.clipsToBounds = true
+        background.center = contentView.center
+        background.layer.cornerRadius = 14
+        return background
+    }()
+    
+    private lazy var gradientLayer: CAGradientLayer = {
+        let layer = CAGradientLayer()
+        layer.startPoint = CGPoint(x: 1, y: 0)
+        layer.endPoint = CGPoint(x: 1, y: 1)
+        layer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        return layer
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
         setupCell()
+        setupDistanceViews()
+        layout()
+        layoutDistanceView()
     }
     
     required init?(coder: NSCoder) {
@@ -77,11 +94,10 @@ final class FavouritesCell: UICollectionViewCell {
     }
     
     override func layoutSubviews() {
-        layout()
-        layoutDistanceView()
+        gradientLayer.frame = contentView.bounds
     }
     
-    func configure(with shop: FavouritesPresenter.FavouriteCoffeeShop) {
+    func configure(with shop: CoffeeShop) {
         placeLabel.text = shop.name
         addressLabel.text = shop.address
     }
@@ -91,25 +107,21 @@ final class FavouritesCell: UICollectionViewCell {
         contentView.addSubviews(views)
     }
     
+    private func setupDistanceViews() {
+        distanceView.addSubview(markImage)
+        distanceView.addSubview(distanceLabel)
+    }
+    
     @objc private func deleteFavourite() {
         print("delete")
     }
     
     private func setupCell() {
-        let background = UIImageView(image: UIImage(named: AppImageNames.mockHeader))
-        background.frame = contentView.bounds
-        background.contentMode =  UIView.ContentMode.scaleAspectFill
-        background.clipsToBounds = true
-        background.center = contentView.center
-        background.layer.cornerRadius = 14
-        contentView.addSubview(background)
-        contentView.sendSubviewToBack(background)
+        contentView.addSubview(backgroundImageView)
+        contentView.sendSubviewToBack(backgroundImageView)
     }
     
     private func layoutDistanceView() {
-        distanceView.addSubview(markImage)
-        distanceView.addSubview(distanceLabel)
-        
         NSLayoutConstraint.activate([
             markImage.centerYAnchor.constraint(equalTo: distanceView.centerYAnchor),
             markImage.leadingAnchor.constraint(equalTo: distanceView.leadingAnchor),
