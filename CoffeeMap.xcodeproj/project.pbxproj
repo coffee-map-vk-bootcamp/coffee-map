@@ -27,11 +27,11 @@
 		5F94ED0128AAD91A00D89E3D /* FavouritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0028AAD91A00D89E3D /* FavouritesCell.swift */; };
 		5F94ED0428AAD9B900D89E3D /* FavouritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0328AAD9B900D89E3D /* FavouritesPresenter.swift */; };
 		5F94ED0628AAD9CF00D89E3D /* FavouritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0528AAD9CF00D89E3D /* FavouritesRouter.swift */; };
-		5F94ED0828AAD9E400D89E3D /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0728AAD9E400D89E3D /* FavouritesViewController.swift */; };
 		5F94ED0A28AADA0900D89E3D /* FavouritesProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0928AADA0900D89E3D /* FavouritesProtocols.swift */; };
 		5F94ED0C28AADA1E00D89E3D /* FavouritesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0B28AADA1E00D89E3D /* FavouritesInteractor.swift */; };
 		5F94ED0E28AADA3700D89E3D /* FavouritesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0D28AADA3700D89E3D /* FavouritesContainer.swift */; };
 		5F94ED1028AB713B00D89E3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F94ED0F28AB713B00D89E3D /* GoogleService-Info.plist */; };
+		5F94ED1428AD1F1300D89E3D /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED1328AD1F1300D89E3D /* ShopListViewController.swift */; };
 		A648A3E328A2A5ED00413915 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648A3E228A2A5ED00413915 /* MainTabBarController.swift */; };
 		A648A3E528A2A6EB00413915 /* AppImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648A3E428A2A6EB00413915 /* AppImageNames.swift */; };
 		A7024FC028A2BF82006103CD /* CoffeeShopDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7024FBF28A2BF82006103CD /* CoffeeShopDetailHeaderView.swift */; };
@@ -82,11 +82,11 @@
 		5F94ED0028AAD91A00D89E3D /* FavouritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCell.swift; sourceTree = "<group>"; };
 		5F94ED0328AAD9B900D89E3D /* FavouritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesPresenter.swift; sourceTree = "<group>"; };
 		5F94ED0528AAD9CF00D89E3D /* FavouritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesRouter.swift; sourceTree = "<group>"; };
-		5F94ED0728AAD9E400D89E3D /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		5F94ED0928AADA0900D89E3D /* FavouritesProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesProtocols.swift; sourceTree = "<group>"; };
 		5F94ED0B28AADA1E00D89E3D /* FavouritesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesInteractor.swift; sourceTree = "<group>"; };
 		5F94ED0D28AADA3700D89E3D /* FavouritesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesContainer.swift; sourceTree = "<group>"; };
 		5F94ED0F28AB713B00D89E3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5F94ED1328AD1F1300D89E3D /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
 		A47B310C348A00042FA46913 /* Pods-CoffeeMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeMap.release.xcconfig"; path = "Target Support Files/Pods-CoffeeMap/Pods-CoffeeMap.release.xcconfig"; sourceTree = "<group>"; };
 		A648A3E228A2A5ED00413915 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A648A3E428A2A6EB00413915 /* AppImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImageNames.swift; sourceTree = "<group>"; };
@@ -170,6 +170,7 @@
 		0A8F951D28A24F8200ED90F9 /* CoffeeMap */ = {
 			isa = PBXGroup;
 			children = (
+				5F94ED1228AD1EEE00D89E3D /* ShopListViewController */,
 				5F94ECFF28AAD89D00D89E3D /* Cells */,
 				5F94ED0228AAD99400D89E3D /* Favourites */,
 				0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */,
@@ -222,12 +223,19 @@
 			children = (
 				5F94ED0328AAD9B900D89E3D /* FavouritesPresenter.swift */,
 				5F94ED0528AAD9CF00D89E3D /* FavouritesRouter.swift */,
-				5F94ED0728AAD9E400D89E3D /* FavouritesViewController.swift */,
 				5F94ED0928AADA0900D89E3D /* FavouritesProtocols.swift */,
 				5F94ED0B28AADA1E00D89E3D /* FavouritesInteractor.swift */,
 				5F94ED0D28AADA3700D89E3D /* FavouritesContainer.swift */,
 			);
 			path = Favourites;
+			sourceTree = "<group>";
+		};
+		5F94ED1228AD1EEE00D89E3D /* ShopListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5F94ED1328AD1F1300D89E3D /* ShopListViewController.swift */,
+			);
+			path = ShopListViewController;
 			sourceTree = "<group>";
 		};
 		A7024FB028A2A2D2006103CD /* Model */ = {
@@ -452,7 +460,6 @@
 				5F94ED0628AAD9CF00D89E3D /* FavouritesRouter.swift in Sources */,
 				A72AFD0A28A663F20048634C /* DishConfiguratorRouter.swift in Sources */,
 				A713A92328A5102B00769321 /* CoffeeShopDetailScreenInteractor.swift in Sources */,
-				5F94ED0828AAD9E400D89E3D /* FavouritesViewController.swift in Sources */,
 				A7054BCD28AA6BAD0082E9E5 /* Constants.swift in Sources */,
 				5F94ED0128AAD91A00D89E3D /* FavouritesCell.swift in Sources */,
 				A713A92028A5102B00769321 /* CoffeeShopDetailScreenRouter.swift in Sources */,
@@ -483,6 +490,7 @@
 				A71C552C28A3BFC100142138 /* UITableView+Ext.swift in Sources */,
 				A730E90D28A424F700A3B4C4 /* UIColor+Ext.swift in Sources */,
 				A72AFD0B28A663F20048634C /* DishConfiguratorViewController.swift in Sources */,
+				5F94ED1428AD1F1300D89E3D /* ShopListViewController.swift in Sources */,
 				A7054BCF28AA7C5F0082E9E5 /* SectionTitleHeaderReusableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

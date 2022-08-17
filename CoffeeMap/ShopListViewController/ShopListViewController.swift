@@ -1,13 +1,13 @@
 //
-//  FavouritesViewController.swift
+//  ShopListViewController.swift
 //  CoffeeMap
 //
-//  Created by Иван Сурганов on 15.08.2022.
+//  Created by Иван Сурганов on 17.08.2022.
 //
 
 import UIKit
 
-final class FavouritesViewController: UIViewController {
+class ShopListViewController: UIViewController {
     private let output: FavouritesViewOutput
     private let refreshControl = UIRefreshControl()
     
@@ -16,11 +16,11 @@ final class FavouritesViewController: UIViewController {
                                                          dishes: [], image: "lol.com",
                                                          latitude: 0.0,
                                                          longitude: 0.0),
-                                                CoffeeShop(name: "ДоброКофе",
-                                                           address: "Москва, Тверская 2",
-                                                           dishes: [], image: "lol.com",
-                                                           latitude: 0.0,
-                                                           longitude: 0.0),
+                                              CoffeeShop(name: "ДоброКофе",
+                                                         address: "Москва, Тверская 2",
+                                                         dishes: [], image: "lol.com",
+                                                         latitude: 0.0,
+                                                         longitude: 0.0),
                                               CoffeeShop(name: "КекКофе",
                                                          address: "Москва, Тверская 24",
                                                          dishes: [], image: "lol.com",
@@ -66,16 +66,15 @@ final class FavouritesViewController: UIViewController {
     }
 }
 
-extension FavouritesViewController: FavouritesViewInput {
+extension ShopListViewController: FavouritesViewInput {
     func reloadData() {
         favouritesCollectionView.reloadData()
     }
 }
 
-private extension FavouritesViewController {
+private extension ShopListViewController {
     
     func setupCollectionView() {
-        
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         favouritesCollectionView.collectionViewLayout = flowLayout
@@ -86,9 +85,12 @@ private extension FavouritesViewController {
     
     func setup() {
         view.backgroundColor = .white
-        navigationItem.title = "Избранные"
+        navigationItem.title = "Избранные заведения"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.sizeToFit()
+        navigationController?.navigationBar.largeTitleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)
+        ]
     }
     
     func setupRefresher() {
@@ -117,7 +119,7 @@ private extension FavouritesViewController {
     }
 }
 
-extension FavouritesViewController: UICollectionViewDataSource {
+extension ShopListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return favouriteCoffeeShops.count
     }
@@ -132,11 +134,11 @@ extension FavouritesViewController: UICollectionViewDataSource {
     }
 }
 
-extension FavouritesViewController: UICollectionViewDelegate {
+extension ShopListViewController: UICollectionViewDelegate {
     
 }
 
-extension FavouritesViewController: UICollectionViewDelegateFlowLayout {
+extension ShopListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
