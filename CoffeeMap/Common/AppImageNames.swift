@@ -10,6 +10,7 @@ struct AppImageNames {
     static let shoppingCart = "shopping_cart"
     static let favorite = "favorite"
     static let persone = "persone"
+    static let mark = "mark"
     
     static let mockHeader = "cafe-test"
     static let mockDishImage = "coffee-test"
