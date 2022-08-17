@@ -16,7 +16,7 @@ final class FavouritesContainer {
         let router = FavouritesRouter()
         let interactor = FavouritesInteractor()
         let presenter = FavouritesPresenter(router: router, interactor: interactor)
-        let viewController = FavouritesViewController(output: presenter)
+        let viewController = ShopListViewController(output: presenter)
         
         presenter.view = viewController
         presenter.moduleOutput = context.moduleOutput
