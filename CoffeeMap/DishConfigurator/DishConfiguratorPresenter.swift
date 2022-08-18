@@ -22,9 +22,17 @@ final class DishConfiguratorPresenter {
 }
 
 extension DishConfiguratorPresenter: DishConfiguratorModuleInput {
+    
 }
 
 extension DishConfiguratorPresenter: DishConfiguratorViewOutput {
+    func didCloseView() {
+        moduleOutput?.didFinishConfiguration()
+    }
+    
+    func didLoadView() {
+        
+    }
 }
 
 extension DishConfiguratorPresenter: DishConfiguratorInteractorOutput {

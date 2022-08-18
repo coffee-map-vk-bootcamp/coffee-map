@@ -34,5 +34,19 @@ extension DishConfiguratorViewController: DishConfiguratorViewInput {
 private extension DishConfiguratorViewController {
     func setup() {
         view.backgroundColor = .systemBackground
+        
+        let button = UIButton(frame: .init(x: 0, y: 0, width: 100, height: 50))
+        button.backgroundColor = .gray
+        button.layer.cornerRadius = 16
+        button.layer.masksToBounds = true
+        view.addSubview(button)
+        button.center = view.center
+        
+        button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+    }
+    
+    @objc func dismissView() {
+        dismiss(animated: true)
+        output.didCloseView()
     }
 }
