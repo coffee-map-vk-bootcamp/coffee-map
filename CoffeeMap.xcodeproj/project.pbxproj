@@ -57,7 +57,6 @@
 		A73A1B1828AABD6A00D5022D /* HomeScreenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1228AABD6A00D5022D /* HomeScreenContainer.swift */; };
 		A73A1B1C28AE28D200D5022D /* CoffeeShopAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1B28AE28D200D5022D /* CoffeeShopAnnotation.swift */; };
 		A73A1B1E28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1D28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift */; };
-		A73A1B2028AE3A9E00D5022D /* UINavigationBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1F28AE3A9E00D5022D /* UINavigationBar+Ext.swift */; };
 		A73A1B2228AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */; };
 		A7832AD228AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACC28AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift */; };
 		A7832AD328AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACD28AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift */; };
@@ -125,7 +124,6 @@
 		A73A1B1228AABD6A00D5022D /* HomeScreenContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenContainer.swift; sourceTree = "<group>"; };
 		A73A1B1B28AE28D200D5022D /* CoffeeShopAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopAnnotation.swift; sourceTree = "<group>"; };
 		A73A1B1D28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopMarkerAnnotationView.swift; sourceTree = "<group>"; };
-		A73A1B1F28AE3A9E00D5022D /* UINavigationBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Ext.swift"; sourceTree = "<group>"; };
 		A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMarkerAnnotationView+Ext.swift"; sourceTree = "<group>"; };
 		A7832ACC28AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenPresenter.swift; sourceTree = "<group>"; };
 		A7832ACD28AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenRouter.swift; sourceTree = "<group>"; };
@@ -275,7 +273,6 @@
 				A730E90828A3C3E900A3B4C4 /* UITableViewCell+Ext.swift */,
 				A730E90A28A3C42C00A3B4C4 /* UICollectionView+Ext.swift */,
 				A730E90C28A424F700A3B4C4 /* UIColor+Ext.swift */,
-				A73A1B1F28AE3A9E00D5022D /* UINavigationBar+Ext.swift */,
 				A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */,
 				A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */,
 			);
@@ -520,7 +517,6 @@
 				A713A92028A5102B00769321 /* CoffeeShopDetailScreenRouter.swift in Sources */,
 				A73A1B1328AABD6A00D5022D /* HomeScreenPresenter.swift in Sources */,
 				A72AFD0D28A663F20048634C /* DishConfiguratorInteractor.swift in Sources */,
-				A73A1B2028AE3A9E00D5022D /* UINavigationBar+Ext.swift in Sources */,
 				A72AFD0928A663F20048634C /* DishConfiguratorPresenter.swift in Sources */,
 				A73A1B1E28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift in Sources */,
 				A73A1B1528AABD6A00D5022D /* HomeScreenViewController.swift in Sources */,
