@@ -12,17 +12,24 @@ class LoginView: UIView {
     private let stackView = UIStackView()
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
+    private let repeatPasswordTextField = UITextField()
+    
+    private lazy var repeatPasswordTextFieldAncor: NSLayoutConstraint = {
+        let repeatPasswordTextField = repeatPasswordTextField.heightAnchor.constraint(equalToConstant: 0)
+        
+        return repeatPasswordTextField
+    }()
     
     var email: String? {
-        get {
-            return emailTextField.text
-        }
+        return emailTextField.text
     }
     
     var password: String? {
-        get {
-            return passwordTextField.text
-        }
+        return passwordTextField.text
+    }
+    
+    var repeatPassword: String? {
+        return repeatPasswordTextField.text
     }
     
     private lazy var scrollView: UIScrollView = {
@@ -66,6 +73,7 @@ class LoginView: UIView {
         signUpButton = UIButton()
         signUpButton.backgroundColor = .red
         signUpButton.setTitle("Регистрация", for: .normal)
+        signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         
         signUpButton.layer.cornerRadius = 16
         signUpButton.layer.masksToBounds = true
@@ -99,6 +107,7 @@ class LoginView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        repeatPasswordTextFieldAncor.isActive = true
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
@@ -115,10 +124,14 @@ class LoginView: UIView {
             stackView.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 80),
             stackView.heightAnchor.constraint(equalToConstant: 100),
             
+            repeatPasswordTextField.topAnchor.constraint(equalTo: stackView.bottomAnchor),
+            repeatPasswordTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            repeatPasswordTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+            
             logInButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             logInButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             logInButton.heightAnchor.constraint(equalToConstant: 50),
-            logInButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 32),
+            logInButton.topAnchor.constraint(equalTo: repeatPasswordTextField.bottomAnchor, constant: 32),
             
             signUpButton.leadingAnchor.constraint(equalTo: logInButton.leadingAnchor),
             signUpButton.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 8),
@@ -127,12 +140,7 @@ class LoginView: UIView {
             
             withoutLogButton.leadingAnchor.constraint(equalTo: logInButton.leadingAnchor),
             withoutLogButton.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 32),
-            withoutLogButton.trailingAnchor.constraint(equalTo: logInButton.trailingAnchor),
-            
-            activity.topAnchor.constraint(equalTo: passwordTextField.topAnchor),
-            activity.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor, constant: -8),
-            activity.bottomAnchor.constraint(equalTo: passwordTextField.bottomAnchor),
-            activity.widthAnchor.constraint(equalToConstant: 12)
+            withoutLogButton.trailingAnchor.constraint(equalTo: logInButton.trailingAnchor)
         ])
     }
     
@@ -148,6 +156,7 @@ class LoginView: UIView {
         stackView.distribution = .fillEqually
         addEmailTextField()
         addPasswordTextField()
+        addRepeatPasswordTextField()
         
         scrollView.addSubview(stackView)
     }
@@ -187,9 +196,55 @@ class LoginView: UIView {
         
         stackView.addArrangedSubview(passwordTextField)
     }
+    
+    private func addRepeatPasswordTextField() {
+        repeatPasswordTextField.toAutoLayout()
+        repeatPasswordTextField.backgroundColor = .systemGray6
+        repeatPasswordTextField.textColor = .black
+        repeatPasswordTextField.placeholder = "Повторите пароль"
+        repeatPasswordTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        repeatPasswordTextField.autocapitalizationType = .none
+        repeatPasswordTextField.isSecureTextEntry = false
+        
+        repeatPasswordTextField.layer.borderColor = UIColor.lightGray.cgColor
+        repeatPasswordTextField.layer.borderWidth = 0.5
+        repeatPasswordTextField.layer.cornerRadius = 10
+        repeatPasswordTextField.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        repeatPasswordTextField.setLeftPaddingPoints(16)
+        repeatPasswordTextField.addSubview(activity)
+        
+        addSubview(repeatPasswordTextField)
+    }
         
     @objc
     func loginTapped() {
         delegate?.tryLogin()
+    }
+    
+    @objc
+    func signUp() {
+        delegate?.trySignUp()
+    }
+    
+    func animateSignUp() {
+        repeatPasswordTextFieldAncor.isActive = false
+        UIView.animate(withDuration: 0.5, delay: 0, options: []) { [self] in
+            passwordTextField.layer.cornerRadius = 0
+            passwordTextField.layer.maskedCorners = []
+            self.repeatPasswordTextFieldAncor.constant = 50
+            self.repeatPasswordTextFieldAncor.isActive = true
+            self.layoutIfNeeded()
+        }
+    }
+    
+    func animateSignIn() {
+        repeatPasswordTextFieldAncor.isActive = false
+        UIView.animate(withDuration: 0.5, delay: 0, options: []) { [self] in
+            passwordTextField.layer.cornerRadius = 10
+            passwordTextField.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+            self.repeatPasswordTextFieldAncor.constant = 0
+            self.repeatPasswordTextFieldAncor.isActive = true
+            self.layoutIfNeeded()
+        }
     }
 }
