@@ -26,20 +26,29 @@ final class FBService {
         }
     }
     
-    static func downloadImage(from url: String, completeon: @escaping (UIImage) -> Void) {
+    static func downloadImage(from url: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
         print("Download Started")
         guard let url = URL(string: url) else { return }
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
-            guard let image = UIImage(data: data) else { return }
-            completeon(image)
+        getData(from: url) { result in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let data):
+                guard let image = UIImage(data: data) else { return }
+                completion(.success(image))
+            }
         }
     }
     
-    static func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    static func getData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                guard let data = data else { return }
+                completion(.success(data))
+            }
+        }.resume()
     }
 }
 
@@ -72,7 +81,10 @@ final class FBAuthService {
                 completion(.failure(err))
                 return
             }
-            guard let id = Auth.auth().currentUser?.uid else { return }
+            guard let id = Auth.auth().currentUser?.uid else {
+                completion(.failure(MockError()))
+                return
+            }
             FBService.dataBase.collection("users").document(id).setData(["name": email])
             completion(.success("Success"))
         })
@@ -80,6 +92,12 @@ final class FBAuthService {
     
     static func updateUser(id: String, user: User, completion: @escaping (Result<String, Error>) -> Void) {
         let userDict = ["id": user.id, "name": user.name, "favoriteCoffeeShops": user.favoriteCoffeeShops, "order": user.orders] as [String: Any]
-        FBService.dataBase.collection("users").document(id).setData(userDict, merge: true)
+        FBService.dataBase.collection("users").document(id).setData(userDict, merge: true) { error in
+            if error == nil {
+                completion(.success("data updated"))
+            } else {
+                completion(.failure(MockError()))
+            }
+        }
     }
 }
