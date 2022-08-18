@@ -14,10 +14,10 @@ final class HomeScreenInteractor {
 
 extension HomeScreenInteractor: HomeScreenInteractorInput {
     func fetchCoffeeShops() {
-        FBService.fetchCoffeeShops { [weak output] result in
+        FBService.fetchCoffeeShops { [weak self] result in
             switch result {
             case .success(let shops):
-                output?.getShops(shops)
+                self?.output?.getShops(shops)
             case .failure(let  error):
                 print(error)
             }
