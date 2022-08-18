@@ -25,12 +25,6 @@
 		0A8F954228A4D47A00ED90F9 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F954128A4D47A00ED90F9 /* UITextField+Ext.swift */; };
 		0A8F954628A4D61400ED90F9 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F954528A4D61400ED90F9 /* UIImage+Ext.swift */; };
 		5F94ED0128AAD91A00D89E3D /* FavouritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0028AAD91A00D89E3D /* FavouritesCell.swift */; };
-		5F94ED0428AAD9B900D89E3D /* FavouritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0328AAD9B900D89E3D /* FavouritesPresenter.swift */; };
-		5F94ED0628AAD9CF00D89E3D /* FavouritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0528AAD9CF00D89E3D /* FavouritesRouter.swift */; };
-		5F94ED0A28AADA0900D89E3D /* FavouritesProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0928AADA0900D89E3D /* FavouritesProtocols.swift */; };
-		5F94ED0C28AADA1E00D89E3D /* FavouritesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0B28AADA1E00D89E3D /* FavouritesInteractor.swift */; };
-		5F94ED0E28AADA3700D89E3D /* FavouritesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0D28AADA3700D89E3D /* FavouritesContainer.swift */; };
-		5F94ED1028AB713B00D89E3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F94ED0F28AB713B00D89E3D /* GoogleService-Info.plist */; };
 		5F94ED1428AD1F1300D89E3D /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED1328AD1F1300D89E3D /* ShopListViewController.swift */; };
 		A648A3E328A2A5ED00413915 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648A3E228A2A5ED00413915 /* MainTabBarController.swift */; };
 		A648A3E528A2A6EB00413915 /* AppImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648A3E428A2A6EB00413915 /* AppImageNames.swift */; };
@@ -55,6 +49,23 @@
 		A730E90928A3C3E900A3B4C4 /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A730E90828A3C3E900A3B4C4 /* UITableViewCell+Ext.swift */; };
 		A730E90B28A3C42C00A3B4C4 /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A730E90A28A3C42C00A3B4C4 /* UICollectionView+Ext.swift */; };
 		A730E90D28A424F700A3B4C4 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A730E90C28A424F700A3B4C4 /* UIColor+Ext.swift */; };
+		A73A1B1328AABD6A00D5022D /* HomeScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B0D28AABD6A00D5022D /* HomeScreenPresenter.swift */; };
+		A73A1B1428AABD6A00D5022D /* HomeScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B0E28AABD6A00D5022D /* HomeScreenRouter.swift */; };
+		A73A1B1528AABD6A00D5022D /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B0F28AABD6A00D5022D /* HomeScreenViewController.swift */; };
+		A73A1B1628AABD6A00D5022D /* HomeScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1028AABD6A00D5022D /* HomeScreenProtocols.swift */; };
+		A73A1B1728AABD6A00D5022D /* HomeScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1128AABD6A00D5022D /* HomeScreenInteractor.swift */; };
+		A73A1B1828AABD6A00D5022D /* HomeScreenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1228AABD6A00D5022D /* HomeScreenContainer.swift */; };
+		A73A1B1C28AE28D200D5022D /* CoffeeShopAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1B28AE28D200D5022D /* CoffeeShopAnnotation.swift */; };
+		A73A1B1E28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1D28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift */; };
+		A73A1B2228AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */; };
+		A7832AD228AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACC28AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift */; };
+		A7832AD328AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACD28AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift */; };
+		A7832AD428AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACE28AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift */; };
+		A7832AD528AE50A70093EB4C /* FavoritesCoffeeShopsScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACF28AE50A70093EB4C /* FavoritesCoffeeShopsScreenProtocols.swift */; };
+		A7832AD628AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD028AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift */; };
+		A7832AD728AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD128AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift */; };
+		A7832ADA28AE54410093EB4C /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */; };
+		A7EFD3AF28AE4DF5005CACC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7EFD3AE28AE4DF5005CACC1 /* GoogleService-Info.plist */; };
 		AFB32D5F131EC0A124E76104 /* Pods_CoffeeMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A41E375819B870F0AF202A /* Pods_CoffeeMap.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,12 +91,6 @@
 		0A8F954528A4D61400ED90F9 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		2B7D7A0E7071EABC6257BA8D /* Pods-CoffeeMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeMap.debug.xcconfig"; path = "Target Support Files/Pods-CoffeeMap/Pods-CoffeeMap.debug.xcconfig"; sourceTree = "<group>"; };
 		5F94ED0028AAD91A00D89E3D /* FavouritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCell.swift; sourceTree = "<group>"; };
-		5F94ED0328AAD9B900D89E3D /* FavouritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesPresenter.swift; sourceTree = "<group>"; };
-		5F94ED0528AAD9CF00D89E3D /* FavouritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesRouter.swift; sourceTree = "<group>"; };
-		5F94ED0928AADA0900D89E3D /* FavouritesProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesProtocols.swift; sourceTree = "<group>"; };
-		5F94ED0B28AADA1E00D89E3D /* FavouritesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesInteractor.swift; sourceTree = "<group>"; };
-		5F94ED0D28AADA3700D89E3D /* FavouritesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesContainer.swift; sourceTree = "<group>"; };
-		5F94ED0F28AB713B00D89E3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F94ED1328AD1F1300D89E3D /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
 		A47B310C348A00042FA46913 /* Pods-CoffeeMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeMap.release.xcconfig"; path = "Target Support Files/Pods-CoffeeMap/Pods-CoffeeMap.release.xcconfig"; sourceTree = "<group>"; };
 		A648A3E228A2A5ED00413915 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -111,6 +116,23 @@
 		A730E90828A3C3E900A3B4C4 /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		A730E90A28A3C42C00A3B4C4 /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
 		A730E90C28A424F700A3B4C4 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		A73A1B0D28AABD6A00D5022D /* HomeScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenPresenter.swift; sourceTree = "<group>"; };
+		A73A1B0E28AABD6A00D5022D /* HomeScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenRouter.swift; sourceTree = "<group>"; };
+		A73A1B0F28AABD6A00D5022D /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		A73A1B1028AABD6A00D5022D /* HomeScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenProtocols.swift; sourceTree = "<group>"; };
+		A73A1B1128AABD6A00D5022D /* HomeScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenInteractor.swift; sourceTree = "<group>"; };
+		A73A1B1228AABD6A00D5022D /* HomeScreenContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenContainer.swift; sourceTree = "<group>"; };
+		A73A1B1B28AE28D200D5022D /* CoffeeShopAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopAnnotation.swift; sourceTree = "<group>"; };
+		A73A1B1D28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopMarkerAnnotationView.swift; sourceTree = "<group>"; };
+		A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMarkerAnnotationView+Ext.swift"; sourceTree = "<group>"; };
+		A7832ACC28AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenPresenter.swift; sourceTree = "<group>"; };
+		A7832ACD28AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenRouter.swift; sourceTree = "<group>"; };
+		A7832ACE28AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenViewController.swift; sourceTree = "<group>"; };
+		A7832ACF28AE50A70093EB4C /* FavoritesCoffeeShopsScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenProtocols.swift; sourceTree = "<group>"; };
+		A7832AD028AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenInteractor.swift; sourceTree = "<group>"; };
+		A7832AD128AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenContainer.swift; sourceTree = "<group>"; };
+		A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		A7EFD3AE28AE4DF5005CACC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D9A41E375819B870F0AF202A /* Pods_CoffeeMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoffeeMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,11 +192,10 @@
 		0A8F951D28A24F8200ED90F9 /* CoffeeMap */ = {
 			isa = PBXGroup;
 			children = (
-				5F94ED1228AD1EEE00D89E3D /* ShopListViewController */,
-				5F94ECFF28AAD89D00D89E3D /* Cells */,
-				5F94ED0228AAD99400D89E3D /* Favourites */,
 				0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */,
 				0A2DFCB928A6823600C7F5BB /* Models */,
+				A7832AD828AE50AC0093EB4C /* FavoritesScreen */,
+				A73A1B1928AABD7100D5022D /* HomeScreen */,
 				A72AFD0228A663C90048634C /* DishConfigurator */,
 				A713A91828A50FF200769321 /* ShopDetail */,
 				0A2DFCA628A6601500C7F5BB /* Login */,
@@ -187,6 +208,7 @@
 		0A8F953428A2525200ED90F9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A7832ADB28AE6CE00093EB4C /* Controllers */,
 				A7054BCC28AA6BAD0082E9E5 /* Constants.swift */,
 				A71C552A28A3BFAA00142138 /* Extensions */,
 				A7024FB028A2A2D2006103CD /* Model */,
@@ -196,7 +218,7 @@
 				A648A3E428A2A6EB00413915 /* AppImageNames.swift */,
 				0A8F952728A24F8300ED90F9 /* Assets.xcassets */,
 				0A8F952C28A24F8300ED90F9 /* Info.plist */,
-				5F94ED0F28AB713B00D89E3D /* GoogleService-Info.plist */,
+				A7EFD3AE28AE4DF5005CACC1 /* GoogleService-Info.plist */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -216,26 +238,6 @@
 				5F94ED0028AAD91A00D89E3D /* FavouritesCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		5F94ED0228AAD99400D89E3D /* Favourites */ = {
-			isa = PBXGroup;
-			children = (
-				5F94ED0328AAD9B900D89E3D /* FavouritesPresenter.swift */,
-				5F94ED0528AAD9CF00D89E3D /* FavouritesRouter.swift */,
-				5F94ED0928AADA0900D89E3D /* FavouritesProtocols.swift */,
-				5F94ED0B28AADA1E00D89E3D /* FavouritesInteractor.swift */,
-				5F94ED0D28AADA3700D89E3D /* FavouritesContainer.swift */,
-			);
-			path = Favourites;
-			sourceTree = "<group>";
-		};
-		5F94ED1228AD1EEE00D89E3D /* ShopListViewController */ = {
-			isa = PBXGroup;
-			children = (
-				5F94ED1328AD1F1300D89E3D /* ShopListViewController.swift */,
-			);
-			path = ShopListViewController;
 			sourceTree = "<group>";
 		};
 		A7024FB028A2A2D2006103CD /* Model */ = {
@@ -271,6 +273,8 @@
 				A730E90828A3C3E900A3B4C4 /* UITableViewCell+Ext.swift */,
 				A730E90A28A3C42C00A3B4C4 /* UICollectionView+Ext.swift */,
 				A730E90C28A424F700A3B4C4 /* UIColor+Ext.swift */,
+				A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */,
+				A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,6 +307,51 @@
 				A72AFD0828A663F20048634C /* DishConfiguratorContainer.swift */,
 			);
 			path = DishConfigurator;
+			sourceTree = "<group>";
+		};
+		A73A1B1928AABD7100D5022D /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A73A1B1A28AE28C300D5022D /* Views */,
+				A73A1B0D28AABD6A00D5022D /* HomeScreenPresenter.swift */,
+				A73A1B0E28AABD6A00D5022D /* HomeScreenRouter.swift */,
+				A73A1B0F28AABD6A00D5022D /* HomeScreenViewController.swift */,
+				A73A1B1028AABD6A00D5022D /* HomeScreenProtocols.swift */,
+				A73A1B1128AABD6A00D5022D /* HomeScreenInteractor.swift */,
+				A73A1B1228AABD6A00D5022D /* HomeScreenContainer.swift */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		A73A1B1A28AE28C300D5022D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A73A1B1B28AE28D200D5022D /* CoffeeShopAnnotation.swift */,
+				A73A1B1D28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A7832AD828AE50AC0093EB4C /* FavoritesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5F94ECFF28AAD89D00D89E3D /* Cells */,
+				A7832ACC28AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift */,
+				A7832ACD28AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift */,
+				A7832ACE28AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift */,
+				A7832ACF28AE50A70093EB4C /* FavoritesCoffeeShopsScreenProtocols.swift */,
+				A7832AD028AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift */,
+				A7832AD128AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift */,
+			);
+			path = FavoritesScreen;
+			sourceTree = "<group>";
+		};
+		A7832ADB28AE6CE00093EB4C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5F94ED1328AD1F1300D89E3D /* ShopListViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		D112E00F5CFFDC072CA30F12 /* Frameworks */ = {
@@ -375,7 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A8F952B28A24F8300ED90F9 /* LaunchScreen.storyboard in Resources */,
-				5F94ED1028AB713B00D89E3D /* GoogleService-Info.plist in Resources */,
+				A7EFD3AF28AE4DF5005CACC1 /* GoogleService-Info.plist in Resources */,
 				0A8F952828A24F8300ED90F9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,42 +497,52 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A2DFCAF28A6616E00C7F5BB /* LoginViewController.swift in Sources */,
+				A7832AD528AE50A70093EB4C /* FavoritesCoffeeShopsScreenProtocols.swift in Sources */,
 				0A2DFCAD28A6616E00C7F5BB /* LoginPresenter.swift in Sources */,
 				0A8F953C28A4D29700ED90F9 /* FireBaseManager.swift in Sources */,
+				A7832AD628AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift in Sources */,
+				A73A1B1428AABD6A00D5022D /* HomeScreenRouter.swift in Sources */,
 				0A2DFCB128A6616E00C7F5BB /* LoginInteractor.swift in Sources */,
 				0A8F954028A4D37300ED90F9 /* UIView+Ext.swift in Sources */,
 				0A8F954228A4D47A00ED90F9 /* UITextField+Ext.swift in Sources */,
-				5F94ED0E28AADA3700D89E3D /* FavouritesContainer.swift in Sources */,
+				A7832AD728AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift in Sources */,
+				A7832AD328AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift in Sources */,
 				0A2DFCB028A6616E00C7F5BB /* LoginProtocols.swift in Sources */,
 				A648A3E328A2A5ED00413915 /* MainTabBarController.swift in Sources */,
 				A730E90928A3C3E900A3B4C4 /* UITableViewCell+Ext.swift in Sources */,
-				5F94ED0628AAD9CF00D89E3D /* FavouritesRouter.swift in Sources */,
 				A72AFD0A28A663F20048634C /* DishConfiguratorRouter.swift in Sources */,
 				A713A92328A5102B00769321 /* CoffeeShopDetailScreenInteractor.swift in Sources */,
 				A7054BCD28AA6BAD0082E9E5 /* Constants.swift in Sources */,
 				5F94ED0128AAD91A00D89E3D /* FavouritesCell.swift in Sources */,
 				A713A92028A5102B00769321 /* CoffeeShopDetailScreenRouter.swift in Sources */,
+				A73A1B1328AABD6A00D5022D /* HomeScreenPresenter.swift in Sources */,
 				A72AFD0D28A663F20048634C /* DishConfiguratorInteractor.swift in Sources */,
 				A72AFD0928A663F20048634C /* DishConfiguratorPresenter.swift in Sources */,
+				A73A1B1E28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift in Sources */,
+				A73A1B1528AABD6A00D5022D /* HomeScreenViewController.swift in Sources */,
+				A73A1B1728AABD6A00D5022D /* HomeScreenInteractor.swift in Sources */,
 				A730E90B28A3C42C00A3B4C4 /* UICollectionView+Ext.swift in Sources */,
 				A71C551A28A3824300142138 /* DishCollectionViewCell.swift in Sources */,
-				5F94ED0C28AADA1E00D89E3D /* FavouritesInteractor.swift in Sources */,
 				A713A95328A55CD900769321 /* DishSection.swift in Sources */,
 				A7024FC028A2BF82006103CD /* CoffeeShopDetailHeaderView.swift in Sources */,
 				A713A92228A5102B00769321 /* CoffeeShopDetailScreenProtocols.swift in Sources */,
+				A7832ADA28AE54410093EB4C /* UIViewController+Ext.swift in Sources */,
+				A73A1B1828AABD6A00D5022D /* HomeScreenContainer.swift in Sources */,
 				A72AFD0E28A663F20048634C /* DishConfiguratorContainer.swift in Sources */,
 				A713A91F28A5102B00769321 /* CoffeeShopDetailScreenPresenter.swift in Sources */,
 				0A8F951F28A24F8200ED90F9 /* AppDelegate.swift in Sources */,
 				0A8F954628A4D61400ED90F9 /* UIImage+Ext.swift in Sources */,
+				A7832AD428AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift in Sources */,
 				0A2DFCB228A6616E00C7F5BB /* LoginContainer.swift in Sources */,
-				5F94ED0A28AADA0900D89E3D /* FavouritesProtocols.swift in Sources */,
+				A7832AD228AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift in Sources */,
 				A648A3E528A2A6EB00413915 /* AppImageNames.swift in Sources */,
 				0A8F953E28A4D32A00ED90F9 /* LoginView.swift in Sources */,
-				5F94ED0428AAD9B900D89E3D /* FavouritesPresenter.swift in Sources */,
 				0A2DFCBF28A934D200C7F5BB /* ModelConverter.swift in Sources */,
 				0A2DFCBB28A6825100C7F5BB /* ModelsFB.swift in Sources */,
 				0A2DFCAE28A6616E00C7F5BB /* LoginRouter.swift in Sources */,
 				A72AFD0C28A663F20048634C /* DishConfiguratorProtocols.swift in Sources */,
+				A73A1B1628AABD6A00D5022D /* HomeScreenProtocols.swift in Sources */,
+				A73A1B2228AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift in Sources */,
 				A713A92428A5102B00769321 /* CoffeeShopDetailScreenContainer.swift in Sources */,
 				A713A92128A5102B00769321 /* CoffeeShopDetailScreenViewController.swift in Sources */,
 				0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */,
@@ -491,6 +550,7 @@
 				A730E90D28A424F700A3B4C4 /* UIColor+Ext.swift in Sources */,
 				A72AFD0B28A663F20048634C /* DishConfiguratorViewController.swift in Sources */,
 				5F94ED1428AD1F1300D89E3D /* ShopListViewController.swift in Sources */,
+				A73A1B1C28AE28D200D5022D /* CoffeeShopAnnotation.swift in Sources */,
 				A7054BCF28AA7C5F0082E9E5 /* SectionTitleHeaderReusableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,7 +693,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5D399ZX79K;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoffeeMap/Common/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -661,7 +721,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5D399ZX79K;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoffeeMap/Common/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

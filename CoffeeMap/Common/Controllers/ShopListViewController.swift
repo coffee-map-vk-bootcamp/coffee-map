@@ -7,54 +7,24 @@
 
 import UIKit
 
+protocol ShopListViewControllerDelegate: AnyObject {
+    func getCoffeeShops()
+}
+
 class ShopListViewController: UIViewController {
-    private let output: FavouritesViewOutput
+    weak var delegate: ShopListViewControllerDelegate?
     private let refreshControl = UIRefreshControl()
     
-    var favouriteCoffeeShops: [CoffeeShop] = [CoffeeShop(name: "БебраКофе",
-                                                         address: "Москва, Тверская 14",
-                                                         dishes: [], image: "lol.com",
-                                                         latitude: 0.0,
-                                                         longitude: 0.0),
-                                              CoffeeShop(name: "ДоброКофе",
-                                                         address: "Москва, Тверская 2",
-                                                         dishes: [], image: "lol.com",
-                                                         latitude: 0.0,
-                                                         longitude: 0.0),
-                                              CoffeeShop(name: "КекКофе",
-                                                         address: "Москва, Тверская 24",
-                                                         dishes: [], image: "lol.com",
-                                                         latitude: 0.0,
-                                                         longitude: 0.0),
-                                              CoffeeShop(name: "ЛолКофе",
-                                                         address: "Москва, Думская 4",
-                                                         dishes: [], image: "lol.com",
-                                                         latitude: 0.0,
-                                                         longitude: 0.0),
-                                              CoffeeShop(name: "ТиматиКофе",
-                                                         address: "Москва, Тверская 4",
-                                                         dishes: [], image: "lol.com",
-                                                         latitude: 0.0,
-                                                         longitude: 0.0)]
+    private var favouriteCoffeeShops = [CoffeeShop]()
     
     private lazy var favouritesCollectionView: UICollectionView = {
         let layout = UICollectionViewLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.alwaysBounceVertical = true
         collection.translatesAutoresizingMaskIntoConstraints = false
-        collection.register(FavouritesCell.self, forCellWithReuseIdentifier: FavouritesCell.reuseIdentifire)
+        collection.register(FavouritesCell.self, forCellWithReuseIdentifier: FavouritesCell.reuseIdentifier)
         return collection
     }()
-    
-    init(output: FavouritesViewOutput) {
-        self.output = output
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,16 +33,20 @@ class ShopListViewController: UIViewController {
         layout()
         setupCollectionView()
         setupRefresher()
+        getCoffeeShops()
     }
-}
-
-extension ShopListViewController: FavouritesViewInput {
-    func reloadData() {
+    
+    func configure(with shops: [CoffeeShop]) {
+        favouriteCoffeeShops = shops
         favouritesCollectionView.reloadData()
     }
 }
 
 private extension ShopListViewController {
+    
+    func getCoffeeShops() {
+        delegate?.getCoffeeShops()
+    }
     
     func setupCollectionView() {
         let flowLayout = UICollectionViewFlowLayout()
@@ -85,12 +59,6 @@ private extension ShopListViewController {
     
     func setup() {
         view.backgroundColor = .white
-        navigationItem.title = "Избранные заведения"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.black,
-            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)
-        ]
     }
     
     func setupRefresher() {
@@ -125,7 +93,7 @@ extension ShopListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavouritesCell.reuseIdentifire, for: indexPath) as? FavouritesCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavouritesCell.reuseIdentifier, for: indexPath) as? FavouritesCell
         else { return UICollectionViewCell() }
         let shop = favouriteCoffeeShops[indexPath.row]
         cell.configure(with: shop)
@@ -148,12 +116,5 @@ extension ShopListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 16
-    }
-}
-
-extension UICollectionViewCell {
-    
-    static var reuseIdentifire: String {
-        return NSStringFromClass(self)
     }
 }

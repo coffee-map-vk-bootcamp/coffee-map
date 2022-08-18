@@ -12,5 +12,4 @@ target 'CoffeeMap' do
   pod 'Firebase/Storage'
   pod 'Firebase/Core'
   pod 'Kingfisher'
-
 end

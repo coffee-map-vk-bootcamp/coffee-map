@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
 struct MockError: Error {
     
@@ -62,7 +63,6 @@ private extension FBService {
 }
 
 final class FBAuthService {
-    
     static func login(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
             if let error = error {
