@@ -11,10 +11,10 @@ struct Dish: Decodable {
     let name: String
     let price: Int
     let image: String
-    let count: Int
 }
 
 struct CoffeeShop: Decodable {
+    let id: String
     let name: String
     let address: String
     let dishes: [Dish]
@@ -29,7 +29,8 @@ struct Order: Decodable {
 }
 
 struct User: Decodable {
+    let id: String
     let name: String
-    let favoriteCoffeeShops: [CoffeeShop]
+    let favoriteCoffeeShops: [String]
     let orders: [String]
 }

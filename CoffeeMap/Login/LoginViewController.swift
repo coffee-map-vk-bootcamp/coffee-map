@@ -11,6 +11,18 @@ import UIKit
 final class LoginViewController: UIViewController {
     private let output: LoginViewOutput
     
+    internal var state: LoginState = .signIn {
+        didSet {
+            if oldValue != state {
+                if oldValue == .signIn {
+                    loginView.animateSignUp()
+                } else {
+                    loginView.animateSignIn()
+                }
+            }
+        }
+    }
+    
     private lazy var loginView: LoginView = {
         loginView = LoginView()
         loginView.delegate = self
@@ -47,13 +59,29 @@ final class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginViewInput {
-    
+    func showLogin() {
+        print("login")
+    }
 }
 
 extension LoginViewController: LoginViewOutputToVC {
+    
+    func trySignUp() {
+        if state == .signIn {
+            state = .signUp
+        } else {
+            guard let email = loginView.email, let pas = loginView.password, let repeatPas = loginView.repeatPassword else { return }
+            output.signUp(email: email, pas: pas, repeatPas: repeatPas)
+        }
+    }
+    
     func tryLogin() {
-        guard let email = loginView.email, let pas = loginView.password else { return }
-        output.login(email: email, pas: pas)
+        if state == .signUp {
+            state = .signIn
+        } else {
+            guard let email = loginView.email, let pas = loginView.password else { return }
+            output.login(email: email, pas: pas)
+        }
     }
     
     func goToSignUp() {

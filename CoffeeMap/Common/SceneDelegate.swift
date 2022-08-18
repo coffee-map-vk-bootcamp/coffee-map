@@ -22,8 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             window?.rootViewController = LoginContainer.assemble(with: context).viewController
         }
-        
         window?.makeKeyAndVisible()
     }
-
 }

@@ -21,8 +21,10 @@ final class MainTabBarController: UITabBarController {
     private func configure() {
         let homeScreen = UINavigationController(rootViewController: UIViewController())
         homeScreen.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: AppImageNames.home), tag: 0)
-
-        let cartScreen = UINavigationController(rootViewController: UIViewController())
+        
+        let context = CoffeeShopDetailScreenContext()
+        let container = CoffeeShopDetailScreenContainer.assemble(with: context)
+        let cartScreen = UINavigationController(rootViewController: container.viewController)
         cartScreen.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: AppImageNames.shoppingCart), tag: 0)
 
         let context = FavouritesContext(moduleOutput: nil)
