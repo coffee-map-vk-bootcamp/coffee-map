@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
 struct MockError: Error {
     
@@ -16,7 +17,7 @@ final class FBService {
     static let dataBase = Firestore.firestore()
     
     static func fetchCoffeeShops(completion: @escaping (Result<[CoffeeShop], Error>) -> Void) {
-        dataBase.collection("coffeeShops1").addSnapshotListener { (querySnapshot, err) in
+        dataBase.collection("coffeeShops").addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -46,7 +47,6 @@ private extension FBService {
 }
 
 final class FBAuthService {
-    
     static func login(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
             if let error = error {

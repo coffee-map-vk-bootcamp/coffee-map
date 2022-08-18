@@ -19,7 +19,11 @@ final class MainTabBarController: UITabBarController {
     }
 
     private func configure() {
-        let homeScreen = UINavigationController(rootViewController: UIViewController())
+        setupAppearance()
+        
+        let homeScreenContext = HomeScreenContext(moduleOutput: nil)
+        let homeScreenViewController = HomeScreenContainer.assemble(with: homeScreenContext).viewController
+        let homeScreen = UINavigationController(rootViewController: homeScreenViewController)
         homeScreen.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: AppImageNames.home), tag: 0)
 
         let cartScreen = UINavigationController(rootViewController: UIViewController())
@@ -33,5 +37,9 @@ final class MainTabBarController: UITabBarController {
 
         viewControllers = [homeScreen, cartScreen, favouriteScreen, profileScreen]
         view.backgroundColor = .white
+    }
+    
+    private func setupAppearance() {
+        UITabBar.appearance().backgroundColor = .systemBackground
     }
 }

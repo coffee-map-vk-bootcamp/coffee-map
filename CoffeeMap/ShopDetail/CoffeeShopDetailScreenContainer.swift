@@ -25,6 +25,7 @@ final class CoffeeShopDetailScreenContainer {
         router.viewController = viewController
         
         interactor.output = presenter
+        interactor.setCoffeeShop(context.coffeeShop)
         
         return CoffeeShopDetailScreenContainer(view: viewController, input: presenter, router: router)
     }
@@ -38,4 +39,5 @@ final class CoffeeShopDetailScreenContainer {
 
 struct CoffeeShopDetailScreenContext {
     weak var moduleOutput: CoffeeShopDetailScreenModuleOutput?
+    let coffeeShop: CoffeeShop
 }

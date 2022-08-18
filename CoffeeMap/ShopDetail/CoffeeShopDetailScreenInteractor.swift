@@ -12,36 +12,15 @@ final class CoffeeShopDetailScreenInteractor {
     weak var output: CoffeeShopDetailScreenInteractorOutput?
     
     var sections = [DishSection]()
+    
+    func setCoffeeShop(_ coffeeShop: CoffeeShop) {
+        let section = DishSection(sectionTitle: "Drinks", dishes: coffeeShop.dishes)
+        sections.append(section)
+    }
 }
 
 extension CoffeeShopDetailScreenInteractor: CoffeeShopDetailScreenInteractorInput {
     func loadItems() -> [DishSection] {
-        print("[DEBUG] MOCK Load Data")
-        
-        sections = [
-            .init(sectionTitle: "Suck my Dick", dishes: [
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-            ]),
-            .init(sectionTitle: "Suck my Dick", dishes: [
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-            ]),
-            .init(sectionTitle: "Suck my Dick", dishes: [
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-                .init(name: "Coffee", price: 100991, image: "", count: 2),
-            ])
-        ]
-        
         return sections
     }
 }

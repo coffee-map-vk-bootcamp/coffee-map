@@ -14,4 +14,6 @@ struct AppImageNames {
     static let mockHeader = "cafe-test"
     static let mockDishImage = "coffee-test"
     static let mockDishImage1 = "coffee-test-1"
+    
+    static let mapPin = "coffeePoint"
 }
