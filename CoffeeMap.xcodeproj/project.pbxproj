@@ -195,9 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */,
-				5F94ED0228AAD99400D89E3D /* Favourites */,
 				0A2DFCB928A6823600C7F5BB /* Models */,
-				A7832AD828AE50AC0093EB4C /* FavoritesCoffeeShopsScreen */,
+				A7832AD828AE50AC0093EB4C /* FavoritesScreen */,
 				A73A1B1928AABD7100D5022D /* HomeScreen */,
 				A72AFD0228A663C90048634C /* DishConfigurator */,
 				A713A91828A50FF200769321 /* ShopDetail */,
@@ -241,14 +240,6 @@
 				5F94ED0028AAD91A00D89E3D /* FavouritesCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		5F94ED0228AAD99400D89E3D /* Favourites */ = {
-			isa = PBXGroup;
-			children = (
-				5F94ECFF28AAD89D00D89E3D /* Cells */,
-			);
-			path = Favourites;
 			sourceTree = "<group>";
 		};
 		A7024FB028A2A2D2006103CD /* Model */ = {
@@ -344,9 +335,10 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A7832AD828AE50AC0093EB4C /* FavoritesCoffeeShopsScreen */ = {
+		A7832AD828AE50AC0093EB4C /* FavoritesScreen */ = {
 			isa = PBXGroup;
 			children = (
+				5F94ECFF28AAD89D00D89E3D /* Cells */,
 				A7832ACC28AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift */,
 				A7832ACD28AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift */,
 				A7832ACE28AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift */,
@@ -354,7 +346,7 @@
 				A7832AD028AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift */,
 				A7832AD128AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift */,
 			);
-			path = FavoritesCoffeeShopsScreen;
+			path = FavoritesScreen;
 			sourceTree = "<group>";
 		};
 		A7832ADB28AE6CE00093EB4C /* Controllers */ = {
