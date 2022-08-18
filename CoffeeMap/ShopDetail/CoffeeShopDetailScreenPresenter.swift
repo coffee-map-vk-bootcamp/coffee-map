@@ -23,28 +23,27 @@ final class CoffeeShopDetailScreenPresenter {
         
         sections = [
             .init(sectionTitle: "Drinks You Might Like", headerImageURL: "", dishes: [
-                .init(name: "Coffee", price: 1235, image: "", count: 1),
-                .init(name: "Baton", price: 1235, image: "", count: 1),
-                .init(name: "Tea", price: 1235, image: "", count: 1),
-                .init(name: "Pepsi", price: 1235, image: "", count: 1),
-                .init(name: "Water", price: 1235, image: "", count: 1)
+                .init(name: "Coffee", price: 1235, image: ""),
+                .init(name: "Baton", price: 1235, image: ""),
+                .init(name: "Tea", price: 1235, image: ""),
+                .init(name: "Pepsi", price: 1235, image: ""),
+                .init(name: "Water", price: 1235, image: "")
             ]),
             .init(sectionTitle: "Drinks", headerImageURL: "", dishes: [
-                .init(name: "Coffee", price: 222, image: "", count: 1),
-                .init(name: "Baton", price: 222, image: "", count: 1),
-                .init(name: "Tea", price: 222, image: "", count: 1),
-                .init(name: "Pepsi", price: 222, image: "", count: 1),
-                .init(name: "Water", price: 222, image: "", count: 1)
+                .init(name: "Coffee", price: 222, image: ""),
+                .init(name: "Baton", price: 222, image: ""),
+                .init(name: "Tea", price: 222, image: ""),
+                .init(name: "Pepsi", price: 222, image: ""),
+                .init(name: "Water", price: 222, image: "")
             ]),
             .init(sectionTitle: "Water Food", headerImageURL: "", dishes: [
-                .init(name: "Coffee", price: 222, image: "", count: 1),
-                .init(name: "Baton", price: 222, image: "", count: 1),
-                .init(name: "Tea", price: 222, image: "", count: 1),
-                .init(name: "Pepsi", price: 222, image: "", count: 1),
-                .init(name: "Water", price: 222, image: "", count: 1)
+                .init(name: "Coffee", price: 222, image: ""),
+                .init(name: "Baton", price: 222, image: ""),
+                .init(name: "Tea", price: 222, image: ""),
+                .init(name: "Pepsi", price: 222, image: ""),
+                .init(name: "Water", price: 222, image: "")
             ])
         ]
-        
     }
 }
 

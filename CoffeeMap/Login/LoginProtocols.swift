@@ -16,14 +16,19 @@ protocol LoginModuleOutput: AnyObject {
 }
 
 protocol LoginViewInput: AnyObject {
+    var state: LoginState { get }
+    
+    func showLogin()
 }
 
-protocol LoginViewOutput: AnyObject {
+protocol LoginViewOutput: AnyObject {    
     func login(email: String, pas: String)
+    func signUp(email: String, pas: String, repeatPas: String)
 }
 
 protocol LoginInteractorInput: AnyObject {
     func login(email: String, pas: String)
+    func signUp(email: String, pas: String)
 }
 
 protocol LoginInteractorOutput: AnyObject {
@@ -38,4 +43,10 @@ protocol LoginViewOutputToVC: AnyObject {
     func tryLogin()
     func goToSignUp()
     func loginWithoutPas()
+    func trySignUp()
+}
+
+enum LoginState {
+    case signIn
+    case signUp
 }

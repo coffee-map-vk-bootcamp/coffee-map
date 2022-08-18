@@ -11,5 +11,6 @@ target 'CoffeeMap' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'Firebase/Core'
+  pod 'FirebaseStorageUI'
 
 end
