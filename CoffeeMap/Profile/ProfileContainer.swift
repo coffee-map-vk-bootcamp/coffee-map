@@ -15,9 +15,10 @@ final class ProfileContainer {
 
 	class func assemble(with context: ProfileContext) -> ProfileContainer {
         let router = ProfileRouter()
-        let interactor = ProfileInteractor()
+        let interactor = ProfileInteractor(networkManager: FBService())
         let presenter = ProfilePresenter(router: router, interactor: interactor)
 		let viewController = ProfileViewController(output: presenter)
+        viewController.title = "Профиль"
 
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput

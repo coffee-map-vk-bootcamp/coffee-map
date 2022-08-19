@@ -6,8 +6,3 @@
 //
 
 import UIKit
-
-struct ProfileHeaderModel {
-    let image: UIImage
-    let name: String
-}
