@@ -19,7 +19,7 @@ final class ModelConverter {
     
     static func convert<T: Decodable>(from fbData: DocumentSnapshot) throws -> T {
         guard let dataCollection = fbData.data() else {
-            throw FireBaseError.receivedNilData
+            throw FirebaseError.receivedNilData
         }
         let data = try JSONSerialization.data(withJSONObject: dataCollection, options: .prettyPrinted)
         let object = try decoder.decode(T.self, from: data)

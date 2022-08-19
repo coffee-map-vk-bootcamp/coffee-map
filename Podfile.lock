@@ -781,7 +781,6 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
-  - Firebase/Storage
   - SwiftLint
   - UBottomSheet
 
@@ -834,6 +833,6 @@ SPEC CHECKSUMS:
   SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
   UBottomSheet: a40ddcad489bb6d5f6171ffa96f161e558fcfaf0
 
-PODFILE CHECKSUM: 9db2b5321b96bdd6963081a4bf76aa86a1e7e176
+PODFILE CHECKSUM: 6c399f41542be6098a94f6f096057048b65bb21f
 
 COCOAPODS: 1.11.3
