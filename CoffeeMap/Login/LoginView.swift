@@ -8,21 +8,17 @@ import UIKit
 
 class LoginView: UIView {
     weak var delegate: LoginViewOutputToVC?
-    
+
     private let stackView = UIStackView()
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
-    
+
     var email: String? {
-        get {
-            return emailTextField.text
-        }
+        return emailTextField.text
     }
     
     var password: String? {
-        get {
-            return passwordTextField.text
-        }
+        return passwordTextField.text
     }
     
     private lazy var scrollView: UIScrollView = {
@@ -51,7 +47,7 @@ class LoginView: UIView {
     
     private lazy var logInButton: UIButton = {
         logInButton = UIButton()
-        logInButton.backgroundColor = .red
+        logInButton.backgroundColor = AppColors.primary
         logInButton.setTitle("Вход", for: .normal)
         logInButton.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         
@@ -64,7 +60,7 @@ class LoginView: UIView {
     
     private lazy var signUpButton: UIButton = {
         signUpButton = UIButton()
-        signUpButton.backgroundColor = .red
+        signUpButton.backgroundColor = AppColors.primary
         signUpButton.setTitle("Регистрация", for: .normal)
         
         signUpButton.layer.cornerRadius = 16
@@ -78,7 +74,7 @@ class LoginView: UIView {
     private lazy var withoutLogButton: UIButton = {
         withoutLogButton = UIButton()
         withoutLogButton.setTitle("Войти без пароля", for: .normal)
-        withoutLogButton.setTitleColor(UIColor.brown, for: .normal)
+        withoutLogButton.setTitleColor(AppColors.primary, for: .normal)
         
         withoutLogButton.layer.cornerRadius = 16
         withoutLogButton.layer.masksToBounds = true
@@ -90,6 +86,7 @@ class LoginView: UIView {
     
     override init(frame: CGRect) {
         super .init(frame: frame)
+        setup()
         setupStack()
     }
     
@@ -135,6 +132,11 @@ class LoginView: UIView {
             activity.widthAnchor.constraint(equalToConstant: 12)
         ])
     }
+
+    private func setup() {
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
     
     private func setupStack() {
         scrollView.addSubviews([logoView, logInButton])
@@ -159,6 +161,7 @@ class LoginView: UIView {
         emailTextField.placeholder = "Почта"
         emailTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         emailTextField.autocapitalizationType = .none
+        emailTextField.keyboardType = .emailAddress
         
         emailTextField.layer.borderColor = UIColor.lightGray.cgColor
         emailTextField.layer.borderWidth = 0.5
@@ -176,8 +179,8 @@ class LoginView: UIView {
         passwordTextField.placeholder = "Пароль"
         passwordTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         passwordTextField.autocapitalizationType = .none
-        passwordTextField.isSecureTextEntry = false
-        
+        passwordTextField.isSecureTextEntry = true
+
         passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
         passwordTextField.layer.borderWidth = 0.5
         passwordTextField.layer.cornerRadius = 10
@@ -187,9 +190,16 @@ class LoginView: UIView {
         
         stackView.addArrangedSubview(passwordTextField)
     }
-        
+
     @objc
     func loginTapped() {
         delegate?.tryLogin()
+    }
+}
+
+extension LoginView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
