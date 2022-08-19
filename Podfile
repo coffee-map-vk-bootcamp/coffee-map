@@ -9,7 +9,6 @@ target 'CoffeeMap' do
   pod 'SwiftLint'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
-  pod 'Firebase/Storage'
   pod 'Firebase/Core'
   pod 'Kingfisher'
 end
