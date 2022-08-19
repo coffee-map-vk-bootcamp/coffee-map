@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import UBottomSheet
 
 final class CoffeeShopDetailScreenViewController: UIViewController {
+    var sheetCoordinator: UBottomSheetCoordinator?
+    
     private let output: CoffeeShopDetailScreenViewOutput
     
     private lazy var collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
@@ -38,6 +41,11 @@ final class CoffeeShopDetailScreenViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layoutCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        sheetCoordinator?.startTracking(item: self)
     }
 }
 
@@ -193,5 +201,11 @@ extension CoffeeShopDetailScreenViewController: UICollectionViewDataSource {
 extension CoffeeShopDetailScreenViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+    }
+}
+
+extension CoffeeShopDetailScreenViewController: Draggable {
+    func draggableView() -> UIScrollView? {
+        return collectionView
     }
 }

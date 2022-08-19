@@ -9,8 +9,17 @@
 import UIKit
 import MapKit
 import CoreLocation
+import UBottomSheet
 
 final class HomeScreenViewController: UIViewController {
+    var sheetCoordinator: UBottomSheetCoordinator?
+    var dataSource: UBottomSheetCoordinatorDataSource?
+    var sheetVC: DraggableItem?
+    
+    private var lastSelectedAnnotation: MKAnnotation?
+    
+    private var isShowingBottomSheet = false
+    
     private let output: HomeScreenViewOutput
     
     private lazy var mapView: MKMapView = {
@@ -41,6 +50,37 @@ final class HomeScreenViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layoutMapView()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        guard sheetCoordinator == nil,
+              let dataSource = dataSource,
+              var sheetVC = sheetVC
+        else { return }
+        
+        let sheetCoordinator = UBottomSheetCoordinator(parent: self)
+        sheetCoordinator.dataSource = dataSource
+        
+        self.sheetCoordinator = sheetCoordinator
+        
+        sheetVC.sheetCoordinator = sheetCoordinator
+        sheetCoordinator.addSheet(sheetVC, to: self, didContainerCreate: { container in
+            let frame = self.view.frame
+            let rect = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height)
+            container.roundCorners(corners: [.topLeft, .topRight], radius: 10, rect: rect)
+        })
+    }
+    
+    func startShowingBottomSheet() {
+        if !isShowingBottomSheet {
+            showBottomSheet()
+            isShowingBottomSheet = true
+        } else {
+            sheetCoordinator?.removeSheet()
+            showBottomSheet()
+        }
     }
 }
 
@@ -81,6 +121,25 @@ private extension HomeScreenViewController {
             mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
+    func showBottomSheet() {
+        guard let dataSource = dataSource,
+              var sheetVC = sheetVC
+        else { return }
+        
+        let sheetCoordinator = UBottomSheetCoordinator(parent: self)
+        sheetCoordinator.dataSource = dataSource
+        
+        self.sheetCoordinator = sheetCoordinator
+        sheetCoordinator.delegate = self
+        
+        sheetVC.sheetCoordinator = sheetCoordinator
+        sheetCoordinator.addSheet(sheetVC, to: self, didContainerCreate: { container in
+            let frame = self.view.frame
+            let rect = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height)
+            container.roundCorners(corners: [.topLeft, .topRight], radius: 10, rect: rect)
+        })
+    }
 }
 
 extension HomeScreenViewController: HomeScreenViewInput {
@@ -104,7 +163,7 @@ extension HomeScreenViewController: HomeScreenViewInput {
 
 extension HomeScreenViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let coffeeShopAnnotation = annotation as? CoffeeShopAnnotation else { return nil }
+        guard annotation is CoffeeShopAnnotation else { return nil }
         
         return CoffeeShopMarkerAnnotationView(annotation: annotation, reuseIdentifier: "CoffeeShopMarkerAnnotationView")
     }
@@ -120,8 +179,20 @@ extension HomeScreenViewController: MKMapViewDelegate {
         
         mapView.setRegion(region, animated: true)
         
+        lastSelectedAnnotation = annotation
+        
         if let coffeeShop = annotation.coffeeShop {
             output.openDetail(with: coffeeShop)
+        }
+    }
+}
+
+extension HomeScreenViewController: UBottomSheetCoordinatorDelegate {
+    func bottomSheet(_ container: UIView?, finishTranslateWith extraAnimation: @escaping ((CGFloat) -> Void) -> Void) {
+        extraAnimation { [weak self] num in
+            if num < 0, let annotation = self?.lastSelectedAnnotation {
+                self?.mapView.deselectAnnotation(annotation, animated: true)
+            }
         }
     }
 }
