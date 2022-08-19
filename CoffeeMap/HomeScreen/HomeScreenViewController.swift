@@ -104,8 +104,7 @@ private extension HomeScreenViewController {
         let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 200000)
         mapView.setCameraZoomRange(zoomRange, animated: true)
         
-        mapView.register(CoffeeShopMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        mapView.register(CoffeeShopClusterAnnotation.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+//        mapView.register(CoffeeShopMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
         mapView.setRegion(region, animated: true)
         mapView.delegate = self
@@ -163,26 +162,33 @@ extension HomeScreenViewController: HomeScreenViewInput {
 
 extension HomeScreenViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard annotation is CoffeeShopAnnotation else { return nil }
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "CoffeeShopMarkerAnnotationView")
         
-        return CoffeeShopMarkerAnnotationView(annotation: annotation, reuseIdentifier: "CoffeeShopMarkerAnnotationView")
+        if annotationView == nil {
+            let markerView = CoffeeShopMarkerAnnotationView(annotation: annotation, reuseIdentifier: "CoffeeShopMarkerAnnotationView")
+            annotationView = markerView
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        return annotationView
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let annotation = view.annotation as? CoffeeShopAnnotation else { return }
-        
-        let latCorrection = mapView.region.span.latitudeDelta / 4 + mapView.region.span.latitudeDelta / 8
-        
-        let region = MKCoordinateRegion(center: .init(latitude: annotation.coordinate.latitude - latCorrection,
-                                                      longitude: annotation.coordinate.longitude),
-                                        span: mapView.region.span)
-        
-        mapView.setRegion(region, animated: true)
-        
-        lastSelectedAnnotation = annotation
-        
-        if let coffeeShop = annotation.coffeeShop {
-            output.openDetail(with: coffeeShop)
+        if let annotation = view.annotation as? CoffeeShopAnnotation {
+            let latCorrection = mapView.region.span.latitudeDelta / 4 + mapView.region.span.latitudeDelta / 8
+            
+            let region = MKCoordinateRegion(center: .init(latitude: annotation.coordinate.latitude - latCorrection,
+                                                          longitude: annotation.coordinate.longitude),
+                                            span: mapView.region.span)
+            
+            mapView.setRegion(region, animated: true)
+            
+            lastSelectedAnnotation = annotation
+            
+            if let coffeeShop = annotation.coffeeShop {
+                output.openDetail(with: coffeeShop)
+            }
         }
     }
 }
@@ -192,6 +198,7 @@ extension HomeScreenViewController: UBottomSheetCoordinatorDelegate {
         extraAnimation { [weak self] num in
             if num < 0, let annotation = self?.lastSelectedAnnotation {
                 self?.mapView.deselectAnnotation(annotation, animated: true)
+                self?.isShowingBottomSheet = false
             }
         }
     }
