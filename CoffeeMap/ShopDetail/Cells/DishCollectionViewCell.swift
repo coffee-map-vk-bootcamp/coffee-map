@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class DishCollectionViewCell: UICollectionViewCell {
     
@@ -34,6 +35,15 @@ final class DishCollectionViewCell: UICollectionViewCell {
     
     private lazy var dishImageView = UIImageView()
     
+    private lazy var selectedBlurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .systemThinMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.layer.cornerRadius = 4
+        blurView.layer.masksToBounds = true
+        blurView.alpha = 0.75
+        return blurView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -44,7 +54,7 @@ final class DishCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with dish: Dish) {
-        dishImageView.image = UIImage(named: AppImageNames.mockDishImage)
+        dishImageView.image = UIImage(named: AppImageNames.mockDishImage1)?.kf.blurred(withRadius: 30)
         dishNameLabel.text = dish.name
         priceLabel.text = "\(dish.price) ₽"
     }
@@ -54,6 +64,7 @@ final class DishCollectionViewCell: UICollectionViewCell {
         layoutDishImageView()
         layoutNameLabel()
         layoutPriceLabel()
+        layoutSelectedBlurView()
     }
     
     override func prepareForReuse() {
@@ -61,21 +72,20 @@ final class DishCollectionViewCell: UICollectionViewCell {
         dishImageView.image = nil
         dishNameLabel.text = nil
         priceLabel.text = nil
+        blurView.effect = nil
+        
     }
     
 }
 
 private extension DishCollectionViewCell {
     func setupViews() {
-        [priceLabel, dishImageView, blurView, dishNameLabel].forEach {
+        [priceLabel, dishNameLabel, blurView, dishImageView, selectedBlurView].forEach {
             contentView.addSubview($0)
         }
     }
     
     func setupDishImageView() {
-        let image = UIImage(named: AppImageNames.mockDishImage1)
-        
-        dishImageView.image = image
         dishImageView.contentMode = .scaleAspectFit
     }
     
@@ -85,10 +95,10 @@ private extension DishCollectionViewCell {
         dishImageView.sizeToFit()
 
         NSLayoutConstraint.activate([
-            dishImageView.leadingAnchor.constraint(equalTo: blurView.leadingAnchor),
-            dishImageView.trailingAnchor.constraint(equalTo: blurView.trailingAnchor),
-            dishImageView.topAnchor.constraint(equalTo: blurView.topAnchor),
-            dishImageView.bottomAnchor.constraint(equalTo: blurView.bottomAnchor)
+            dishImageView.topAnchor.constraint(equalTo: topAnchor),
+            dishImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            dishImageView.heightAnchor.constraint(equalToConstant: 95),
+            dishImageView.widthAnchor.constraint(equalToConstant: 95)
         ])
     }
     
@@ -96,8 +106,8 @@ private extension DishCollectionViewCell {
         blurView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            blurView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-            blurView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            blurView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            blurView.centerXAnchor.constraint(equalTo: centerXAnchor),
             blurView.heightAnchor.constraint(equalToConstant: 95),
             blurView.widthAnchor.constraint(equalToConstant: 95)
         ])
@@ -125,5 +135,16 @@ private extension DishCollectionViewCell {
             priceLabel.trailingAnchor.constraint(equalTo: dishNameLabel.trailingAnchor),
             priceLabel.topAnchor.constraint(equalTo: dishNameLabel.bottomAnchor, constant: 6)
         ])   
+    }
+    
+    func layoutSelectedBlurView() {
+        selectedBlurView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            selectedBlurView.topAnchor.constraint(equalTo: blurView.topAnchor),
+            selectedBlurView.leadingAnchor.constraint(equalTo: blurView.leadingAnchor),
+            selectedBlurView.trailingAnchor.constraint(equalTo: blurView.trailingAnchor),
+            selectedBlurView.bottomAnchor.constraint(equalTo: blurView.bottomAnchor)
+        ])
     }
 }

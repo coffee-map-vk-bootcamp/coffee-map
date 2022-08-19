@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
 enum FireBaseError: Error {
     case userNotLogin
@@ -61,6 +62,31 @@ final class FBService: NetworkManagerDescription {
     private func getUserId() -> String? {
         return Auth.auth().currentUser?.uid
     }
+    
+    static func downloadImage(from url: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        print("Download Started")
+        guard let url = URL(string: url) else { return }
+        getData(from: url) { result in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let data):
+                guard let image = UIImage(data: data) else { return }
+                completion(.success(image))
+            }
+        }
+    }
+    
+    static func getData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                guard let data = data else { return }
+                completion(.success(data))
+            }
+        }.resume()
+    }
 }
 
 private extension FBService {
@@ -91,6 +117,23 @@ final class FBAuthService {
                 completion(.failure(err))
                 return
             }
+            guard let id = Auth.auth().currentUser?.uid else {
+                completion(.failure(MockError()))
+                return
+            }
+            FBService.dataBase.collection("users").document(id).setData(["name": email])
+            completion(.success("Success"))
         })
+    }
+    
+    static func updateUser(id: String, user: User, completion: @escaping (Result<String, Error>) -> Void) {
+        let userDict = ["id": user.id, "name": user.name, "favoriteCoffeeShops": user.favoriteCoffeeShops, "order": user.orders] as [String: Any]
+        FBService.dataBase.collection("users").document(id).setData(userDict, merge: true) { error in
+            if error == nil {
+                completion(.success("data updated"))
+            } else {
+                completion(.failure(MockError()))
+            }
+        }
     }
 }

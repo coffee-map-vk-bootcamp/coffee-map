@@ -9,6 +9,7 @@
 import Foundation
 
 final class LoginPresenter {
+    
     weak var view: LoginViewInput?
     weak var moduleOutput: LoginModuleOutput?
     
@@ -25,13 +26,18 @@ extension LoginPresenter: LoginModuleInput {
 }
 
 extension LoginPresenter: LoginViewOutput {
+    func signUp(email: String, pas: String, repeatPas: String) {
+        if pas != repeatPas { return }
+        interactor.signUp(email: email, pas: pas)
+    }
+    
     func login(email: String, pas: String) {
         interactor.login(email: email, pas: pas)
     }
 }
 
 extension LoginPresenter: LoginInteractorOutput {
-    func goToMainScreen(){
+    func goToMainScreen() {
         router.successLogin()
     }
 }

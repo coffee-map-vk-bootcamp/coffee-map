@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class CoffeeShopDetailScreenPresenter {
     weak var view: CoffeeShopDetailScreenViewInput?
@@ -52,8 +53,16 @@ extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenModuleInput {
 }
 
 extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenViewOutput {
+    func item(at index: Int) -> DishSection {
+        return sections[index]
+    }
+    
+    func number(of section: Int) -> Int {
+        return sections[section].dishes.count
+    }
+    
     func didLoadView() {
-        interactor.loadItems()
+        sections = interactor.loadItems()
     }
     
     func image(at url: String) -> Data? {
@@ -64,8 +73,8 @@ extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenViewOutput {
         return sections.count
     }
     
-    func item(at index: Int) -> DishSection {
-        return sections[index]
+    func item(at section: Int, with index: Int) -> Dish {
+        return sections[section].dishes[index]
     }
     
     func didSelectDish(with item: Dish) {
@@ -78,5 +87,11 @@ extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenInteractorOutpu
 }
 
 extension CoffeeShopDetailScreenPresenter: DishConfiguratorModuleOutput {
+    func didFinishConfiguration() {
+        router.showAlert()
+    }
     
+    func finishConfigure() {
+        
+    }
 }
