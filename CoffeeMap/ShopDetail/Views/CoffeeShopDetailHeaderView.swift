@@ -14,6 +14,15 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
         return headerView
     }()
     
+    private lazy var gradientLayer: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.type = .axial
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.75).cgColor]
+        return gradient
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -24,24 +33,12 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        layoutHeader()
-    }
-    
     private func setup() {
+        headerImageView.layer.addSublayer(gradientLayer)
+        headerImageView.frame = bounds
+        gradientLayer.frame = headerImageView.bounds
         addSubview(headerImageView)
         clipsToBounds = true
-    }
-    
-    private func layoutHeader() {
-        headerImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            headerImageView.topAnchor.constraint(equalTo: topAnchor),
-            headerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            headerImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
     }
     
     func configure(with image: UIImage?) {

@@ -61,6 +61,12 @@ private extension HomeScreenViewController {
         let initialLocation = CLLocationCoordinate2D(latitude: 43.41243, longitude: 39.96577)
         let region = MKCoordinateRegion(center: initialLocation, latitudinalMeters: 500, longitudinalMeters: 500)
         
+        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 200000)
+        mapView.setCameraZoomRange(zoomRange, animated: true)
+        
+        mapView.register(CoffeeShopMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        mapView.register(CoffeeShopClusterAnnotation.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+        
         mapView.setRegion(region, animated: true)
         mapView.delegate = self
     }
@@ -98,24 +104,24 @@ extension HomeScreenViewController: HomeScreenViewInput {
 
 extension HomeScreenViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "CoffeeShopMarkerAnnotationView")
+        guard let coffeeShopAnnotation = annotation as? CoffeeShopAnnotation else { return nil }
         
-        if annotationView == nil {
-            let markerView = CoffeeShopMarkerAnnotationView(annotation: annotation, reuseIdentifier: "CoffeeShopMarkerAnnotationView")
-            annotationView = markerView
-        } else {
-            annotationView?.annotation = annotation
-        }
-        
-        return annotationView
+        return CoffeeShopMarkerAnnotationView(annotation: annotation, reuseIdentifier: "CoffeeShopMarkerAnnotationView")
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? CoffeeShopAnnotation else { return }
         
+        let latCorrection = mapView.region.span.latitudeDelta / 4 + mapView.region.span.latitudeDelta / 8
+        
+        let region = MKCoordinateRegion(center: .init(latitude: annotation.coordinate.latitude - latCorrection,
+                                                      longitude: annotation.coordinate.longitude),
+                                        span: mapView.region.span)
+        
+        mapView.setRegion(region, animated: true)
+        
         if let coffeeShop = annotation.coffeeShop {
             output.openDetail(with: coffeeShop)
         }
     }
-    
 }

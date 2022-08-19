@@ -777,7 +777,6 @@ PODS:
     - Libuv-gRPC (= 0.0.10)
   - gRPC-Core/Interface (1.44.0)
   - GTMSessionFetcher/Core (2.0.0)
-  - Kingfisher (7.3.2)
   - leveldb-library (1.22.1)
   - Libuv-gRPC (0.0.10):
     - Libuv-gRPC/Implementation (= 0.0.10)
@@ -792,14 +791,15 @@ PODS:
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.1.1)
   - SwiftLint (0.48.0)
+  - UBottomSheet (1.0.10)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
-  - Kingfisher
   - SwiftLint
+  - UBottomSheet
 
 SPEC REPOS:
   trunk:
@@ -824,12 +824,12 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
-    - Kingfisher
     - leveldb-library
     - Libuv-gRPC
     - nanopb
     - PromisesObjC
     - SwiftLint
+    - UBottomSheet
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -853,13 +853,13 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9675f953ace2b3de7c506039d77be1f2e77a8db2
   gRPC-Core: 943e491cb0d45598b0b0eb9e910c88080369290b
   GTMSessionFetcher: 681175626052e03fdde7952f7e9c7a9785719506
-  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
+  UBottomSheet: a40ddcad489bb6d5f6171ffa96f161e558fcfaf0
 
-PODFILE CHECKSUM: 67e3e8fff386503a0df897a90de813342d4495ea
+PODFILE CHECKSUM: 023350bdc7a3218a4034f8be24ef1fd6f8641fa1
 
 COCOAPODS: 1.11.3

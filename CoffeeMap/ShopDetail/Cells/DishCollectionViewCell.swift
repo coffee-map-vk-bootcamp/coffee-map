@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 final class DishCollectionViewCell: UICollectionViewCell {
     
@@ -54,7 +53,7 @@ final class DishCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with dish: Dish) {
-        dishImageView.image = UIImage(named: AppImageNames.mockDishImage1)?.kf.blurred(withRadius: 30)
+//        dishImageView.image = UIImage(named: AppImageNames.mockDishImage1)?.kf.blurred(withRadius: 30)
         dishNameLabel.text = dish.name
         priceLabel.text = "\(dish.price) ₽"
     }

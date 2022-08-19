@@ -9,9 +9,13 @@ import Foundation
 import MapKit
 
 final class CoffeeShopMarkerAnnotationView: MKMarkerAnnotationView {
+    static var clusteringIdentifier: String {
+        NSStringFromClass(self)
+    }
+    
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        clusteringIdentifier = "CoffeeShops"
+        clusteringIdentifier = Self.clusteringIdentifier
     }
     
     required init?(coder aDecoder: NSCoder) {
