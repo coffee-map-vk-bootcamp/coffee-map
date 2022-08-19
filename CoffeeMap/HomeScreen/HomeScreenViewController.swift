@@ -104,8 +104,6 @@ private extension HomeScreenViewController {
         let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 200000)
         mapView.setCameraZoomRange(zoomRange, animated: true)
         
-//        mapView.register(CoffeeShopMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        
         mapView.setRegion(region, animated: true)
         mapView.delegate = self
     }
