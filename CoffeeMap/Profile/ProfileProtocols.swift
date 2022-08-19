@@ -16,15 +16,26 @@ protocol ProfileModuleOutput: AnyObject {
 }
 
 protocol ProfileViewInput: AnyObject {
+    func didLoad(user: User)
 }
 
 protocol ProfileViewOutput: AnyObject {
+    var count: Int { get }
+
+    func item(at index: Int) -> Order
+
+    func loadUser()
+
+    func prepare(data model: Order) -> ReceiptCellModel
 }
 
 protocol ProfileInteractorInput: AnyObject {
+    func obtainUser()
 }
 
 protocol ProfileInteractorOutput: AnyObject {
+    func didObtain(_ user: User)
+    func didFail(with error: Error)
 }
 
 protocol ProfileRouterInput: AnyObject {

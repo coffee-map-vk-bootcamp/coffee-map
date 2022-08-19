@@ -17,6 +17,22 @@ final class MainTabBarController: UITabBarController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private lazy var bounceAnimation: CAKeyframeAnimation = {
+        let animation = CAKeyframeAnimation(keyPath: "transform.scale.xy")
+        animation.values = [0.8, 0.5, 0.9, 1.1, 1.0]
+        animation.duration = TimeInterval(0.3)
+
+        return animation
+    }()
+
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        guard let imageView = item.value(forKey: "view") as? UIView else {
+            return
+        }
+
+        imageView.layer.add(bounceAnimation, forKey: nil)
+    }
 
     private func configure() {
         let homeScreen = UINavigationController(rootViewController: UIViewController())

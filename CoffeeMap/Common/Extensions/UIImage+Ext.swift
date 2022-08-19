@@ -1,5 +1,5 @@
 //
-//  UIImage+extencion.swift
+//  UIImage+Ext.swift
 //  CoffeeMap
 //
 //  Created by Дмитрий Голубев on 11.08.2022.

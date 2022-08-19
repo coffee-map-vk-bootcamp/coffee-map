@@ -11,11 +11,9 @@ import UIKit
 final class ProfileViewController: UIViewController {
 	private let output: ProfileViewOutput
 
-    private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        return collection
-    }()
+    private let tableView = UITableView()
+
+    private var header: ProfileTableViewHeader?
 
     init(output: ProfileViewOutput) {
         self.output = output
@@ -32,68 +30,66 @@ final class ProfileViewController: UIViewController {
 		super.viewDidLoad()
         setup()
         layout()
+        output.loadUser()
 	}
 
     private func setup() {
-        collectionView.register(ProfileCollectionViewHeader.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: String(describing: ProfileCollectionViewHeader.self))
-        collectionView.register(ReceiptCollectionViewCell.self,
-                                forCellWithReuseIdentifier: String(describing: ReceiptCollectionViewCell.self))
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        tableView.register(ProfileTableViewHeader.self, forHeaderFooterViewReuseIdentifier: String(describing: ProfileTableViewHeader.self))
+        tableView.register(ReceiptCollectionViewCell.self, forCellReuseIdentifier: String(describing: ReceiptCollectionViewCell.self))
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
     }
 
     private func layout() {
-        view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        let collectionConstraints = [
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        let tableViewConstraints = [
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ]
 
-        NSLayoutConstraint.activate(collectionConstraints)
+        NSLayoutConstraint.activate(tableViewConstraints)
     }
 }
 
-// MARK: UICollectionViewDataSource
+// MARK: UITableViewDataSource
 
-extension ProfileViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+extension ProfileViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        output.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ReceiptCollectionViewCell.self),
-                                                  for: indexPath)
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader {
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                         withReuseIdentifier: String(describing: ProfileCollectionViewHeader.self),
-                                                                         for: indexPath)
-            return header
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ReceiptCollectionViewCell.self))
+                as? ReceiptCollectionViewCell else {
+            return UITableViewCell()
         }
-        assert(false)
+        let model = output.prepare(data: output.item(at: indexPath.row))
+        cell.configure(with: model)
+        return cell
     }
 }
 
-// MARK: UICollectionViewDelegateFlowLayout
+// MARK: UITableViewDelegate
 
-extension ProfileViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: view.frame.width, height: 100)
+extension ProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let tableViewHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: ProfileTableViewHeader.self))
+        header = tableViewHeader as? ProfileTableViewHeader
+        return tableViewHeader
     }
 }
 
 // MARK: ProfileViewInput
 
 extension ProfileViewController: ProfileViewInput {
+    func didLoad(user: User) {
+        header?.configure(with: user)
+        UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve) { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
 }
