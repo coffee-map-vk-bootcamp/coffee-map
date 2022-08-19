@@ -93,7 +93,7 @@ private extension FBService {
     
     func coffeeShops(from snapshot: QuerySnapshot?) -> [CoffeeShop]? {
         return snapshot?.documents.compactMap {
-            try! ModelConverter.convert(from: $0)
+            try? ModelConverter.convert(from: $0)
         }
     }
 }
