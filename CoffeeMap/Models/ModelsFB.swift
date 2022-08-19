@@ -38,7 +38,6 @@ struct OrderDish: Decodable {
 }
 
 struct User: Decodable {
-    let id: String
     let name: String
     let favoriteCoffeeShops: [String]
     let orders: [Order]

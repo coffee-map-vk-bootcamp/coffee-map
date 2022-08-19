@@ -21,7 +21,7 @@ protocol NetworkManagerDescription {
 }
 
 final class FBService: NetworkManagerDescription {
-    private let dataBase = Firestore.firestore()
+    let dataBase = Firestore.firestore()
     
     func addCoffeeShopsSubscription(completion: @escaping (Result<[CoffeeShop], Error>) -> Void) {
         dataBase.collection("coffeeShops").addSnapshotListener { [weak self] (querySnapshot, err) in
@@ -63,7 +63,7 @@ final class FBService: NetworkManagerDescription {
         return Auth.auth().currentUser?.uid
     }
     
-    static func downloadImage(from url: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+    func downloadImage(from url: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
         print("Download Started")
         guard let url = URL(string: url) else { return }
         getData(from: url) { result in
@@ -77,7 +77,7 @@ final class FBService: NetworkManagerDescription {
         }
     }
     
-    static func getData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+    func getData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 completion(.failure(error))
@@ -118,21 +118,21 @@ final class FBAuthService {
                 return
             }
             guard let id = Auth.auth().currentUser?.uid else {
-                completion(.failure(MockError()))
+                completion(.failure(FireBaseError.userNotFound))
                 return
             }
-            FBService.dataBase.collection("users").document(id).setData(["name": email])
+            FBService().dataBase.collection("users").document(id).setData(["name": email])
             completion(.success("Success"))
         })
     }
     
     static func updateUser(id: String, user: User, completion: @escaping (Result<String, Error>) -> Void) {
-        let userDict = ["id": user.id, "name": user.name, "favoriteCoffeeShops": user.favoriteCoffeeShops, "order": user.orders] as [String: Any]
-        FBService.dataBase.collection("users").document(id).setData(userDict, merge: true) { error in
+        let userDict = ["name": user.name, "favoriteCoffeeShops": user.favoriteCoffeeShops, "order": user.orders] as [String: Any]
+        FBService().dataBase.collection("users").document(id).setData(userDict, merge: true) { error in
             if error == nil {
                 completion(.success("data updated"))
             } else {
-                completion(.failure(MockError()))
+                completion(.failure(FireBaseError.dataParseError))
             }
         }
     }

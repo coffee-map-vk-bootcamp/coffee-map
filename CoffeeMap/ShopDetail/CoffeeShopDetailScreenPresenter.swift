@@ -23,21 +23,21 @@ final class CoffeeShopDetailScreenPresenter {
         self.interactor = interactor
         
         sections = [
-            .init(sectionTitle: "Drinks You Might Like", headerImageURL: "", dishes: [
+            .init(sectionTitle: "Drinks You Might Like", dishes: [
                 .init(name: "Coffee", price: 1235, image: ""),
                 .init(name: "Baton", price: 1235, image: ""),
                 .init(name: "Tea", price: 1235, image: ""),
                 .init(name: "Pepsi", price: 1235, image: ""),
                 .init(name: "Water", price: 1235, image: "")
             ]),
-            .init(sectionTitle: "Drinks", headerImageURL: "", dishes: [
+            .init(sectionTitle: "Drinks", dishes: [
                 .init(name: "Coffee", price: 222, image: ""),
                 .init(name: "Baton", price: 222, image: ""),
                 .init(name: "Tea", price: 222, image: ""),
                 .init(name: "Pepsi", price: 222, image: ""),
                 .init(name: "Water", price: 222, image: "")
             ]),
-            .init(sectionTitle: "Water Food", headerImageURL: "", dishes: [
+            .init(sectionTitle: "Water Food", dishes: [
                 .init(name: "Coffee", price: 222, image: ""),
                 .init(name: "Baton", price: 222, image: ""),
                 .init(name: "Tea", price: 222, image: ""),

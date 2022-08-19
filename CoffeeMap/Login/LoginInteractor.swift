@@ -14,7 +14,7 @@ final class LoginInteractor {
 
 extension LoginInteractor: LoginInteractorInput {
     func signUp(email: String, pas: String) {
-        FBAuthService.createUser(withEmail: email, username: email, password: pas) { result in
+        FBAuthService().createUser(withEmail: email, username: email, password: pas) { result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
