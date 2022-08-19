@@ -24,11 +24,11 @@ final class FBService: NetworkManagerDescription {
     let dataBase = Firestore.firestore()
     
     func addCoffeeShopsSubscription(completion: @escaping (Result<[CoffeeShop], Error>) -> Void) {
-        dataBase.collection("coffeeShops").addSnapshotListener { [weak self] (querySnapshot, err) in
+        dataBase.collection("coffeeShops").addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                guard let result = self?.coffeeShops(from: querySnapshot) else { return }
+                guard let result = self.coffeeShops(from: querySnapshot) else { return }
                 completion(.success(result))
             }
         }
@@ -93,7 +93,7 @@ private extension FBService {
     
     func coffeeShops(from snapshot: QuerySnapshot?) -> [CoffeeShop]? {
         return snapshot?.documents.compactMap {
-            try? ModelConverter.convert(from: $0)
+            try! ModelConverter.convert(from: $0)
         }
     }
 }
