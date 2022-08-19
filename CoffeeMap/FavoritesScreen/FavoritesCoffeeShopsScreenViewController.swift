@@ -26,7 +26,7 @@ final class FavoritesCoffeeShopsScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Favorites Coffee Shops"
+        navigationItem.title = "Любимые кофейни"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.black,

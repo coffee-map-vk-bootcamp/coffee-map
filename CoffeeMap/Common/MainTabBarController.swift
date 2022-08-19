@@ -17,6 +17,22 @@ final class MainTabBarController: UITabBarController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private lazy var bounceAnimation: CAKeyframeAnimation = {
+        let animation = CAKeyframeAnimation(keyPath: "transform.scale.xy")
+        animation.values = [0.8, 0.5, 0.9, 1.1, 1.0]
+        animation.duration = TimeInterval(0.3)
+
+        return animation
+    }()
+
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        guard let imageView = item.value(forKey: "view") as? UIView else {
+            return
+        }
+
+        imageView.layer.add(bounceAnimation, forKey: nil)
+    }
 
     private func configure() {
         setupAppearance()
@@ -35,7 +51,9 @@ final class MainTabBarController: UITabBarController {
         let favouriteScreen = UINavigationController(rootViewController: favouritesViewController)
         favouriteScreen.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: AppImageNames.favorite), tag: 0)
 
-        let profileScreen = UINavigationController(rootViewController: UIViewController())
+        let profileContext = ProfileContext(moduleOutput: nil)
+        let profileContainer = ProfileContainer.assemble(with: profileContext)
+        let profileScreen = UINavigationController(rootViewController: profileContainer.viewController)
         profileScreen.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: AppImageNames.persone), tag: 0)
 
         viewControllers = [homeScreen, cartScreen, favouriteScreen, profileScreen]
