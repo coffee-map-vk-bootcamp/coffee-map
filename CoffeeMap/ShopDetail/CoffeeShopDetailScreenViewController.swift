@@ -184,12 +184,14 @@ extension CoffeeShopDetailScreenViewController: UICollectionViewDataSource {
         if kind == UICollectionView.elementKindSectionHeader {
             let header = collectionView.dequeueReusableSupplementaryView(
                 SectionTitleHeaderReusableView.self, ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
-            header.configure(with: "Section")
+            let headerName = output.item(at: indexPath.row).sectionTitle
+            header.configure(with: headerName)
             return header
         } else if kind == Constants.HeaderKind.globalHeader {
             let header = collectionView.dequeueReusableSupplementaryView(
                 CoffeeShopDetailHeaderView.self, ofKind: Constants.HeaderKind.globalHeader, for: indexPath)
-            header.configure(with: .init(named: AppImageNames.mockHeader))
+            let imageUrlString = output.getCoffeeShopImage()
+            header.configure(with: imageUrlString)
             return header
         } else {
             fatalError()

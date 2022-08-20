@@ -8,8 +8,8 @@
 import UIKit
 
 class CoffeeShopDetailHeaderView: UICollectionReusableView {
-    private lazy var headerImageView: UIImageView = {
-        let headerView = UIImageView()
+    private lazy var headerImageView: SkeletonImageView = {
+        let headerView = SkeletonImageView()
         headerView.contentMode = .scaleAspectFill
         return headerView
     }()
@@ -41,7 +41,7 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
         clipsToBounds = true
     }
     
-    func configure(with image: UIImage?) {
-        headerImageView.image = image
+    func configure(with imageUrlString: String) {
+        headerImageView.setImage(with: imageUrlString)
     }
 }

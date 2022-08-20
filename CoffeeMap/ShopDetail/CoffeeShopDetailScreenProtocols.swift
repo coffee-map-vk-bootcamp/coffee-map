@@ -27,6 +27,7 @@ protocol CoffeeShopDetailScreenViewOutput: AnyObject {
     func item(at section: Int, with index: Int) -> Dish
     func number(of section: Int) -> Int
     func image(at url: String) -> Data?
+    func getCoffeeShopImage() -> String
     
     func didLoadView()
     func didSelectDish(with item: Dish)
@@ -34,6 +35,7 @@ protocol CoffeeShopDetailScreenViewOutput: AnyObject {
 
 protocol CoffeeShopDetailScreenInteractorInput: AnyObject {
     func loadItems() -> [DishSection]
+    func getCoffeeShopImage() -> String
 }
 
 protocol CoffeeShopDetailScreenInteractorOutput: AnyObject {

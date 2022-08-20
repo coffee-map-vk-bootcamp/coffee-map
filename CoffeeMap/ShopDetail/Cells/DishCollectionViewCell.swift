@@ -24,20 +24,27 @@ final class DishCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private let cornerRadius: CGFloat = 16
+    
     private lazy var blurView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .systemChromeMaterial)
         let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.layer.cornerRadius = 4
+        blurView.layer.cornerRadius = cornerRadius
         blurView.layer.masksToBounds = true
         return blurView
     }()
     
-    private lazy var dishImageView = UIImageView()
+    private lazy var dishImageView: SkeletonImageView = {
+        let imageView = SkeletonImageView()
+        imageView.layer.cornerRadius = cornerRadius
+        imageView.layer.masksToBounds = true
+        return imageView
+    }()
     
     private lazy var selectedBlurView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .systemThinMaterial)
         let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.layer.cornerRadius = 4
+        blurView.layer.cornerRadius = cornerRadius
         blurView.layer.masksToBounds = true
         blurView.alpha = 0.75
         return blurView
@@ -53,17 +60,15 @@ final class DishCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with dish: Dish) {
-//        dishImageView.image = UIImage(named: AppImageNames.mockDishImage1)?.kf.blurred(withRadius: 30)
+        dishImageView.setImage(with: dish.image)
         dishNameLabel.text = dish.name
         priceLabel.text = "\(dish.price) ₽"
     }
     
     override func layoutSubviews() {
-        layoutBlurView()
         layoutDishImageView()
         layoutNameLabel()
         layoutPriceLabel()
-        layoutSelectedBlurView()
     }
     
     override func prepareForReuse() {
