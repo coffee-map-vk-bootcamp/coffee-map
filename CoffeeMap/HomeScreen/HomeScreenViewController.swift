@@ -175,6 +175,13 @@ extension HomeScreenViewController: MKMapViewDelegate {
             if let coffeeShop = annotation.coffeeShop {
                 output.openDetail(with: coffeeShop)
             }
+        } else if let annotation = view.annotation as? MKClusterAnnotation {
+            let latCorrection = mapView.region.span.latitudeDelta / 8
+            let span = MKCoordinateSpan(latitudeDelta: latCorrection, longitudeDelta: latCorrection)
+            
+            let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
+            
+            mapView.setRegion(region, animated: true)
         }
     }
 }
