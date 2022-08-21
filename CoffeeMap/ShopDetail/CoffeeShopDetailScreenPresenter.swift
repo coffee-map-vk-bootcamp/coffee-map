@@ -28,8 +28,8 @@ extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenModuleInput {
 }
 
 extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenViewOutput {
-    func getCoffeeShopImage() -> String {
-        return interactor.getCoffeeShopImage()
+    func getCoffeeShop() -> CoffeeShop {
+        return interactor.getCoffeeShop()
     }
     
     func item(at index: Int) -> DishSection {
@@ -41,12 +41,7 @@ extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenViewOutput {
     }
     
     func didLoadView() {
-        
         sections = interactor.loadItems()
-    }
-    
-    func image(at url: String) -> Data? {
-        return nil
     }
     
     var count: Int {

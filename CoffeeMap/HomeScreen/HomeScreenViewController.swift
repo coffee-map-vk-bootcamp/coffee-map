@@ -55,22 +55,6 @@ final class HomeScreenViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        guard sheetCoordinator == nil,
-              let dataSource = dataSource,
-              var sheetVC = sheetVC
-        else { return }
-        
-        let sheetCoordinator = UBottomSheetCoordinator(parent: self)
-        sheetCoordinator.dataSource = dataSource
-        
-        self.sheetCoordinator = sheetCoordinator
-        
-        sheetVC.sheetCoordinator = sheetCoordinator
-        sheetCoordinator.addSheet(sheetVC, to: self, didContainerCreate: { container in
-            let frame = self.view.frame
-            let rect = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height)
-            container.roundCorners(corners: [.topLeft, .topRight], radius: 10, rect: rect)
-        })
     }
     
     func startShowingBottomSheet() {

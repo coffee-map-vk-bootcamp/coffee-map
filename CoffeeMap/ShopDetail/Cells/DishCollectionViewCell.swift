@@ -123,9 +123,9 @@ private extension DishCollectionViewCell {
         dishNameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            dishNameLabel.leadingAnchor.constraint(equalTo: blurView.leadingAnchor),
-            dishNameLabel.trailingAnchor.constraint(equalTo: blurView.trailingAnchor),
-            dishNameLabel.topAnchor.constraint(equalTo: blurView.bottomAnchor, constant: 20)
+            dishNameLabel.leadingAnchor.constraint(equalTo: dishImageView.leadingAnchor),
+            dishNameLabel.trailingAnchor.constraint(equalTo: dishImageView.trailingAnchor),
+            dishNameLabel.topAnchor.constraint(equalTo: dishImageView.bottomAnchor, constant: 20)
         ])
     }
     
