@@ -34,7 +34,7 @@ protocol CoffeeShopDetailScreenViewOutput: AnyObject {
 
 protocol CoffeeShopDetailScreenInteractorInput: AnyObject {
     func loadItems() -> [DishSection]
-    func getCoffeeShop() -> CoffeeShop
+    func getCoffeeShop() -> CoffeeShop    
 }
 
 protocol CoffeeShopDetailScreenInteractorOutput: AnyObject {

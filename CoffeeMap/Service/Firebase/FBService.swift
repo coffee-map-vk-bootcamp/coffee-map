@@ -50,10 +50,6 @@ final class FBService: NetworkManagerDescription {
             completion(.success(result))
         }
     }
-
-    private func getUserId() -> String? {
-        return Auth.auth().currentUser?.uid
-    }
     
     func downloadImage(from url: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
         print("Download Started")
@@ -88,4 +84,9 @@ private extension FBService {
             try? ModelConverter.convert(from: $0)
         }
     }
+    
+    func getUserId() -> String? {
+        return Auth.auth().currentUser?.uid
+    }
+
 }

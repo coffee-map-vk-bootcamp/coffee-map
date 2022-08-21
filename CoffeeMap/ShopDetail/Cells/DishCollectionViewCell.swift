@@ -125,7 +125,7 @@ private extension DishCollectionViewCell {
         NSLayoutConstraint.activate([
             dishNameLabel.leadingAnchor.constraint(equalTo: dishImageView.leadingAnchor),
             dishNameLabel.trailingAnchor.constraint(equalTo: dishImageView.trailingAnchor),
-            dishNameLabel.topAnchor.constraint(equalTo: dishImageView.bottomAnchor, constant: 20)
+            dishNameLabel.topAnchor.constraint(equalTo: dishImageView.bottomAnchor, constant: 16)
         ])
     }
     

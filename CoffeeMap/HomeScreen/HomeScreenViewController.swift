@@ -30,6 +30,7 @@ final class HomeScreenViewController: UIViewController {
     }()
     
     private var tappedCoffeeShop: CoffeeShop?
+    private var lastAnnotations: [MKAnnotation] = []
     
     init(output: HomeScreenViewOutput) {
         self.output = output
@@ -126,6 +127,8 @@ private extension HomeScreenViewController {
 extension HomeScreenViewController: HomeScreenViewInput {
     func showLocations(_ shops: [CoffeeShop]) {
         
+        mapView.removeAnnotations(lastAnnotations)
+        
         var annotations = [MKPointAnnotation]()
         
         for shop in shops {
@@ -138,6 +141,7 @@ extension HomeScreenViewController: HomeScreenViewInput {
             annotations.append(point)
         }
         
+        lastAnnotations = annotations
         mapView.addAnnotations(annotations)
     }
 }

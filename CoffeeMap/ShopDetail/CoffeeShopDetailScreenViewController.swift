@@ -103,7 +103,7 @@ private extension CoffeeShopDetailScreenViewController {
             let numberOfItems = output.number(of: sectionNumber)
             
             let item = NSCollectionLayoutItem(
-                layoutSize: .init(widthDimension: .absolute(contentSize.width / 4), heightDimension: .absolute(165)))
+                layoutSize: .init(widthDimension: .absolute(contentSize.width / 4), heightDimension: .absolute(170)))
             
             let cellWidth = CGFloat(numberOfItems * 100 + (numberOfItems - 1)) * interItemSpacing
             let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(cellWidth), heightDimension: .estimated(165))

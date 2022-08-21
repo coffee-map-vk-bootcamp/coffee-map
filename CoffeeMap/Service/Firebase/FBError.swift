@@ -12,4 +12,5 @@ enum FirebaseError: Error {
     case userNotFound
     case receivedNilData
     case dataParseError
+    case coffeeShopNotFound
 }

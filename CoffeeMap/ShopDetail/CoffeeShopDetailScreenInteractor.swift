@@ -16,6 +16,22 @@ final class CoffeeShopDetailScreenInteractor {
     
     func setCoffeeShop(_ coffeeShop: CoffeeShop) {
         self.coffeeShop = coffeeShop
+        prepareData(for: coffeeShop)
+    }
+}
+
+extension CoffeeShopDetailScreenInteractor: CoffeeShopDetailScreenInteractorInput {
+    func getCoffeeShop() -> CoffeeShop {
+        return coffeeShop ?? .init()
+    }
+    
+    func loadItems() -> [DishSection] {
+        return sections
+    }
+}
+
+private extension CoffeeShopDetailScreenInteractor {
+    func prepareData(for coffeeShop: CoffeeShop) {
         let drinksSection = DishSection(sectionTitle: "Drinks", dishes: coffeeShop.drinks)
         let dishSection = DishSection(sectionTitle: "Dishes", dishes: coffeeShop.dishes)
         
@@ -29,15 +45,5 @@ final class CoffeeShopDetailScreenInteractor {
         }
         
         sections = totalSections
-    }
-}
-
-extension CoffeeShopDetailScreenInteractor: CoffeeShopDetailScreenInteractorInput {
-    func getCoffeeShop() -> CoffeeShop {
-        return coffeeShop ?? .init()
-    }
-    
-    func loadItems() -> [DishSection] {
-        return sections
     }
 }
