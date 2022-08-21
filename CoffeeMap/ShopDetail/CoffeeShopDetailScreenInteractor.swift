@@ -19,7 +19,15 @@ final class CoffeeShopDetailScreenInteractor {
         let drinksSection = DishSection(sectionTitle: "Drinks", dishes: coffeeShop.drinks)
         let dishSection = DishSection(sectionTitle: "Dishes", dishes: coffeeShop.dishes)
         
-        let totalSections = [drinksSection, dishSection]
+        var totalSections: [DishSection] = []
+        if drinksSection.dishes.count > 0 {
+            totalSections.append(drinksSection)
+        }
+        
+        if dishSection.dishes.count > 0 {
+            totalSections.append(dishSection)
+        }
+        
         sections = totalSections
     }
 }
