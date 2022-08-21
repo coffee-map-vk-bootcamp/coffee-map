@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1BE80E28B0DA1000817529 /* CartScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE80828B0DA1000817529 /* CartScreenPresenter.swift */; };
+		0A1BE80F28B0DA1000817529 /* CartScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE80928B0DA1000817529 /* CartScreenRouter.swift */; };
+		0A1BE81028B0DA1000817529 /* CartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE80A28B0DA1000817529 /* CartScreenViewController.swift */; };
+		0A1BE81128B0DA1000817529 /* CartScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE80B28B0DA1000817529 /* CartScreenProtocols.swift */; };
+		0A1BE81228B0DA1000817529 /* CartScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE80C28B0DA1000817529 /* CartScreenInteractor.swift */; };
+		0A1BE81328B0DA1000817529 /* CartScreenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE80D28B0DA1000817529 /* CartScreenContainer.swift */; };
+		0A1BE81528B0DC0400817529 /* CartList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE81428B0DC0400817529 /* CartList.swift */; };
+		0A1BE81728B0EE4600817529 /* CartListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE81628B0EE4600817529 /* CartListHeader.swift */; };
+		0A1BE81928B0F7C300817529 /* CartListFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE81828B0F7C300817529 /* CartListFooter.swift */; };
+		0A1BE81B28B11C6200817529 /* CartScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE81A28B11C6200817529 /* CartScreenCell.swift */; };
 		0A2DFCAD28A6616E00C7F5BB /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCA728A6616E00C7F5BB /* LoginPresenter.swift */; };
 		0A2DFCAE28A6616E00C7F5BB /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCA828A6616E00C7F5BB /* LoginRouter.swift */; };
 		0A2DFCAF28A6616E00C7F5BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCA928A6616E00C7F5BB /* LoginViewController.swift */; };
@@ -88,6 +98,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A1BE80828B0DA1000817529 /* CartScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenPresenter.swift; sourceTree = "<group>"; };
+		0A1BE80928B0DA1000817529 /* CartScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenRouter.swift; sourceTree = "<group>"; };
+		0A1BE80A28B0DA1000817529 /* CartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenViewController.swift; sourceTree = "<group>"; };
+		0A1BE80B28B0DA1000817529 /* CartScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenProtocols.swift; sourceTree = "<group>"; };
+		0A1BE80C28B0DA1000817529 /* CartScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenInteractor.swift; sourceTree = "<group>"; };
+		0A1BE80D28B0DA1000817529 /* CartScreenContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenContainer.swift; sourceTree = "<group>"; };
+		0A1BE81428B0DC0400817529 /* CartList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartList.swift; sourceTree = "<group>"; };
+		0A1BE81628B0EE4600817529 /* CartListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListHeader.swift; sourceTree = "<group>"; };
+		0A1BE81828B0F7C300817529 /* CartListFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListFooter.swift; sourceTree = "<group>"; };
+		0A1BE81A28B11C6200817529 /* CartScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenCell.swift; sourceTree = "<group>"; };
 		0A2DFCA728A6616E00C7F5BB /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		0A2DFCA828A6616E00C7F5BB /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		0A2DFCA928A6616E00C7F5BB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +204,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A1BE80728B0D9FD00817529 /* CartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0A1BE80828B0DA1000817529 /* CartScreenPresenter.swift */,
+				0A1BE80928B0DA1000817529 /* CartScreenRouter.swift */,
+				0A1BE80A28B0DA1000817529 /* CartScreenViewController.swift */,
+				0A1BE80B28B0DA1000817529 /* CartScreenProtocols.swift */,
+				0A1BE80C28B0DA1000817529 /* CartScreenInteractor.swift */,
+				0A1BE80D28B0DA1000817529 /* CartScreenContainer.swift */,
+				0A1BE81428B0DC0400817529 /* CartList.swift */,
+				0A1BE81628B0EE4600817529 /* CartListHeader.swift */,
+				0A1BE81828B0F7C300817529 /* CartListFooter.swift */,
+				0A1BE81A28B11C6200817529 /* CartScreenCell.swift */,
+			);
+			path = CartScreen;
+			sourceTree = "<group>";
+		};
 		0A2DFCA628A6601500C7F5BB /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +265,7 @@
 		0A8F951D28A24F8200ED90F9 /* CoffeeMap */ = {
 			isa = PBXGroup;
 			children = (
+				0A1BE80728B0D9FD00817529 /* CartScreen */,
 				A737099328B03E1C00A74547 /* Service */,
 				A6CFA98528A66FE200B538DE /* Profile */,
 				A63AC17928ACC5FA005E7907 /* ImageManager.swift */,
@@ -583,7 +621,7 @@
 		};
 		A734E4DD28A25F5400F8E4EC /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -595,7 +633,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
@@ -610,11 +648,13 @@
 				A7832AD528AE50A70093EB4C /* FavoritesCoffeeShopsScreenProtocols.swift in Sources */,
 				0A2DFCAD28A6616E00C7F5BB /* LoginPresenter.swift in Sources */,
 				A7832AD628AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift in Sources */,
+				0A1BE81728B0EE4600817529 /* CartListHeader.swift in Sources */,
 				A73A1B1428AABD6A00D5022D /* HomeScreenRouter.swift in Sources */,
 				0A2DFCB128A6616E00C7F5BB /* LoginInteractor.swift in Sources */,
 				A737099228B02DA300A74547 /* CoffeeShopBottomSheetDataSource.swift in Sources */,
 				0A8F954028A4D37300ED90F9 /* UIView+Ext.swift in Sources */,
 				0A8F954228A4D47A00ED90F9 /* UITextField+Ext.swift in Sources */,
+				0A1BE81228B0DA1000817529 /* CartScreenInteractor.swift in Sources */,
 				A7832AD728AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift in Sources */,
 				A7832AD328AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift in Sources */,
 				0A2DFCB028A6616E00C7F5BB /* LoginProtocols.swift in Sources */,
@@ -622,6 +662,7 @@
 				A63AC17F28ACCB76005E7907 /* SkeletonImageView.swift in Sources */,
 				A6CFA99628A680B100B538DE /* ReceiptCollectionViewCell.swift in Sources */,
 				A6CFA99128A6700B00B538DE /* ProfileContainer.swift in Sources */,
+				0A1BE81328B0DA1000817529 /* CartScreenContainer.swift in Sources */,
 				A63AC17C28ACC6D1005E7907 /* ImageCache.swift in Sources */,
 				A63AC17628AA326C005E7907 /* AppColors.swift in Sources */,
 				A6CFA99028A6700B00B538DE /* ProfileInteractor.swift in Sources */,
@@ -636,6 +677,7 @@
 				A73A1B1328AABD6A00D5022D /* HomeScreenPresenter.swift in Sources */,
 				A72AFD0D28A663F20048634C /* DishConfiguratorInteractor.swift in Sources */,
 				A72AFD0928A663F20048634C /* DishConfiguratorPresenter.swift in Sources */,
+				0A1BE81B28B11C6200817529 /* CartScreenCell.swift in Sources */,
 				A73A1B1E28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift in Sources */,
 				A73A1B1528AABD6A00D5022D /* HomeScreenViewController.swift in Sources */,
 				A7FB192128B03EB900BB5943 /* FBError.swift in Sources */,
@@ -646,6 +688,7 @@
 				A713A95328A55CD900769321 /* DishSection.swift in Sources */,
 				A7024FC028A2BF82006103CD /* CoffeeShopDetailHeaderView.swift in Sources */,
 				A713A92228A5102B00769321 /* CoffeeShopDetailScreenProtocols.swift in Sources */,
+				0A1BE80F28B0DA1000817529 /* CartScreenRouter.swift in Sources */,
 				A7832ADA28AE54410093EB4C /* UIViewController+Ext.swift in Sources */,
 				A73A1B1828AABD6A00D5022D /* HomeScreenContainer.swift in Sources */,
 				A72AFD0E28A663F20048634C /* DishConfiguratorContainer.swift in Sources */,
@@ -657,19 +700,23 @@
 				A7832AD428AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift in Sources */,
 				0A2DFCB228A6616E00C7F5BB /* LoginContainer.swift in Sources */,
 				A7832AD228AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift in Sources */,
+				0A1BE81528B0DC0400817529 /* CartList.swift in Sources */,
 				A648A3E528A2A6EB00413915 /* AppImageNames.swift in Sources */,
 				0A8F953E28A4D32A00ED90F9 /* LoginView.swift in Sources */,
 				0A2DFCBF28A934D200C7F5BB /* ModelConverter.swift in Sources */,
+				0A1BE81128B0DA1000817529 /* CartScreenProtocols.swift in Sources */,
 				A76377C228AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift in Sources */,
 				0A2DFCBB28A6825100C7F5BB /* ModelsFB.swift in Sources */,
 				0A2DFCAE28A6616E00C7F5BB /* LoginRouter.swift in Sources */,
 				A72AFD0C28A663F20048634C /* DishConfiguratorProtocols.swift in Sources */,
 				A73A1B1628AABD6A00D5022D /* HomeScreenProtocols.swift in Sources */,
+				0A1BE81928B0F7C300817529 /* CartListFooter.swift in Sources */,
 				A73A1B2228AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift in Sources */,
 				A713A92428A5102B00769321 /* CoffeeShopDetailScreenContainer.swift in Sources */,
 				A713A92128A5102B00769321 /* CoffeeShopDetailScreenViewController.swift in Sources */,
 				0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */,
 				A6CFA98E28A6700B00B538DE /* ProfileViewController.swift in Sources */,
+				0A1BE80E28B0DA1000817529 /* CartScreenPresenter.swift in Sources */,
 				A6CFA98D28A6700B00B538DE /* ProfileRouter.swift in Sources */,
 				A63AC17228AA3090005E7907 /* ProfileHeaderModel.swift in Sources */,
 				A63AC17428AA309E005E7907 /* ReceiptCellModel.swift in Sources */,
@@ -679,6 +726,7 @@
 				A72AFD0B28A663F20048634C /* DishConfiguratorViewController.swift in Sources */,
 				5F94ED1428AD1F1300D89E3D /* ShopListViewController.swift in Sources */,
 				A73A1B1C28AE28D200D5022D /* CoffeeShopAnnotation.swift in Sources */,
+				0A1BE81028B0DA1000817529 /* CartScreenViewController.swift in Sources */,
 				A7054BCF28AA7C5F0082E9E5 /* SectionTitleHeaderReusableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

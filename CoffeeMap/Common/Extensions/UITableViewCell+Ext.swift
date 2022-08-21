@@ -12,3 +12,9 @@ extension UITableViewCell {
         return NSStringFromClass(self)
     }
 }
+
+extension UITableViewHeaderFooterView {
+    static var reuseIdentifier: String {
+        return NSStringFromClass(self)
+    }
+}
