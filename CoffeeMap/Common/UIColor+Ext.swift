@@ -1,5 +1,5 @@
 //
-//  AppColors.swift
+//  UIColor+Ext.swift
 //  CoffeeMap
 //
 //  Created by Матвей Борисов on 15.08.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct AppColors {
+extension UIColor {
     static let primary = UIColor(hex: "49B17E")
     static let secondaryBackground = UIColor(hex: "FBFBFB")
     static let borderColor = UIColor(hex: "E8E8E8")
