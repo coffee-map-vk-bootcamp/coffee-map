@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import UBottomSheet
 
 final class CoffeeShopDetailScreenViewController: UIViewController {
+    var sheetCoordinator: UBottomSheetCoordinator?
+    
     private let output: CoffeeShopDetailScreenViewOutput
     
     private lazy var collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
@@ -39,6 +42,11 @@ final class CoffeeShopDetailScreenViewController: UIViewController {
         super.viewDidLayoutSubviews()
         layoutCollectionView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        sheetCoordinator?.startTracking(item: self)
+    }
 }
 
 extension CoffeeShopDetailScreenViewController: CoffeeShopDetailScreenViewInput {
@@ -48,6 +56,21 @@ private extension CoffeeShopDetailScreenViewController {
     func setup() {
         loadSetup()
         setupCollectionView()
+        setupNavigationBar()
+    }
+    
+    func setupNavigationBar() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithTransparentBackground()
+        
+        navigationController?.navigationBar.tintColor = .white
+        
+        navigationItem.scrollEdgeAppearance = navigationBarAppearance
+        navigationItem.standardAppearance = navigationBarAppearance
+        navigationItem.compactAppearance = navigationBarAppearance
+        navigationController?.setNeedsStatusBarAppearanceUpdate()
+        
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
     }
     
     func loadSetup() {
@@ -80,7 +103,7 @@ private extension CoffeeShopDetailScreenViewController {
             let numberOfItems = output.number(of: sectionNumber)
             
             let item = NSCollectionLayoutItem(
-                layoutSize: .init(widthDimension: .absolute(contentSize.width / 4), heightDimension: .absolute(165)))
+                layoutSize: .init(widthDimension: .absolute(contentSize.width / 4), heightDimension: .absolute(170)))
             
             let cellWidth = CGFloat(numberOfItems * 100 + (numberOfItems - 1)) * interItemSpacing
             let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(cellWidth), heightDimension: .estimated(165))
@@ -132,7 +155,7 @@ private extension CoffeeShopDetailScreenViewController {
 
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
@@ -161,12 +184,14 @@ extension CoffeeShopDetailScreenViewController: UICollectionViewDataSource {
         if kind == UICollectionView.elementKindSectionHeader {
             let header = collectionView.dequeueReusableSupplementaryView(
                 SectionTitleHeaderReusableView.self, ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
-            header.configure(with: "Section")
+            let headerName = output.item(at: indexPath.section).sectionTitle
+            header.configure(with: headerName)
             return header
         } else if kind == Constants.HeaderKind.globalHeader {
             let header = collectionView.dequeueReusableSupplementaryView(
                 CoffeeShopDetailHeaderView.self, ofKind: Constants.HeaderKind.globalHeader, for: indexPath)
-            header.configure(with: .init(named: AppImageNames.mockHeader))
+            let coffeeShop = output.getCoffeeShop()
+            header.configure(with: coffeeShop)
             return header
         } else {
             fatalError()
@@ -177,6 +202,13 @@ extension CoffeeShopDetailScreenViewController: UICollectionViewDataSource {
 
 extension CoffeeShopDetailScreenViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let model = output.item(at: indexPath.section, with: indexPath.item)
+        output.didSelectDish(with: model)
+    }
+}
+
+extension CoffeeShopDetailScreenViewController: Draggable {
+    func draggableView() -> UIScrollView? {
+        return collectionView
     }
 }

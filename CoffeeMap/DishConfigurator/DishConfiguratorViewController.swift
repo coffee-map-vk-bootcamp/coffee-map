@@ -10,7 +10,15 @@ import UIKit
 
 final class DishConfiguratorViewController: UIViewController {
     private let output: DishConfiguratorViewOutput
-
+    
+    private let alertView = DishConfigurationAlertView()
+    private let visualEffectView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
+        let view = UIVisualEffectView(effect: blurEffect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     init(output: DishConfiguratorViewOutput) {
         self.output = output
 
@@ -29,24 +37,41 @@ final class DishConfiguratorViewController: UIViewController {
 }
 
 extension DishConfiguratorViewController: DishConfiguratorViewInput {
+    func dismiss() {
+        remove()
+    }
+    
 }
 
 private extension DishConfiguratorViewController {
     func setup() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .clear
+        view.addSubview(visualEffectView)
         
-        let button = UIButton(frame: .init(x: 0, y: 0, width: 100, height: 50))
-        button.backgroundColor = .gray
-        button.layer.cornerRadius = 16
-        button.layer.masksToBounds = true
-        view.addSubview(button)
-        button.center = view.center
+        NSLayoutConstraint.activate([
+            visualEffectView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            visualEffectView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            visualEffectView.topAnchor.constraint(equalTo: view.topAnchor),
+            visualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
         
-        button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        view.addSubview(alertView)
+        alertView.translatesAutoresizingMaskIntoConstraints = false
+        
+        alertView.delegate = self
+        
+        NSLayoutConstraint.activate([
+            alertView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            alertView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
+            alertView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 60),
+            alertView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height - 300)
+            
+        ])
     }
-    
-    @objc func dismissView() {
-        dismiss(animated: true)
-        output.didCloseView()
+}
+
+extension DishConfiguratorViewController: DishConfigurationAlertViewDelegate {
+    func didTapClose() {
+        output.didTapClose()
     }
 }

@@ -19,7 +19,6 @@
 		0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F952028A24F8200ED90F9 /* SceneDelegate.swift */; };
 		0A8F952828A24F8300ED90F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A8F952728A24F8300ED90F9 /* Assets.xcassets */; };
 		0A8F952B28A24F8300ED90F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A8F952928A24F8300ED90F9 /* LaunchScreen.storyboard */; };
-		0A8F953C28A4D29700ED90F9 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */; };
 		0A8F953E28A4D32A00ED90F9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F953D28A4D32A00ED90F9 /* LoginView.swift */; };
 		0A8F954028A4D37300ED90F9 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F953F28A4D37300ED90F9 /* UIView+Ext.swift */; };
 		0A8F954228A4D47A00ED90F9 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F954128A4D47A00ED90F9 /* UITextField+Ext.swift */; };
@@ -62,6 +61,7 @@
 		A730E90928A3C3E900A3B4C4 /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A730E90828A3C3E900A3B4C4 /* UITableViewCell+Ext.swift */; };
 		A730E90B28A3C42C00A3B4C4 /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A730E90A28A3C42C00A3B4C4 /* UICollectionView+Ext.swift */; };
 		A730E90D28A424F700A3B4C4 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A730E90C28A424F700A3B4C4 /* UIColor+Ext.swift */; };
+		A737099228B02DA300A74547 /* CoffeeShopBottomSheetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A737099128B02DA300A74547 /* CoffeeShopBottomSheetDataSource.swift */; };
 		A73A1B1328AABD6A00D5022D /* HomeScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B0D28AABD6A00D5022D /* HomeScreenPresenter.swift */; };
 		A73A1B1428AABD6A00D5022D /* HomeScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B0E28AABD6A00D5022D /* HomeScreenRouter.swift */; };
 		A73A1B1528AABD6A00D5022D /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B0F28AABD6A00D5022D /* HomeScreenViewController.swift */; };
@@ -71,6 +71,9 @@
 		A73A1B1C28AE28D200D5022D /* CoffeeShopAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1B28AE28D200D5022D /* CoffeeShopAnnotation.swift */; };
 		A73A1B1E28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1D28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift */; };
 		A73A1B2228AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */; };
+		A76377C228AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76377C128AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift */; };
+		A782BDDC28B3617900E6990E /* DishConfigurationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782BDDB28B3617900E6990E /* DishConfigurationAlertView.swift */; };
+		A782BDDF28B3641800E6990E /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782BDDE28B3641800E6990E /* UILabel+Ext.swift */; };
 		A7832AD228AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACC28AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift */; };
 		A7832AD328AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACD28AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift */; };
 		A7832AD428AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACE28AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift */; };
@@ -79,6 +82,9 @@
 		A7832AD728AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD128AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift */; };
 		A7832ADA28AE54410093EB4C /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */; };
 		A7EFD3AF28AE4DF5005CACC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7EFD3AE28AE4DF5005CACC1 /* GoogleService-Info.plist */; };
+		A7FB191D28B03E5900BB5943 /* FBAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FB191C28B03E5900BB5943 /* FBAuthService.swift */; };
+		A7FB191F28B03E7100BB5943 /* FBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FB191E28B03E7100BB5943 /* FBService.swift */; };
+		A7FB192128B03EB900BB5943 /* FBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FB192028B03EB900BB5943 /* FBError.swift */; };
 		AFB32D5F131EC0A124E76104 /* Pods_CoffeeMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A41E375819B870F0AF202A /* Pods_CoffeeMap.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,7 +103,6 @@
 		0A8F952728A24F8300ED90F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A8F952A28A24F8300ED90F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A8F952C28A24F8300ED90F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
 		0A8F953D28A4D32A00ED90F9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0A8F953F28A4D37300ED90F9 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0A8F954128A4D47A00ED90F9 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
@@ -142,6 +147,7 @@
 		A730E90828A3C3E900A3B4C4 /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		A730E90A28A3C42C00A3B4C4 /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
 		A730E90C28A424F700A3B4C4 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		A737099128B02DA300A74547 /* CoffeeShopBottomSheetDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopBottomSheetDataSource.swift; sourceTree = "<group>"; };
 		A73A1B0D28AABD6A00D5022D /* HomeScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenPresenter.swift; sourceTree = "<group>"; };
 		A73A1B0E28AABD6A00D5022D /* HomeScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenRouter.swift; sourceTree = "<group>"; };
 		A73A1B0F28AABD6A00D5022D /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +157,9 @@
 		A73A1B1B28AE28D200D5022D /* CoffeeShopAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopAnnotation.swift; sourceTree = "<group>"; };
 		A73A1B1D28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopMarkerAnnotationView.swift; sourceTree = "<group>"; };
 		A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMarkerAnnotationView+Ext.swift"; sourceTree = "<group>"; };
+		A76377C128AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopClusterAnnotation.swift; sourceTree = "<group>"; };
+		A782BDDB28B3617900E6990E /* DishConfigurationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishConfigurationAlertView.swift; sourceTree = "<group>"; };
+		A782BDDE28B3641800E6990E /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		A7832ACC28AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenPresenter.swift; sourceTree = "<group>"; };
 		A7832ACD28AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenRouter.swift; sourceTree = "<group>"; };
 		A7832ACE28AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +168,9 @@
 		A7832AD128AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenContainer.swift; sourceTree = "<group>"; };
 		A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		A7EFD3AE28AE4DF5005CACC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A7FB191C28B03E5900BB5943 /* FBAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthService.swift; sourceTree = "<group>"; };
+		A7FB191E28B03E7100BB5943 /* FBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBService.swift; sourceTree = "<group>"; };
+		A7FB192028B03EB900BB5943 /* FBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBError.swift; sourceTree = "<group>"; };
 		D9A41E375819B870F0AF202A /* Pods_CoffeeMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoffeeMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -218,8 +230,8 @@
 		0A8F951D28A24F8200ED90F9 /* CoffeeMap */ = {
 			isa = PBXGroup;
 			children = (
+				A737099328B03E1C00A74547 /* Service */,
 				A6CFA98528A66FE200B538DE /* Profile */,
-				0A8F953B28A4D29700ED90F9 /* FireBaseManager.swift */,
 				A63AC17928ACC5FA005E7907 /* ImageManager.swift */,
 				A63AC17B28ACC6D1005E7907 /* ImageCache.swift */,
 				0A2DFCB928A6823600C7F5BB /* Models */,
@@ -238,8 +250,9 @@
 			isa = PBXGroup;
 			children = (
 				A63AC17D28ACCB64005E7907 /* Components */,
-				A7832ADB28AE6CE00093EB4C /* Controllers */,
+				A737099028B02D8A00A74547 /* DataSources */,
 				A7054BCC28AA6BAD0082E9E5 /* Constants.swift */,
+				A7832ADB28AE6CE00093EB4C /* Controllers */,
 				A71C552A28A3BFAA00142138 /* Extensions */,
 				A7024FB028A2A2D2006103CD /* Model */,
 				0A8F951E28A24F8200ED90F9 /* AppDelegate.swift */,
@@ -346,6 +359,7 @@
 				A730E90C28A424F700A3B4C4 /* UIColor+Ext.swift */,
 				A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */,
 				A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */,
+				A782BDDE28B3641800E6990E /* UILabel+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -370,6 +384,7 @@
 		A72AFD0228A663C90048634C /* DishConfigurator */ = {
 			isa = PBXGroup;
 			children = (
+				A782BDDD28B3617C00E6990E /* Views */,
 				A72AFD0328A663F20048634C /* DishConfiguratorPresenter.swift */,
 				A72AFD0428A663F20048634C /* DishConfiguratorRouter.swift */,
 				A72AFD0528A663F20048634C /* DishConfiguratorViewController.swift */,
@@ -378,6 +393,32 @@
 				A72AFD0828A663F20048634C /* DishConfiguratorContainer.swift */,
 			);
 			path = DishConfigurator;
+			sourceTree = "<group>";
+		};
+		A737099028B02D8A00A74547 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				A737099128B02DA300A74547 /* CoffeeShopBottomSheetDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		A737099328B03E1C00A74547 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A737099428B03E2300A74547 /* Firebase */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		A737099428B03E2300A74547 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				A7FB191C28B03E5900BB5943 /* FBAuthService.swift */,
+				A7FB191E28B03E7100BB5943 /* FBService.swift */,
+				A7FB192028B03EB900BB5943 /* FBError.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		A73A1B1928AABD7100D5022D /* HomeScreen */ = {
@@ -399,6 +440,15 @@
 			children = (
 				A73A1B1B28AE28D200D5022D /* CoffeeShopAnnotation.swift */,
 				A73A1B1D28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift */,
+				A76377C128AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A782BDDD28B3617C00E6990E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A782BDDB28B3617900E6990E /* DishConfigurationAlertView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -570,10 +620,10 @@
 				0A2DFCAF28A6616E00C7F5BB /* LoginViewController.swift in Sources */,
 				A7832AD528AE50A70093EB4C /* FavoritesCoffeeShopsScreenProtocols.swift in Sources */,
 				0A2DFCAD28A6616E00C7F5BB /* LoginPresenter.swift in Sources */,
-				0A8F953C28A4D29700ED90F9 /* FireBaseManager.swift in Sources */,
 				A7832AD628AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift in Sources */,
 				A73A1B1428AABD6A00D5022D /* HomeScreenRouter.swift in Sources */,
 				0A2DFCB128A6616E00C7F5BB /* LoginInteractor.swift in Sources */,
+				A737099228B02DA300A74547 /* CoffeeShopBottomSheetDataSource.swift in Sources */,
 				0A8F954028A4D37300ED90F9 /* UIView+Ext.swift in Sources */,
 				0A8F954228A4D47A00ED90F9 /* UITextField+Ext.swift in Sources */,
 				A7832AD728AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift in Sources */,
@@ -586,7 +636,9 @@
 				A63AC17C28ACC6D1005E7907 /* ImageCache.swift in Sources */,
 				A6CFA99028A6700B00B538DE /* ProfileInteractor.swift in Sources */,
 				A6CFA98C28A6700B00B538DE /* ProfilePresenter.swift in Sources */,
+				A7FB191F28B03E7100BB5943 /* FBService.swift in Sources */,
 				A730E90928A3C3E900A3B4C4 /* UITableViewCell+Ext.swift in Sources */,
+				A782BDDF28B3641800E6990E /* UILabel+Ext.swift in Sources */,
 				A72AFD0A28A663F20048634C /* DishConfiguratorRouter.swift in Sources */,
 				A713A92328A5102B00769321 /* CoffeeShopDetailScreenInteractor.swift in Sources */,
 				A7054BCD28AA6BAD0082E9E5 /* Constants.swift in Sources */,
@@ -597,6 +649,7 @@
 				A72AFD0928A663F20048634C /* DishConfiguratorPresenter.swift in Sources */,
 				A73A1B1E28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift in Sources */,
 				A73A1B1528AABD6A00D5022D /* HomeScreenViewController.swift in Sources */,
+				A7FB192128B03EB900BB5943 /* FBError.swift in Sources */,
 				A73A1B1728AABD6A00D5022D /* HomeScreenInteractor.swift in Sources */,
 				A730E90B28A3C42C00A3B4C4 /* UICollectionView+Ext.swift in Sources */,
 				A71C551A28A3824300142138 /* DishCollectionViewCell.swift in Sources */,
@@ -610,6 +663,7 @@
 				A713A91F28A5102B00769321 /* CoffeeShopDetailScreenPresenter.swift in Sources */,
 				0A8F951F28A24F8200ED90F9 /* AppDelegate.swift in Sources */,
 				A6CFA98F28A6700B00B538DE /* ProfileProtocols.swift in Sources */,
+				A7FB191D28B03E5900BB5943 /* FBAuthService.swift in Sources */,
 				0A8F954628A4D61400ED90F9 /* UIImage+Ext.swift in Sources */,
 				A7832AD428AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift in Sources */,
 				0A2DFCB228A6616E00C7F5BB /* LoginContainer.swift in Sources */,
@@ -617,11 +671,13 @@
 				A648A3E528A2A6EB00413915 /* AppImageNames.swift in Sources */,
 				0A8F953E28A4D32A00ED90F9 /* LoginView.swift in Sources */,
 				0A2DFCBF28A934D200C7F5BB /* ModelConverter.swift in Sources */,
+				A76377C228AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift in Sources */,
 				0A2DFCBB28A6825100C7F5BB /* ModelsFB.swift in Sources */,
 				0A2DFCAE28A6616E00C7F5BB /* LoginRouter.swift in Sources */,
 				A72AFD0C28A663F20048634C /* DishConfiguratorProtocols.swift in Sources */,
 				A73A1B1628AABD6A00D5022D /* HomeScreenProtocols.swift in Sources */,
 				A73A1B2228AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift in Sources */,
+				A782BDDC28B3617900E6990E /* DishConfigurationAlertView.swift in Sources */,
 				A713A92428A5102B00769321 /* CoffeeShopDetailScreenContainer.swift in Sources */,
 				A713A92128A5102B00769321 /* CoffeeShopDetailScreenViewController.swift in Sources */,
 				0A8F952128A24F8200ED90F9 /* SceneDelegate.swift in Sources */,
@@ -777,7 +833,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = WMWSB972VT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoffeeMap/Common/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -805,7 +861,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = WMWSB972VT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoffeeMap/Common/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

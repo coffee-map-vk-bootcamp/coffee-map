@@ -10,5 +10,5 @@ target 'CoffeeMap' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Core'
-  pod 'Kingfisher'
+  pod 'UBottomSheet'
 end
