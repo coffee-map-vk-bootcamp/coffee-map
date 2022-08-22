@@ -27,7 +27,6 @@
 		5F94ED1428AD1F1300D89E3D /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED1328AD1F1300D89E3D /* ShopListViewController.swift */; };
 		A63AC17228AA3090005E7907 /* ProfileHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AC17128AA3090005E7907 /* ProfileHeaderModel.swift */; };
 		A63AC17428AA309E005E7907 /* ReceiptCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AC17328AA309E005E7907 /* ReceiptCellModel.swift */; };
-		A63AC17628AA326C005E7907 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AC17528AA326C005E7907 /* AppColors.swift */; };
 		A63AC17A28ACC5FA005E7907 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AC17928ACC5FA005E7907 /* ImageManager.swift */; };
 		A63AC17C28ACC6D1005E7907 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AC17B28ACC6D1005E7907 /* ImageCache.swift */; };
 		A63AC17F28ACCB76005E7907 /* SkeletonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AC17E28ACCB76005E7907 /* SkeletonImageView.swift */; };
@@ -114,7 +113,6 @@
 		A47B310C348A00042FA46913 /* Pods-CoffeeMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeMap.release.xcconfig"; path = "Target Support Files/Pods-CoffeeMap/Pods-CoffeeMap.release.xcconfig"; sourceTree = "<group>"; };
 		A63AC17128AA3090005E7907 /* ProfileHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderModel.swift; sourceTree = "<group>"; };
 		A63AC17328AA309E005E7907 /* ReceiptCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCellModel.swift; sourceTree = "<group>"; };
-		A63AC17528AA326C005E7907 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		A63AC17928ACC5FA005E7907 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A63AC17B28ACC6D1005E7907 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		A63AC17E28ACCB76005E7907 /* SkeletonImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonImageView.swift; sourceTree = "<group>"; };
@@ -261,7 +259,6 @@
 				0A8F952028A24F8200ED90F9 /* SceneDelegate.swift */,
 				A648A3E228A2A5ED00413915 /* MainTabBarController.swift */,
 				A648A3E428A2A6EB00413915 /* AppImageNames.swift */,
-				A63AC17528AA326C005E7907 /* AppColors.swift */,
 				0A8F952728A24F8300ED90F9 /* Assets.xcassets */,
 				0A8F952C28A24F8300ED90F9 /* Info.plist */,
 				A7EFD3AE28AE4DF5005CACC1 /* GoogleService-Info.plist */,
@@ -637,7 +634,6 @@
 				A6CFA99628A680B100B538DE /* ReceiptCollectionViewCell.swift in Sources */,
 				A6CFA99128A6700B00B538DE /* ProfileContainer.swift in Sources */,
 				A63AC17C28ACC6D1005E7907 /* ImageCache.swift in Sources */,
-				A63AC17628AA326C005E7907 /* AppColors.swift in Sources */,
 				A6CFA99028A6700B00B538DE /* ProfileInteractor.swift in Sources */,
 				A6CFA98C28A6700B00B538DE /* ProfilePresenter.swift in Sources */,
 				A7FB191F28B03E7100BB5943 /* FBService.swift in Sources */,

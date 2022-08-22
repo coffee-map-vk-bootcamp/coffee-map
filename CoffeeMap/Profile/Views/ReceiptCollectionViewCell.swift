@@ -34,7 +34,7 @@ final class ReceiptCollectionViewCell: UITableViewCell {
     private let detailButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Показать полностью", for: .normal)
-        button.setTitleColor(AppColors.primary, for: .normal)
+        button.setTitleColor(.primary, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         button.isHidden = true
         return button
@@ -55,8 +55,8 @@ final class ReceiptCollectionViewCell: UITableViewCell {
         selectionStyle = .none
 
         let background = UIView()
-        background.backgroundColor = AppColors.secondaryBackground
-        background.layer.borderColor = AppColors.borderColor.cgColor
+        background.backgroundColor = .secondaryBackground
+        background.layer.borderColor = UIColor.borderColor.cgColor
         background.layer.cornerRadius = 12
         background.layer.borderWidth = 1
 
@@ -118,22 +118,22 @@ final class ReceiptCollectionViewCell: UITableViewCell {
 
     private func makeDishView(with model: OrderDish) -> UIView {
         let view = UIView()
-        view.backgroundColor = AppColors.secondaryBackground
+        view.backgroundColor = .secondaryBackground
 
         let nameLabel = UILabel()
-        nameLabel.backgroundColor = AppColors.secondaryBackground
+        nameLabel.backgroundColor = .secondaryBackground
         nameLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
 
         let priceLabel = UILabel()
         priceLabel.textAlignment = .right
-        priceLabel.backgroundColor = AppColors.secondaryBackground
+        priceLabel.backgroundColor = .secondaryBackground
         priceLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         priceLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         priceLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 
         let countLabel = UILabel()
         countLabel.textAlignment = .left
-        countLabel.backgroundColor = AppColors.secondaryBackground
+        countLabel.backgroundColor = .secondaryBackground
         countLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
 
         nameLabel.text = model.name
