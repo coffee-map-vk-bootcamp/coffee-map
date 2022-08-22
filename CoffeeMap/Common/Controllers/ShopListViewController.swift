@@ -9,6 +9,7 @@ import UIKit
 
 protocol ShopListViewControllerDelegate: AnyObject {
     func getCoffeeShops()
+    func remove(at index: Int)
 }
 
 class ShopListViewController: UIViewController {
@@ -38,7 +39,10 @@ class ShopListViewController: UIViewController {
     
     func configure(with shops: [CoffeeShop]) {
         favouriteCoffeeShops = shops
-        favouritesCollectionView.reloadData()
+        self.favouritesCollectionView.performBatchUpdates({
+            let indexSet = IndexSet(integer: 0)
+            self.favouritesCollectionView.reloadSections(indexSet)
+        }, completion: nil)
     }
 }
 
@@ -96,7 +100,8 @@ extension ShopListViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavouritesCell.reuseIdentifier, for: indexPath) as? FavouritesCell
         else { return UICollectionViewCell() }
         let shop = favouriteCoffeeShops[indexPath.row]
-        cell.configure(with: shop)
+        cell.delegate = self
+        cell.configure(with: shop, index: indexPath.item)
         
         return cell
     }
@@ -116,5 +121,11 @@ extension ShopListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 16
+    }
+}
+
+extension ShopListViewController: FavouriteCellDelegate {
+    func remove(at index: Int) {
+        delegate?.remove(at: index)
     }
 }

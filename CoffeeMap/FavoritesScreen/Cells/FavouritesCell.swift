@@ -8,7 +8,13 @@
 import UIKit
 import MapKit
 
+protocol FavouriteCellDelegate: AnyObject {
+    func remove(at index: Int)
+}
+
 final class FavouritesCell: UICollectionViewCell {
+    
+    weak var delegate: FavouriteCellDelegate?
     
     private lazy var placeLabel: UILabel = {
         let label = UILabel()
@@ -79,6 +85,8 @@ final class FavouritesCell: UICollectionViewCell {
         layer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         return layer
     }()
+    
+    private var index: Int!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -97,9 +105,10 @@ final class FavouritesCell: UICollectionViewCell {
         gradientLayer.frame = contentView.bounds
     }
     
-    func configure(with shop: CoffeeShop) {
+    func configure(with shop: CoffeeShop, index: Int) {
         placeLabel.text = shop.name
         addressLabel.text = shop.address
+        self.index = index
     }
     
     private func setupViews() {
@@ -112,8 +121,10 @@ final class FavouritesCell: UICollectionViewCell {
         distanceView.addSubview(distanceLabel)
     }
     
-    @objc private func deleteFavourite() {
-        print("delete")
+    @objc private func deleteFavourite(sender: UIButton) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        delegate?.remove(at: index)
     }
     
     private func setupCell() {

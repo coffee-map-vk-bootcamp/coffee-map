@@ -15,6 +15,12 @@ final class FavoritesCoffeeShopsScreenPresenter {
     private let router: FavoritesCoffeeShopsScreenRouterInput
     private let interactor: FavoritesCoffeeShopsScreenInteractorInput
     
+    private(set) var favoriteShops = [CoffeeShop]()
+    
+    func deleteFavoriteShop(_ index: Int) {
+        favoriteShops.remove(at: index)
+    }
+    
     init(router: FavoritesCoffeeShopsScreenRouterInput, interactor: FavoritesCoffeeShopsScreenInteractorInput) {
         self.router = router
         self.interactor = interactor
@@ -25,14 +31,23 @@ extension FavoritesCoffeeShopsScreenPresenter: FavoritesCoffeeShopsScreenModuleI
 }
 
 extension FavoritesCoffeeShopsScreenPresenter: FavoritesCoffeeShopsScreenViewOutput {
-    func getFavoritesCoffeeShops() {
-        interactor.obtainCoffeeShops()
+    func getCoffeeShops() -> [CoffeeShop] {
+        return favoriteShops
     }
     
+    func remove(at index: Int) {
+        favoriteShops.remove(at: index)
+        
+    }
+    
+    func getFavoritesCoffeeShops() {
+        interactor.fetchCoffeeShops()
+    }
 }
 
 extension FavoritesCoffeeShopsScreenPresenter: FavoritesCoffeeShopsScreenInteractorOutput {
-    func transferCoffeeShops(_ shops: [CoffeeShop]) {
-        view?.setCoffeeShops(shops)
+    func getShops(_ shops: [CoffeeShop]) {
+        favoriteShops = shops
+        view?.setCoffeeShops(favoriteShops)
     }
 }

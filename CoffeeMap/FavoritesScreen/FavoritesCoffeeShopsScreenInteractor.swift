@@ -15,9 +15,14 @@ final class FavoritesCoffeeShopsScreenInteractor {
 }
 
 extension FavoritesCoffeeShopsScreenInteractor: FavoritesCoffeeShopsScreenInteractorInput {
-    
-    func obtainCoffeeShops() {
-        output?.transferCoffeeShops(favoriteCoffeeShops)
+    func fetchCoffeeShops() {
+        FBService().addCoffeeShopsSubscription { [weak self] result in
+            switch result {
+            case .success(let shops):
+                self?.output?.getShops(shops)
+            case .failure(let  error):
+                print(error)
+            }
+        }
     }
-    
 }
