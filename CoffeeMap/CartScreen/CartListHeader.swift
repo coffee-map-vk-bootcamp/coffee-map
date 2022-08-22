@@ -24,7 +24,7 @@ final class CartListHeader: UITableViewHeaderFooterView {
         nameOfCoffeeShop.text = "название кофейни"
         nameOfCoffeeShop.toAutoLayout()
         nameOfCoffeeShop.font = UIFont.systemFont(ofSize: 24)
-        nameOfCoffeeShop.textColor = .systemGray4
+        nameOfCoffeeShop.textColor = .systemGray2
         
         return nameOfCoffeeShop
     }()
@@ -32,23 +32,24 @@ final class CartListHeader: UITableViewHeaderFooterView {
     private lazy var textTimeLabel: UILabel = {
         let textTimeLabel = UILabel()
         textTimeLabel.text = "Приготовить к"
-        textTimeLabel.font = UIFont.systemFont(ofSize: 16)
+        textTimeLabel.font = UIFont.systemFont(ofSize: 24)
         textTimeLabel.textColor = .systemGreen
         textTimeLabel.toAutoLayout()
         
         return textTimeLabel
     }()
     
-    private lazy var timeLabel: UILabel = {
-        let timeLabel = UILabel()
-        timeLabel.text = "12:00"
-        timeLabel.toAutoLayout()
-        timeLabel.font = UIFont.systemFont(ofSize: 40, weight: .bold)
-        timeLabel.textColor = .systemGreen
+    lazy var datePicker: UIDatePicker = {
+        datePicker = UIDatePicker()
+        let localeID = Locale.preferredLanguages.first
+        datePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
+        datePicker.datePickerMode = .time
+        datePicker.preferredDatePickerStyle = .inline
+        datePicker.toAutoLayout()
         
-        return timeLabel
+        return datePicker
     }()
-     
+         
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setup()
@@ -60,7 +61,7 @@ final class CartListHeader: UITableViewHeaderFooterView {
     }
     
     private func setup(){
-        addSubviews([mainLabel, nameOfCoffeeShop, timeLabel, textTimeLabel])
+        addSubviews([mainLabel, nameOfCoffeeShop, datePicker, textTimeLabel])
     }
     
     func configure(name: String) {
@@ -78,11 +79,11 @@ final class CartListHeader: UITableViewHeaderFooterView {
             nameOfCoffeeShop.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
             nameOfCoffeeShop.trailingAnchor.constraint(equalTo: textTimeLabel.leadingAnchor, constant: -10),
             
-            textTimeLabel.topAnchor.constraint(equalTo: mainLabel.topAnchor),
-            textTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            textTimeLabel.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 8),
+            textTimeLabel.leadingAnchor.constraint(equalTo: mainLabel.leadingAnchor),
             
-            timeLabel.topAnchor.constraint(equalTo: textTimeLabel.topAnchor, constant: 18),
-            timeLabel.trailingAnchor.constraint(equalTo: textTimeLabel.trailingAnchor),
+            datePicker.topAnchor.constraint(equalTo: textTimeLabel.topAnchor, constant: -10),
+            datePicker.leadingAnchor.constraint(equalTo: textTimeLabel.trailingAnchor, constant: 4),
         ])
     }
 }

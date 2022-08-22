@@ -31,7 +31,7 @@ final class CartScreenCell: UITableViewCell {
     private lazy var priceLabel: UILabel = {
         let priceLabel = UILabel()
         priceLabel.text = "80₽"
-        priceLabel.textColor = .systemGray4
+        //priceLabel.textColor = .systemGray2
         priceLabel.font = UIFont.systemFont(ofSize: 24)
         priceLabel.toAutoLayout()
         
@@ -41,7 +41,7 @@ final class CartScreenCell: UITableViewCell {
     private lazy var countLabel: UILabel = {
         let countLabel = UILabel()
         countLabel.text = "Количество"
-        countLabel.textColor = .systemGray4
+        countLabel.textColor = .systemGray2
         countLabel.font = UIFont.systemFont(ofSize: 20)
         countLabel.toAutoLayout()
         
@@ -51,7 +51,7 @@ final class CartScreenCell: UITableViewCell {
     private lazy var countNumberLabel: UILabel = {
         let countNumberLabel = UILabel()
         countNumberLabel.text = "2"
-        countNumberLabel.textColor = .systemGray4
+        countNumberLabel.textColor = .systemGray2
         countNumberLabel.font = UIFont.systemFont(ofSize: 20)
         countNumberLabel.toAutoLayout()
         

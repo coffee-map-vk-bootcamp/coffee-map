@@ -8,6 +8,8 @@
 import UIKit
 
 final class ProfileTableViewHeader: UITableViewHeaderFooterView {
+    
+    weak var output: ProfileHeaderOutput?
 
     private let avatarImage: SkeletonImageView = {
         let imageView = SkeletonImageView()
@@ -27,6 +29,7 @@ final class ProfileTableViewHeader: UITableViewHeaderFooterView {
     private let exitButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: AppImageNames.exit)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.addTarget(self, action: #selector(logout), for: .touchUpInside)
         button.tintColor = .black
         return button
     }()
@@ -73,5 +76,10 @@ final class ProfileTableViewHeader: UITableViewHeaderFooterView {
     func configure(with model: User) {
         avatarImage.setImage(with: model.image)
         nameLabel.text = model.name
+    }
+    
+    @objc
+    private func logout() {
+        output?.logout()
     }
 }

@@ -79,6 +79,7 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let tableViewHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: ProfileTableViewHeader.self))
         header = tableViewHeader as? ProfileTableViewHeader
+        header?.output = self
         return tableViewHeader
     }
 }
@@ -91,5 +92,22 @@ extension ProfileViewController: ProfileViewInput {
         UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve) { [weak self] in
             self?.tableView.reloadData()
         }
+    }
+}
+
+extension ProfileViewController : ProfileHeaderOutput {
+    func logout() {
+        showAlert()
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Вы дейстивельно хотите выйти?", message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { [weak self] alert -> Void in
+            self?.output.logout()
+        }
+        ))
+        alert.addAction(UIAlertAction(title: "Нет", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }

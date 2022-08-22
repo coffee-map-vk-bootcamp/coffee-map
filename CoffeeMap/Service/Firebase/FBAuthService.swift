@@ -46,4 +46,13 @@ final class FBAuthService {
             }
         }
     }
+    
+    static func logout(completion: () -> Void){
+        do {
+            try Auth.auth().signOut()
+            completion()
+        } catch (let error){
+            print(error.localizedDescription)
+        }
+    }
 }

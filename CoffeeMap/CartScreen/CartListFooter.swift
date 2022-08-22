@@ -13,7 +13,7 @@ final class CartListFooter: UIView {
     private lazy var sumLabel: UILabel = {
         let sumLabel = UILabel()
         sumLabel.text = "Итого"
-        sumLabel.font = UIFont.systemFont(ofSize: 32)
+        sumLabel.font = UIFont.systemFont(ofSize: 28)
         sumLabel.toAutoLayout()
         
         return sumLabel
@@ -22,7 +22,7 @@ final class CartListFooter: UIView {
     private lazy var priceLabel: UILabel = {
         let priceLabel = UILabel()
         priceLabel.text = "160₽"
-        priceLabel.font = UIFont.systemFont(ofSize: 32)
+        priceLabel.font = UIFont.systemFont(ofSize: 28)
         priceLabel.toAutoLayout()
         
         return priceLabel
@@ -31,7 +31,7 @@ final class CartListFooter: UIView {
     private lazy var buyButton: UIButton = {
         let buyButton = UIButton()
         buyButton.setTitle("Оплатить", for: .normal)
-        buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
         buyButton.backgroundColor = .systemGreen
         buyButton.layer.cornerRadius = 16
         buyButton.clipsToBounds = true
@@ -55,6 +55,7 @@ final class CartListFooter: UIView {
     
     private func setup(){
         addSubviews([sumLabel, priceLabel, buyButton])
+        backgroundColor = .appTintColor
     }
     
     override func layoutSubviews() {

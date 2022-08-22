@@ -55,6 +55,7 @@ final class CartScreenViewController: UIViewController {
         tableView.register(CartScreenCell.self, forCellReuseIdentifier: CartScreenCell.reuseIdentifier)
         tableView.separatorStyle = .none
         tableView.register(CartListHeader.self, forHeaderFooterViewReuseIdentifier: CartListHeader.reuseIdentifier)
+        tableView.allowsSelection = false
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -97,3 +98,4 @@ extension CartScreenViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension CartScreenViewController: CartScreenViewInput {
 }
+
