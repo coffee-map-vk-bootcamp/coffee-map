@@ -14,6 +14,15 @@ final class LoginRouter {
 
 extension LoginRouter: LoginRouterInput {
     func successLogin() {
-        controller?.present(MainTabBarController(), animated: true, completion: nil)
+        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let sceneDelegate = scene.delegate as? UIWindowSceneDelegate else {
+            return
+        }
+
+        let newRootController = MainTabBarController()
+
+        UIView.transition(with: newRootController.view, duration: 0.3, options: .transitionCrossDissolve) {
+            sceneDelegate.window??.rootViewController = newRootController
+        }
     }
 }

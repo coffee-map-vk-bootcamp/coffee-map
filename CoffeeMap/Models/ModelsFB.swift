@@ -24,13 +24,22 @@ struct CoffeeShop: Decodable {
 }
 
 struct Order: Decodable {
+    let name: String
     let totalPrice: Int
-    let dishes: [String: [Dish]]
+    let date: Date
+    let dishes: [OrderDish]
+}
+
+struct OrderDish: Decodable {
+    let name: String
+    let price: Int
+    let image: String
+    let count: Int
 }
 
 struct User: Decodable {
-    let id: String
     let name: String
     let favoriteCoffeeShops: [String]
-    let orders: [String]
+    let orders: [Order]
+    let image: String
 }

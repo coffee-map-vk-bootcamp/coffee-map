@@ -1,5 +1,5 @@
 //
-//  FireBase extencion.swift
+//  FireBaseManager.swift
 //  CoffeeMap
 //
 //  Created by Дмитрий Голубев on 11.08.2022.
@@ -9,25 +9,61 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 
-struct MockError: Error {
-    
+enum FireBaseError: Error {
+    case userNotLogin
+    case userNotFound
+    case receivedNilData
+    case dataParseError
 }
 
-final class FBService {
-    static let dataBase = Firestore.firestore()
+protocol NetworkManagerDescription {
+    func fetchUserData(completion: @escaping (Result<User, Error>) -> Void)
+}
+
+final class FBService: NetworkManagerDescription {
+    let dataBase = Firestore.firestore()
     
-    static func fetchCoffeeShops(completion: @escaping (Result<[CoffeeShop], Error>) -> Void) {
+    func addCoffeeShopsSubscription(completion: @escaping (Result<[CoffeeShop], Error>) -> Void) {
         dataBase.collection("coffeeShops").addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                guard let result = coffeeShops(from: querySnapshot) else { return }
+                guard let result = self.coffeeShops(from: querySnapshot) else { return }
                 completion(.success(result))
             }
         }
     }
+
+    func fetchUserData(completion: @escaping (Result<User, Error>) -> Void) {
+        guard let userId = getUserId() else {
+            completion(.failure(FireBaseError.userNotLogin))
+            return }
+
+        dataBase.collection("users").document(userId).getDocument { document, error in
+            guard error == nil else {
+                completion(.failure(FireBaseError.userNotFound))
+                return
+            }
+
+            guard let document = document else {
+                completion(.failure(FireBaseError.receivedNilData))
+                return
+            }
+
+            guard let result: User = try? ModelConverter.convert(from: document) else {
+                completion(.failure(FireBaseError.dataParseError))
+                return
+            }
+
+            completion(.success(result))
+        }
+    }
+
+    private func getUserId() -> String? {
+        return Auth.auth().currentUser?.uid
+    }
     
-    static func downloadImage(from url: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+    func downloadImage(from url: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
         print("Download Started")
         guard let url = URL(string: url) else { return }
         getData(from: url) { result in
@@ -41,7 +77,7 @@ final class FBService {
         }
     }
     
-    static func getData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+    func getData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 completion(.failure(error))
@@ -55,7 +91,7 @@ final class FBService {
 
 private extension FBService {
     
-    static func coffeeShops(from snapshot: QuerySnapshot?) -> [CoffeeShop]? {
+    func coffeeShops(from snapshot: QuerySnapshot?) -> [CoffeeShop]? {
         return snapshot?.documents.compactMap {
             try? ModelConverter.convert(from: $0)
         }
@@ -63,7 +99,8 @@ private extension FBService {
 }
 
 final class FBAuthService {
-    static func login(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
+    
+    func login(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
             if let error = error {
                 completion(.failure(error))
@@ -71,10 +108,9 @@ final class FBAuthService {
                 completion(.success("Success"))
             }
         }
-
     }
     
-    static func createUser(withEmail email: String, username: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func createUser(withEmail email: String, username: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (_, err) in
             if let err = err {
                 print("Failed to create user:", err)
@@ -82,21 +118,21 @@ final class FBAuthService {
                 return
             }
             guard let id = Auth.auth().currentUser?.uid else {
-                completion(.failure(MockError()))
+                completion(.failure(FireBaseError.userNotFound))
                 return
             }
-            FBService.dataBase.collection("users").document(id).setData(["name": email])
+            FBService().dataBase.collection("users").document(id).setData(["name": email])
             completion(.success("Success"))
         })
     }
     
     static func updateUser(id: String, user: User, completion: @escaping (Result<String, Error>) -> Void) {
-        let userDict = ["id": user.id, "name": user.name, "favoriteCoffeeShops": user.favoriteCoffeeShops, "order": user.orders] as [String: Any]
-        FBService.dataBase.collection("users").document(id).setData(userDict, merge: true) { error in
+        let userDict = ["name": user.name, "favoriteCoffeeShops": user.favoriteCoffeeShops, "order": user.orders] as [String: Any]
+        FBService().dataBase.collection("users").document(id).setData(userDict, merge: true) { error in
             if error == nil {
                 completion(.success("data updated"))
             } else {
-                completion(.failure(MockError()))
+                completion(.failure(FireBaseError.dataParseError))
             }
         }
     }

@@ -8,6 +8,10 @@
 import UIKit
 
 extension UIColor {
+    static let primary = UIColor(hex: "49B17E")
+    static let secondaryBackground = UIColor(hex: "FBFBFB")
+    static let borderColor = UIColor(hex: "E8E8E8")
+    
     convenience init(hex: String) {
         var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
