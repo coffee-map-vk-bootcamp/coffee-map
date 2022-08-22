@@ -8,6 +8,8 @@
 import UIKit
 
 extension UIColor {
+    static let primaryTextColor: UIColor = .init(hex: "#4F4F4F")
+    
     convenience init(hex: String) {
         var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
@@ -28,6 +30,4 @@ extension UIColor {
                   blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
                   alpha: CGFloat(1.0))
     }
-    
-    static let dishItemName: UIColor = .init(hex: " 4F4F4F")
 }

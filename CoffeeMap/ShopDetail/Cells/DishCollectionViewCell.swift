@@ -13,14 +13,14 @@ final class DishCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.numberOfLines = 2
-        label.textColor = .dishItemName
+        label.textColor = .primaryTextColor
         return label
     }()
     
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
-        label.textColor = .dishItemName
+        label.textColor = .primaryTextColor
         return label
     }()
     

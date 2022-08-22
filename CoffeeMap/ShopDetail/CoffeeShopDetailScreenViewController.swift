@@ -202,7 +202,8 @@ extension CoffeeShopDetailScreenViewController: UICollectionViewDataSource {
 
 extension CoffeeShopDetailScreenViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let model = output.item(at: indexPath.section, with: indexPath.item)
+        output.didSelectDish(with: model)
     }
 }
 
