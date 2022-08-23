@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UBottomSheet
 
 final class HomeScreenRouter {
     weak var viewController: UIViewController?
@@ -14,9 +15,17 @@ final class HomeScreenRouter {
 
 extension HomeScreenRouter: HomeScreenRouterInput {
     func showDetail(with coffeeShop: CoffeeShop) {
+        guard let homeViewController = viewController as? HomeScreenViewController else { return }
+        
         let shopDetailContext = CoffeeShopDetailScreenContext(moduleOutput: nil, coffeeShop: coffeeShop)
         
-        let shopDetailViewController = CoffeeShopDetailScreenContainer.assemble(with: shopDetailContext).viewController
-        viewController?.navigationController?.pushViewController(shopDetailViewController, animated: true)
-    }   
+        guard let shopDetailViewController = CoffeeShopDetailScreenContainer.assemble(
+            with: shopDetailContext
+        ).viewController as? CoffeeShopDetailScreenViewController else { return }
+        
+        homeViewController.dataSource = CoffeeShopBottomSheetDataSource()
+        homeViewController.sheetVC = shopDetailViewController
+        
+        homeViewController.startShowingBottomSheet()
+    }
 }

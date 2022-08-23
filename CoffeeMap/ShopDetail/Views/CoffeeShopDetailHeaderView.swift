@@ -8,10 +8,29 @@
 import UIKit
 
 class CoffeeShopDetailHeaderView: UICollectionReusableView {
-    private lazy var headerImageView: UIImageView = {
-        let headerView = UIImageView()
+    private lazy var headerImageView: SkeletonImageView = {
+        let headerView = SkeletonImageView()
         headerView.contentMode = .scaleAspectFill
         return headerView
+    }()
+    
+    private lazy var gradientLayer: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.type = .axial
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.75).cgColor]
+        return gradient
+    }()
+    
+    private lazy var headerTitleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 22, weight: .semibold)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -24,27 +43,39 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        layoutHeader()
+    func configure(with coffeeShop: CoffeeShop) {
+        headerImageView.setImage(with: coffeeShop.image)
+        headerTitleLabel.text = coffeeShop.name
     }
-    
-    private func setup() {
-        addSubview(headerImageView)
+}
+
+private extension CoffeeShopDetailHeaderView {
+    func setup() {
+        setupHeaderImageView()
+        setupGradientLayer()
+        setupHeaderTitleLabel()
+        
         clipsToBounds = true
     }
     
-    private func layoutHeader() {
-        headerImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            headerImageView.topAnchor.constraint(equalTo: topAnchor),
-            headerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            headerImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+    func setupHeaderImageView() {
+        addSubview(headerImageView)
+        headerImageView.frame = bounds
     }
     
-    func configure(with image: UIImage?) {
-        headerImageView.image = image
+    func setupGradientLayer() {
+        headerImageView.layer.addSublayer(gradientLayer)
+        gradientLayer.frame = headerImageView.bounds
+    }
+    
+    func setupHeaderTitleLabel() {
+        addSubview(headerTitleLabel)
+        
+        NSLayoutConstraint.activate([
+            headerTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            headerTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            headerTitleLabel.topAnchor.constraint(equalTo: topAnchor),
+            headerTitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }

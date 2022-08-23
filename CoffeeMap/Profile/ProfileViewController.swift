@@ -9,30 +9,30 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
-	private let output: ProfileViewOutput
-
+    private let output: ProfileViewOutput
+    
     private let tableView = UITableView()
-
+    
     private var header: ProfileTableViewHeader?
-
+    
     init(output: ProfileViewOutput) {
         self.output = output
-
+        
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setup()
         layout()
         output.loadUser()
-	}
-
+    }
+    
     private func setup() {
         tableView.register(ProfileTableViewHeader.self, forHeaderFooterViewReuseIdentifier: String(describing: ProfileTableViewHeader.self))
         tableView.register(ReceiptCollectionViewCell.self, forCellReuseIdentifier: String(describing: ReceiptCollectionViewCell.self))
@@ -40,7 +40,7 @@ final class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
     }
-
+    
     private func layout() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +50,7 @@ final class ProfileViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ]
-
+        
         NSLayoutConstraint.activate(tableViewConstraints)
     }
 }
@@ -61,7 +61,7 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         output.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ReceiptCollectionViewCell.self))
                 as? ReceiptCollectionViewCell else {

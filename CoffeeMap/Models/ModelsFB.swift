@@ -18,9 +18,23 @@ struct CoffeeShop: Decodable {
     let name: String
     let address: String
     let dishes: [Dish]
+    let drinks: [Dish]
     let image: String
     let latitude: Double
     let longitude: Double
+}
+
+extension CoffeeShop {
+    init() {
+        id = ""
+        name = ""
+        address = ""
+        dishes = []
+        drinks = []
+        image = ""
+        latitude = 0.0
+        longitude = 0.0
+    }
 }
 
 struct Order: Decodable {
