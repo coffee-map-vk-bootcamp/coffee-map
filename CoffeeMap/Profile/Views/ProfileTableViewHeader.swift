@@ -80,6 +80,8 @@ final class ProfileTableViewHeader: UITableViewHeaderFooterView {
     
     @objc
     private func logout() {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
         output?.logout()
     }
 }

@@ -34,9 +34,9 @@
 		0A8F954028A4D37300ED90F9 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F953F28A4D37300ED90F9 /* UIView+Ext.swift */; };
 		0A8F954228A4D47A00ED90F9 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F954128A4D47A00ED90F9 /* UITextField+Ext.swift */; };
 		0A8F954628A4D61400ED90F9 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F954528A4D61400ED90F9 /* UIImage+Ext.swift */; };
+		5F76549828B5588B006EB8DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F76549728B5588B006EB8DB /* GoogleService-Info.plist */; };
 		5F94ED0128AAD91A00D89E3D /* FavouritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED0028AAD91A00D89E3D /* FavouritesCell.swift */; };
 		5F94ED1428AD1F1300D89E3D /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94ED1328AD1F1300D89E3D /* ShopListViewController.swift */; };
-		5F94ED2D28B364FC00D89E3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F94ED2C28B364FC00D89E3D /* GoogleService-Info.plist */; };
 		A63AC17228AA3090005E7907 /* ProfileHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AC17128AA3090005E7907 /* ProfileHeaderModel.swift */; };
 		A63AC17428AA309E005E7907 /* ReceiptCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AC17328AA309E005E7907 /* ReceiptCellModel.swift */; };
 		A63AC17A28ACC5FA005E7907 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AC17928ACC5FA005E7907 /* ImageManager.swift */; };
@@ -94,7 +94,6 @@
 		A7832AD628AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD028AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift */; };
 		A7832AD728AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD128AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift */; };
 		A7832ADA28AE54410093EB4C /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */; };
-		A7A04BE128B4BE6E004D8D71 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7A04BE028B4BE6E004D8D71 /* GoogleService-Info.plist */; };
 		A7A04BE328B4CD16004D8D71 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A04BE228B4CD16004D8D71 /* UIButton+Ext.swift */; };
 		A7FB191D28B03E5900BB5943 /* FBAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FB191C28B03E5900BB5943 /* FBAuthService.swift */; };
 		A7FB191F28B03E7100BB5943 /* FBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FB191E28B03E7100BB5943 /* FBService.swift */; };
@@ -133,9 +132,9 @@
 		0A8F954128A4D47A00ED90F9 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		0A8F954528A4D61400ED90F9 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		2B7D7A0E7071EABC6257BA8D /* Pods-CoffeeMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeMap.debug.xcconfig"; path = "Target Support Files/Pods-CoffeeMap/Pods-CoffeeMap.debug.xcconfig"; sourceTree = "<group>"; };
+		5F76549728B5588B006EB8DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F94ED0028AAD91A00D89E3D /* FavouritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCell.swift; sourceTree = "<group>"; };
 		5F94ED1328AD1F1300D89E3D /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
-		5F94ED2C28B364FC00D89E3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A47B310C348A00042FA46913 /* Pods-CoffeeMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeMap.release.xcconfig"; path = "Target Support Files/Pods-CoffeeMap/Pods-CoffeeMap.release.xcconfig"; sourceTree = "<group>"; };
 		A63AC17128AA3090005E7907 /* ProfileHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderModel.swift; sourceTree = "<group>"; };
 		A63AC17328AA309E005E7907 /* ReceiptCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCellModel.swift; sourceTree = "<group>"; };
@@ -194,7 +193,6 @@
 		A7832AD028AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenInteractor.swift; sourceTree = "<group>"; };
 		A7832AD128AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenContainer.swift; sourceTree = "<group>"; };
 		A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
-		A7A04BE028B4BE6E004D8D71 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7A04BE228B4CD16004D8D71 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		A7FB191C28B03E5900BB5943 /* FBAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthService.swift; sourceTree = "<group>"; };
 		A7FB191E28B03E7100BB5943 /* FBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBService.swift; sourceTree = "<group>"; };
@@ -308,7 +306,7 @@
 				A648A3E428A2A6EB00413915 /* AppImageNames.swift */,
 				0A8F952728A24F8300ED90F9 /* Assets.xcassets */,
 				0A8F952C28A24F8300ED90F9 /* Info.plist */,
-				A7A04BE028B4BE6E004D8D71 /* GoogleService-Info.plist */,
+				5F76549728B5588B006EB8DB /* GoogleService-Info.plist */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -594,9 +592,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A8F952B28A24F8300ED90F9 /* LaunchScreen.storyboard in Resources */,
-				A7EFD3AF28AE4DF5005CACC1 /* GoogleService-Info.plist in Resources */,
+				5F76549828B5588B006EB8DB /* GoogleService-Info.plist in Resources */,
 				0A8F952828A24F8300ED90F9 /* Assets.xcassets in Resources */,
-				A7A04BE128B4BE6E004D8D71 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
