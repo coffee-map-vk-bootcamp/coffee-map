@@ -53,7 +53,7 @@ struct OrderDish: Decodable {
 
 struct User: Decodable {
     let name: String
-    let favoriteCoffeeShops: [String]
+    let favoriteCoffeeShops: Set<String>
     let orders: [Order]
     let image: String
 }
