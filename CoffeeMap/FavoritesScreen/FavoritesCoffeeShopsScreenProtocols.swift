@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+import MapKit
 
 protocol FavoritesCoffeeShopsScreenModuleInput {
     var moduleOutput: FavoritesCoffeeShopsScreenModuleOutput? { get }

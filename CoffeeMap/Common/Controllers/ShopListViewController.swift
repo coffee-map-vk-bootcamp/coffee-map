@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 protocol ShopListViewControllerDelegate: AnyObject {
     func getCoffeeShops()
@@ -124,7 +126,7 @@ extension ShopListViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ShopListViewController: FavouriteCellDelegate {
+extension ShopListViewController: FavouriteCellDelegate {    
     func remove(at index: Int) {
         delegate?.remove(at: index)
     }
