@@ -18,10 +18,64 @@ enum FireBaseError: Error {
 
 protocol NetworkManagerDescription {
     func fetchUserData(completion: @escaping (Result<User, Error>) -> Void)
+
+    func deleteFavoriteCoffeeShop(with id: String, completion: @escaping (Result<Void, Error>) -> Void)
+
+    func addFavoriteCoffeeShop(with id: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class FBService: NetworkManagerDescription {
     let dataBase = Firestore.firestore()
+
+    func deleteFavoriteCoffeeShop(with id: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        fetchUserData { [weak self] result in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let user):
+                var favorites = user.favoriteCoffeeShops
+                favorites.remove(id)
+                let favoritesArray = Array(favorites)
+                guard let userId = self?.getUserId() else {
+                    completion(.failure(FireBaseError.userNotFound))
+                    return
+                }
+                let documentRef = self?.dataBase.collection("users").document(userId)
+                documentRef?.updateData(["favoriteCoffeeShops": favoritesArray], completion: { error in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(()))
+                    }
+                })
+            }
+        }
+    }
+
+    func addFavoriteCoffeeShop(with id: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        fetchUserData { [weak self] result in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let user):
+                var favorites = user.favoriteCoffeeShops
+                favorites.insert(id)
+                let favoritesArray = Array(favorites)
+                guard let userId = self?.getUserId() else {
+                    completion(.failure(FireBaseError.userNotFound))
+                    return
+                }
+                let documentRef = self?.dataBase.collection("users").document(userId)
+                documentRef?.updateData(["favoriteCoffeeShops": favoritesArray], completion: { error in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(()))
+                    }
+                })
+            }
+        }
+    }
     
     func addCoffeeShopsSubscription(completion: @escaping (Result<[CoffeeShop], Error>) -> Void) {
         dataBase.collection("coffeeShops").addSnapshotListener { (querySnapshot, err) in
