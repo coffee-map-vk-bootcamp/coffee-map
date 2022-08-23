@@ -31,4 +31,13 @@ public extension UIView {
         animation.values = [-15.0, 15.0, -15.0, 15.0, -7.0, 7.0, -3.0, 3.0, 0.0 ]
         layer.add(animation, forKey: "shake")
     }
+    
+    func rotation() {
+        let animation = CAKeyframeAnimation(keyPath: "transform.rotation")
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        animation.duration = 10
+        animation.repeatCount = 3
+        animation.values = [-5.0, 5.0, -5.0, 5.0, -1.0, 1.0, -0.5, 0.5, 0.0 ]
+        layer.add(animation, forKey: "rotation")
+    }
 }

@@ -32,18 +32,11 @@ class LoginView: UIView {
         return repeatPasswordTextField.text
     }
     
-    private lazy var scrollView: UIScrollView = {
+    lazy var scrollView: UIScrollView = {
         scrollView = UIScrollView()
         scrollView.toAutoLayout()
         
         return scrollView
-    }()
-    
-    private lazy var activity: UIActivityIndicatorView = {
-        activity = UIActivityIndicatorView()
-        activity.toAutoLayout()
-        
-        return activity
     }()
     
     private lazy var logoView: UIImageView = {
@@ -79,7 +72,7 @@ class LoginView: UIView {
         return logInButton
     }()
     
-    private lazy var signUpButton: UIButton = {
+    lazy var signUpButton: UIButton = {
         signUpButton = UIButton()
         signUpButton.backgroundColor = AppColors.primary
         signUpButton.setTitle("Регистрация", for: .normal)
@@ -88,22 +81,9 @@ class LoginView: UIView {
         signUpButton.layer.cornerRadius = 16
         signUpButton.layer.masksToBounds = true
         signUpButton.toAutoLayout()
-        addSubview(signUpButton)
+        scrollView.addSubview(signUpButton)
         
         return signUpButton
-    }()
-    
-    private lazy var withoutLogButton: UIButton = {
-        withoutLogButton = UIButton()
-        withoutLogButton.setTitle("Войти без пароля", for: .normal)
-        withoutLogButton.setTitleColor(AppColors.primary, for: .normal)
-        
-        withoutLogButton.layer.cornerRadius = 16
-        withoutLogButton.layer.masksToBounds = true
-        withoutLogButton.toAutoLayout()
-        addSubview(withoutLogButton)
-        
-        return withoutLogButton
     }()
     
     override init(frame: CGRect) {
@@ -120,32 +100,32 @@ class LoginView: UIView {
         super.layoutSubviews()
         repeatPasswordTextFieldAncor.isActive = true
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            scrollView.topAnchor.constraint(equalTo: self.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-            logoView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 50),
-            logoView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            logoView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40),
+            logoView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             logoView.heightAnchor.constraint(equalToConstant: 200),
             logoView.widthAnchor.constraint(equalToConstant: 200),
             
-            resultLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            resultLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 30),
-            resultLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            resultLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            resultLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            resultLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 15),
+            resultLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40),
+            resultLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -40),
             
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            stackView.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 30),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16),
+            stackView.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 15),
             stackView.heightAnchor.constraint(equalToConstant: 100),
             
             repeatPasswordTextField.topAnchor.constraint(equalTo: stackView.bottomAnchor),
             repeatPasswordTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             repeatPasswordTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             
-            logInButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            logInButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            logInButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
+            logInButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16),
             logInButton.heightAnchor.constraint(equalToConstant: 50),
             logInButton.topAnchor.constraint(equalTo: repeatPasswordTextField.bottomAnchor, constant: 32),
             
@@ -153,10 +133,6 @@ class LoginView: UIView {
             signUpButton.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 8),
             signUpButton.trailingAnchor.constraint(equalTo: logInButton.trailingAnchor),
             signUpButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            withoutLogButton.leadingAnchor.constraint(equalTo: logInButton.leadingAnchor),
-            withoutLogButton.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 32),
-            withoutLogButton.trailingAnchor.constraint(equalTo: logInButton.trailingAnchor)
         ])
     }
     
@@ -165,7 +141,7 @@ class LoginView: UIView {
     }
 
     private func setup() {
-        addSubview(resultLabel)
+        scrollView.addSubview(resultLabel)
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
@@ -219,7 +195,6 @@ class LoginView: UIView {
         passwordTextField.layer.cornerRadius = 10
         passwordTextField.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         passwordTextField.setLeftPaddingPoints(16)
-        passwordTextField.addSubview(activity)
         
         stackView.addArrangedSubview(passwordTextField)
     }
@@ -238,9 +213,8 @@ class LoginView: UIView {
         repeatPasswordTextField.layer.cornerRadius = 10
         repeatPasswordTextField.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         repeatPasswordTextField.setLeftPaddingPoints(16)
-        repeatPasswordTextField.addSubview(activity)
         
-        addSubview(repeatPasswordTextField)
+        scrollView.addSubview(repeatPasswordTextField)
     }
         
     @objc
@@ -283,6 +257,14 @@ class LoginView: UIView {
     func animationFail() {
         stackView.shake()
         repeatPasswordTextField.shake()
+    }
+    
+    func animationLoading() {
+        logoView.rotation()
+    }
+    
+    func stopLoading() {
+        logoView.layer.removeAllAnimations()
     }
 }
 
