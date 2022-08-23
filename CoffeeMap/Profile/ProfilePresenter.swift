@@ -34,6 +34,11 @@ extension ProfilePresenter: ProfileModuleInput {
 }
 
 extension ProfilePresenter: ProfileViewOutput {
+    
+    func logout() {
+        router.logout()
+    }
+    
     func prepare(data model: Order) -> ReceiptCellModel {
         return ReceiptCellModel(name: model.name,
                                 date: formatter.string(from: model.date),

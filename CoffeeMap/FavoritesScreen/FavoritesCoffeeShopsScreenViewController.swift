@@ -45,6 +45,12 @@ extension FavoritesCoffeeShopsScreenViewController: FavoritesCoffeeShopsScreenVi
 }
 
 extension FavoritesCoffeeShopsScreenViewController: ShopListViewControllerDelegate {
+    func remove(at index: Int) {
+        output.remove(at: index)
+        let shops = output.getCoffeeShops()
+        childViewController.configure(with: shops)
+    }
+    
     func getCoffeeShops() {
         output.getFavoritesCoffeeShops()
     }

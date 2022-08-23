@@ -27,16 +27,40 @@ extension LoginPresenter: LoginModuleInput {
 
 extension LoginPresenter: LoginViewOutput {
     func signUp(email: String, pas: String, repeatPas: String) {
-        if pas != repeatPas { return }
-        interactor.signUp(email: email, pas: pas)
+        switch VolidationManager.volidationSignUp(email: email, pas1: pas, pas2: repeatPas) {
+        case .weakPassword:
+            view?.addResult(result: "Пароль должен содержать не менее 4х символов")
+            view?.animationFail()
+        case .notEqualPass:
+            view?.addResult(result: "Пароли не совпадают")
+            view?.animationFail()
+        case .notAllFields:
+            view?.addResult(result: "Введите все поля")
+            view?.animationFail()
+        case .badEmail:
+            view?.addResult(result: "Введите реальную почту")
+            view?.animationFail()
+        case .success:
+            interactor.signUp(email: email, pas: pas)
+        }
     }
     
     func login(email: String, pas: String) {
         interactor.login(email: email, pas: pas)
     }
+    
+    func cantSignUp() {
+        view?.addResult(result: "этот email уже зарегистрирован")
+        view?.animationFail()
+    }
 }
 
 extension LoginPresenter: LoginInteractorOutput {
+    func badData() {
+        view?.addResult(result: "Пользователь не найден")
+        view?.animationFail()
+    }
+    
     func goToMainScreen() {
         router.successLogin()
     }
