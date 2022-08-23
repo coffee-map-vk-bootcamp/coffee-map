@@ -18,7 +18,9 @@ extension CoffeeShopDetailScreenRouter: CoffeeShopDetailScreenRouterInput {
         
         let context = DishConfiguratorContext(moduleOutput: output, dish: item)
         let dishConfiguratorViewController = DishConfiguratorContainer.assemble(with: context).viewController
-        viewController?.present(dishConfiguratorViewController, animated: true)
+        viewController?.parent?.add(dishConfiguratorViewController)
+//        viewController?.present(dishConfiguratorViewController, animated: true)
+        
     }
     
     func showAlert() {

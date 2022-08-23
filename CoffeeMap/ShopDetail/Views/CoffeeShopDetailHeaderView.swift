@@ -23,6 +23,16 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
         return gradient
     }()
     
+    private lazy var headerTitleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 22, weight: .semibold)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -33,15 +43,39 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup() {
-        headerImageView.layer.addSublayer(gradientLayer)
-        headerImageView.frame = bounds
-        gradientLayer.frame = headerImageView.bounds
-        addSubview(headerImageView)
+    func configure(with coffeeShop: CoffeeShop) {
+        headerImageView.setImage(with: coffeeShop.image)
+        headerTitleLabel.text = coffeeShop.name
+    }
+}
+
+private extension CoffeeShopDetailHeaderView {
+    func setup() {
+        setupHeaderImageView()
+        setupGradientLayer()
+        setupHeaderTitleLabel()
+        
         clipsToBounds = true
     }
     
-    func configure(with imageUrlString: String) {
-        headerImageView.setImage(with: imageUrlString)
+    func setupHeaderImageView() {
+        addSubview(headerImageView)
+        headerImageView.frame = bounds
+    }
+    
+    func setupGradientLayer() {
+        headerImageView.layer.addSublayer(gradientLayer)
+        gradientLayer.frame = headerImageView.bounds
+    }
+    
+    func setupHeaderTitleLabel() {
+        addSubview(headerTitleLabel)
+        
+        NSLayoutConstraint.activate([
+            headerTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            headerTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            headerTitleLabel.topAnchor.constraint(equalTo: topAnchor),
+            headerTitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }

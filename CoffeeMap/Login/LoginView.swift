@@ -68,7 +68,7 @@ class LoginView: UIView {
     
     private lazy var logInButton: UIButton = {
         logInButton = UIButton()
-        logInButton.backgroundColor = AppColors.primary
+        logInButton.backgroundColor = .primary
         logInButton.setTitle("Вход", for: .normal)
         logInButton.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         
@@ -81,7 +81,7 @@ class LoginView: UIView {
     
     private lazy var signUpButton: UIButton = {
         signUpButton = UIButton()
-        signUpButton.backgroundColor = AppColors.primary
+        signUpButton.backgroundColor = .primary
         signUpButton.setTitle("Регистрация", for: .normal)
         signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         
@@ -96,7 +96,7 @@ class LoginView: UIView {
     private lazy var withoutLogButton: UIButton = {
         withoutLogButton = UIButton()
         withoutLogButton.setTitle("Войти без пароля", for: .normal)
-        withoutLogButton.setTitleColor(AppColors.primary, for: .normal)
+        withoutLogButton.setTitleColor(.primary, for: .normal)
         
         withoutLogButton.layer.cornerRadius = 16
         withoutLogButton.layer.masksToBounds = true

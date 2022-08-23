@@ -26,12 +26,13 @@ extension DishConfiguratorPresenter: DishConfiguratorModuleInput {
 }
 
 extension DishConfiguratorPresenter: DishConfiguratorViewOutput {
-    func didCloseView() {
-        moduleOutput?.didFinishConfiguration()
+    func didTapClose() {
+        view?.dismiss()
     }
     
     func didLoadView() {
-        
+        let dish = interactor.loadDish()
+        view?.setDish(dish)
     }
 }
 

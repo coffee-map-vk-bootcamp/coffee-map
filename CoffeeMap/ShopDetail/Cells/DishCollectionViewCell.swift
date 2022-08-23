@@ -13,14 +13,14 @@ final class DishCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.numberOfLines = 2
-        label.textColor = .dishItemName
+        label.textColor = .primaryTextColor
         return label
     }()
     
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
-        label.textColor = .dishItemName
+        label.textColor = .primaryTextColor
         return label
     }()
     
@@ -62,7 +62,7 @@ final class DishCollectionViewCell: UICollectionViewCell {
     func configure(with dish: Dish) {
         dishImageView.setImage(with: dish.image)
         dishNameLabel.text = dish.name
-        priceLabel.text = "\(dish.price) ₽"
+        priceLabel.text = "\(dish.prices.first?.value ?? 0) ₽"
     }
     
     override func layoutSubviews() {
@@ -123,9 +123,9 @@ private extension DishCollectionViewCell {
         dishNameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            dishNameLabel.leadingAnchor.constraint(equalTo: blurView.leadingAnchor),
-            dishNameLabel.trailingAnchor.constraint(equalTo: blurView.trailingAnchor),
-            dishNameLabel.topAnchor.constraint(equalTo: blurView.bottomAnchor, constant: 20)
+            dishNameLabel.leadingAnchor.constraint(equalTo: dishImageView.leadingAnchor),
+            dishNameLabel.trailingAnchor.constraint(equalTo: dishImageView.trailingAnchor),
+            dishNameLabel.topAnchor.constraint(equalTo: dishImageView.bottomAnchor, constant: 16)
         ])
     }
     

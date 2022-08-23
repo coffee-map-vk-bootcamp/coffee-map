@@ -16,17 +16,34 @@ final class CoffeeShopDetailScreenInteractor {
     
     func setCoffeeShop(_ coffeeShop: CoffeeShop) {
         self.coffeeShop = coffeeShop
-        let section = DishSection(sectionTitle: "Drinks", dishes: coffeeShop.dishes)
-        sections.append(section)
+        prepareData(for: coffeeShop)
     }
 }
 
 extension CoffeeShopDetailScreenInteractor: CoffeeShopDetailScreenInteractorInput {
-    func getCoffeeShopImage() -> String {
-        return coffeeShop?.image ?? ""
+    func getCoffeeShop() -> CoffeeShop {
+        return coffeeShop ?? .init()
     }
     
     func loadItems() -> [DishSection] {
         return sections
+    }
+}
+
+private extension CoffeeShopDetailScreenInteractor {
+    func prepareData(for coffeeShop: CoffeeShop) {
+        let drinksSection = DishSection(sectionTitle: "Drinks", dishes: coffeeShop.drinks)
+        let dishSection = DishSection(sectionTitle: "Dishes", dishes: coffeeShop.dishes)
+        
+        var totalSections: [DishSection] = []
+        if drinksSection.dishes.count > 0 {
+            totalSections.append(drinksSection)
+        }
+        
+        if dishSection.dishes.count > 0 {
+            totalSections.append(dishSection)
+        }
+        
+        sections = totalSections
     }
 }

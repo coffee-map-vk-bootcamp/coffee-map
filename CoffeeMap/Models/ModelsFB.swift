@@ -9,8 +9,18 @@ import Foundation
 
 struct Dish: Decodable {
     let name: String
-    let price: Int
+    let prices: [String: Int]
     let image: String
+    let sizes: [CoffeeSize]
+}
+
+extension Dish {
+    init() {
+        name = ""
+        image = ""
+        sizes = []
+        prices = [:]
+    }
 }
 
 struct CoffeeShop: Decodable {
@@ -18,9 +28,23 @@ struct CoffeeShop: Decodable {
     let name: String
     let address: String
     let dishes: [Dish]
+    let drinks: [Dish]
     let image: String
     let latitude: Double
     let longitude: Double
+}
+
+extension CoffeeShop {
+    init() {
+        id = ""
+        name = ""
+        address = ""
+        dishes = []
+        drinks = []
+        image = ""
+        latitude = 0.0
+        longitude = 0.0
+    }
 }
 
 struct Order: Decodable {
@@ -39,7 +63,7 @@ struct OrderDish: Decodable {
 
 struct User: Decodable {
     let name: String
-    let favoriteCoffeeShops: [String]
+    let favoriteCoffeeShops: Set<String>
     let orders: [Order]
     let image: String
 }

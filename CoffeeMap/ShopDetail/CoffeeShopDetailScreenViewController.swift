@@ -103,7 +103,7 @@ private extension CoffeeShopDetailScreenViewController {
             let numberOfItems = output.number(of: sectionNumber)
             
             let item = NSCollectionLayoutItem(
-                layoutSize: .init(widthDimension: .absolute(contentSize.width / 4), heightDimension: .absolute(165)))
+                layoutSize: .init(widthDimension: .absolute(contentSize.width / 4), heightDimension: .absolute(170)))
             
             let cellWidth = CGFloat(numberOfItems * 100 + (numberOfItems - 1)) * interItemSpacing
             let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(cellWidth), heightDimension: .estimated(165))
@@ -184,14 +184,14 @@ extension CoffeeShopDetailScreenViewController: UICollectionViewDataSource {
         if kind == UICollectionView.elementKindSectionHeader {
             let header = collectionView.dequeueReusableSupplementaryView(
                 SectionTitleHeaderReusableView.self, ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
-            let headerName = output.item(at: indexPath.row).sectionTitle
+            let headerName = output.item(at: indexPath.section).sectionTitle
             header.configure(with: headerName)
             return header
         } else if kind == Constants.HeaderKind.globalHeader {
             let header = collectionView.dequeueReusableSupplementaryView(
                 CoffeeShopDetailHeaderView.self, ofKind: Constants.HeaderKind.globalHeader, for: indexPath)
-            let imageUrlString = output.getCoffeeShopImage()
-            header.configure(with: imageUrlString)
+            let coffeeShop = output.getCoffeeShop()
+            header.configure(with: coffeeShop)
             return header
         } else {
             fatalError()
@@ -202,7 +202,8 @@ extension CoffeeShopDetailScreenViewController: UICollectionViewDataSource {
 
 extension CoffeeShopDetailScreenViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let model = output.item(at: indexPath.section, with: indexPath.item)
+        output.didSelectDish(with: model)
     }
 }
 

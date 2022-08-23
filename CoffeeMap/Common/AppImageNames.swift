@@ -18,4 +18,7 @@ struct AppImageNames {
     static let mockDishImage1 = "coffee-test-1"
     
     static let mapPin = "coffeePoint"
+    
+    static let stepperLeft = "stepper-left"
+    static let stepperRight = "stepper-right"
 }
