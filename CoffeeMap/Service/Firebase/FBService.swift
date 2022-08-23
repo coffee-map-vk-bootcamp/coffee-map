@@ -29,7 +29,7 @@ final class FBService: NetworkManagerDescription {
                 favorites.remove(id)
                 let favoritesArray = Array(favorites)
                 guard let userId = self?.getUserId() else {
-                    completion(.failure(FireBaseError.userNotFound))
+                    completion(.failure(FirebaseError.userNotFound))
                     return
                 }
                 let documentRef = self?.dataBase.collection("users").document(userId)
@@ -54,7 +54,7 @@ final class FBService: NetworkManagerDescription {
                 favorites.insert(id)
                 let favoritesArray = Array(favorites)
                 guard let userId = self?.getUserId() else {
-                    completion(.failure(FireBaseError.userNotFound))
+                    completion(.failure(FirebaseError.userNotFound))
                     return
                 }
                 let documentRef = self?.dataBase.collection("users").document(userId)
