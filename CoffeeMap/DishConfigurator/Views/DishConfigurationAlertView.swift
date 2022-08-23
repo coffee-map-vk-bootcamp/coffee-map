@@ -231,7 +231,7 @@ private extension DishConfigurationAlertView {
         sizeLabel.sizeToFit()
         
         NSLayoutConstraint.activate([
-            sizeLabel.leadingAnchor.constraint(equalTo: amountLabel.leadingAnchor),
+            sizeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             sizeLabel.topAnchor.constraint(equalTo: amountLabel.bottomAnchor, constant: 24),
             sizeLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
@@ -247,7 +247,7 @@ private extension DishConfigurationAlertView {
     
     func layoutRightStepperButton() {
         NSLayoutConstraint.activate([
-            rightStepperButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -34),
+            rightStepperButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             rightStepperButton.centerYAnchor.constraint(equalTo: amountLabel.centerYAnchor),
             rightStepperButton.widthAnchor.constraint(equalToConstant: 31),
             rightStepperButton.heightAnchor.constraint(equalToConstant: 31)
@@ -256,11 +256,10 @@ private extension DishConfigurationAlertView {
     
     func layoutAddToCartButton() {
         NSLayoutConstraint.activate([
-            addToCartButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             addToCartButton.topAnchor.constraint(equalTo: sizeLabel.bottomAnchor, constant: 30),
-            //            addToCartButton.heightAnchor.constraint(equalToConstant: 55),
             addToCartButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
-            addToCartButton.widthAnchor.constraint(equalToConstant: 250)
+            addToCartButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            addToCartButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)
         ])
     }
     
@@ -314,7 +313,7 @@ private extension DishConfigurationAlertView {
         amountLabel.sizeToFit()
         
         NSLayoutConstraint.activate([
-            amountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            amountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             amountLabel.topAnchor.constraint(equalTo: dishImageView.bottomAnchor, constant: 40)
         ])
     }

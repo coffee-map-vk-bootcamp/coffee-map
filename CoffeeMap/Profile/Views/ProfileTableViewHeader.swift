@@ -64,7 +64,7 @@ final class ProfileTableViewHeader: UITableViewHeaderFooterView {
         addSubview(exitButton)
         exitButton.translatesAutoresizingMaskIntoConstraints = false
         let closeButtonConstraints = [
-            exitButton.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            exitButton.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
             exitButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             exitButton.widthAnchor.constraint(equalToConstant: 24),
             exitButton.heightAnchor.constraint(equalToConstant: 24)

@@ -64,8 +64,8 @@ final class ReceiptCollectionViewCell: UITableViewCell {
         background.translatesAutoresizingMaskIntoConstraints = false
         let backgroundConstraints = [
             background.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            background.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32),
-            background.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32),
+            background.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            background.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             background.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ]
 
