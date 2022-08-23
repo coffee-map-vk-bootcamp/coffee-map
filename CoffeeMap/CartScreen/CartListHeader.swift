@@ -33,7 +33,7 @@ final class CartListHeader: UITableViewHeaderFooterView {
         let textTimeLabel = UILabel()
         textTimeLabel.text = "Приготовить к"
         textTimeLabel.font = UIFont.systemFont(ofSize: 24)
-        textTimeLabel.textColor = AppColors.primary
+        textTimeLabel.textColor = .primary
         textTimeLabel.toAutoLayout()
         
         return textTimeLabel
@@ -71,7 +71,6 @@ final class CartListHeader: UITableViewHeaderFooterView {
     }
     
     private func layout() {
-        super.layoutSubviews()
         NSLayoutConstraint.activate([
             mainLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             mainLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22),

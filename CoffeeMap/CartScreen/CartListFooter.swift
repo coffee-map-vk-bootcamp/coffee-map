@@ -32,7 +32,7 @@ final class CartListFooter: UIView {
         let buyButton = UIButton()
         buyButton.setTitle("Оплатить", for: .normal)
         buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 26, weight: .heavy)
-        buyButton.backgroundColor = AppColors.primary
+        buyButton.backgroundColor = .primary
         buyButton.layer.cornerRadius = 16
         buyButton.clipsToBounds = true
         buyButton.toAutoLayout()
@@ -56,10 +56,10 @@ final class CartListFooter: UIView {
     private func setup() {
         addSubviews([sumLabel, priceLabel, buyButton])
         backgroundColor = .appTintColor
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+        
+        sumLabel.sizeToFit()
+        priceLabel.sizeToFit()
+        
         NSLayoutConstraint.activate([
             sumLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28),
             sumLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
