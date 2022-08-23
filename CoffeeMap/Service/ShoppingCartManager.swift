@@ -1,5 +1,5 @@
 //
-//  ShoppingCartService.swift
+//  ShoppingCartManager.swift
 //  CoffeeMap
 //
 //  Created by Матвей Борисов on 23.08.2022.
@@ -7,18 +7,18 @@
 
 import Foundation
 
-protocol ShoppingCartServiceProtocol {
+protocol CartManagerDescription {
     var price: Int { get }
 
     func addDishToOrder(_ dish: OrderDish)
 
     func deleteDishFromOrder(at index: Int)
 
-    func makeOrder(name: String, time: Date)
+    func makeOrder(name: String, time: Date, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
-class ShoppingCartService: ShoppingCartServiceProtocol {
-    static let shared = ShoppingCartService()
+class ShoppingCartManager: CartManagerDescription {
+    static let shared = ShoppingCartManager()
 
     private let networkService = FBService()
 
@@ -43,7 +43,10 @@ class ShoppingCartService: ShoppingCartServiceProtocol {
         dishesArray.remove(at: index)
     }
 
-    func makeOrder(name: String, time: Date) {
+    func makeOrder(name: String, time: Date, completion: @escaping (Result<Void, Error>) -> Void ) {
         let order = Order(name: name, totalPrice: price, date: time, dishes: dishesArray)
+        networkService.createOrder(with: order) { result in
+            completion(result)
+        }
     }
 }
