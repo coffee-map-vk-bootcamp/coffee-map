@@ -44,6 +44,7 @@ final class CartScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        layout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,8 +61,7 @@ final class CartScreenViewController: UIViewController {
         tableView.delegate = self
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    private func layout() {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -78,14 +78,21 @@ final class CartScreenViewController: UIViewController {
 
 extension CartScreenViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return output.getOrder().dishes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CartScreenCell.reuseIdentifier, for: indexPath) as? CartScreenCell else { return UITableViewCell() }
         let dish = output.getOrder().dishes[indexPath.row]
-        sumCount = sumCount + dish.price * dish.count
-        cell.configure(image: dish.image, name: dish.name, price: String(dish.price), count: String(dish.count))
+        sumCount += dish.price * dish.count
+        cell.configure(image: dish.image, name: dish.name, price: String(dish.price), count: String(dish.count)) { [weak self] in
+            tableView.performBatchUpdates {
+                self?.output.getOrder().dishes.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .top)
+            } completion: { _ in
+                tableView.reloadData()
+            }
+        }
         return cell
     }
     
@@ -94,6 +101,7 @@ extension CartScreenViewController: UITableViewDataSource, UITableViewDelegate {
         header.configure(name: output.getOrder().coffeeShop)
         return header
     }
+    
 }
 
 extension CartScreenViewController: CartScreenViewInput {

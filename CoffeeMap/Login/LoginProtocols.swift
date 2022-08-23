@@ -18,7 +18,8 @@ protocol LoginModuleOutput: AnyObject {
 protocol LoginViewInput: AnyObject {
     var state: LoginState { get }
     
-    func showLogin()
+    func addResult(result: String)
+    func animationFail()
 }
 
 protocol LoginViewOutput: AnyObject {    
@@ -33,6 +34,8 @@ protocol LoginInteractorInput: AnyObject {
 
 protocol LoginInteractorOutput: AnyObject {
     func goToMainScreen()
+    func badData()
+    func cantSignUp()
 }
 
 protocol LoginRouterInput: AnyObject {
@@ -41,8 +44,6 @@ protocol LoginRouterInput: AnyObject {
 
 protocol LoginViewOutputToVC: AnyObject {
     func tryLogin()
-    func goToSignUp()
-    func loginWithoutPas()
     func trySignUp()
 }
 

@@ -33,7 +33,7 @@ final class CartListHeader: UITableViewHeaderFooterView {
         let textTimeLabel = UILabel()
         textTimeLabel.text = "Приготовить к"
         textTimeLabel.font = UIFont.systemFont(ofSize: 24)
-        textTimeLabel.textColor = .systemGreen
+        textTimeLabel.textColor = AppColors.primary
         textTimeLabel.toAutoLayout()
         
         return textTimeLabel
@@ -60,8 +60,10 @@ final class CartListHeader: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup(){
-        addSubviews([mainLabel, nameOfCoffeeShop, datePicker, textTimeLabel])
+    private func setup() {
+        contentView.backgroundColor = .white
+        backgroundColor = .white
+        contentView.addSubviews([mainLabel, nameOfCoffeeShop, datePicker, textTimeLabel])
     }
     
     func configure(name: String) {
@@ -71,18 +73,19 @@ final class CartListHeader: UITableViewHeaderFooterView {
     private func layout() {
         super.layoutSubviews()
         NSLayoutConstraint.activate([
-            mainLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            mainLabel.topAnchor.constraint(equalTo: topAnchor, constant: 22),
+            mainLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            mainLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22),
+            mainLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             
-            nameOfCoffeeShop.leadingAnchor.constraint(equalTo: mainLabel.leadingAnchor),
-            nameOfCoffeeShop.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 1),
-            nameOfCoffeeShop.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
-            nameOfCoffeeShop.trailingAnchor.constraint(equalTo: textTimeLabel.leadingAnchor, constant: -10),
+            nameOfCoffeeShop.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            nameOfCoffeeShop.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 2),
+            nameOfCoffeeShop.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             
-            textTimeLabel.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 8),
+            textTimeLabel.topAnchor.constraint(equalTo: nameOfCoffeeShop.bottomAnchor, constant: 8),
             textTimeLabel.leadingAnchor.constraint(equalTo: mainLabel.leadingAnchor),
+            textTimeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             
-            datePicker.topAnchor.constraint(equalTo: textTimeLabel.topAnchor, constant: -10),
+            datePicker.centerYAnchor.constraint(equalTo: textTimeLabel.centerYAnchor),
             datePicker.leadingAnchor.constraint(equalTo: textTimeLabel.trailingAnchor, constant: 4),
         ])
     }

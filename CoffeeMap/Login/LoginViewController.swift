@@ -59,8 +59,8 @@ final class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginViewInput {
-    func showLogin() {
-        print("login")
+    func addResult(result: String) {
+        loginView.addResult(result: result)
     }
 }
 
@@ -84,11 +84,7 @@ extension LoginViewController: LoginViewOutputToVC {
         }
     }
     
-    func goToSignUp() {
-        print(#function)
-    }
-    
-    func loginWithoutPas() {
-        print(#function)
+    func animationFail() {
+        loginView.animationFail()
     }
 }

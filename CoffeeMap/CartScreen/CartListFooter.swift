@@ -31,8 +31,8 @@ final class CartListFooter: UIView {
     private lazy var buyButton: UIButton = {
         let buyButton = UIButton()
         buyButton.setTitle("Оплатить", for: .normal)
-        buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
-        buyButton.backgroundColor = .systemGreen
+        buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 26, weight: .heavy)
+        buyButton.backgroundColor = AppColors.primary
         buyButton.layer.cornerRadius = 16
         buyButton.clipsToBounds = true
         buyButton.toAutoLayout()
@@ -49,11 +49,11 @@ final class CartListFooter: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(sumPrice: Int){
+    func configure(sumPrice: Int) {
         priceLabel.text = "\(sumPrice)₽"
     }
     
-    private func setup(){
+    private func setup() {
         addSubviews([sumLabel, priceLabel, buyButton])
         backgroundColor = .appTintColor
     }

@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 final class CartScreenCell: UITableViewCell {
+    var deleteAction: (() -> ())?
+    
+    var isDelete: Bool = false
     
     private lazy var dishImageView: SkeletonImageView = {
         let dishImageView = SkeletonImageView()
@@ -31,7 +34,6 @@ final class CartScreenCell: UITableViewCell {
     private lazy var priceLabel: UILabel = {
         let priceLabel = UILabel()
         priceLabel.text = "80₽"
-        //priceLabel.textColor = .systemGray2
         priceLabel.font = UIFont.systemFont(ofSize: 24)
         priceLabel.toAutoLayout()
         
@@ -58,6 +60,16 @@ final class CartScreenCell: UITableViewCell {
         return countNumberLabel
     }()
     
+    private lazy var deleteButton: UIButton = {
+        let deleteButton = UIButton()
+        deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
+        deleteButton.addTarget(self, action: #selector(deleteDish), for: .touchUpInside)
+        deleteButton.contentMode = .scaleAspectFit
+        deleteButton.toAutoLayout()
+        
+        return deleteButton
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -69,30 +81,37 @@ final class CartScreenCell: UITableViewCell {
     }
     
     private func setup(){
-        contentView.addSubviews([dishImageView, nameLabel, priceLabel, countLabel, countNumberLabel])
+        contentView.addSubviews([dishImageView, nameLabel, priceLabel, countLabel, countNumberLabel, deleteButton])
     }
     
-    func configure(image: String, name: String, price: String, count: String) {
+    func configure(image: String, name: String, price: String, count: String, deleteAction: @escaping () -> ()) {
         nameLabel.text = name
         priceLabel.text = price
         countNumberLabel.text = count
         dishImageView.setImage(with: image)
+        self.deleteAction = deleteAction
     }
     
     private func layout() {
         super.layoutSubviews()
         NSLayoutConstraint.activate([
-            dishImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32),
+            dishImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             dishImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22),
-            dishImageView.heightAnchor.constraint(equalToConstant: 80),
-            dishImageView.widthAnchor.constraint(equalToConstant: 80),
+            dishImageView.heightAnchor.constraint(equalToConstant: 100),
+            dishImageView.widthAnchor.constraint(equalToConstant: 100),
             dishImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -22),
             
             nameLabel.leadingAnchor.constraint(equalTo: dishImageView.trailingAnchor, constant: 16),
             nameLabel.topAnchor.constraint(equalTo: dishImageView.topAnchor),
             
+            deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            deleteButton.topAnchor.constraint(equalTo: contentView.topAnchor),
+            deleteButton.widthAnchor.constraint(equalToConstant: 30),
+            deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            
             priceLabel.topAnchor.constraint(equalTo: nameLabel.topAnchor),
-            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32),
+            priceLabel.trailingAnchor.constraint(equalTo: deleteButton.leadingAnchor, constant: -8),
             
             countLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
             countLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
@@ -100,6 +119,11 @@ final class CartScreenCell: UITableViewCell {
             countNumberLabel.topAnchor.constraint(equalTo: countLabel.topAnchor),
             countNumberLabel.trailingAnchor.constraint(equalTo: priceLabel.trailingAnchor),
         ])
+    }
+    
+    @objc
+    private func deleteDish() {
+        deleteAction?()
     }
 }
 

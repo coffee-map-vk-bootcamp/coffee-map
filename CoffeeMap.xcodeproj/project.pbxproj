@@ -17,6 +17,7 @@
 		0A1BE81728B0EE4600817529 /* CartListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE81628B0EE4600817529 /* CartListHeader.swift */; };
 		0A1BE81928B0F7C300817529 /* CartListFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE81828B0F7C300817529 /* CartListFooter.swift */; };
 		0A1BE81B28B11C6200817529 /* CartScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE81A28B11C6200817529 /* CartScreenCell.swift */; };
+		0A1BE81D28B4C77700817529 /* VolidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BE81C28B4C77700817529 /* VolidationManager.swift */; };
 		0A2DFCAD28A6616E00C7F5BB /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCA728A6616E00C7F5BB /* LoginPresenter.swift */; };
 		0A2DFCAE28A6616E00C7F5BB /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCA828A6616E00C7F5BB /* LoginRouter.swift */; };
 		0A2DFCAF28A6616E00C7F5BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2DFCA928A6616E00C7F5BB /* LoginViewController.swift */; };
@@ -108,6 +109,7 @@
 		0A1BE81628B0EE4600817529 /* CartListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListHeader.swift; sourceTree = "<group>"; };
 		0A1BE81828B0F7C300817529 /* CartListFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListFooter.swift; sourceTree = "<group>"; };
 		0A1BE81A28B11C6200817529 /* CartScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenCell.swift; sourceTree = "<group>"; };
+		0A1BE81C28B4C77700817529 /* VolidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolidationManager.swift; sourceTree = "<group>"; };
 		0A2DFCA728A6616E00C7F5BB /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		0A2DFCA828A6616E00C7F5BB /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		0A2DFCA928A6616E00C7F5BB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				0A2DFCAA28A6616E00C7F5BB /* LoginProtocols.swift */,
 				0A2DFCAB28A6616E00C7F5BB /* LoginInteractor.swift */,
 				0A2DFCAC28A6616E00C7F5BB /* LoginContainer.swift */,
+				0A1BE81C28B4C77700817529 /* VolidationManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A2DFCAF28A6616E00C7F5BB /* LoginViewController.swift in Sources */,
+				0A1BE81D28B4C77700817529 /* VolidationManager.swift in Sources */,
 				A7832AD528AE50A70093EB4C /* FavoritesCoffeeShopsScreenProtocols.swift in Sources */,
 				0A2DFCAD28A6616E00C7F5BB /* LoginPresenter.swift in Sources */,
 				A7832AD628AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift in Sources */,
