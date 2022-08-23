@@ -18,17 +18,17 @@ final class DishConfigurationAlertView: UIView {
     
     private lazy var dishNameLabel = UILabel()
     private lazy var priceLabel = UILabel(text: "80,00 ₽",
-                                                 font: .systemFont(ofSize: 22, weight: .bold),
-                                                 color: .secondaryLabel)
+                                          font: .systemFont(ofSize: 22, weight: .bold),
+                                          color: .secondaryLabel)
     
     private lazy var amountLabel = UILabel(text: "Количество",
-                                                  font: .systemFont(ofSize: 14, weight: .medium),
-                                                  color: .secondaryLabel)
+                                           font: .systemFont(ofSize: 14, weight: .medium),
+                                           color: .secondaryLabel)
     
     private lazy var sugarAmountLabel = UILabel()
     private lazy var sizeLabel = UILabel(text: "Размер",
-                                                font: .systemFont(ofSize: 14, weight: .medium),
-                                                color: .secondaryLabel)
+                                         font: .systemFont(ofSize: 14, weight: .medium),
+                                         color: .secondaryLabel)
     
     private lazy var dismissButton = UIButton(type: .close)
     private lazy var addToCartButton = UIButton()
@@ -56,7 +56,7 @@ private extension DishConfigurationAlertView {
         backgroundColor = .systemBackground
         layout()
         
-        layer.cornerRadius = 10
+        layer.cornerRadius = 16
     }
     
     func layout() {

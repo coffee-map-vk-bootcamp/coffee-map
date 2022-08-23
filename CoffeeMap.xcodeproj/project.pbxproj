@@ -74,6 +74,7 @@
 		A76377C228AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76377C128AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift */; };
 		A782BDDC28B3617900E6990E /* DishConfigurationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782BDDB28B3617900E6990E /* DishConfigurationAlertView.swift */; };
 		A782BDDF28B3641800E6990E /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782BDDE28B3641800E6990E /* UILabel+Ext.swift */; };
+		A782BDE528B4ADB300E6990E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A782BDE428B4ADB300E6990E /* GoogleService-Info.plist */; };
 		A7832AD228AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACC28AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift */; };
 		A7832AD328AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACD28AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift */; };
 		A7832AD428AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACE28AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift */; };
@@ -81,7 +82,6 @@
 		A7832AD628AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD028AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift */; };
 		A7832AD728AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD128AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift */; };
 		A7832ADA28AE54410093EB4C /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */; };
-		A7EFD3AF28AE4DF5005CACC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7EFD3AE28AE4DF5005CACC1 /* GoogleService-Info.plist */; };
 		A7FB191D28B03E5900BB5943 /* FBAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FB191C28B03E5900BB5943 /* FBAuthService.swift */; };
 		A7FB191F28B03E7100BB5943 /* FBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FB191E28B03E7100BB5943 /* FBService.swift */; };
 		A7FB192128B03EB900BB5943 /* FBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FB192028B03EB900BB5943 /* FBError.swift */; };
@@ -160,6 +160,7 @@
 		A76377C128AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopClusterAnnotation.swift; sourceTree = "<group>"; };
 		A782BDDB28B3617900E6990E /* DishConfigurationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishConfigurationAlertView.swift; sourceTree = "<group>"; };
 		A782BDDE28B3641800E6990E /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
+		A782BDE428B4ADB300E6990E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7832ACC28AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenPresenter.swift; sourceTree = "<group>"; };
 		A7832ACD28AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenRouter.swift; sourceTree = "<group>"; };
 		A7832ACE28AE50A70093EB4C /* FavoritesCoffeeShopsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenViewController.swift; sourceTree = "<group>"; };
@@ -167,7 +168,6 @@
 		A7832AD028AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenInteractor.swift; sourceTree = "<group>"; };
 		A7832AD128AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenContainer.swift; sourceTree = "<group>"; };
 		A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
-		A7EFD3AE28AE4DF5005CACC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7FB191C28B03E5900BB5943 /* FBAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthService.swift; sourceTree = "<group>"; };
 		A7FB191E28B03E7100BB5943 /* FBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBService.swift; sourceTree = "<group>"; };
 		A7FB192028B03EB900BB5943 /* FBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBError.swift; sourceTree = "<group>"; };
@@ -261,7 +261,7 @@
 				A648A3E428A2A6EB00413915 /* AppImageNames.swift */,
 				0A8F952728A24F8300ED90F9 /* Assets.xcassets */,
 				0A8F952C28A24F8300ED90F9 /* Info.plist */,
-				A7EFD3AE28AE4DF5005CACC1 /* GoogleService-Info.plist */,
+				A782BDE428B4ADB300E6990E /* GoogleService-Info.plist */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -545,8 +545,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A8F952B28A24F8300ED90F9 /* LaunchScreen.storyboard in Resources */,
-				A7EFD3AF28AE4DF5005CACC1 /* GoogleService-Info.plist in Resources */,
 				0A8F952828A24F8300ED90F9 /* Assets.xcassets in Resources */,
+				A782BDE528B4ADB300E6990E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
