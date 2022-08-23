@@ -72,6 +72,8 @@
 		A73A1B1E28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1D28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift */; };
 		A73A1B2228AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */; };
 		A76377C228AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76377C128AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift */; };
+		A7669C6E28B4B11800574806 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7669C6D28B4B11800574806 /* CartManager.swift */; };
+		A77A7FB028B4F648006E53BB /* CoffeeSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A7FAF28B4F648006E53BB /* CoffeeSize.swift */; };
 		A782BDDC28B3617900E6990E /* DishConfigurationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782BDDB28B3617900E6990E /* DishConfigurationAlertView.swift */; };
 		A782BDDF28B3641800E6990E /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782BDDE28B3641800E6990E /* UILabel+Ext.swift */; };
 		A7832AD228AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832ACC28AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift */; };
@@ -81,7 +83,8 @@
 		A7832AD628AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD028AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift */; };
 		A7832AD728AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD128AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift */; };
 		A7832ADA28AE54410093EB4C /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */; };
-		A7EFD3AF28AE4DF5005CACC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7EFD3AE28AE4DF5005CACC1 /* GoogleService-Info.plist */; };
+		A7A04BE128B4BE6E004D8D71 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7A04BE028B4BE6E004D8D71 /* GoogleService-Info.plist */; };
+		A7A04BE328B4CD16004D8D71 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A04BE228B4CD16004D8D71 /* UIButton+Ext.swift */; };
 		A7FB191D28B03E5900BB5943 /* FBAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FB191C28B03E5900BB5943 /* FBAuthService.swift */; };
 		A7FB191F28B03E7100BB5943 /* FBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FB191E28B03E7100BB5943 /* FBService.swift */; };
 		A7FB192128B03EB900BB5943 /* FBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FB192028B03EB900BB5943 /* FBError.swift */; };
@@ -158,6 +161,8 @@
 		A73A1B1D28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopMarkerAnnotationView.swift; sourceTree = "<group>"; };
 		A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMarkerAnnotationView+Ext.swift"; sourceTree = "<group>"; };
 		A76377C128AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopClusterAnnotation.swift; sourceTree = "<group>"; };
+		A7669C6D28B4B11800574806 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		A77A7FAF28B4F648006E53BB /* CoffeeSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeSize.swift; sourceTree = "<group>"; };
 		A782BDDB28B3617900E6990E /* DishConfigurationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishConfigurationAlertView.swift; sourceTree = "<group>"; };
 		A782BDDE28B3641800E6990E /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		A7832ACC28AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenPresenter.swift; sourceTree = "<group>"; };
@@ -167,7 +172,8 @@
 		A7832AD028AE50A70093EB4C /* FavoritesCoffeeShopsScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenInteractor.swift; sourceTree = "<group>"; };
 		A7832AD128AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoffeeShopsScreenContainer.swift; sourceTree = "<group>"; };
 		A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
-		A7EFD3AE28AE4DF5005CACC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A7A04BE028B4BE6E004D8D71 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A7A04BE228B4CD16004D8D71 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		A7FB191C28B03E5900BB5943 /* FBAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthService.swift; sourceTree = "<group>"; };
 		A7FB191E28B03E7100BB5943 /* FBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBService.swift; sourceTree = "<group>"; };
 		A7FB192028B03EB900BB5943 /* FBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBError.swift; sourceTree = "<group>"; };
@@ -261,7 +267,7 @@
 				A648A3E428A2A6EB00413915 /* AppImageNames.swift */,
 				0A8F952728A24F8300ED90F9 /* Assets.xcassets */,
 				0A8F952C28A24F8300ED90F9 /* Info.plist */,
-				A7EFD3AE28AE4DF5005CACC1 /* GoogleService-Info.plist */,
+				A7A04BE028B4BE6E004D8D71 /* GoogleService-Info.plist */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -328,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				A713A95228A55CD900769321 /* DishSection.swift */,
+				A77A7FAF28B4F648006E53BB /* CoffeeSize.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -360,6 +367,7 @@
 				A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */,
 				A7832AD928AE54410093EB4C /* UIViewController+Ext.swift */,
 				A782BDDE28B3641800E6990E /* UILabel+Ext.swift */,
+				A7A04BE228B4CD16004D8D71 /* UIButton+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -406,6 +414,7 @@
 		A737099328B03E1C00A74547 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				A7669C6C28B4B0F500574806 /* Cart */,
 				A737099428B03E2300A74547 /* Firebase */,
 			);
 			path = Service;
@@ -443,6 +452,14 @@
 				A76377C128AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A7669C6C28B4B0F500574806 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				A7669C6D28B4B11800574806 /* CartManager.swift */,
+			);
+			path = Cart;
 			sourceTree = "<group>";
 		};
 		A782BDDD28B3617C00E6990E /* Views */ = {
@@ -545,8 +562,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A8F952B28A24F8300ED90F9 /* LaunchScreen.storyboard in Resources */,
-				A7EFD3AF28AE4DF5005CACC1 /* GoogleService-Info.plist in Resources */,
 				0A8F952828A24F8300ED90F9 /* Assets.xcassets in Resources */,
+				A7A04BE128B4BE6E004D8D71 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,10 +643,12 @@
 				A737099228B02DA300A74547 /* CoffeeShopBottomSheetDataSource.swift in Sources */,
 				0A8F954028A4D37300ED90F9 /* UIView+Ext.swift in Sources */,
 				0A8F954228A4D47A00ED90F9 /* UITextField+Ext.swift in Sources */,
+				A7A04BE328B4CD16004D8D71 /* UIButton+Ext.swift in Sources */,
 				A7832AD728AE50A70093EB4C /* FavoritesCoffeeShopsScreenContainer.swift in Sources */,
 				A7832AD328AE50A70093EB4C /* FavoritesCoffeeShopsScreenRouter.swift in Sources */,
 				0A2DFCB028A6616E00C7F5BB /* LoginProtocols.swift in Sources */,
 				A648A3E328A2A5ED00413915 /* MainTabBarController.swift in Sources */,
+				A77A7FB028B4F648006E53BB /* CoffeeSize.swift in Sources */,
 				A63AC17F28ACCB76005E7907 /* SkeletonImageView.swift in Sources */,
 				A6CFA99628A680B100B538DE /* ReceiptCollectionViewCell.swift in Sources */,
 				A6CFA99128A6700B00B538DE /* ProfileContainer.swift in Sources */,
@@ -670,6 +689,7 @@
 				A7832AD228AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift in Sources */,
 				A648A3E528A2A6EB00413915 /* AppImageNames.swift in Sources */,
 				0A8F953E28A4D32A00ED90F9 /* LoginView.swift in Sources */,
+				A7669C6E28B4B11800574806 /* CartManager.swift in Sources */,
 				0A2DFCBF28A934D200C7F5BB /* ModelConverter.swift in Sources */,
 				A76377C228AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift in Sources */,
 				0A2DFCBB28A6825100C7F5BB /* ModelsFB.swift in Sources */,

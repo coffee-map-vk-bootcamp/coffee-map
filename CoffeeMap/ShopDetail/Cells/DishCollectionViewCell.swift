@@ -62,7 +62,7 @@ final class DishCollectionViewCell: UICollectionViewCell {
     func configure(with dish: Dish) {
         dishImageView.setImage(with: dish.image)
         dishNameLabel.text = dish.name
-        priceLabel.text = "\(dish.price) ₽"
+        priceLabel.text = "\(dish.prices.first?.value ?? 0) ₽"
     }
     
     override func layoutSubviews() {

@@ -31,7 +31,8 @@ extension DishConfiguratorPresenter: DishConfiguratorViewOutput {
     }
     
     func didLoadView() {
-        
+        let dish = interactor.loadDish()
+        view?.setDish(dish)
     }
 }
 
