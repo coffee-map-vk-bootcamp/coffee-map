@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import CoreLocation
+import MapKit
 
-final class FavoritesCoffeeShopsScreenPresenter {
+final class FavoritesCoffeeShopsScreenPresenter: NSObject {
+    private var userLocation: CLLocationCoordinate2D?
+    private var locationManager: CLLocationManager?
+    
     weak var view: FavoritesCoffeeShopsScreenViewInput?
     weak var moduleOutput: FavoritesCoffeeShopsScreenModuleOutput?
     
@@ -24,6 +29,14 @@ final class FavoritesCoffeeShopsScreenPresenter {
     init(router: FavoritesCoffeeShopsScreenRouterInput, interactor: FavoritesCoffeeShopsScreenInteractorInput) {
         self.router = router
         self.interactor = interactor
+        super.init()
+        setupLocationManager()
+    }
+    
+    func setupLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.delegate = self
     }
 }
 
@@ -37,8 +50,12 @@ extension FavoritesCoffeeShopsScreenPresenter: FavoritesCoffeeShopsScreenViewOut
     
     func remove(at index: Int) {
         favoriteShops.remove(at: index)
-        
     }
+    
+//    func locationSetter() -> CLLocationCoordinate2D {
+//        guard let location = userLocation else { return }
+//        return location
+//    }
     
     func getFavoritesCoffeeShops() {
         interactor.fetchCoffeeShops()
@@ -49,5 +66,27 @@ extension FavoritesCoffeeShopsScreenPresenter: FavoritesCoffeeShopsScreenInterac
     func getShops(_ shops: [CoffeeShop]) {
         favoriteShops = shops
         view?.setCoffeeShops(favoriteShops)
+    }
+}
+
+extension FavoritesCoffeeShopsScreenPresenter: CLLocationManagerDelegate {
+    func activateLocationServices() {
+        locationManager?.startUpdatingLocation()
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        guard CLLocationManager.locationServicesEnabled() else { return }
+        
+        let status = manager.authorizationStatus
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            activateLocationServices()
+        } else if status == .notDetermined {
+            locationManager?.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let latest = locations.first else { return }
+        userLocation = latest.coordinate
     }
 }

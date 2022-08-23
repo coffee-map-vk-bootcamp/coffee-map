@@ -108,6 +108,10 @@ final class FavouritesCell: UICollectionViewCell {
     func configure(with shop: CoffeeShop, index: Int) {
         placeLabel.text = shop.name
         addressLabel.text = shop.address
+        let coordinate0 = CLLocation(latitude: shop.latitude, longitude: shop.longitude)
+        let coordinate1 = CLLocation(latitude: 43.6028, longitude: 39.7342)
+        let distance = coordinate0.distance(from: coordinate1) / 1000
+        distanceLabel.text = "\(Int(distance)) км."
         self.index = index
     }
     
