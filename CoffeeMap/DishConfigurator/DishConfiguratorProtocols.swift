@@ -18,6 +18,7 @@ protocol DishConfiguratorModuleOutput: AnyObject {
 
 protocol DishConfiguratorViewInput: AnyObject {
     func dismiss()
+    func setDish(_ dish: Dish)
 }
 
 protocol DishConfiguratorViewOutput: AnyObject {
@@ -26,6 +27,7 @@ protocol DishConfiguratorViewOutput: AnyObject {
 }
 
 protocol DishConfiguratorInteractorInput: AnyObject {
+    func loadDish() -> Dish
 }
 
 protocol DishConfiguratorInteractorOutput: AnyObject {

@@ -13,6 +13,14 @@ struct Dish: Decodable {
     let image: String
 }
 
+extension Dish {
+    init() {
+        name = ""
+        price = 0
+        image = ""
+    }
+}
+
 struct CoffeeShop: Decodable {
     let id: String
     let name: String

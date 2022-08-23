@@ -16,7 +16,9 @@ final class DishConfigurationAlertView: UIView {
     
     private lazy var dishImageView = SkeletonImageView()
     
-    private lazy var dishNameLabel = UILabel()
+    private lazy var dishNameLabel = UILabel(text: "Название продукта",
+                                             font: .systemFont(ofSize: 18, weight: .semibold),
+                                             color: .init(hex: "3F3E3E"))
     private lazy var priceLabel = UILabel(text: "80,00 ₽",
                                           font: .systemFont(ofSize: 22, weight: .bold),
                                           color: .secondaryLabel)
@@ -36,14 +38,17 @@ final class DishConfigurationAlertView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        layout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure() {
-        
+    func configure(with dish: Dish) {
+        dishNameLabel.text = dish.name
+        dishImageView.setImage(with: dish.image)
+        priceLabel.text = "\(dish.price) ₽"
     }
 }
 
@@ -53,32 +58,59 @@ private extension DishConfigurationAlertView {
                      sugarAmountLabel, sizeLabel, dismissButton, addToCartButton]
         
         addSubviews(views)
+        dishNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        setupIntial()
+        setupDishImageView()
+        setupDismissButton()
+    }
+    
+    func setupIntial() {
         backgroundColor = .systemBackground
-        layout()
-        
         layer.cornerRadius = 16
     }
     
-    func layout() {
+    func setupDishImageView() {
         dishImageView.translatesAutoresizingMaskIntoConstraints = false
+        dishImageView.layer.cornerRadius = 16
+    }
+    
+    func setupDismissButton() {
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
+        dismissButton.addTarget(self, action: #selector(didTapClose), for: .touchUpInside)
+    }
+    
+    func layout() {
+        layoutDishImageView()
+        layoutDismissButton()
+        layoutDishNameLabel()
+    }
+    
+    func layoutDishNameLabel() {
+        dishNameLabel.sizeToFit()
         
         NSLayoutConstraint.activate([
-            dishImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            dishImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            dishNameLabel.leadingAnchor.constraint(equalTo: dishImageView.trailingAnchor, constant: 22),
+            dishNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -34),
+            dishNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 34)
+        ])
+    }
+    
+    func layoutDishImageView() {
+        NSLayoutConstraint.activate([
+            dishImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            dishImageView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
             dishImageView.heightAnchor.constraint(equalToConstant: 88),
             dishImageView.widthAnchor.constraint(equalToConstant: 88)
         ])
-        
-        dismissButton.translatesAutoresizingMaskIntoConstraints = false
-        
+    }
+    
+    func layoutDismissButton() {
         NSLayoutConstraint.activate([
             dismissButton.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             dismissButton.heightAnchor.constraint(equalToConstant: 16),
             dismissButton.widthAnchor.constraint(equalToConstant: 16)
         ])
-        
-        dismissButton.addTarget(self, action: #selector(didTapClose), for: .touchUpInside)
     }
     
     @objc func didTapClose() {

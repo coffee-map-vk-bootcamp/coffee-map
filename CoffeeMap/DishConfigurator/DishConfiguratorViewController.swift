@@ -33,6 +33,7 @@ final class DishConfiguratorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        output.didLoadView()
         
         visualEffectView.alpha = 0
         alertView.alpha = 0
@@ -58,6 +59,10 @@ final class DishConfiguratorViewController: UIViewController {
 }
 
 extension DishConfiguratorViewController: DishConfiguratorViewInput {
+    func setDish(_ dish: Dish) {
+        alertView.configure(with: dish)
+    }
+    
     func dismiss() {
         remove()
     }

@@ -72,6 +72,7 @@
 		A73A1B1E28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B1D28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift */; };
 		A73A1B2228AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */; };
 		A76377C228AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76377C128AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift */; };
+		A7669C6E28B4B11800574806 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7669C6D28B4B11800574806 /* CartManager.swift */; };
 		A782BDDC28B3617900E6990E /* DishConfigurationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782BDDB28B3617900E6990E /* DishConfigurationAlertView.swift */; };
 		A782BDDF28B3641800E6990E /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A782BDDE28B3641800E6990E /* UILabel+Ext.swift */; };
 		A782BDE528B4ADB300E6990E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A782BDE428B4ADB300E6990E /* GoogleService-Info.plist */; };
@@ -158,6 +159,7 @@
 		A73A1B1D28AE28F200D5022D /* CoffeeShopMarkerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopMarkerAnnotationView.swift; sourceTree = "<group>"; };
 		A73A1B2128AE3EEB00D5022D /* MKMarkerAnnotationView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMarkerAnnotationView+Ext.swift"; sourceTree = "<group>"; };
 		A76377C128AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopClusterAnnotation.swift; sourceTree = "<group>"; };
+		A7669C6D28B4B11800574806 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		A782BDDB28B3617900E6990E /* DishConfigurationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishConfigurationAlertView.swift; sourceTree = "<group>"; };
 		A782BDDE28B3641800E6990E /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		A782BDE428B4ADB300E6990E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 		A737099328B03E1C00A74547 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				A7669C6C28B4B0F500574806 /* Cart */,
 				A737099428B03E2300A74547 /* Firebase */,
 			);
 			path = Service;
@@ -443,6 +446,14 @@
 				A76377C128AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A7669C6C28B4B0F500574806 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				A7669C6D28B4B11800574806 /* CartManager.swift */,
+			);
+			path = Cart;
 			sourceTree = "<group>";
 		};
 		A782BDDD28B3617C00E6990E /* Views */ = {
@@ -670,6 +681,7 @@
 				A7832AD228AE50A70093EB4C /* FavoritesCoffeeShopsScreenPresenter.swift in Sources */,
 				A648A3E528A2A6EB00413915 /* AppImageNames.swift in Sources */,
 				0A8F953E28A4D32A00ED90F9 /* LoginView.swift in Sources */,
+				A7669C6E28B4B11800574806 /* CartManager.swift in Sources */,
 				0A2DFCBF28A934D200C7F5BB /* ModelConverter.swift in Sources */,
 				A76377C228AF9EE200E95AD6 /* CoffeeShopClusterAnnotation.swift in Sources */,
 				0A2DFCBB28A6825100C7F5BB /* ModelsFB.swift in Sources */,
