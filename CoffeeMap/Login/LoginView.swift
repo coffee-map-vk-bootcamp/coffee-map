@@ -56,6 +56,16 @@ class LoginView: UIView {
         return logoView
     }()
     
+    private lazy var resultLabel: UILabel = {
+        let resultLabel = UILabel()
+        resultLabel.textColor = .red
+        resultLabel.numberOfLines = 0
+        resultLabel.textAlignment = .center
+        resultLabel.toAutoLayout()
+        
+        return resultLabel
+    }()
+    
     private lazy var logInButton: UIButton = {
         logInButton = UIButton()
         logInButton.backgroundColor = .primary
@@ -120,9 +130,14 @@ class LoginView: UIView {
             logoView.heightAnchor.constraint(equalToConstant: 200),
             logoView.widthAnchor.constraint(equalToConstant: 200),
             
+            resultLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            resultLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 30),
+            resultLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            resultLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            
             stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            stackView.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 80),
+            stackView.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 30),
             stackView.heightAnchor.constraint(equalToConstant: 100),
             
             repeatPasswordTextField.topAnchor.constraint(equalTo: stackView.bottomAnchor),
@@ -144,8 +159,13 @@ class LoginView: UIView {
             withoutLogButton.trailingAnchor.constraint(equalTo: logInButton.trailingAnchor)
         ])
     }
+    
+    func addResult(result: String) {
+        resultLabel.text = result
+    }
 
     private func setup() {
+        addSubview(resultLabel)
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
@@ -211,7 +231,7 @@ class LoginView: UIView {
         repeatPasswordTextField.placeholder = "Повторите пароль"
         repeatPasswordTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         repeatPasswordTextField.autocapitalizationType = .none
-        repeatPasswordTextField.isSecureTextEntry = false
+        repeatPasswordTextField.isSecureTextEntry = true
         
         repeatPasswordTextField.layer.borderColor = UIColor.lightGray.cgColor
         repeatPasswordTextField.layer.borderWidth = 0.5
@@ -235,6 +255,8 @@ class LoginView: UIView {
     
     func animateSignUp() {
         repeatPasswordTextFieldAncor.isActive = false
+        passwordTextField.text = ""
+        signUpButton.setTitle("Зарегистрироваться", for: .normal)
         UIView.animate(withDuration: 0.5, delay: 0, options: []) { [self] in
             passwordTextField.layer.cornerRadius = 0
             passwordTextField.layer.maskedCorners = []
@@ -246,13 +268,21 @@ class LoginView: UIView {
     
     func animateSignIn() {
         repeatPasswordTextFieldAncor.isActive = false
-        UIView.animate(withDuration: 0.5, delay: 0, options: []) { [self] in
-            passwordTextField.layer.cornerRadius = 10
-            passwordTextField.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-            self.repeatPasswordTextFieldAncor.constant = 0
-            self.repeatPasswordTextFieldAncor.isActive = true
-            self.layoutIfNeeded()
+        repeatPasswordTextField.text = ""
+        passwordTextField.text = ""
+        signUpButton.setTitle("Регистрация", for: .normal)
+        UIView.animate(withDuration: 0.5, delay: 0, options: []) { [weak self] in
+            self?.passwordTextField.layer.cornerRadius = 10
+            self?.passwordTextField.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+            self?.repeatPasswordTextFieldAncor.constant = 0
+            self?.repeatPasswordTextFieldAncor.isActive = true
+            self?.layoutIfNeeded()
         }
+    }
+    
+    func animationFail() {
+        stackView.shake()
+        repeatPasswordTextField.shake()
     }
 }
 
