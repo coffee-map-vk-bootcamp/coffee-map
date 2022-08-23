@@ -41,7 +41,11 @@ struct Order: Decodable {
     let name: String
     let totalPrice: Int
     let date: Date
-    let dishes: [OrderDish]
+    var dishes: [OrderDish]
+}
+
+enum DishSize: Decodable {
+    case small, medium, large
 }
 
 struct OrderDish: Decodable {
@@ -49,6 +53,7 @@ struct OrderDish: Decodable {
     let price: Int
     let image: String
     let count: Int
+    let size: DishSize
 }
 
 struct User: Decodable {
