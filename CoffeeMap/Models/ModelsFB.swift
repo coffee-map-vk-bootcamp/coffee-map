@@ -54,16 +54,11 @@ struct Order: Decodable {
     var dishes: [OrderDish]
 }
 
-enum DishSize: Decodable {
-    case small, medium, large
-}
-
 struct OrderDish: Decodable {
     let name: String
     let price: Int
     let image: String
     let count: Int
-    let size: DishSize
 }
 
 struct User: Decodable {
