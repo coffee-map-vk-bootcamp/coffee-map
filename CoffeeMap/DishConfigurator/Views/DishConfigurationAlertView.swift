@@ -29,8 +29,8 @@ final class DishConfigurationAlertView: UIView {
                                            color: .primaryTextColor)
     
     private lazy var amountNumberLabel = UILabel(text: "1",
-                                           font: .systemFont(ofSize: 18, weight: .medium),
-                                           color: .primaryTextColor)
+                                                 font: .systemFont(ofSize: 18, weight: .medium),
+                                                 color: .primaryTextColor)
     
     private lazy var sizeLabel = UILabel(text: "Размер",
                                          font: .systemFont(ofSize: 16, weight: .medium),
@@ -69,10 +69,12 @@ final class DishConfigurationAlertView: UIView {
     }()
     
     private lazy var sizeS = UILabel(text: "S", font: .systemFont(ofSize: 18, weight: .semibold), color: .primaryTextColor)
-    private lazy var sizeM = UILabel(text: "M", font: .systemFont(ofSize: 18, weight: .semibold), color: .primary)
+    private lazy var sizeM = UILabel(text: "M", font: .systemFont(ofSize: 18, weight: .semibold), color: .primaryTextColor)
     private lazy var sizeL = UILabel(text: "L", font: .systemFont(ofSize: 18, weight: .semibold), color: .primaryTextColor)
     
     private var coffeeSize: CoffeeSize = .medium
+    
+    private var prices: [String: Int] = [:]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -87,14 +89,35 @@ final class DishConfigurationAlertView: UIView {
     func configure(with dish: Dish) {
         dishNameLabel.text = dish.name
         dishImageView.setImage(with: dish.image)
-        priceLabel.text = "\(dish.price) ₽"
+        priceLabel.text = "\(dish.prices[dish.sizes.first?.rawValue ?? CoffeeSize.medium.rawValue] ?? 0) ₽"
+        
+        sizeS.isHidden = true
+        sizeM.isHidden = true
+        sizeL.isHidden = true
+        
+        coffeeSize = dish.sizes.first ?? .small
+        
+        for size in dish.sizes {
+            switch size {
+            case .small:
+                sizeS.isHidden = false
+            case .medium:
+                sizeM.isHidden = false
+            case .large:
+                sizeL.isHidden = false
+            }
+        }
+        
+        prices = dish.prices
+        
+        changeSizeSelection(size: coffeeSize)
     }
 }
 
 private extension DishConfigurationAlertView {
     func setup() {
         let views = [dishImageView, dishNameLabel, priceLabel, amountLabel,
-                      sizeLabel, dismissButton, addToCartButton, leftStepperButton, amountNumberLabel, rightStepperButton, sizeS, sizeM, sizeL]
+                     sizeLabel, dismissButton, addToCartButton, leftStepperButton, amountNumberLabel, rightStepperButton, sizeS, sizeM, sizeL]
         
         addSubviews(views)
         dishNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -235,7 +258,7 @@ private extension DishConfigurationAlertView {
         NSLayoutConstraint.activate([
             addToCartButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             addToCartButton.topAnchor.constraint(equalTo: sizeLabel.bottomAnchor, constant: 30),
-//            addToCartButton.heightAnchor.constraint(equalToConstant: 55),
+            //            addToCartButton.heightAnchor.constraint(equalToConstant: 55),
             addToCartButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
             addToCartButton.widthAnchor.constraint(equalToConstant: 250)
         ])
@@ -314,6 +337,8 @@ private extension DishConfigurationAlertView {
         case .large:
             sizeL.textColor = .primary
         }
+        
+        priceLabel.text = "\(prices[size.rawValue] ?? 0) ₽"
     }
     
     @objc func didTapSmallSize() {

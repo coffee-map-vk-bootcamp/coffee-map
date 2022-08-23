@@ -9,15 +9,17 @@ import Foundation
 
 struct Dish: Decodable {
     let name: String
-    let price: Int
+    let prices: [String: Int]
     let image: String
+    let sizes: [CoffeeSize]
 }
 
 extension Dish {
     init() {
         name = ""
-        price = 0
         image = ""
+        sizes = []
+        prices = [:]
     }
 }
 

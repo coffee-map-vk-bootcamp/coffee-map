@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum CoffeeSize: Decodable {
+enum CoffeeSize: String, Codable {
     case small, medium, large
 }
