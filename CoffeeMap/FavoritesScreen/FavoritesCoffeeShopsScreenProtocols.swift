@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+import MapKit
 
 protocol FavoritesCoffeeShopsScreenModuleInput {
     var moduleOutput: FavoritesCoffeeShopsScreenModuleOutput? { get }
@@ -21,14 +23,16 @@ protocol FavoritesCoffeeShopsScreenViewInput: AnyObject {
 
 protocol FavoritesCoffeeShopsScreenViewOutput: AnyObject {
     func getFavoritesCoffeeShops()
+    func getCoffeeShops() -> [CoffeeShop]
+    func remove(at index: Int)
 }
 
 protocol FavoritesCoffeeShopsScreenInteractorInput: AnyObject {
-    func obtainCoffeeShops()
+    func fetchCoffeeShops()
 }
 
 protocol FavoritesCoffeeShopsScreenInteractorOutput: AnyObject {
-    func transferCoffeeShops(_ shops: [CoffeeShop])
+    func getShops(_ shops: [CoffeeShop])
 }
 
 protocol FavoritesCoffeeShopsScreenRouterInput: AnyObject {

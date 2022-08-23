@@ -21,6 +21,7 @@ final class ProfileContainer {
         viewController.title = "Профиль"
 
 		presenter.view = viewController
+        router.controller = viewController
 		presenter.moduleOutput = context.moduleOutput
 
 		interactor.output = presenter

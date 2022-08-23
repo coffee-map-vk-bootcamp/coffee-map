@@ -22,6 +22,7 @@ final class DishConfiguratorContainer {
         presenter.view = viewController
         presenter.moduleOutput = context.moduleOutput
         
+        interactor.setDish(dish: context.dish)
         interactor.output = presenter
         
         return DishConfiguratorContainer(view: viewController, input: presenter, router: router)

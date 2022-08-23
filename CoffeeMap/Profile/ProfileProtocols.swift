@@ -27,6 +27,8 @@ protocol ProfileViewOutput: AnyObject {
     func loadUser()
 
     func prepare(data model: Order) -> ReceiptCellModel
+    
+    func logout()
 }
 
 protocol ProfileInteractorInput: AnyObject {
@@ -39,4 +41,9 @@ protocol ProfileInteractorOutput: AnyObject {
 }
 
 protocol ProfileRouterInput: AnyObject {
+    func logout()
+}
+
+protocol ProfileHeaderOutput: AnyObject {
+    func logout()
 }

@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 protocol ShopListViewControllerDelegate: AnyObject {
     func getCoffeeShops()
+    func remove(at index: Int)
 }
 
 class ShopListViewController: UIViewController {
@@ -38,7 +41,10 @@ class ShopListViewController: UIViewController {
     
     func configure(with shops: [CoffeeShop]) {
         favouriteCoffeeShops = shops
-        favouritesCollectionView.reloadData()
+        self.favouritesCollectionView.performBatchUpdates({
+            let indexSet = IndexSet(integer: 0)
+            self.favouritesCollectionView.reloadSections(indexSet)
+        }, completion: nil)
     }
 }
 
@@ -70,6 +76,7 @@ private extension ShopListViewController {
     @objc private func didPullToRefresh(_ sender: Any) {
         // Do you your api calls in here, and then asynchronously remember to stop the
         // refreshing when you've got a result (either positive or negative)
+        favouritesCollectionView.reloadData()
         refreshControl.endRefreshing()
     }
     
@@ -96,7 +103,8 @@ extension ShopListViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavouritesCell.reuseIdentifier, for: indexPath) as? FavouritesCell
         else { return UICollectionViewCell() }
         let shop = favouriteCoffeeShops[indexPath.row]
-        cell.configure(with: shop)
+        cell.delegate = self
+        cell.configure(with: shop, index: indexPath.item)
         
         return cell
     }
@@ -116,5 +124,11 @@ extension ShopListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 16
+    }
+}
+
+extension ShopListViewController: FavouriteCellDelegate {    
+    func remove(at index: Int) {
+        delegate?.remove(at: index)
     }
 }

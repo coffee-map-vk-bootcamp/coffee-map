@@ -12,7 +12,7 @@ extension UIColor {
     static let secondaryBackground = UIColor(hex: "FBFBFB")
     static let borderColor = UIColor(hex: "E8E8E8")
     
-    static let primaryTextColor: UIColor = .init(hex: "#4F4F4F")
+    static let primaryTextColor = UIColor(hex: "#4F4F4F")
     
     convenience init(hex: String) {
         var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
@@ -34,4 +34,32 @@ extension UIColor {
                   blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
                   alpha: CGFloat(1.0))
     }
+    
+    static var appTintColor: UIColor = {
+        if #available(iOS 13, *){
+            return UIColor{ (traitCollection: UITraitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .dark{
+                    return UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
+                } else {
+                    return UIColor(red: 0.99, green: 0.99, blue: 0.99, alpha: 1.0)
+                }
+            }
+        } else {
+            return UIColor.systemBlue
+        }
+    }()
+    
+    static var appTextColor: UIColor = {
+        if #available(iOS 13, *){
+            return UIColor{ (traitCollection: UITraitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .dark{
+                    return UIColor(red: 1, green: 1, blue: 1, alpha: 1.0)
+                } else {
+                    return UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
+                }
+            }
+        } else {
+            return UIColor.systemBlue
+        }
+    }()
 }

@@ -7,8 +7,18 @@
 
 import UIKit
 import MapKit
+import CoreLocation
+
+protocol FavouriteCellDelegate: AnyObject {
+    func remove(at index: Int)
+}
 
 final class FavouritesCell: UICollectionViewCell {
+    private var userLocation: CLLocationCoordinate2D?
+    private var locationManager: CLLocationManager?
+    
+    weak var delegate: FavouriteCellDelegate?
+    var locationKeeper: CLLocation?
     
     private lazy var placeLabel: UILabel = {
         let label = UILabel()
@@ -48,6 +58,8 @@ final class FavouritesCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 10)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.2
         label.text = "1 км."
         label.textColor = .white
         return label
@@ -61,14 +73,12 @@ final class FavouritesCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var backgroundImageView: UIImageView = {
-        let background = UIImageView(image: UIImage(named: AppImageNames.mockHeader))
-        background.layer.addSublayer(gradientLayer)
-        background.frame = contentView.bounds
-        background.contentMode =  UIView.ContentMode.scaleAspectFill
+    private lazy var backgroundImageView: SkeletonImageView = {
+        let background = SkeletonImageView()
         background.clipsToBounds = true
-        background.center = contentView.center
+        background.layer.addSublayer(gradientLayer)
         background.layer.cornerRadius = 14
+        background.translatesAutoresizingMaskIntoConstraints = false
         return background
     }()
     
@@ -79,9 +89,12 @@ final class FavouritesCell: UICollectionViewCell {
         layer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         return layer
     }()
-
+    
+    private var index: Int!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupLocationManager()
         setupViews()
         setupCell()
         setupDistanceViews()
@@ -97,9 +110,18 @@ final class FavouritesCell: UICollectionViewCell {
         gradientLayer.frame = contentView.bounds
     }
     
-    func configure(with shop: CoffeeShop) {
+    func setupLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.delegate = self
+    }
+    
+    func configure(with shop: CoffeeShop, index: Int) {
         placeLabel.text = shop.name
         addressLabel.text = shop.address
+        backgroundImageView.setImage(with: shop.image)
+        locationKeeper = CLLocation(latitude: shop.latitude, longitude: shop.longitude)
+        self.index = index
     }
     
     private func setupViews() {
@@ -112,8 +134,10 @@ final class FavouritesCell: UICollectionViewCell {
         distanceView.addSubview(distanceLabel)
     }
     
-    @objc private func deleteFavourite() {
-        print("delete")
+    @objc private func deleteFavourite(sender: UIButton) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        delegate?.remove(at: index)
     }
     
     private func setupCell() {
@@ -133,9 +157,14 @@ final class FavouritesCell: UICollectionViewCell {
     
     private func layout() {
         NSLayoutConstraint.activate([
+            backgroundImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            backgroundImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
             distanceView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             distanceView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 8),
-            distanceView.widthAnchor.constraint(equalToConstant: 51),
+            distanceView.widthAnchor.constraint(greaterThanOrEqualTo: distanceLabel.widthAnchor, constant: 26),
             distanceView.heightAnchor.constraint(equalToConstant: 20),
             
             flagButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
@@ -149,5 +178,37 @@ final class FavouritesCell: UICollectionViewCell {
             addressLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             addressLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -8)
         ])
+    }
+}
+
+extension FavouritesCell: CLLocationManagerDelegate {
+    func activateLocationServices() {
+        locationManager?.startUpdatingLocation()
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        guard CLLocationManager.locationServicesEnabled() else { return }
+        
+        let status = manager.authorizationStatus
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            activateLocationServices()
+        } else if status == .notDetermined {
+            locationManager?.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let latest = locations.first else { return }
+        userLocation = latest.coordinate
+        let coordinate1 = CLLocation(latitude: (userLocation?.latitude) ?? 13.6028, longitude: (userLocation?.longitude) ?? 19.7342)
+        let distance = (locationKeeper?.distance(from: coordinate1) ?? 0) / 1000
+        if distance <= 1 {
+            distanceLabel.text = "\(Int(distance * 1000)) м."
+        } else if distance <= 100 {
+            distanceLabel.text = "\(Int(distance)) км."
+        } else {
+            distanceLabel.text = ">100 км."
+        }
+        print(userLocation ?? 0)
     }
 }
