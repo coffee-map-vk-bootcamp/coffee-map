@@ -16,6 +16,7 @@ final class CoffeeShopDetailScreenViewController: UIViewController {
     private var favoriteCoffeeShops = [CoffeeShop]()
     
     private lazy var collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    private var header: CoffeeShopDetailHeaderView?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -53,7 +54,9 @@ final class CoffeeShopDetailScreenViewController: UIViewController {
 extension CoffeeShopDetailScreenViewController: CoffeeShopDetailScreenViewInput {
     func setFavoriteCoffeeShops(_ coffeeShops: [CoffeeShop]) {
         favoriteCoffeeShops = coffeeShops
-        collectionView.reloadData()
+        let coffeeShop = output.getCoffeeShop()
+        let isFavorite = favoriteCoffeeShops.contains { $0.id == coffeeShop.id }
+        header?.setFavorite(isFavorite)
     }
 }
 
@@ -196,6 +199,8 @@ extension CoffeeShopDetailScreenViewController: UICollectionViewDataSource {
             let header = collectionView.dequeueReusableSupplementaryView(
                 CoffeeShopDetailHeaderView.self, ofKind: Constants.HeaderKind.globalHeader, for: indexPath)
             let coffeeShop = output.getCoffeeShop()
+            output.checkIsFavorite()
+            self.header = header
             let isFavorite = favoriteCoffeeShops.contains { $0.id == coffeeShop.id }
             header.delegate = self
             header.configure(with: coffeeShop, isFavorite: isFavorite)

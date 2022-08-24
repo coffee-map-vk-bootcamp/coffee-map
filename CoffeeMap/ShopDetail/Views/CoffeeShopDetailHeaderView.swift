@@ -67,6 +67,10 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
         headerImageView.setImage(with: coffeeShop.image)
         headerTitleLabel.text = coffeeShop.name
     }
+    
+    func setFavorite(_ favorite: Bool) {
+        setFavoriteButton(favorite)
+    }
 }
 
 private extension CoffeeShopDetailHeaderView {

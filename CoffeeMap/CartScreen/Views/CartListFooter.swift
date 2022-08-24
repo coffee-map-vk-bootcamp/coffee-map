@@ -12,27 +12,13 @@ protocol CartListFooterDelegate: AnyObject {
     func makeOrderDidTap()
 }
 
+protocol CartListFooterDescription {
+    var orderTime: Date { get }
+}
+
 final class CartListFooter: UIView {
 
     weak var delegate: CartListFooterDelegate?
-    
-    private lazy var sumLabel: UILabel = {
-        let sumLabel = UILabel()
-        sumLabel.text = "Итого"
-        sumLabel.font = UIFont.systemFont(ofSize: 24)
-        sumLabel.toAutoLayout()
-        
-        return sumLabel
-    }()
-    
-    private lazy var priceLabel: UILabel = {
-        let priceLabel = UILabel()
-        priceLabel.text = "160₽"
-        priceLabel.font = UIFont.systemFont(ofSize: 24)
-        priceLabel.toAutoLayout()
-        
-        return priceLabel
-    }()
     
     private lazy var buyButton: UIButton = {
         let buyButton = UIButton()
@@ -46,6 +32,27 @@ final class CartListFooter: UIView {
         return buyButton
     }()
     
+    private lazy var textTimeLabel: UILabel = {
+        let textTimeLabel = UILabel()
+        textTimeLabel.text = "Приготовим к"
+        textTimeLabel.font = UIFont.systemFont(ofSize: 24)
+        textTimeLabel.textColor = .primary
+        textTimeLabel.toAutoLayout()
+        
+        return textTimeLabel
+    }()
+    
+    lazy var datePicker: UIDatePicker = {
+        datePicker = UIDatePicker()
+        let localeID = Locale.preferredLanguages.first
+        datePicker.locale = NSLocale(localeIdentifier: "ru_RU") as Locale
+        datePicker.datePickerMode = .time
+        datePicker.preferredDatePickerStyle = .inline
+        datePicker.toAutoLayout()
+        
+        return datePicker
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -56,28 +63,27 @@ final class CartListFooter: UIView {
     }
     
     func configure(sumPrice: Int) {
-        priceLabel.text = "\(sumPrice)₽"
+        buyButton.isEnabled = sumPrice != 0
+        buyButton.setTitle("Оплатить \(sumPrice) ₽", for: .normal)
     }
     
     private func setup() {
-        addSubviews([sumLabel, priceLabel, buyButton])
+        addSubviews([buyButton, textTimeLabel, datePicker])
         backgroundColor = .appTintColor
         
-        sumLabel.sizeToFit()
-        priceLabel.sizeToFit()
-        
         NSLayoutConstraint.activate([
-            sumLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28),
-            sumLabel.topAnchor.constraint(equalTo: topAnchor, constant: 4),
             
-            priceLabel.topAnchor.constraint(equalTo: sumLabel.topAnchor),
-            priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            textTimeLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            textTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            textTimeLabel.bottomAnchor.constraint(equalTo: buyButton.topAnchor, constant: -16),
             
-            buyButton.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 24),
+            datePicker.centerYAnchor.constraint(equalTo: textTimeLabel.centerYAnchor),
+            datePicker.leadingAnchor.constraint(equalTo: textTimeLabel.trailingAnchor, constant: 4),
+            
             buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
             buyButton.heightAnchor.constraint(equalToConstant: 50),
-            buyButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            buyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)
+            buyButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            buyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
 
         buyButton.addTarget(self, action: #selector(buyButtonDidTap), for: .touchUpInside)
@@ -86,5 +92,11 @@ final class CartListFooter: UIView {
     @objc
     private func buyButtonDidTap() {
         delegate?.makeOrderDidTap()
+    }
+}
+
+extension CartListFooter: CartListFooterDescription {
+    var orderTime: Date {
+        datePicker.date
     }
 }

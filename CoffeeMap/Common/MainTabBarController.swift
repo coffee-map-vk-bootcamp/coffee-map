@@ -59,7 +59,7 @@ final class MainTabBarController: UITabBarController {
         profileScreen.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: AppImageNames.persone), tag: 0)
 
         viewControllers = [homeScreen, cartScreen, favouriteScreen, profileScreen]
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
     
     private func setupAppearance() {

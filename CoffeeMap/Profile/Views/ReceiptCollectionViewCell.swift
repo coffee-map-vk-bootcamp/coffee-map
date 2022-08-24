@@ -181,4 +181,10 @@ final class ReceiptCollectionViewCell: UITableViewCell {
             orderStack.addArrangedSubview(makeDishView(with: $0))
         }
     }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle {
+            backgroundView?.layer.borderColor = UIColor.borderColor.cgColor
+        }
+    }
 }

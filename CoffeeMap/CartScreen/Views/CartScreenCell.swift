@@ -9,10 +9,6 @@ import Foundation
 import UIKit
 
 final class CartScreenCell: UITableViewCell {
-    var deleteAction: (() -> Void)?
-    
-    var isDelete: Bool = false
-    
     private lazy var dishImageView: SkeletonImageView = {
         let dishImageView = SkeletonImageView()
         dishImageView.layer.cornerRadius = 16
@@ -65,7 +61,6 @@ final class CartScreenCell: UITableViewCell {
     private lazy var deleteButton: UIButton = {
         let deleteButton = UIButton()
         deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
-        deleteButton.addTarget(self, action: #selector(deleteDish), for: .touchUpInside)
         deleteButton.contentMode = .scaleAspectFit
         deleteButton.toAutoLayout()
         
@@ -83,35 +78,30 @@ final class CartScreenCell: UITableViewCell {
     }
     
     private func setup() {
-        contentView.addSubviews([dishImageView, nameLabel, priceLabel, countLabel, countNumberLabel, deleteButton])
+        contentView.addSubviews([dishImageView, nameLabel, priceLabel, countLabel, countNumberLabel])
     }
     
-    func configure(image: String, name: String, price: String, count: String, deleteAction: @escaping () -> Void) {
+    func configure(image: String, name: String, price: String, count: String) {
         nameLabel.text = name
-        priceLabel.text = price
+        priceLabel.text = "\(price) ₽"
         countNumberLabel.text = count
         dishImageView.setImage(with: image)
-        self.deleteAction = deleteAction
     }
     
     private func layout() {
         super.layoutSubviews()
         NSLayoutConstraint.activate([
-            dishImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            dishImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
-            dishImageView.heightAnchor.constraint(equalToConstant: 100),
-            dishImageView.widthAnchor.constraint(equalToConstant: 100),
-            dishImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
+            dishImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            dishImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            dishImageView.heightAnchor.constraint(equalToConstant: 80),
+            dishImageView.widthAnchor.constraint(equalToConstant: 80),
+            dishImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             
             nameLabel.leadingAnchor.constraint(equalTo: dishImageView.trailingAnchor, constant: 16),
             nameLabel.topAnchor.constraint(equalTo: dishImageView.topAnchor),
             
-            deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            deleteButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            deleteButton.widthAnchor.constraint(equalToConstant: 30),
-
             priceLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
-            priceLabel.trailingAnchor.constraint(equalTo: deleteButton.leadingAnchor, constant: -8),
+            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             priceLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 8),
             
             countLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
@@ -123,10 +113,5 @@ final class CartScreenCell: UITableViewCell {
 
         priceLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         priceLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-    }
-    
-    @objc
-    private func deleteDish() {
-        deleteAction?()
     }
 }
