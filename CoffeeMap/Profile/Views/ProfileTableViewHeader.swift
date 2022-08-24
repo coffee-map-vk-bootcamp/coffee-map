@@ -30,7 +30,7 @@ final class ProfileTableViewHeader: UITableViewHeaderFooterView {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: AppImageNames.exit)?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.addTarget(self, action: #selector(logout), for: .touchUpInside)
-        button.tintColor = .black
+        button.tintColor = .appTextColor
         return button
     }()
 

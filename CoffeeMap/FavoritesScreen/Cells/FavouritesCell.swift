@@ -203,11 +203,11 @@ extension FavouritesCell: CLLocationManagerDelegate {
         let coordinate1 = CLLocation(latitude: (userLocation?.latitude) ?? 13.6028, longitude: (userLocation?.longitude) ?? 19.7342)
         let distance = (locationKeeper?.distance(from: coordinate1) ?? 0) / 1000
         if distance <= 1 {
-            distanceLabel.text = "\(Int(distance * 1000)) м."
+            distanceLabel.text = "\(Int(distance * 1000)) м"
         } else if distance <= 100 {
-            distanceLabel.text = "\(Int(distance)) км."
+            distanceLabel.text = "\(Int(distance)) км"
         } else {
-            distanceLabel.text = ">100 км."
+            distanceLabel.text = ">100 км"
         }
     }
 }

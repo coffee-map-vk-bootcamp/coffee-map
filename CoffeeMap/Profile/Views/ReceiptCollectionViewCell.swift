@@ -13,12 +13,14 @@ final class ReceiptCollectionViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textAlignment = .left
+        label.textColor = .black
         return label
     }()
 
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.textColor = .black
         label.textAlignment = .left
         return label
     }()
@@ -121,10 +123,12 @@ final class ReceiptCollectionViewCell: UITableViewCell {
         view.backgroundColor = .secondaryBackground
 
         let nameLabel = UILabel()
+        nameLabel.textColor = .black
         nameLabel.backgroundColor = .secondaryBackground
         nameLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
 
         let priceLabel = UILabel()
+        priceLabel.textColor = .black
         priceLabel.textAlignment = .right
         priceLabel.backgroundColor = .secondaryBackground
         priceLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
@@ -132,6 +136,7 @@ final class ReceiptCollectionViewCell: UITableViewCell {
         priceLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 
         let countLabel = UILabel()
+        countLabel.textColor = .black
         countLabel.textAlignment = .left
         countLabel.backgroundColor = .secondaryBackground
         countLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)

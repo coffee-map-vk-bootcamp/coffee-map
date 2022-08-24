@@ -52,6 +52,7 @@ final class CartScreenViewController: UIViewController {
     }
     
     private func setup(){
+        view.backgroundColor = .appTintColor
         view.addSubviews([tableView, footerView])
         tableView.register(CartScreenCell.self, forCellReuseIdentifier: CartScreenCell.reuseIdentifier)
         tableView.separatorStyle = .none
@@ -87,6 +88,7 @@ extension CartScreenViewController: UITableViewDataSource, UITableViewDelegate {
         sumCount += dish.price * dish.count
         cell.configure(image: dish.image, name: dish.name, price: String(dish.price), count: String(dish.count)) { [weak self] in
             tableView.performBatchUpdates {
+                self?.sumCount = 0
                 self?.output.getOrder().dishes.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .top)
             } completion: { _ in

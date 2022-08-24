@@ -29,7 +29,7 @@ final class FavoritesCoffeeShopsScreenViewController: UIViewController {
         navigationItem.title = "Любимые кофейни"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.foregroundColor: UIColor.appTextColor,
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)
         ]
         

@@ -64,7 +64,7 @@ private extension ShopListViewController {
     }
     
     func setup() {
-        view.backgroundColor = .white
+        view.backgroundColor = .appTintColor
     }
     
     func setupRefresher() {

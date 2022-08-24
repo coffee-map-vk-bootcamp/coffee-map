@@ -168,7 +168,7 @@ class LoginView: UIView {
     private func addEmailTextField() {
         emailTextField.toAutoLayout()
         emailTextField.backgroundColor = .systemGray6
-        emailTextField.textColor = .black
+        emailTextField.textColor = .appTextColor
         emailTextField.placeholder = "Почта"
         emailTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         emailTextField.autocapitalizationType = .none
@@ -186,7 +186,7 @@ class LoginView: UIView {
     private func addPasswordTextField() {
         passwordTextField.toAutoLayout()
         passwordTextField.backgroundColor = .systemGray6
-        passwordTextField.textColor = .black
+        passwordTextField.textColor = .appTextColor
         passwordTextField.placeholder = "Пароль"
         passwordTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         passwordTextField.autocapitalizationType = .none
@@ -204,7 +204,7 @@ class LoginView: UIView {
     private func addRepeatPasswordTextField() {
         repeatPasswordTextField.toAutoLayout()
         repeatPasswordTextField.backgroundColor = .systemGray6
-        repeatPasswordTextField.textColor = .black
+        repeatPasswordTextField.textColor = .appTextColor
         repeatPasswordTextField.placeholder = "Повторите пароль"
         repeatPasswordTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         repeatPasswordTextField.autocapitalizationType = .none
