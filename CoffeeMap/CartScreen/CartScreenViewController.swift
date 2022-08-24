@@ -51,7 +51,8 @@ final class CartScreenViewController: UIViewController {
         footerView.configure(sumPrice: output.price)
     }
     
-    private func setup() {
+    private func setup(){
+        view.backgroundColor = .appTintColor
         view.addSubviews([tableView, footerView])
         tableView.sectionHeaderTopPadding = 0.0
         tableView.register(CartScreenCell.self, forCellReuseIdentifier: CartScreenCell.reuseIdentifier)
@@ -67,7 +68,7 @@ final class CartScreenViewController: UIViewController {
     private func layout() {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor),
             

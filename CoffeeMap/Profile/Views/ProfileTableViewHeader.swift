@@ -29,7 +29,7 @@ final class ProfileTableViewHeader: UITableViewHeaderFooterView {
     private let exitButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: AppImageNames.exit)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = .black
+        button.tintColor = .primaryTextColor
         return button
     }()
 

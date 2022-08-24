@@ -79,8 +79,8 @@ extension CoffeeShopDetailScreenInteractor: CoffeeShopDetailScreenInteractorInpu
 
 private extension CoffeeShopDetailScreenInteractor {
     func prepareData(for coffeeShop: CoffeeShop) {
-        let drinksSection = DishSection(sectionTitle: "Drinks", dishes: coffeeShop.drinks)
-        let dishSection = DishSection(sectionTitle: "Dishes", dishes: coffeeShop.dishes)
+        let drinksSection = DishSection(sectionTitle: "Напитки", dishes: coffeeShop.drinks)
+        let dishSection = DishSection(sectionTitle: "Еда", dishes: coffeeShop.dishes)
         
         var totalSections: [DishSection] = []
         if drinksSection.dishes.count > 0 {

@@ -16,7 +16,6 @@ final class HomeScreenViewController: UIViewController {
     var dataSource: UBottomSheetCoordinatorDataSource?
     var sheetVC: DraggableItem?
     
-    
     private var userLocation: CLLocation?
     
     private var lastSelectedAnnotation: MKAnnotation?
@@ -139,10 +138,10 @@ private extension HomeScreenViewController {
         locationButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            locationButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -64),
-            locationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            locationButton.heightAnchor.constraint(equalToConstant: 34),
-            locationButton.widthAnchor.constraint(equalToConstant: 34)
+            locationButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -76),
+            locationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            locationButton.heightAnchor.constraint(equalToConstant: 48),
+            locationButton.widthAnchor.constraint(equalToConstant: 48)
         ])
         
         locationButton.addTarget(self, action: #selector(locateToUserLocation), for: .touchUpInside)

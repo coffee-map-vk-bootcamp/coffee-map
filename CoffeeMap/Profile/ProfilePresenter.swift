@@ -41,7 +41,8 @@ extension ProfilePresenter: ProfileViewOutput {
     
     func prepare(data model: Order) -> ReceiptCellModel {
         return ReceiptCellModel(name: model.name,
-                                date: formatter.string(from: Date(timeIntervalSince1970: TimeInterval(model.date))),
+                                dateText: formatter.string(from: Date(timeIntervalSince1970: TimeInterval(model.date))),
+                                date: Date(timeIntervalSince1970: TimeInterval(model.date)),
                                 price: "\(model.totalPrice) ₽",
                                 dishes: model.dishes)
     }

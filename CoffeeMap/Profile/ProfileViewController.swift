@@ -12,6 +12,7 @@ final class ProfileViewController: UIViewController {
     private let output: ProfileViewOutput
     
     private let tableView = UITableView()
+    private let refreshControl = UIRefreshControl()
     
     private var header: ProfileTableViewHeader?
     
@@ -34,11 +35,13 @@ final class ProfileViewController: UIViewController {
     }
     
     private func setup() {
+        view.backgroundColor = .appTintColor
         tableView.register(ProfileTableViewHeader.self, forHeaderFooterViewReuseIdentifier: String(describing: ProfileTableViewHeader.self))
         tableView.register(ReceiptCollectionViewCell.self, forCellReuseIdentifier: String(describing: ReceiptCollectionViewCell.self))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        setupRefresher()
     }
     
     private func layout() {
@@ -52,6 +55,19 @@ final class ProfileViewController: UIViewController {
         ]
         
         NSLayoutConstraint.activate(tableViewConstraints)
+    }
+    
+    func setupRefresher() {
+        tableView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        tableView.alwaysBounceVertical = true
+        tableView.refreshControl = refreshControl
+        
+    }
+    
+    @objc private func didPullToRefresh(_ sender: Any) {
+        output.loadUser()
+        refreshControl.endRefreshing()
     }
 }
 

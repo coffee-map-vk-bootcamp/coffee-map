@@ -20,7 +20,6 @@ extension LoginRouter: LoginRouterInput {
         }
 
         let newRootController = MainTabBarController()
-
         UIView.transition(with: newRootController.view, duration: 0.3, options: .transitionCrossDissolve) {
             sceneDelegate.window??.rootViewController = newRootController
         }

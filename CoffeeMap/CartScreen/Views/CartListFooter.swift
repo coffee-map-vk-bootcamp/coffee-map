@@ -35,7 +35,7 @@ final class CartListFooter: UIView {
     private lazy var textTimeLabel: UILabel = {
         let textTimeLabel = UILabel()
         textTimeLabel.text = "Приготовим к"
-        textTimeLabel.font = UIFont.systemFont(ofSize: 24)
+        textTimeLabel.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         textTimeLabel.textColor = .primary
         textTimeLabel.toAutoLayout()
         
