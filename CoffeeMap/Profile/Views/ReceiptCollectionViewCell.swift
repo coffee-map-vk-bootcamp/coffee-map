@@ -13,14 +13,14 @@ final class ReceiptCollectionViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textAlignment = .left
-        label.textColor = .black
+        label.textColor = .primaryTextColor
         return label
     }()
 
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        label.textColor = .black
+        label.textColor = .primaryTextColor
         label.textAlignment = .left
         return label
     }()
@@ -58,9 +58,7 @@ final class ReceiptCollectionViewCell: UITableViewCell {
 
         let background = UIView()
         background.backgroundColor = .secondaryBackground
-        background.layer.borderColor = UIColor.borderColor.cgColor
         background.layer.cornerRadius = 12
-        background.layer.borderWidth = 1
 
         contentView.addSubview(background)
         background.translatesAutoresizingMaskIntoConstraints = false
@@ -123,12 +121,12 @@ final class ReceiptCollectionViewCell: UITableViewCell {
         view.backgroundColor = .secondaryBackground
 
         let nameLabel = UILabel()
-        nameLabel.textColor = .black
+        nameLabel.textColor = .primaryTextColor
         nameLabel.backgroundColor = .secondaryBackground
         nameLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
 
         let priceLabel = UILabel()
-        priceLabel.textColor = .black
+        priceLabel.textColor = .primaryTextColor
         priceLabel.textAlignment = .right
         priceLabel.backgroundColor = .secondaryBackground
         priceLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
@@ -136,7 +134,7 @@ final class ReceiptCollectionViewCell: UITableViewCell {
         priceLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 
         let countLabel = UILabel()
-        countLabel.textColor = .black
+        countLabel.textColor = .primaryTextColor
         countLabel.textAlignment = .left
         countLabel.backgroundColor = .secondaryBackground
         countLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
@@ -174,6 +172,7 @@ final class ReceiptCollectionViewCell: UITableViewCell {
 
     func configure(with order: ReceiptCellModel) {
         titleLabel.text = "Заказ из " + order.name
+        
         dateLabel.text = "От: " + order.date.description
 
 //        detailButton.isHidden = !(order.dishes.count > 3)
@@ -184,12 +183,6 @@ final class ReceiptCollectionViewCell: UITableViewCell {
         }
         order.dishes.forEach {
             orderStack.addArrangedSubview(makeDishView(with: $0))
-        }
-    }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle {
-            backgroundView?.layer.borderColor = UIColor.borderColor.cgColor
         }
     }
 }

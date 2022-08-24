@@ -22,6 +22,7 @@ extension ProfileInteractor: ProfileInteractorInput {
         networkManager.fetchUserData { [weak self] result in
             switch result {
             case .success(let user):
+                print("HERE")
                 self?.output?.didObtain(user)
             case .failure(let error):
                 self?.output?.didFail(with: error)
