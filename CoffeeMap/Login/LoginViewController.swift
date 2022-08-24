@@ -79,7 +79,7 @@ final class LoginViewController: UIViewController {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         let scrolSize = loginView.signUpButton.frame.maxY + keyboardSize.height - loginView.bounds.maxY + 18 + loginView.safeAreaInsets.top
         loginView.scrollView.contentSize = CGSize(width: loginView.bounds.width, height: loginView.bounds.height + scrolSize)
-        loginView.scrollView.contentOffset = CGPoint(x: 0, y: 90)
+        loginView.scrollView.contentOffset = CGPoint(x: 0, y: 110)
         loginView.scrollView.isScrollEnabled = true
     }
     
@@ -104,20 +104,20 @@ extension LoginViewController: LoginViewInput {
 extension LoginViewController: LoginViewOutputToVC {
     
     func trySignUp() {
-        loginView.animationLoading()
         if state == .signIn {
             state = .signUp
         } else {
+            loginView.animationLoading()
             guard let email = loginView.email, let pas = loginView.password, let repeatPas = loginView.repeatPassword else { return }
             output.signUp(email: email, pas: pas, repeatPas: repeatPas)
         }
     }
     
     func tryLogin() {
-        loginView.animationLoading()
         if state == .signUp {
             state = .signIn
         } else {
+            loginView.animationLoading()
             guard let email = loginView.email, let pas = loginView.password else { return }
             output.login(email: email, pas: pas)
         }

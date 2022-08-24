@@ -74,8 +74,8 @@ class LoginView: UIView {
     
     lazy var signUpButton: UIButton = {
         signUpButton = UIButton()
-        signUpButton.backgroundColor = AppColors.primary
         signUpButton.setTitle("Регистрация", for: .normal)
+        signUpButton.setTitleColor(AppColors.primary, for: .normal)
         signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         
         signUpButton.layer.cornerRadius = 16
@@ -105,19 +105,20 @@ class LoginView: UIView {
             scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-            logoView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40),
+            //logoView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40),
             logoView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             logoView.heightAnchor.constraint(equalToConstant: 200),
             logoView.widthAnchor.constraint(equalToConstant: 200),
+            logoView.bottomAnchor.constraint(equalTo: resultLabel.topAnchor, constant: -12),
             
             resultLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            resultLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 15),
+            resultLabel.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -12),
             resultLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40),
             resultLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -40),
             
             stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16),
-            stackView.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 15),
+            stackView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
             stackView.heightAnchor.constraint(equalToConstant: 100),
             
             repeatPasswordTextField.topAnchor.constraint(equalTo: stackView.bottomAnchor),

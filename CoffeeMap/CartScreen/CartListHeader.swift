@@ -62,8 +62,8 @@ final class CartListHeader: UITableViewHeaderFooterView {
     
     private func setup() {
         contentView.backgroundColor = .white
-        backgroundColor = .white
-        contentView.addSubviews([mainLabel, nameOfCoffeeShop, datePicker, textTimeLabel])
+        //backgroundColor = .white
+        contentView.addSubviews(mainLabel, nameOfCoffeeShop, datePicker, textTimeLabel)
     }
     
     func configure(name: String) {
@@ -71,12 +71,11 @@ final class CartListHeader: UITableViewHeaderFooterView {
     }
     
     private func layout() {
-        super.layoutSubviews()
         NSLayoutConstraint.activate([
             mainLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            mainLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22),
-            mainLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            
+            mainLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            mainLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+//
             nameOfCoffeeShop.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             nameOfCoffeeShop.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 2),
             nameOfCoffeeShop.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
@@ -84,9 +83,12 @@ final class CartListHeader: UITableViewHeaderFooterView {
             textTimeLabel.topAnchor.constraint(equalTo: nameOfCoffeeShop.bottomAnchor, constant: 8),
             textTimeLabel.leadingAnchor.constraint(equalTo: mainLabel.leadingAnchor),
             textTimeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            
+//
             datePicker.centerYAnchor.constraint(equalTo: textTimeLabel.centerYAnchor),
             datePicker.leadingAnchor.constraint(equalTo: textTimeLabel.trailingAnchor, constant: 4),
         ])
     }
 }
+
+
+
