@@ -44,10 +44,6 @@ extension CartScreenPresenter: CartScreenViewOutput {
         interactor.coffeeShopName
     }
     
-    func startConfigureOrder(in coffeeShop: String) {
-        interactor.startConfigureOrder(in: coffeeShop)
-    }
-    
     var price: Int {
         interactor.price
     }

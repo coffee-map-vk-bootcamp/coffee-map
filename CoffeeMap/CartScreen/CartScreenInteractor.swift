@@ -23,10 +23,6 @@ extension CartScreenInteractor: CartScreenInteractorInput {
         cartManager.coffeeShopName
     }
 
-    func startConfigureOrder(in coffeeShop: String) {
-        cartManager.startConfigureOrder(in: coffeeShop)
-    }
-
     var dishList: [OrderDish] {
         cartManager.dishesArray
     }

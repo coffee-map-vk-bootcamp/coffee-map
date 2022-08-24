@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DishConfigurationAlertViewDelegate: AnyObject {
-    func didTapAddToCart()
+    func didTapAddToCart(amount: Int, price: Int)
     func didTapClose()
 }
 
@@ -380,6 +380,9 @@ private extension DishConfigurationAlertView {
     }
     
     @objc func didTapAddToCart() {
-        delegate?.didTapAddToCart()
+        guard let coffeePrice = prices[coffeeSize.rawValue] else {
+            return
+        }
+        delegate?.didTapAddToCart(amount: coffeeAmount, price: coffeePrice)
     }
 }

@@ -29,10 +29,6 @@ extension DishConfiguratorInteractor: DishConfiguratorInteractorInput {
         cartManager.dishesArray
     }
 
-    func startConfigureOrder(in coffeeShop: String) {
-        cartManager.startConfigureOrder(in: coffeeShop)
-    }
-
     func loadDish() -> Dish {
         return dish ?? .init()
     }

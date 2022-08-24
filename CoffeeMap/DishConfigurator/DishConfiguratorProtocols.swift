@@ -18,7 +18,7 @@ protocol DishConfiguratorModuleOutput: AnyObject {
 
 protocol DishConfiguratorViewInput: AnyObject {
     func dismiss()
-    func setDish(_ dish: Dish)
+    func configureWith(dish: Dish)
 }
 
 protocol DishConfiguratorViewOutput: AnyObject {
@@ -27,9 +27,7 @@ protocol DishConfiguratorViewOutput: AnyObject {
 
     var dishesArray: [OrderDish] { get }
 
-    func addDishToOrder(_ dish: OrderDish)
-
-    func startConfigureOrder(in coffeeShop: String)
+    func addDishToOrder(_ dish: Dish, amount: Int, price: Int)
 }
 
 protocol DishConfiguratorInteractorInput: AnyObject {
@@ -38,9 +36,6 @@ protocol DishConfiguratorInteractorInput: AnyObject {
     var dishesArray: [OrderDish] { get }
 
     func addDishToOrder(_ dish: OrderDish)
-
-    func startConfigureOrder(in coffeeShop: String)
-
 }
 
 protocol DishConfiguratorInteractorOutput: AnyObject {

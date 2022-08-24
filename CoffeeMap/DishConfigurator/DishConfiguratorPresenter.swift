@@ -26,16 +26,13 @@ extension DishConfiguratorPresenter: DishConfiguratorModuleInput {
 }
 
 extension DishConfiguratorPresenter: DishConfiguratorViewOutput {
+    func addDishToOrder(_ dish: Dish, amount: Int, price: Int) {
+        let orderDish = OrderDish(name: dish.name, price: price, image: dish.image, count: amount)
+        interactor.addDishToOrder(orderDish)
+    }
+
     var dishesArray: [OrderDish] {
         interactor.dishesArray
-    }
-
-    func addDishToOrder(_ dish: OrderDish) {
-        interactor.addDishToOrder(dish)
-    }
-
-    func startConfigureOrder(in coffeeShop: String) {
-        interactor.startConfigureOrder(in: coffeeShop)
     }
 
     func didTapClose() {
@@ -44,7 +41,7 @@ extension DishConfiguratorPresenter: DishConfiguratorViewOutput {
     
     func didLoadView() {
         let dish = interactor.loadDish()
-        view?.setDish(dish)
+        view?.configureWith(dish: dish)
     }
 }
 

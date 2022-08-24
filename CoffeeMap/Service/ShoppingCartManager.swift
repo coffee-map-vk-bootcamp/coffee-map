@@ -20,8 +20,6 @@ protocol CartManagerDescription {
     func deleteDishFromOrder(at index: Int)
 
     func makeOrder(name: String, time: Date, completion: @escaping (Result<Void, Error>) -> Void)
-
-    func startConfigureOrder(in coffeeShop: String)
 }
 
 class ShoppingCartManager: CartManagerDescription {
@@ -69,10 +67,5 @@ class ShoppingCartManager: CartManagerDescription {
         networkService.createOrder(with: order) { result in
             completion(result)
         }
-    }
-
-    func startConfigureOrder(in coffeeShop: String) {
-        coffeeShopName = coffeeShop
-        dishesArray = []
     }
 }
