@@ -28,7 +28,7 @@ final class DishConfigurationAlertView: UIView {
                                            font: .systemFont(ofSize: 16, weight: .medium),
                                            color: .primaryTextColor)
     
-    private lazy var amountNumberLabel = UILabel(text: "1",
+    private lazy var amountNumberLabel = UILabel(text: "\(coffeeAmount)",
                                                  font: .systemFont(ofSize: 18, weight: .medium),
                                                  color: .primaryTextColor)
     
@@ -73,6 +73,7 @@ final class DishConfigurationAlertView: UIView {
     private lazy var sizeL = UILabel(text: "L", font: .systemFont(ofSize: 18, weight: .semibold), color: .primaryTextColor)
     
     private var coffeeSize: CoffeeSize = .medium
+    private var coffeeAmount = 1
     
     private var prices: [String: Int] = [:]
     
@@ -160,11 +161,12 @@ private extension DishConfigurationAlertView {
     
     func setupAmountNumberLabel() {
         amountNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+        amountNumberLabel.textAlignment = .center
     }
     
     func setupAddToCartButton() {
         addToCartButton.translatesAutoresizingMaskIntoConstraints = false
-        addToCartButton.addTarget(self, action: #selector(didTapAdd), for: .touchUpInside)
+        addToCartButton.addTarget(self, action: #selector(didTapAddToCart), for: .touchUpInside)
     }
     
     func setupIntial() {
@@ -188,10 +190,12 @@ private extension DishConfigurationAlertView {
     
     func setupLeftStepperButton() {
         leftStepperButton.translatesAutoresizingMaskIntoConstraints = false
+        leftStepperButton.addTarget(self, action: #selector(didTapLeftStepperButton), for: .touchUpInside)
     }
     
     func setupRightStepperButton() {
         rightStepperButton.translatesAutoresizingMaskIntoConstraints = false
+        rightStepperButton.addTarget(self, action: #selector(didTapRightStepperButton), for: .touchUpInside)
     }
     
     func layout() {
@@ -242,7 +246,8 @@ private extension DishConfigurationAlertView {
         amountNumberLabel.sizeToFit()
         NSLayoutConstraint.activate([
             amountNumberLabel.trailingAnchor.constraint(equalTo: rightStepperButton.leadingAnchor, constant: -24),
-            amountNumberLabel.centerYAnchor.constraint(equalTo: amountLabel.centerYAnchor)
+            amountNumberLabel.centerYAnchor.constraint(equalTo: amountLabel.centerYAnchor),
+            amountNumberLabel.widthAnchor.constraint(equalToConstant: 20)
         ])
     }
     
@@ -356,11 +361,25 @@ private extension DishConfigurationAlertView {
         coffeeSize = .large
     }
     
+    @objc func didTapLeftStepperButton() {
+        if coffeeAmount > 1 {
+            coffeeAmount -= 1
+            amountNumberLabel.text = "\(coffeeAmount)"
+        }
+    }
+    
+    @objc func didTapRightStepperButton() {
+        if coffeeAmount < 10 {
+            coffeeAmount += 1
+            amountNumberLabel.text = "\(coffeeAmount)"
+        }
+    }
+    
     @objc func didTapClose() {
         delegate?.didTapClose()
     }
-
-    @objc func didTapAdd() {
+    
+    @objc func didTapAddToCart() {
         delegate?.didTapAddToCart()
     }
 }

@@ -56,6 +56,7 @@
 		A7024FC028A2BF82006103CD /* CoffeeShopDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7024FBF28A2BF82006103CD /* CoffeeShopDetailHeaderView.swift */; };
 		A7054BCD28AA6BAD0082E9E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7054BCC28AA6BAD0082E9E5 /* Constants.swift */; };
 		A7054BCF28AA7C5F0082E9E5 /* SectionTitleHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7054BCE28AA7C5F0082E9E5 /* SectionTitleHeaderReusableView.swift */; };
+		A70F418F28B56070009329E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A70F418E28B56070009329E5 /* GoogleService-Info.plist */; };
 		A713A91F28A5102B00769321 /* CoffeeShopDetailScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A713A91928A5102B00769321 /* CoffeeShopDetailScreenPresenter.swift */; };
 		A713A92028A5102B00769321 /* CoffeeShopDetailScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A713A91A28A5102B00769321 /* CoffeeShopDetailScreenRouter.swift */; };
 		A713A92128A5102B00769321 /* CoffeeShopDetailScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A713A91B28A5102B00769321 /* CoffeeShopDetailScreenViewController.swift */; };
@@ -156,6 +157,7 @@
 		A7024FBF28A2BF82006103CD /* CoffeeShopDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopDetailHeaderView.swift; sourceTree = "<group>"; };
 		A7054BCC28AA6BAD0082E9E5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A7054BCE28AA7C5F0082E9E5 /* SectionTitleHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleHeaderReusableView.swift; sourceTree = "<group>"; };
+		A70F418E28B56070009329E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A713A91928A5102B00769321 /* CoffeeShopDetailScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopDetailScreenPresenter.swift; sourceTree = "<group>"; };
 		A713A91A28A5102B00769321 /* CoffeeShopDetailScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopDetailScreenRouter.swift; sourceTree = "<group>"; };
 		A713A91B28A5102B00769321 /* CoffeeShopDetailScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopDetailScreenViewController.swift; sourceTree = "<group>"; };
@@ -921,7 +923,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5D399ZX79K;
+				DEVELOPMENT_TEAM = WMWSB972VT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoffeeMap/Common/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -950,7 +952,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5D399ZX79K;
+				DEVELOPMENT_TEAM = WMWSB972VT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoffeeMap/Common/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
