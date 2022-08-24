@@ -47,4 +47,3 @@ protocol CartScreenInteractorOutput: AnyObject {
 
 protocol CartScreenRouterInput: AnyObject {
 }
-

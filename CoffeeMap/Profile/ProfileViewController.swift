@@ -95,7 +95,7 @@ extension ProfileViewController: ProfileViewInput {
     }
 }
 
-extension ProfileViewController : ProfileHeaderOutput {
+extension ProfileViewController: ProfileHeaderOutput {
     func logout() {
         showAlert()
     }
@@ -103,7 +103,7 @@ extension ProfileViewController : ProfileHeaderOutput {
     func showAlert() {
         let alert = UIAlertController(title: "Вы дейстивельно хотите выйти?", message: nil, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { [weak self] alert -> Void in
+        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { [weak self] _ -> Void in
             self?.output.logout()
         }
         ))

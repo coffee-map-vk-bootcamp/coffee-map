@@ -85,7 +85,7 @@ final class CartListHeader: UITableViewHeaderFooterView {
             textTimeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             
             datePicker.centerYAnchor.constraint(equalTo: textTimeLabel.centerYAnchor),
-            datePicker.leadingAnchor.constraint(equalTo: textTimeLabel.trailingAnchor, constant: 4),
+            datePicker.leadingAnchor.constraint(equalTo: textTimeLabel.trailingAnchor, constant: 4)
         ])
     }
 }
