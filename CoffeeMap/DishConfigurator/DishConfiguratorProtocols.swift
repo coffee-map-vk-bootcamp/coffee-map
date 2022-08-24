@@ -17,14 +17,17 @@ protocol DishConfiguratorModuleOutput: AnyObject {
 }
 
 protocol DishConfiguratorViewInput: AnyObject {
+    func dismiss()
+    func setDish(_ dish: Dish)
 }
 
 protocol DishConfiguratorViewOutput: AnyObject {
     func didLoadView()
-    func didCloseView()
+    func didTapClose()
 }
 
 protocol DishConfiguratorInteractorInput: AnyObject {
+    func loadDish() -> Dish
 }
 
 protocol DishConfiguratorInteractorOutput: AnyObject {

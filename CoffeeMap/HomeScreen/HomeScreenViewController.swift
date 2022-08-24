@@ -30,6 +30,7 @@ final class HomeScreenViewController: UIViewController {
     }()
     
     private var tappedCoffeeShop: CoffeeShop?
+    private var lastAnnotations: [MKAnnotation] = []
     
     init(output: HomeScreenViewOutput) {
         self.output = output
@@ -55,22 +56,6 @@ final class HomeScreenViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        guard sheetCoordinator == nil,
-              let dataSource = dataSource,
-              var sheetVC = sheetVC
-        else { return }
-        
-        let sheetCoordinator = UBottomSheetCoordinator(parent: self)
-        sheetCoordinator.dataSource = dataSource
-        
-        self.sheetCoordinator = sheetCoordinator
-        
-        sheetVC.sheetCoordinator = sheetCoordinator
-        sheetCoordinator.addSheet(sheetVC, to: self, didContainerCreate: { container in
-            let frame = self.view.frame
-            let rect = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height)
-            container.roundCorners(corners: [.topLeft, .topRight], radius: 10, rect: rect)
-        })
     }
     
     func startShowingBottomSheet() {
@@ -142,6 +127,8 @@ private extension HomeScreenViewController {
 extension HomeScreenViewController: HomeScreenViewInput {
     func showLocations(_ shops: [CoffeeShop]) {
         
+        mapView.removeAnnotations(lastAnnotations)
+        
         var annotations = [MKPointAnnotation]()
         
         for shop in shops {
@@ -154,6 +141,7 @@ extension HomeScreenViewController: HomeScreenViewInput {
             annotations.append(point)
         }
         
+        lastAnnotations = annotations
         mapView.addAnnotations(annotations)
     }
 }
@@ -187,6 +175,13 @@ extension HomeScreenViewController: MKMapViewDelegate {
             if let coffeeShop = annotation.coffeeShop {
                 output.openDetail(with: coffeeShop)
             }
+        } else if let annotation = view.annotation as? MKClusterAnnotation {
+            let latCorrection = mapView.region.span.latitudeDelta / 8
+            let span = MKCoordinateSpan(latitudeDelta: latCorrection, longitudeDelta: latCorrection)
+            
+            let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
+            
+            mapView.setRegion(region, animated: true)
         }
     }
 }

@@ -33,7 +33,7 @@ final class CartListHeader: UITableViewHeaderFooterView {
         let textTimeLabel = UILabel()
         textTimeLabel.text = "Приготовить к"
         textTimeLabel.font = UIFont.systemFont(ofSize: 24)
-        textTimeLabel.textColor = AppColors.primary
+        textTimeLabel.textColor = .primary
         textTimeLabel.toAutoLayout()
         
         return textTimeLabel
