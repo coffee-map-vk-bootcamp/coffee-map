@@ -44,10 +44,18 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(loginView)
         view.backgroundColor = .systemBackground
+        layout()
+        loginView.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(closeKB))
+        loginView.addGestureRecognizer(gesture)
+        registerForKeyboardNotification()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    deinit {
+        removeForKeyboardNotification()
+    }
+    
+    func layout() {
         loginView.toAutoLayout()
         NSLayoutConstraint.activate([
             loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -55,6 +63,35 @@ final class LoginViewController: UIViewController {
             loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             loginView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func registerForKeyboardNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func removeForKeyboardNotification(){
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        let scrolSize = loginView.signUpButton.frame.maxY + keyboardSize.height - loginView.bounds.maxY + 18 + loginView.safeAreaInsets.top
+        loginView.scrollView.contentSize = CGSize(width: loginView.bounds.width, height: loginView.bounds.height + scrolSize)
+        loginView.scrollView.contentOffset = CGPoint(x: 0, y: 110)
+        loginView.scrollView.isScrollEnabled = true
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        loginView.scrollView.contentSize = CGSize(width: loginView.bounds.width, height: loginView.bounds.height - keyboardSize.height)
+        loginView.scrollView.isScrollEnabled = false
+    }
+    
+    @objc
+    private func closeKB() {
+        loginView.endEditing(true)
     }
 }
 
@@ -70,6 +107,7 @@ extension LoginViewController: LoginViewOutputToVC {
         if state == .signIn {
             state = .signUp
         } else {
+            loginView.animationLoading()
             guard let email = loginView.email, let pas = loginView.password, let repeatPas = loginView.repeatPassword else { return }
             output.signUp(email: email, pas: pas, repeatPas: repeatPas)
         }
@@ -79,12 +117,14 @@ extension LoginViewController: LoginViewOutputToVC {
         if state == .signUp {
             state = .signIn
         } else {
+            loginView.animationLoading()
             guard let email = loginView.email, let pas = loginView.password else { return }
             output.login(email: email, pas: pas)
         }
     }
     
     func animationFail() {
+        loginView.stopLoading()
         loginView.animationFail()
     }
 }

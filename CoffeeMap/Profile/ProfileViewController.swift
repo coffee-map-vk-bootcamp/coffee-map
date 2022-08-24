@@ -34,6 +34,7 @@ final class ProfileViewController: UIViewController {
     }
     
     private func setup() {
+        view.backgroundColor = .appTintColor
         tableView.register(ProfileTableViewHeader.self, forHeaderFooterViewReuseIdentifier: String(describing: ProfileTableViewHeader.self))
         tableView.register(ReceiptCollectionViewCell.self, forCellReuseIdentifier: String(describing: ReceiptCollectionViewCell.self))
         tableView.delegate = self

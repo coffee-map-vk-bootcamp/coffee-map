@@ -225,6 +225,5 @@ extension FavouritesCell: CLLocationManagerDelegate {
         } else {
             distanceLabel.text = ">100 км"
         }
-        print(userLocation ?? 0)
     }
 }
