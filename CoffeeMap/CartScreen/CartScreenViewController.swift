@@ -10,7 +10,7 @@ import UIKit
 
 final class CartScreenViewController: UIViewController {
     private let output: CartScreenViewOutput
-    private var headerOutput: CartListHeaderDescription?
+    private var headerOutput: CartListFooterDescription?
     
     private lazy var footerView: CartListFooter = {
         let footerView = CartListFooter()
@@ -44,13 +44,16 @@ final class CartScreenViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
+        navigationItem.title = "Корзина"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.backgroundColor = .systemBackground
         tableView.reloadData()
         footerView.configure(sumPrice: output.price)
     }
     
     private func setup() {
         view.addSubviews([tableView, footerView])
+        tableView.sectionHeaderTopPadding = 0.0
         tableView.register(CartScreenCell.self, forCellReuseIdentifier: CartScreenCell.reuseIdentifier)
         tableView.separatorStyle = .none
         tableView.register(CartListHeader.self, forHeaderFooterViewReuseIdentifier: CartListHeader.reuseIdentifier)
@@ -58,6 +61,7 @@ final class CartScreenViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         footerView.delegate = self
+        headerOutput = footerView
     }
     
     private func layout() {
@@ -99,10 +103,8 @@ extension CartScreenViewController: UITableViewDataSource, UITableViewDelegate {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: CartListHeader.reuseIdentifier)
                 as? CartListHeader else { return UIView() }
         header.configure(name: output.coffeeShopName)
-        headerOutput = header
         return header
     }
-    
 }
 
 extension CartScreenViewController: CartListFooterDelegate {

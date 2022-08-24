@@ -88,7 +88,7 @@ final class CartScreenCell: UITableViewCell {
     
     func configure(image: String, name: String, price: String, count: String, deleteAction: @escaping () -> Void) {
         nameLabel.text = name
-        priceLabel.text = price
+        priceLabel.text = "\(price) ₽"
         countNumberLabel.text = count
         dishImageView.setImage(with: image)
         self.deleteAction = deleteAction
@@ -97,16 +97,16 @@ final class CartScreenCell: UITableViewCell {
     private func layout() {
         super.layoutSubviews()
         NSLayoutConstraint.activate([
-            dishImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            dishImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             dishImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
-            dishImageView.heightAnchor.constraint(equalToConstant: 100),
-            dishImageView.widthAnchor.constraint(equalToConstant: 100),
+            dishImageView.heightAnchor.constraint(equalToConstant: 80),
+            dishImageView.widthAnchor.constraint(equalToConstant: 80),
             dishImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
             
             nameLabel.leadingAnchor.constraint(equalTo: dishImageView.trailingAnchor, constant: 16),
             nameLabel.topAnchor.constraint(equalTo: dishImageView.topAnchor),
             
-            deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             deleteButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             deleteButton.widthAnchor.constraint(equalToConstant: 30),
 
