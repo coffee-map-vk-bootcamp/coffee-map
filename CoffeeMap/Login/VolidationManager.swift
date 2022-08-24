@@ -9,8 +9,7 @@ import Foundation
 
 final class VolidationManager {
     
-    static func volidationSignUp (email: String, pas1: String, pas2: String) -> VolidationResultSignUp
-    {
+    static func volidationSignUp (email: String, pas1: String, pas2: String) -> VolidationResultSignUp {
         if !isValidEmail(email: email) {
             return .badEmail
         }
@@ -30,7 +29,7 @@ final class VolidationManager {
     private static func isValidEmail(email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
     

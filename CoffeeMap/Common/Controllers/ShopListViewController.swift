@@ -12,6 +12,7 @@ import MapKit
 protocol ShopListViewControllerDelegate: AnyObject {
     func getCoffeeShops()
     func remove(at index: Int)
+    func refresh()
 }
 
 class ShopListViewController: UIViewController {
@@ -76,6 +77,7 @@ private extension ShopListViewController {
     @objc private func didPullToRefresh(_ sender: Any) {
         // Do you your api calls in here, and then asynchronously remember to stop the
         // refreshing when you've got a result (either positive or negative)
+        delegate?.refresh()
         refreshControl.endRefreshing()
     }
     

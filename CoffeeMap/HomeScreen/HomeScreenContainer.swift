@@ -15,7 +15,7 @@ final class HomeScreenContainer {
     
     class func assemble(with context: HomeScreenContext) -> HomeScreenContainer {
         let router = HomeScreenRouter()
-        let interactor = HomeScreenInteractor()
+        let interactor = HomeScreenInteractor(networkManager: FBService())
         let presenter = HomeScreenPresenter(router: router, interactor: interactor)
         let viewController = HomeScreenViewController(output: presenter)
         

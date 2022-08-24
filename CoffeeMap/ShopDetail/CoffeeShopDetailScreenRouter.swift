@@ -13,10 +13,10 @@ final class CoffeeShopDetailScreenRouter {
 }
 
 extension CoffeeShopDetailScreenRouter: CoffeeShopDetailScreenRouterInput {
-    func showDetailDish(output: DishConfiguratorModuleOutput, with item: Dish) {
+    func showDetailDish(output: DishConfiguratorModuleOutput, with item: Dish, coffeeShopName: String) {
         print("[DEBUG] Data for \(item.name)")
         
-        let context = DishConfiguratorContext(moduleOutput: output, dish: item)
+        let context = DishConfiguratorContext(moduleOutput: output, coffeeShopName: coffeeShopName, dish: item)
         let dishConfiguratorViewController = DishConfiguratorContainer.assemble(with: context).viewController
         viewController?.parent?.add(dishConfiguratorViewController)
 //        viewController?.present(dishConfiguratorViewController, animated: true)

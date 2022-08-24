@@ -18,10 +18,10 @@ extension ProfileRouter: ProfileRouterInput {
             switch result {
             case .success:
                 let context = LoginContext()
-                let vc = LoginContainer.assemble(with: context).viewController
-                let window = (UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate).window
+                let login = LoginContainer.assemble(with: context).viewController
+                let window = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window
                 controller?.dismiss(animated: true) {
-                    window?.rootViewController = vc
+                    window?.rootViewController = login
                     window?.makeKeyAndVisible()
                 }
             case .failure(let error):

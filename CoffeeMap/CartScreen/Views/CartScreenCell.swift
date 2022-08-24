@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 final class CartScreenCell: UITableViewCell {
-    var deleteAction: (() -> ())?
+    var deleteAction: (() -> Void)?
     
     var isDelete: Bool = false
     
@@ -25,7 +25,7 @@ final class CartScreenCell: UITableViewCell {
     private lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.text = "Test"
-        nameLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        nameLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         nameLabel.toAutoLayout()
         
         return nameLabel
@@ -34,7 +34,8 @@ final class CartScreenCell: UITableViewCell {
     private lazy var priceLabel: UILabel = {
         let priceLabel = UILabel()
         priceLabel.text = "80₽"
-        priceLabel.font = UIFont.systemFont(ofSize: 24)
+        priceLabel.font = UIFont.systemFont(ofSize: 20)
+        priceLabel.textAlignment = .right
         priceLabel.toAutoLayout()
         
         return priceLabel
@@ -44,7 +45,7 @@ final class CartScreenCell: UITableViewCell {
         let countLabel = UILabel()
         countLabel.text = "Количество"
         countLabel.textColor = .systemGray2
-        countLabel.font = UIFont.systemFont(ofSize: 20)
+        countLabel.font = UIFont.systemFont(ofSize: 18)
         countLabel.toAutoLayout()
         
         return countLabel
@@ -54,7 +55,8 @@ final class CartScreenCell: UITableViewCell {
         let countNumberLabel = UILabel()
         countNumberLabel.text = "2"
         countNumberLabel.textColor = .systemGray2
-        countNumberLabel.font = UIFont.systemFont(ofSize: 20)
+        countNumberLabel.font = UIFont.systemFont(ofSize: 18)
+        countNumberLabel.textAlignment = .right
         countNumberLabel.toAutoLayout()
         
         return countNumberLabel
@@ -80,11 +82,11 @@ final class CartScreenCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup(){
+    private func setup() {
         contentView.addSubviews([dishImageView, nameLabel, priceLabel, countLabel, countNumberLabel, deleteButton])
     }
     
-    func configure(image: String, name: String, price: String, count: String, deleteAction: @escaping () -> ()) {
+    func configure(image: String, name: String, price: String, count: String, deleteAction: @escaping () -> Void) {
         nameLabel.text = name
         priceLabel.text = price
         countNumberLabel.text = count
@@ -95,30 +97,32 @@ final class CartScreenCell: UITableViewCell {
     private func layout() {
         super.layoutSubviews()
         NSLayoutConstraint.activate([
-            dishImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            dishImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22),
+            dishImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            dishImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
             dishImageView.heightAnchor.constraint(equalToConstant: 100),
             dishImageView.widthAnchor.constraint(equalToConstant: 100),
-            dishImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -22),
+            dishImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
             
             nameLabel.leadingAnchor.constraint(equalTo: dishImageView.trailingAnchor, constant: 16),
             nameLabel.topAnchor.constraint(equalTo: dishImageView.topAnchor),
             
-            deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            deleteButton.topAnchor.constraint(equalTo: contentView.topAnchor),
+            deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            deleteButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             deleteButton.widthAnchor.constraint(equalToConstant: 30),
-            deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
-            
-            priceLabel.topAnchor.constraint(equalTo: nameLabel.topAnchor),
+
+            priceLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: deleteButton.leadingAnchor, constant: -8),
+            priceLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 8),
             
             countLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
             countLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             
             countNumberLabel.topAnchor.constraint(equalTo: countLabel.topAnchor),
-            countNumberLabel.trailingAnchor.constraint(equalTo: priceLabel.trailingAnchor),
+            countNumberLabel.trailingAnchor.constraint(equalTo: priceLabel.trailingAnchor)
         ])
+
+        priceLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        priceLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
     }
     
     @objc
@@ -126,4 +130,3 @@ final class CartScreenCell: UITableViewCell {
         deleteAction?()
     }
 }
-

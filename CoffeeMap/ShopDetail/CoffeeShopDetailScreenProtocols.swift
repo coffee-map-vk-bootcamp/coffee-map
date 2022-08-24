@@ -17,7 +17,7 @@ protocol CoffeeShopDetailScreenModuleOutput: AnyObject {
 }
 
 protocol CoffeeShopDetailScreenViewInput: AnyObject {
-
+    func setFavoriteCoffeeShops(_ coffeeShops: [CoffeeShop])
 }
 
 protocol CoffeeShopDetailScreenViewOutput: AnyObject {
@@ -30,18 +30,24 @@ protocol CoffeeShopDetailScreenViewOutput: AnyObject {
     
     func didLoadView()
     func didSelectDish(with item: Dish)
+    func checkIsFavorite()
+    func addToFavorites()
+    func removeFromFavorites()
 }
 
 protocol CoffeeShopDetailScreenInteractorInput: AnyObject {
     func loadItems() -> [DishSection]
-    func getCoffeeShop() -> CoffeeShop    
+    func getCoffeeShop() -> CoffeeShop
+    func checkIsFavorite()
+    func addToFavorites()
+    func removeFromFavorites()
 }
 
 protocol CoffeeShopDetailScreenInteractorOutput: AnyObject {
-    
+    func setFavoriteCoffeeShops(_ coffeeShops: [CoffeeShop])
 }
 
 protocol CoffeeShopDetailScreenRouterInput: AnyObject {
-    func showDetailDish(output: DishConfiguratorModuleOutput, with item: Dish)
+    func showDetailDish(output: DishConfiguratorModuleOutput, with item: Dish, coffeeShopName: String)
     func showAlert()
 }

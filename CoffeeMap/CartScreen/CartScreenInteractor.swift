@@ -10,7 +10,32 @@ import Foundation
 
 final class CartScreenInteractor {
     weak var output: CartScreenInteractorOutput?
+
+    private let cartManager: CartManagerDescription
+
+    init(cartManager: CartManagerDescription) {
+        self.cartManager = cartManager
+    }
 }
 
 extension CartScreenInteractor: CartScreenInteractorInput {
+    var coffeeShopName: String {
+        cartManager.coffeeShopName
+    }
+
+    var dishList: [OrderDish] {
+        cartManager.dishesArray
+    }
+
+    var price: Int {
+        cartManager.price
+    }
+
+    func deleteDishFromOrder(at index: Int) {
+        cartManager.deleteDishFromOrder(at: index)
+    }
+
+    func makeOrder(time: Date, completion: @escaping (Result<Void, Error>) -> Void) {
+        cartManager.makeOrder(time: time, completion: completion)
+    }
 }

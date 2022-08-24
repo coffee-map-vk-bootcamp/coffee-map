@@ -16,9 +16,17 @@ final class HomeScreenViewController: UIViewController {
     var dataSource: UBottomSheetCoordinatorDataSource?
     var sheetVC: DraggableItem?
     
+    
+    private var userLocation: CLLocation?
+    
     private var lastSelectedAnnotation: MKAnnotation?
     
+    private var locationManager: CLLocationManager?
+    
     private var isShowingBottomSheet = false
+    
+    private var tappedCoffeeShop: CoffeeShop?
+    private var lastAnnotations: [MKAnnotation] = []
     
     private let output: HomeScreenViewOutput
     
@@ -29,8 +37,12 @@ final class HomeScreenViewController: UIViewController {
         return mapView
     }()
     
-    private var tappedCoffeeShop: CoffeeShop?
-    private var lastAnnotations: [MKAnnotation] = []
+    private lazy var locationButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "location.circle.fill"), for: .normal)
+        button.tintColor = .primary
+        return button
+    }()
     
     init(output: HomeScreenViewOutput) {
         self.output = output
@@ -48,9 +60,20 @@ final class HomeScreenViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layoutMapView()
+        layoutLocationButton()
     }
     
     override func viewWillLayoutSubviews() {
@@ -72,24 +95,32 @@ final class HomeScreenViewController: UIViewController {
 private extension HomeScreenViewController {
     func setup() {
         view.backgroundColor = .systemBackground
+        setupLocationManager()
+        output.didLoadView()
         setupViews()
         setupMap()
-        output.didLoadView()
+    }
+    
+    func setupLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.delegate = self
     }
     
     func setupViews() {
-        let views = [mapView]
+        let views = [mapView, locationButton]
         view.addSubviews(views)
     }
     
     func setupMap() {
-        let initialLocation = CLLocationCoordinate2D(latitude: 43.41243, longitude: 39.96577)
-        let region = MKCoordinateRegion(center: initialLocation, latitudinalMeters: 500, longitudinalMeters: 500)
+//        let initialLocation = userLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 43.41243, longitude: 39.96577)
+//        let region = MKCoordinateRegion(center: initialLocation, latitudinalMeters: 500, longitudinalMeters: 500)
         
         let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 200000)
         mapView.setCameraZoomRange(zoomRange, animated: true)
         
-        mapView.setRegion(region, animated: true)
+//        mapView.setRegion(region, animated: true)
+        locateToUserLocation()
         mapView.delegate = self
     }
     
@@ -102,6 +133,27 @@ private extension HomeScreenViewController {
             mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    func layoutLocationButton() {
+        locationButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            locationButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -64),
+            locationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            locationButton.heightAnchor.constraint(equalToConstant: 34),
+            locationButton.widthAnchor.constraint(equalToConstant: 34)
+        ])
+        
+        locationButton.addTarget(self, action: #selector(locateToUserLocation), for: .touchUpInside)
+    }
+    
+    @objc func locateToUserLocation() {
+        let coordinate = userLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 43.41243, longitude: 39.96577)
+        let latCorrection = mapView.region.span.latitudeDelta / 8
+        print(mapView.region.span, latCorrection)
+        let region = MKCoordinateRegion(center: coordinate, span: .init(latitudeDelta: 0.1, longitudeDelta: 0.1))
+        mapView.setRegion(region, animated: true)
     }
     
     func showBottomSheet() {
@@ -194,5 +246,29 @@ extension HomeScreenViewController: UBottomSheetCoordinatorDelegate {
                 self?.isShowingBottomSheet = false
             }
         }
+    }
+}
+
+extension HomeScreenViewController: CLLocationManagerDelegate {
+    func activateLocationServices() {
+        locationManager?.startUpdatingLocation()
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        guard CLLocationManager.locationServicesEnabled() else { return }
+        
+        let status = manager.authorizationStatus
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            activateLocationServices()
+        } else if status == .notDetermined {
+            locationManager?.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let latest = locations.first else { return }
+        
+        userLocation = latest
+        
     }
 }

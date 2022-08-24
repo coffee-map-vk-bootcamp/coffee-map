@@ -8,12 +8,18 @@
 import Foundation
 import UIKit
 
+protocol CartListFooterDelegate: AnyObject {
+    func makeOrderDidTap()
+}
+
 final class CartListFooter: UIView {
+
+    weak var delegate: CartListFooterDelegate?
     
     private lazy var sumLabel: UILabel = {
         let sumLabel = UILabel()
         sumLabel.text = "Итого"
-        sumLabel.font = UIFont.systemFont(ofSize: 28)
+        sumLabel.font = UIFont.systemFont(ofSize: 24)
         sumLabel.toAutoLayout()
         
         return sumLabel
@@ -22,7 +28,7 @@ final class CartListFooter: UIView {
     private lazy var priceLabel: UILabel = {
         let priceLabel = UILabel()
         priceLabel.text = "160₽"
-        priceLabel.font = UIFont.systemFont(ofSize: 28)
+        priceLabel.font = UIFont.systemFont(ofSize: 24)
         priceLabel.toAutoLayout()
         
         return priceLabel
@@ -31,8 +37,8 @@ final class CartListFooter: UIView {
     private lazy var buyButton: UIButton = {
         let buyButton = UIButton()
         buyButton.setTitle("Оплатить", for: .normal)
-        buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 26, weight: .heavy)
-        buyButton.backgroundColor = .primary
+        buyButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+        buyButton.setBackgroundColor(color: .primary, forState: .normal)
         buyButton.layer.cornerRadius = 16
         buyButton.clipsToBounds = true
         buyButton.toAutoLayout()
@@ -62,15 +68,23 @@ final class CartListFooter: UIView {
         
         NSLayoutConstraint.activate([
             sumLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28),
-            sumLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            sumLabel.topAnchor.constraint(equalTo: topAnchor, constant: 4),
             
             priceLabel.topAnchor.constraint(equalTo: sumLabel.topAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             
-            buyButton.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 25),
-            buyButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            buyButton.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 24),
+            buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
             buyButton.heightAnchor.constraint(equalToConstant: 50),
-            buyButton.widthAnchor.constraint(equalToConstant: 330),
+            buyButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            buyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)
         ])
+
+        buyButton.addTarget(self, action: #selector(buyButtonDidTap), for: .touchUpInside)
+    }
+
+    @objc
+    private func buyButtonDidTap() {
+        delegate?.makeOrderDidTap()
     }
 }

@@ -15,7 +15,7 @@ final class CartScreenContainer {
     
     class func assemble(with context: CartScreenContext) -> CartScreenContainer {
         let router = CartScreenRouter()
-        let interactor = CartScreenInteractor()
+        let interactor = CartScreenInteractor(cartManager: ShoppingCartManager.shared)
         let presenter = CartScreenPresenter(router: router, interactor: interactor, cartList: context.cartList ?? CartList())
         let viewController = CartScreenViewController(output: presenter)
         

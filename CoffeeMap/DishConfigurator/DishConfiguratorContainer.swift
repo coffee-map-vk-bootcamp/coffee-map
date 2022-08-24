@@ -15,8 +15,10 @@ final class DishConfiguratorContainer {
     
     class func assemble(with context: DishConfiguratorContext) -> DishConfiguratorContainer {
         let router = DishConfiguratorRouter()
-        let interactor = DishConfiguratorInteractor()
-        let presenter = DishConfiguratorPresenter(router: router, interactor: interactor)
+        let interactor = DishConfiguratorInteractor(cartManager: ShoppingCartManager.shared)
+        let presenter = DishConfiguratorPresenter(router: router,
+                                                  interactor: interactor,
+                                                  coffeeShopName: context.coffeeShopName)
         let viewController = DishConfiguratorViewController(output: presenter)
         
         presenter.view = viewController
@@ -37,5 +39,6 @@ final class DishConfiguratorContainer {
 
 struct DishConfiguratorContext {
     weak var moduleOutput: DishConfiguratorModuleOutput?
+    var coffeeShopName: String
     let dish: Dish
 }

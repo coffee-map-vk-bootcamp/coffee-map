@@ -281,6 +281,8 @@ class LoginView: UIView {
     }
     
     func animationFail() {
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred()
         stackView.shake()
         repeatPasswordTextField.shake()
     }

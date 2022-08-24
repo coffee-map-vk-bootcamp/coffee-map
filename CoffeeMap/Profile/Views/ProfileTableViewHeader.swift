@@ -29,7 +29,6 @@ final class ProfileTableViewHeader: UITableViewHeaderFooterView {
     private let exitButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: AppImageNames.exit)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.addTarget(self, action: #selector(logout), for: .touchUpInside)
         button.tintColor = .black
         return button
     }()
@@ -37,10 +36,15 @@ final class ProfileTableViewHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         layout()
+        setup()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setup() {
+        exitButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
     }
 
     private func layout() {
@@ -64,7 +68,7 @@ final class ProfileTableViewHeader: UITableViewHeaderFooterView {
         addSubview(exitButton)
         exitButton.translatesAutoresizingMaskIntoConstraints = false
         let closeButtonConstraints = [
-            exitButton.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            exitButton.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
             exitButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             exitButton.widthAnchor.constraint(equalToConstant: 24),
             exitButton.heightAnchor.constraint(equalToConstant: 24)
@@ -80,6 +84,8 @@ final class ProfileTableViewHeader: UITableViewHeaderFooterView {
     
     @objc
     private func logout() {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
         output?.logout()
     }
 }
