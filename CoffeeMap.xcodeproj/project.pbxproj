@@ -896,6 +896,7 @@
 				DEVELOPMENT_TEAM = WMWSB972VT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoffeeMap/Common/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is necessary to show distance to coffee shops nearby";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -906,7 +907,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.CoffeeMap;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.CoffeeMap.iv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -925,6 +926,7 @@
 				DEVELOPMENT_TEAM = WMWSB972VT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoffeeMap/Common/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is necessary to show distance to coffee shops nearby";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -935,7 +937,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.CoffeeMap;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.CoffeeMap.iv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

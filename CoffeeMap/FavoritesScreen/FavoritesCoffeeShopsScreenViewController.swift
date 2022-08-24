@@ -54,4 +54,9 @@ extension FavoritesCoffeeShopsScreenViewController: ShopListViewControllerDelega
     func getCoffeeShops() {
         output.getFavoritesCoffeeShops()
     }
+    
+    func refresh() {
+        let shops = output.getCoffeeShops()
+        childViewController.configure(with: shops)
+    }
 }

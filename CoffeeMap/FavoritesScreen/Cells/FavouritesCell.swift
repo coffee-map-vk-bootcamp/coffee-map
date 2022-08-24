@@ -18,7 +18,9 @@ final class FavouritesCell: UICollectionViewCell {
     private var locationManager: CLLocationManager?
     
     weak var delegate: FavouriteCellDelegate?
+    var networkService = FBService()
     var locationKeeper: CLLocation?
+    var idKeeper: String = UUID().uuidString
     
     private lazy var placeLabel: UILabel = {
         let label = UILabel()
@@ -60,7 +62,7 @@ final class FavouritesCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 10)
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.2
-        label.text = "1 км."
+        label.text = "1 км"
         label.textColor = .white
         return label
     }()
@@ -70,6 +72,7 @@ final class FavouritesCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(white: 0, alpha: 0.5)
         view.layer.cornerRadius = 6
+        view.isHidden = true
         return view
     }()
     
@@ -122,6 +125,8 @@ final class FavouritesCell: UICollectionViewCell {
         backgroundImageView.setImage(with: shop.image)
         locationKeeper = CLLocation(latitude: shop.latitude, longitude: shop.longitude)
         self.index = index
+        idKeeper = shop.id
+        
     }
     
     private func setupViews() {
@@ -137,6 +142,16 @@ final class FavouritesCell: UICollectionViewCell {
     @objc private func deleteFavourite(sender: UIButton) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        networkService.deleteFavoriteCoffeeShop(with: idKeeper) { [weak self] result in
+            switch result {
+            case .success():
+                guard let id = self?.idKeeper else { return }
+                self?.networkService.deleteFavoriteCoffeeShop(with: id, completion: { _ in
+                })
+            case .failure(let  error):
+                print(error)
+            }
+        }
         delegate?.remove(at: index)
     }
     
@@ -192,6 +207,7 @@ extension FavouritesCell: CLLocationManagerDelegate {
         let status = manager.authorizationStatus
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             activateLocationServices()
+            distanceView.isHidden = false
         } else if status == .notDetermined {
             locationManager?.requestWhenInUseAuthorization()
         }
@@ -203,11 +219,11 @@ extension FavouritesCell: CLLocationManagerDelegate {
         let coordinate1 = CLLocation(latitude: (userLocation?.latitude) ?? 13.6028, longitude: (userLocation?.longitude) ?? 19.7342)
         let distance = (locationKeeper?.distance(from: coordinate1) ?? 0) / 1000
         if distance <= 1 {
-            distanceLabel.text = "\(Int(distance * 1000)) м."
+            distanceLabel.text = "\(Int(distance * 1000)) м"
         } else if distance <= 100 {
-            distanceLabel.text = "\(Int(distance)) км."
+            distanceLabel.text = "\(Int(distance)) км"
         } else {
-            distanceLabel.text = ">100 км."
+            distanceLabel.text = ">100 км"
         }
         print(userLocation ?? 0)
     }
