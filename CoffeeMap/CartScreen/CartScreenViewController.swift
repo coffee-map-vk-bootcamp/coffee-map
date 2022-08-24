@@ -117,6 +117,8 @@ extension CartScreenViewController: CartListFooterDelegate {
                 let alertAction = UIAlertAction(title: "Закрыть", style: .default)
 
                 alert.addAction(alertAction)
+                self?.tableView.reloadData()
+                self?.footerView.configure(sumPrice: self?.output.price ?? 0)
                 self?.present(alert, animated: true)
             case .failure(_):
                 let alert = UIAlertController(title: "", message: "Ошбика при создании заказа", preferredStyle: .alert)
