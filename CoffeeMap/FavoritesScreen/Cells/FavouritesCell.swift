@@ -72,6 +72,7 @@ final class FavouritesCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(white: 0, alpha: 0.5)
         view.layer.cornerRadius = 6
+        view.isHidden = true
         return view
     }()
     
@@ -143,7 +144,7 @@ final class FavouritesCell: UICollectionViewCell {
         generator.impactOccurred()
         networkService.deleteFavoriteCoffeeShop(with: idKeeper) { [weak self] result in
             switch result {
-            case .success(let user):
+            case .success():
                 guard let id = self?.idKeeper else { return }
                 self?.networkService.deleteFavoriteCoffeeShop(with: id, completion: { _ in
                 })
@@ -206,6 +207,7 @@ extension FavouritesCell: CLLocationManagerDelegate {
         let status = manager.authorizationStatus
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             activateLocationServices()
+            distanceView.isHidden = false
         } else if status == .notDetermined {
             locationManager?.requestWhenInUseAuthorization()
         }
