@@ -10,11 +10,17 @@ import Foundation
 
 final class HomeScreenInteractor {
     weak var output: HomeScreenInteractorOutput?
+
+    private let networkManager: NetworkManagerDescription
+
+    init(networkManager: NetworkManagerDescription) {
+        self.networkManager = networkManager
+    }
 }
 
 extension HomeScreenInteractor: HomeScreenInteractorInput {
     func fetchCoffeeShops() {
-        FBService().addCoffeeShopsSubscription { [weak self] result in
+        networkManager.addCoffeeShopsSubscription { [weak self] result in
             switch result {
             case .success(let shops):
                 self?.output?.getShops(shops)

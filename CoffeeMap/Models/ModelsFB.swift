@@ -47,14 +47,14 @@ extension CoffeeShop {
     }
 }
 
-struct Order: Decodable {
+struct Order: Codable {
     let name: String
     let totalPrice: Int
-    let date: Date
-    let dishes: [OrderDish]
+    let date: Int
+    var dishes: [OrderDish]
 }
 
-struct OrderDish: Decodable {
+struct OrderDish: Codable {
     let name: String
     let price: Int
     let image: String

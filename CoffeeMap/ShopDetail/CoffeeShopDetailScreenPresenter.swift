@@ -58,7 +58,7 @@ extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenViewOutput {
     }
     
     func didSelectDish(with item: Dish) {
-        router.showDetailDish(output: self, with: item)
+        router.showDetailDish(output: self, with: item, coffeeShopName: getCoffeeShop().name)
     }
     
     func checkIsFavorite() {

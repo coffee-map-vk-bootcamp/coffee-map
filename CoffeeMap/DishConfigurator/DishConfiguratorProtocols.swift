@@ -18,16 +18,26 @@ protocol DishConfiguratorModuleOutput: AnyObject {
 
 protocol DishConfiguratorViewInput: AnyObject {
     func dismiss()
-    func setDish(_ dish: Dish)
+    func configureWith(dish: Dish)
 }
 
 protocol DishConfiguratorViewOutput: AnyObject {
     func didLoadView()
     func didTapClose()
+
+    var dishesArray: [OrderDish] { get }
+
+    func updateCoffeeShopName(_ name: String)
+    func addDishToOrder(_ dish: Dish, amount: Int, price: Int)
 }
 
 protocol DishConfiguratorInteractorInput: AnyObject {
     func loadDish() -> Dish
+
+    var dishesArray: [OrderDish] { get }
+
+    func updateCoffeeShopName(_ name: String)
+    func addDishToOrder(_ dish: OrderDish)
 }
 
 protocol DishConfiguratorInteractorOutput: AnyObject {

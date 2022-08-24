@@ -9,15 +9,46 @@ import Firebase
 import FirebaseFirestore
 
 protocol NetworkManagerDescription {
+    func addCoffeeShopsSubscription(completion: @escaping (Result<[CoffeeShop], Error>) -> Void)
+
     func fetchUserData(completion: @escaping (Result<User, Error>) -> Void)
 
     func deleteFavoriteCoffeeShop(with id: String, completion: @escaping (Result<Void, Error>) -> Void)
 
     func addFavoriteCoffeeShop(with id: String, completion: @escaping (Result<Void, Error>) -> Void)
+
+    func createOrder(with order: Order, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class FBService: NetworkManagerDescription {
     let dataBase = Firestore.firestore()
+
+    func createOrder(with order: Order, completion: @escaping (Result<Void, Error>) -> Void) {
+        fetchUserData { [weak self] userResult in
+            switch userResult {
+            case .success(let user):
+                var ordersArray = user.orders
+                ordersArray.insert(order, at: 0)
+                guard let userId = self?.getUserId() else {
+                    completion(.failure(FirebaseError.userNotFound))
+                    return
+                }
+                let documentRef = self?.dataBase.collection("users").document(userId)
+                let huiArray: [[String: Any]] = ordersArray.compactMap { order in
+                    return try? ModelConverter.convert(from: order)
+                }
+                documentRef?.updateData(["orders": huiArray], completion: { error in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(()))
+                    }
+                })
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 
     func deleteFavoriteCoffeeShop(with id: String, completion: @escaping (Result<Void, Error>) -> Void) {
         fetchUserData { [weak self] result in

@@ -48,6 +48,6 @@ protocol CoffeeShopDetailScreenInteractorOutput: AnyObject {
 }
 
 protocol CoffeeShopDetailScreenRouterInput: AnyObject {
-    func showDetailDish(output: DishConfiguratorModuleOutput, with item: Dish)
+    func showDetailDish(output: DishConfiguratorModuleOutput, with item: Dish, coffeeShopName: String)
     func showAlert()
 }

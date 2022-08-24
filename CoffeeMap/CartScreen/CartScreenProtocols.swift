@@ -19,10 +19,27 @@ protocol CartScreenViewInput: AnyObject {
 }
 
 protocol CartScreenViewOutput: AnyObject {
-    func getOrder() -> CartList
+    var coffeeShopName: String { get }
+
+    var dishList: [OrderDish] { get }
+
+    var price: Int { get }
+
+    func deleteDishFromOrder(at index: Int)
+
+    func makeOrder(time: Date, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 protocol CartScreenInteractorInput: AnyObject {
+    var coffeeShopName: String { get }
+
+    var dishList: [OrderDish] { get }
+
+    var price: Int { get }
+
+    func deleteDishFromOrder(at index: Int)
+
+    func makeOrder(time: Date, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 protocol CartScreenInteractorOutput: AnyObject {
@@ -30,4 +47,3 @@ protocol CartScreenInteractorOutput: AnyObject {
 
 protocol CartScreenRouterInput: AnyObject {
 }
-

@@ -18,6 +18,7 @@ final class DishConfiguratorViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    private var dish: Dish?
     
     init(output: DishConfiguratorViewOutput) {
         self.output = output
@@ -49,7 +50,8 @@ final class DishConfiguratorViewController: UIViewController {
 }
 
 extension DishConfiguratorViewController: DishConfiguratorViewInput {
-    func setDish(_ dish: Dish) {
+    func configureWith(dish: Dish) {
+        self.dish = dish
         alertView.configure(with: dish)
     }
     
@@ -116,7 +118,11 @@ private extension DishConfiguratorViewController {
 }
 
 extension DishConfiguratorViewController: DishConfigurationAlertViewDelegate {
-    func didTapAddToCart() {
+    func didTapAddToCart(amount: Int, price: Int) {
+        guard let dish = dish else {
+            return
+        }
+        output.addDishToOrder(dish, amount: amount, price: price)
         animateOut()
         
         let alert = UIAlertController(title: "", message: "Добавлено в корзину", preferredStyle: .alert)
