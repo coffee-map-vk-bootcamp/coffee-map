@@ -44,6 +44,13 @@ final class ReceiptCollectionViewCell: UITableViewCell {
 
     private var stackBottomConstraint: NSLayoutConstraint?
 
+    private let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+
+        return formatter
+    }()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
@@ -172,11 +179,14 @@ final class ReceiptCollectionViewCell: UITableViewCell {
 
     func configure(with order: ReceiptCellModel) {
         titleLabel.text = "Заказ из " + order.name
-        
-        dateLabel.text = "От: " + order.date.description
 
-//        detailButton.isHidden = !(order.dishes.count > 3)
-//        stackBottomConstraint?.isActive = detailButton.isHidden
+        if Date() < order.date {
+            dateLabel.text = "Будет готово к: \(formatter.string(from: order.date))"
+            dateLabel.textColor = .primary
+        } else {
+            dateLabel.text = "От: " + order.dateText
+            dateLabel.textColor = .primaryTextColor
+        }
 
         orderStack.subviews.forEach {
             orderStack.removeArrangedSubview($0)

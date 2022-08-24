@@ -9,7 +9,8 @@ import Foundation
 
 struct ReceiptCellModel {
     let name: String
-    let date: String
+    let dateText: String
+    let date: Date
     let price: String
     let dishes: [OrderDish]
     var expandButtonAction: (() -> Void)?
