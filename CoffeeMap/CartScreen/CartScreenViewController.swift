@@ -87,15 +87,7 @@ extension CartScreenViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CartScreenCell.reuseIdentifier,
                                                        for: indexPath) as? CartScreenCell else { return UITableViewCell() }
         let dish = output.dishList[indexPath.row]
-        cell.configure(image: dish.image, name: dish.name, price: String(dish.price), count: String(dish.count)) { [weak self] in
-            tableView.performBatchUpdates {
-                self?.output.deleteDishFromOrder(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .top)
-            } completion: { _ in
-                tableView.reloadData()
-                self?.footerView.configure(sumPrice: self?.output.price ?? 0)
-            }
-        }
+        cell.configure(image: dish.image, name: dish.name, price: String(dish.price), count: String(dish.count))
         return cell
     }
     
@@ -104,6 +96,19 @@ extension CartScreenViewController: UITableViewDataSource, UITableViewDelegate {
                 as? CartListHeader else { return UIView() }
         header.configure(name: output.coffeeShopName)
         return header
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.performBatchUpdates { [weak self] in
+                self?.output.deleteDishFromOrder(at: indexPath.row)
+                self?.tableView.deleteRows(at: [indexPath], with: .top)
+            } completion: { [weak self] _ in
+                self?.tableView.reloadData()
+                self?.footerView.configure(sumPrice: self?.output.price ?? 0)
+            }
+
+        }
     }
 }
 
