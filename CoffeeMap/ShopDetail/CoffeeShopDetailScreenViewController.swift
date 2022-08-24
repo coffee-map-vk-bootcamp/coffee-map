@@ -13,6 +13,7 @@ final class CoffeeShopDetailScreenViewController: UIViewController {
     var sheetCoordinator: UBottomSheetCoordinator?
     
     private let output: CoffeeShopDetailScreenViewOutput
+    private var favoriteCoffeeShops = [CoffeeShop]()
     
     private lazy var collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     
@@ -50,6 +51,10 @@ final class CoffeeShopDetailScreenViewController: UIViewController {
 }
 
 extension CoffeeShopDetailScreenViewController: CoffeeShopDetailScreenViewInput {
+    func setFavoriteCoffeeShops(_ coffeeShops: [CoffeeShop]) {
+        favoriteCoffeeShops = coffeeShops
+        collectionView.reloadData()
+    }
 }
 
 private extension CoffeeShopDetailScreenViewController {
@@ -191,7 +196,9 @@ extension CoffeeShopDetailScreenViewController: UICollectionViewDataSource {
             let header = collectionView.dequeueReusableSupplementaryView(
                 CoffeeShopDetailHeaderView.self, ofKind: Constants.HeaderKind.globalHeader, for: indexPath)
             let coffeeShop = output.getCoffeeShop()
-            header.configure(with: coffeeShop)
+            let isFavorite = favoriteCoffeeShops.contains { $0.id == coffeeShop.id }
+            header.delegate = self
+            header.configure(with: coffeeShop, isFavorite: isFavorite)
             return header
         } else {
             fatalError()
@@ -210,5 +217,15 @@ extension CoffeeShopDetailScreenViewController: UICollectionViewDelegate {
 extension CoffeeShopDetailScreenViewController: Draggable {
     func draggableView() -> UIScrollView? {
         return collectionView
+    }
+}
+
+extension CoffeeShopDetailScreenViewController: CoffeeShopDetailHeaderViewDelegate {
+    func checkIsFavorite() {
+        output.checkIsFavorite()
+    }
+    
+    func changeChangeFavorite(_ isFavorite: Bool) {
+        isFavorite ? output.addToFavorites() : output.removeFromFavorites()
     }
 }

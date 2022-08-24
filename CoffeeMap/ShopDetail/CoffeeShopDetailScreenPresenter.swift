@@ -28,6 +28,10 @@ extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenModuleInput {
 }
 
 extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenViewOutput {
+    func removeFromFavorites() {
+        interactor.removeFromFavorites()
+    }
+    
     func getCoffeeShop() -> CoffeeShop {
         return interactor.getCoffeeShop()
     }
@@ -42,6 +46,7 @@ extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenViewOutput {
     
     func didLoadView() {
         sections = interactor.loadItems()
+        interactor.checkIsFavorite()
     }
     
     var count: Int {
@@ -55,10 +60,20 @@ extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenViewOutput {
     func didSelectDish(with item: Dish) {
         router.showDetailDish(output: self, with: item)
     }
+    
+    func checkIsFavorite() {
+        interactor.checkIsFavorite()
+    }
+    
+    func addToFavorites() {
+        interactor.addToFavorites()
+    }
 }
 
 extension CoffeeShopDetailScreenPresenter: CoffeeShopDetailScreenInteractorOutput {
-    
+    func setFavoriteCoffeeShops(_ coffeeShops: [CoffeeShop]) {
+        view?.setFavoriteCoffeeShops(coffeeShops)
+    }
 }
 
 extension CoffeeShopDetailScreenPresenter: DishConfiguratorModuleOutput {

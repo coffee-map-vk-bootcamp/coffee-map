@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol CoffeeShopDetailHeaderViewDelegate: AnyObject {
+    func checkIsFavorite()
+    func changeChangeFavorite(_ isFavorite: Bool)
+}
+
 class CoffeeShopDetailHeaderView: UICollectionReusableView {
+    weak var delegate: CoffeeShopDetailHeaderViewDelegate?
+    
     private lazy var headerImageView: SkeletonImageView = {
         let headerView = SkeletonImageView()
         headerView.contentMode = .scaleAspectFill
@@ -33,6 +40,16 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
         return label
     }()
     
+    private lazy var flagButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .white
+        return button
+    }()
+    
+    private var isFavorite: Bool = false
+    private var coffeeShop: CoffeeShop?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -43,17 +60,27 @@ class CoffeeShopDetailHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with coffeeShop: CoffeeShop) {
+    func configure(with coffeeShop: CoffeeShop, isFavorite: Bool) {
+        self.coffeeShop = coffeeShop
+        self.isFavorite = isFavorite
+        setFavoriteButton(isFavorite)
         headerImageView.setImage(with: coffeeShop.image)
         headerTitleLabel.text = coffeeShop.name
     }
 }
 
 private extension CoffeeShopDetailHeaderView {
+    func setFavoriteButton(_ isFavorite: Bool) {
+        let imageName = isFavorite ? AppImageNames.favorite : AppImageNames.notFavorite
+        let image = UIImage(named: imageName)
+        flagButton.setBackgroundImage(image, for: .normal)
+    }
+    
     func setup() {
         setupHeaderImageView()
         setupGradientLayer()
         setupHeaderTitleLabel()
+        setupFlagButton()
         
         clipsToBounds = true
     }
@@ -72,10 +99,29 @@ private extension CoffeeShopDetailHeaderView {
         addSubview(headerTitleLabel)
         
         NSLayoutConstraint.activate([
-            headerTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            headerTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            headerTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            headerTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60),
             headerTitleLabel.topAnchor.constraint(equalTo: topAnchor),
             headerTitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+    
+    func setupFlagButton() {
+        addSubview(flagButton)
+        flagButton.addTarget(self, action: #selector(addToFavorites), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            flagButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            flagButton.centerYAnchor.constraint(equalTo: headerTitleLabel.centerYAnchor, constant: 3),
+            flagButton.heightAnchor.constraint(equalToConstant: 38),
+            flagButton.widthAnchor.constraint(equalToConstant: 32)
+        ])
+        
+    }
+    
+    @objc func addToFavorites() {
+        isFavorite.toggle()
+        delegate?.changeChangeFavorite(isFavorite)
+        setFavoriteButton(isFavorite)
     }
 }
