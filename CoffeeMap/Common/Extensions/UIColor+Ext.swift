@@ -62,6 +62,4 @@ extension UIColor {
             return UIColor.systemBlue
         }
     }()
-    
-    static let dishItemName: UIColor = .init(hex: " 4F4F4F")
 }

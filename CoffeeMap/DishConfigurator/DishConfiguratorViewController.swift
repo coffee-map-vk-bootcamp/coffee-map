@@ -117,7 +117,13 @@ private extension DishConfiguratorViewController {
 
 extension DishConfiguratorViewController: DishConfigurationAlertViewDelegate {
     func didTapAddToCart() {
+        animateOut()
         
+        let alert = UIAlertController(title: "", message: "Добавлено в корзину", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Ok", style: .default)
+        
+        alert.addAction(alertAction)
+        present(alert, animated: true)
     }
     
     func didTapClose() {
