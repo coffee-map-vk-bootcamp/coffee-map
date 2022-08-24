@@ -15,7 +15,7 @@ final class DishConfiguratorContainer {
     
     class func assemble(with context: DishConfiguratorContext) -> DishConfiguratorContainer {
         let router = DishConfiguratorRouter()
-        let interactor = DishConfiguratorInteractor()
+        let interactor = DishConfiguratorInteractor(cartManager: ShoppingCartManager.shared)
         let presenter = DishConfiguratorPresenter(router: router, interactor: interactor)
         let viewController = DishConfiguratorViewController(output: presenter)
         

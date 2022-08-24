@@ -40,8 +40,28 @@ extension CartScreenPresenter: CartScreenModuleInput {
 }
 
 extension CartScreenPresenter: CartScreenViewOutput {
-    func getOrder() -> CartList {
-        return cartList
+    var coffeeShopName: String {
+        interactor.coffeeShopName
+    }
+    
+    func startConfigureOrder(in coffeeShop: String) {
+        interactor.startConfigureOrder(in: coffeeShop)
+    }
+    
+    var price: Int {
+        interactor.price
+    }
+
+    func deleteDishFromOrder(at index: Int) {
+        interactor.deleteDishFromOrder(at: index)
+    }
+
+    func makeOrder(name: String, time: Date, completion: @escaping (Result<Void, Error>) -> Void) {
+        interactor.makeOrder(name: name, time: time, completion: completion)
+    }
+
+    var dishList: [OrderDish] {
+        interactor.dishList
     }
 }
 

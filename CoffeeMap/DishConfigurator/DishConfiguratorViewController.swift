@@ -117,7 +117,7 @@ private extension DishConfiguratorViewController {
 
 extension DishConfiguratorViewController: DishConfigurationAlertViewDelegate {
     func didTapAddToCart() {
-        
+        output.addDishToOrder(<#T##dish: OrderDish##OrderDish#>)
     }
     
     func didTapClose() {

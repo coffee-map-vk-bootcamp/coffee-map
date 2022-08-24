@@ -164,6 +164,7 @@ private extension DishConfigurationAlertView {
     
     func setupAddToCartButton() {
         addToCartButton.translatesAutoresizingMaskIntoConstraints = false
+        addToCartButton.addTarget(self, action: #selector(didTapAdd), for: .touchUpInside)
     }
     
     func setupIntial() {
@@ -357,5 +358,9 @@ private extension DishConfigurationAlertView {
     
     @objc func didTapClose() {
         delegate?.didTapClose()
+    }
+
+    @objc func didTapAdd() {
+        delegate?.didTapAddToCart()
     }
 }

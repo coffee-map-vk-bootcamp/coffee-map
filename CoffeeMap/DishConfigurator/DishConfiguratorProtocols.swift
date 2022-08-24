@@ -24,10 +24,23 @@ protocol DishConfiguratorViewInput: AnyObject {
 protocol DishConfiguratorViewOutput: AnyObject {
     func didLoadView()
     func didTapClose()
+
+    var dishesArray: [OrderDish] { get }
+
+    func addDishToOrder(_ dish: OrderDish)
+
+    func startConfigureOrder(in coffeeShop: String)
 }
 
 protocol DishConfiguratorInteractorInput: AnyObject {
     func loadDish() -> Dish
+
+    var dishesArray: [OrderDish] { get }
+
+    func addDishToOrder(_ dish: OrderDish)
+
+    func startConfigureOrder(in coffeeShop: String)
+
 }
 
 protocol DishConfiguratorInteractorOutput: AnyObject {

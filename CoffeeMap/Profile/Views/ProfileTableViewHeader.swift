@@ -29,7 +29,6 @@ final class ProfileTableViewHeader: UITableViewHeaderFooterView {
     private let exitButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: AppImageNames.exit)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.addTarget(self, action: #selector(logout), for: .touchUpInside)
         button.tintColor = .black
         return button
     }()
@@ -37,10 +36,15 @@ final class ProfileTableViewHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         layout()
+        setup()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setup() {
+        exitButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
     }
 
     private func layout() {

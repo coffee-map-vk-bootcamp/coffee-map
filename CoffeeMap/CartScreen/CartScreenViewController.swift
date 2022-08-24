@@ -10,11 +10,6 @@ import UIKit
 
 final class CartScreenViewController: UIViewController {
     private let output: CartScreenViewOutput
-    private var sumCount: Int = 0 {
-        didSet {
-            footerView.configure(sumPrice: sumCount)
-        }
-    }
     
     private lazy var footerView: CartListFooter = {
         let footerView = CartListFooter()
@@ -49,6 +44,8 @@ final class CartScreenViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
+        tableView.reloadData()
+        footerView.configure(sumPrice: output.price)
     }
     
     private func setup(){
@@ -78,19 +75,19 @@ final class CartScreenViewController: UIViewController {
 
 extension CartScreenViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return output.getOrder().dishes.count
+        return output.dishList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CartScreenCell.reuseIdentifier, for: indexPath) as? CartScreenCell else { return UITableViewCell() }
-        let dish = output.getOrder().dishes[indexPath.row]
-        sumCount += dish.price * dish.count
+        let dish = output.dishList[indexPath.row]
         cell.configure(image: dish.image, name: dish.name, price: String(dish.price), count: String(dish.count)) { [weak self] in
             tableView.performBatchUpdates {
-                self?.output.getOrder().dishes.remove(at: indexPath.row)
+                self?.output.deleteDishFromOrder(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .top)
             } completion: { _ in
                 tableView.reloadData()
+                self?.footerView.configure(sumPrice: self?.output.price ?? 0)
             }
         }
         return cell
@@ -98,7 +95,7 @@ extension CartScreenViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: CartListHeader.reuseIdentifier) as? CartListHeader else { return UIView() }
-        header.configure(name: output.getOrder().coffeeShop)
+        header.configure(name: output.coffeeShopName)
         return header
     }
     
