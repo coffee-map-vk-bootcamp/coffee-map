@@ -25,6 +25,10 @@ final class DishConfiguratorInteractor {
 }
 
 extension DishConfiguratorInteractor: DishConfiguratorInteractorInput {
+    func updateCoffeeShopName(_ name: String) {
+        cartManager.coffeeShopName = name
+    }
+
     var dishesArray: [OrderDish] {
         cartManager.dishesArray
     }

@@ -34,7 +34,10 @@ final class FBService: NetworkManagerDescription {
                     return
                 }
                 let documentRef = self?.dataBase.collection("users").document(userId)
-                documentRef?.updateData(["orders": ordersArray], completion: { error in
+                let huiArray: [[String: Any]] = ordersArray.compactMap { order in
+                    return try? ModelConverter.convert(from: order)
+                }
+                documentRef?.updateData(["orders": huiArray], completion: { error in
                     if let error = error {
                         completion(.failure(error))
                     } else {

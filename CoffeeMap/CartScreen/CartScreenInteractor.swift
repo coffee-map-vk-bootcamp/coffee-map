@@ -35,7 +35,7 @@ extension CartScreenInteractor: CartScreenInteractorInput {
         cartManager.deleteDishFromOrder(at: index)
     }
 
-    func makeOrder(name: String, time: Date, completion: @escaping (Result<Void, Error>) -> Void) {
-        cartManager.makeOrder(name: name, time: time, completion: completion)
+    func makeOrder(time: Date, completion: @escaping (Result<Void, Error>) -> Void) {
+        cartManager.makeOrder(time: time, completion: completion)
     }
 }

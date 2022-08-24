@@ -10,6 +10,7 @@ import UIKit
 
 final class CartScreenViewController: UIViewController {
     private let output: CartScreenViewOutput
+    private var headerOutput: CartListHeaderDescription?
     
     private lazy var footerView: CartListFooter = {
         let footerView = CartListFooter()
@@ -48,7 +49,7 @@ final class CartScreenViewController: UIViewController {
         footerView.configure(sumPrice: output.price)
     }
     
-    private func setup(){
+    private func setup() {
         view.addSubviews([tableView, footerView])
         tableView.register(CartScreenCell.self, forCellReuseIdentifier: CartScreenCell.reuseIdentifier)
         tableView.separatorStyle = .none
@@ -56,6 +57,7 @@ final class CartScreenViewController: UIViewController {
         tableView.allowsSelection = false
         tableView.dataSource = self
         tableView.delegate = self
+        footerView.delegate = self
     }
     
     private func layout() {
@@ -78,7 +80,8 @@ extension CartScreenViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CartScreenCell.reuseIdentifier, for: indexPath) as? CartScreenCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CartScreenCell.reuseIdentifier,
+                                                       for: indexPath) as? CartScreenCell else { return UITableViewCell() }
         let dish = output.dishList[indexPath.row]
         cell.configure(image: dish.image, name: dish.name, price: String(dish.price), count: String(dish.count)) { [weak self] in
             tableView.performBatchUpdates {
@@ -93,13 +96,38 @@ extension CartScreenViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: CartListHeader.reuseIdentifier) as? CartListHeader else { return UIView() }
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: CartListHeader.reuseIdentifier)
+                as? CartListHeader else { return UIView() }
         header.configure(name: output.coffeeShopName)
+        headerOutput = header
         return header
     }
     
 }
 
-extension CartScreenViewController: CartScreenViewInput {
+extension CartScreenViewController: CartListFooterDelegate {
+    func makeOrderDidTap() {
+        guard let time = headerOutput?.orderTime else {
+            return
+        }
+        output.makeOrder(time: time) { [weak self] result in
+            switch result {
+            case .success(_):
+                let alert = UIAlertController(title: "", message: "Заказ успешно оплачен", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "Закрыть", style: .default)
+
+                alert.addAction(alertAction)
+                self?.present(alert, animated: true)
+            case .failure(_):
+                let alert = UIAlertController(title: "", message: "Ошбика при создании заказа", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "Попробовать позже", style: .default)
+
+                alert.addAction(alertAction)
+                self?.present(alert, animated: true)
+            }
+        }
+    }
 }
 
+extension CartScreenViewController: CartScreenViewInput {
+}

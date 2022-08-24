@@ -27,6 +27,7 @@ protocol DishConfiguratorViewOutput: AnyObject {
 
     var dishesArray: [OrderDish] { get }
 
+    func updateCoffeeShopName(_ name: String)
     func addDishToOrder(_ dish: Dish, amount: Int, price: Int)
 }
 
@@ -35,6 +36,7 @@ protocol DishConfiguratorInteractorInput: AnyObject {
 
     var dishesArray: [OrderDish] { get }
 
+    func updateCoffeeShopName(_ name: String)
     func addDishToOrder(_ dish: OrderDish)
 }
 

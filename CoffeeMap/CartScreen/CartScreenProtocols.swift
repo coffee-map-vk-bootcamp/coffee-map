@@ -19,27 +19,27 @@ protocol CartScreenViewInput: AnyObject {
 }
 
 protocol CartScreenViewOutput: AnyObject {
+    var coffeeShopName: String { get }
+
     var dishList: [OrderDish] { get }
 
     var price: Int { get }
 
-    var coffeeShopName: String { get }
-
     func deleteDishFromOrder(at index: Int)
 
-    func makeOrder(name: String, time: Date, completion: @escaping (Result<Void, Error>) -> Void)
+    func makeOrder(time: Date, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 protocol CartScreenInteractorInput: AnyObject {
+    var coffeeShopName: String { get }
+
     var dishList: [OrderDish] { get }
 
     var price: Int { get }
 
-    var coffeeShopName: String { get }
-
     func deleteDishFromOrder(at index: Int)
 
-    func makeOrder(name: String, time: Date, completion: @escaping (Result<Void, Error>) -> Void)
+    func makeOrder(time: Date, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 protocol CartScreenInteractorOutput: AnyObject {

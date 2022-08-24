@@ -8,18 +8,18 @@
 import Foundation
 import UIKit
 
-protocol CartManagerDescription {
+protocol CartManagerDescription: AnyObject {
     var dishesArray: [OrderDish] { get }
 
     var price: Int { get }
 
-    var coffeeShopName: String { get }
+    var coffeeShopName: String { get set }
 
     func addDishToOrder(_ dish: OrderDish)
 
     func deleteDishFromOrder(at index: Int)
 
-    func makeOrder(name: String, time: Date, completion: @escaping (Result<Void, Error>) -> Void)
+    func makeOrder(time: Date, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 class ShoppingCartManager: CartManagerDescription {
@@ -62,9 +62,11 @@ class ShoppingCartManager: CartManagerDescription {
         dishesArray.remove(at: index)
     }
 
-    func makeOrder(name: String, time: Date, completion: @escaping (Result<Void, Error>) -> Void ) {
-        let order = Order(name: name, totalPrice: price, date: time, dishes: dishesArray)
-        networkService.createOrder(with: order) { result in
+    func makeOrder(time: Date, completion: @escaping (Result<Void, Error>) -> Void ) {
+        let order = Order(name: coffeeShopName, totalPrice: price, date: Int(time.timeIntervalSince1970), dishes: dishesArray)
+        networkService.createOrder(with: order) { [weak self] result in
+            self?.dishesArray = []
+            self?.coffeeShopName = ""
             completion(result)
         }
     }

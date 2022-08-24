@@ -28,7 +28,7 @@ extension CartScreenPresenter: CartScreenViewOutput {
     var coffeeShopName: String {
         interactor.coffeeShopName
     }
-    
+
     var price: Int {
         interactor.price
     }
@@ -37,8 +37,8 @@ extension CartScreenPresenter: CartScreenViewOutput {
         interactor.deleteDishFromOrder(at: index)
     }
 
-    func makeOrder(name: String, time: Date, completion: @escaping (Result<Void, Error>) -> Void) {
-        interactor.makeOrder(name: name, time: time, completion: completion)
+    func makeOrder(time: Date, completion: @escaping (Result<Void, Error>) -> Void) {
+        interactor.makeOrder(time: time, completion: completion)
     }
 
     var dishList: [OrderDish] {
