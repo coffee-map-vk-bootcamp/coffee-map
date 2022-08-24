@@ -8,13 +8,17 @@
 import Foundation
 import UIKit
 
+protocol CartListHeaderDescription {
+    var orderTime: Date { get }
+}
+
 final class CartListHeader: UITableViewHeaderFooterView {
     
     private lazy var mainLabel: UILabel = {
         let mainLabel = UILabel()
         mainLabel.text = "Корзина"
         mainLabel.toAutoLayout()
-        mainLabel.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        mainLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         
         return mainLabel
     }()
@@ -23,12 +27,12 @@ final class CartListHeader: UITableViewHeaderFooterView {
         let nameOfCoffeeShop = UILabel()
         nameOfCoffeeShop.text = "название кофейни"
         nameOfCoffeeShop.toAutoLayout()
-        nameOfCoffeeShop.font = UIFont.systemFont(ofSize: 24)
+        nameOfCoffeeShop.font = UIFont.systemFont(ofSize: 22)
         nameOfCoffeeShop.textColor = .systemGray2
-        
+
         return nameOfCoffeeShop
     }()
-    
+
     private lazy var textTimeLabel: UILabel = {
         let textTimeLabel = UILabel()
         textTimeLabel.text = "Приготовить к"
@@ -65,7 +69,7 @@ final class CartListHeader: UITableViewHeaderFooterView {
         backgroundColor = .white
         contentView.addSubviews([mainLabel, nameOfCoffeeShop, datePicker, textTimeLabel])
     }
-    
+
     func configure(name: String) {
         nameOfCoffeeShop.text = name
     }
@@ -79,7 +83,7 @@ final class CartListHeader: UITableViewHeaderFooterView {
             nameOfCoffeeShop.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             nameOfCoffeeShop.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 2),
             nameOfCoffeeShop.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            
+
             textTimeLabel.topAnchor.constraint(equalTo: nameOfCoffeeShop.bottomAnchor, constant: 8),
             textTimeLabel.leadingAnchor.constraint(equalTo: mainLabel.leadingAnchor),
             textTimeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
@@ -87,5 +91,11 @@ final class CartListHeader: UITableViewHeaderFooterView {
             datePicker.centerYAnchor.constraint(equalTo: textTimeLabel.centerYAnchor),
             datePicker.leadingAnchor.constraint(equalTo: textTimeLabel.trailingAnchor, constant: 4)
         ])
+    }
+}
+
+extension CartListHeader: CartListHeaderDescription {
+    var orderTime: Date {
+        datePicker.date
     }
 }
