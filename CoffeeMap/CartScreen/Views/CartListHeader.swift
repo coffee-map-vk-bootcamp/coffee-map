@@ -31,7 +31,7 @@ final class CartListHeader: UITableViewHeaderFooterView {
     }
     
     private func setup() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .appTintColor
         backgroundColor = .white
         contentView.addSubview(nameOfCoffeeShop)
     }
