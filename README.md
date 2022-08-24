@@ -8,6 +8,7 @@
       <a href="#about-the-project">About The Project</a>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#demo">Roadmap</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -24,9 +25,16 @@ Group project for VK mobile dev bootcamp 2022 about building coffee map app.
 ## Roadmap
 
 - [x] Create README
-- [ ] Build app 
+- [x] MVP functions  
 - [ ] Make tests 
 - [ ] Get rich 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- DEMO -->
+## Demo
+
+ <img src="./demo/demo.gif" width="600" alt="demo">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
