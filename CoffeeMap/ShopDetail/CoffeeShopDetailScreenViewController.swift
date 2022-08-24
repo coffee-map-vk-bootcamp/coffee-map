@@ -107,13 +107,22 @@ private extension CoffeeShopDetailScreenViewController {
                       output: CoffeeShopDetailScreenViewOutput,
                       interItemSpacing: CGFloat = 16) -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
-            guard let self = self else { return nil}
+            guard let self = self else { return nil }
             let numberOfItems = output.number(of: sectionNumber)
             
-            let item = NSCollectionLayoutItem(
-                layoutSize: .init(widthDimension: .absolute(contentSize.width / 4), heightDimension: .absolute(170)))
+            let itemSize = contentSize.width / 4
             
-            let cellWidth = CGFloat(numberOfItems * 100 + (numberOfItems - 1)) * interItemSpacing
+            let item = NSCollectionLayoutItem(
+                layoutSize: .init(widthDimension: .absolute(itemSize), heightDimension: .absolute(170)))
+            
+            let cellWidth: CGFloat
+            
+            if numberOfItems > 3 {
+                cellWidth = CGFloat(numberOfItems) * itemSize + CGFloat(numberOfItems - 1) * interItemSpacing - 2 * 24
+            } else {
+                cellWidth = CGFloat(numberOfItems) * itemSize + CGFloat(numberOfItems - 1) * interItemSpacing
+            }
+            
             let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(cellWidth), heightDimension: .estimated(165))
             
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])

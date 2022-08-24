@@ -106,7 +106,6 @@ class LoginView: UIView {
             scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-            //logoView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40),
             logoView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             logoView.heightAnchor.constraint(equalToConstant: 200),
             logoView.widthAnchor.constraint(equalToConstant: 200),
